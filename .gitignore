@@ -8,6 +8,9 @@ node_modules/
 dist/
 build/
 
+# Large files
+src/assets/images/partners/WebCatalog-61.1.0-universal.dmg
+
 # Dependency directories
 jspm_packages/
 bower_components/
