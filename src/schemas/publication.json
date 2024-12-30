@@ -1,0 +1,149 @@
+{
+  "Main" : {
+    "uid" : {
+      "type" : "UID",
+      "config" : {
+        "label" : "Publication UID"
+      }
+    },
+    "title" : {
+      "type" : "Text",
+      "config" : {
+        "label" : "Publication Title"
+      }
+    },
+    "publish_date" : {
+      "type" : "Date",
+      "config" : {
+        "label" : "Publication Date"
+      }
+    },
+    "featured_image" : {
+      "type" : "Image",
+      "config" : {
+        "label" : "Featured Image"
+      }
+    },
+    "description" : {
+      "type" : "StructuredText",
+      "config" : {
+        "label" : "Description"
+      }
+    },
+    "pdf_file" : {
+      "type" : "Link",
+      "config" : {
+        "label" : "PDF File",
+        "select" : "media"
+      }
+    },
+    "categories" : {
+      "type" : "Group",
+      "config" : {
+        "fields" : {
+          "category" : {
+            "type" : "Select",
+            "config" : {
+              "options" : [ "Research", "Policy Brief", "Annual Report", "White Paper", "Case Study" ]
+            }
+          }
+        }
+      }
+    },
+       "authors": {
+     "type": "Group",
+     "config": {
+       "fields": {
+         "author_name": {
+           "type": "Text",
+           "config": {
+             "label": "Author Name"
+           }
+         },
+         "author_title": {  
+           "type": "Text",
+           "config": {
+             "label": "Author Title"
+           }
+         },
+         "author_picture": {
+           "type": "Image",
+           "config": {
+             "constraint": {
+               "width": 200,
+               "height": 200
+             },
+             "label": "Author Picture"
+           }
+         }
+       },
+       "label": "Authors"
+     }
+   },
+    "multimedia" : {
+      "type" : "Group",
+      "config" : {
+        "fields" : {
+          "media_type" : {
+            "type" : "Select",
+            "config" : {
+              "options" : [ "image", "video", "audio" ]
+            }
+          },
+          "media_file" : {
+            "type" : "Link",
+            "config" : {
+              "select" : "media"
+            }
+          },
+          "caption" : {
+            "type" : "Text",
+            "config" : {
+              "label" : "Caption"
+            }
+          }
+        }
+      }
+    },
+    "content": {
+     "type": "StructuredText",
+     "config": {
+       "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl",
+       "label": "Content",
+       "placeholder": "Main content of the publication"
+     }
+   },
+    "quotes" : {
+      "type" : "Group",
+      "config" : {
+        "fields" : {
+          "quote_text" : {
+            "type" : "Text",
+            "config" : {
+              "label" : "Quote Text"
+            }
+          },
+          "quote_author" : {
+            "type" : "Text",
+            "config" : {
+              "label" : "Quote Author"
+            }
+          }
+        }
+      }
+    },
+    "tags" : {
+      "type" : "Group",
+      "config" : {
+        "fields" : {
+          "tag" : {
+            "type" : "Text",
+            "config" : {
+              "label" : "Tag"
+            }
+          }
+        }
+      }
+    }
+  }
+}

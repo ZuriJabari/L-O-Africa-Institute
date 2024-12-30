@@ -1,0 +1,57 @@
+.megaMenu {
+  position: relative;
+}
+
+.menuItem {
+  position: relative;
+}
+
+.menuItem > div:last-child {
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  transform: translateY(-10px);
+}
+
+.menuItem:hover > div:last-child {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+/* Optional: Add transition to the chevron icon */
+.menuItem:hover svg {
+  transform: rotate(180deg);
+  transition: transform 0.3s ease;
+}
+
+/* Ensure the menu stays visible while hovering over the dropdown */
+.menuItem > div:last-child:hover {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+/* Add a small invisible gap to prevent the menu from closing when moving mouse to dropdown */
+.menuItem::after {
+  content: '';
+  position: absolute;
+  height: 20px;
+  width: 100%;
+  bottom: -20px;
+  left: 0;
+} 
+
+/* Add this to your existing CSS */
+@media (max-width: 768px) {
+    .menuItem > div:last-child {
+      opacity: 1;
+      visibility: visible;
+      transform: none;
+      transition: none;
+    }
+    
+    .menuItem::after {
+      display: none;
+    }
+  }

@@ -1,0 +1,14 @@
+{
+    "compilerOptions": {
+      "target": "ESNext",
+      "module": "ESNext",
+      "strict": true,
+      "jsx": "react-jsx",
+      "baseUrl": "./",
+      "paths": {
+        "~/*": ["src/*"] // Maps `~` to the `src` folder
+      }
+    },
+    "include": ["src/**/*", ".gatsby/**/*", "gatsby-*.ts"]
+  }
+  

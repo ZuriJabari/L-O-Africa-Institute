@@ -1,0 +1,147 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+/* Import Flowbite styles */
+@import "flowbite";
+
+
+
+a.logo {
+  padding-top: 5px;
+  display: block;
+  padding-bottom: 15px;
+}
+
+
+
+
+
+p.signup-title {
+  display: block;
+  font-size: 14px;
+  padding-top: 20px;
+}
+
+.padding-add {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+.prefooter{
+  background-image: url(../assets/images/Artboard.svg);
+  height: 42px;
+  background-color: #2bbecb;
+}
+
+h3.text-xs.font-semibold.text-\[\#fff\].tracking-wider.uppercase.cursor-default.no-margin {
+  margin-bottom: -21px;
+}
+
+.prefooter.\31 B152A {
+  background-color: #1B152A;
+}
+
+.prefooter-gray{
+  background-image: url(../assets/images/bg-grey.svg);
+  height: 45px;
+  background-color: #424242;
+}
+
+.pattern-bg {
+  background-color: rgba(255, 255, 255, 0.05);
+  background-image: radial-gradient(circle at center, rgba(255, 255, 255, 0.07) 0%, transparent 1px);
+  background-size: 24px 24px;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.animate-float {
+  animation: float 5s ease-in-out infinite;
+}
+
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+}
+
+.group-hover:animate-pulse svg {
+  animation: pulse 1s infinite;
+}
+
+/* Smooth Scroll */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Hover Effects for Social Share Icons */
+.share-icon:hover {
+  transform: scale(1.1);
+  transition: transform 0.3s ease-in-out;
+}
+
+/* Quote Styles */
+blockquote {
+  font-family: "Georgia", serif;
+  font-style: italic;
+  color: #555;
+  position: relative;
+}
+blockquote::before {
+  content: open-quote;
+  font-size: 4rem;
+  line-height: 0;
+  margin-left: -0.5rem;
+  color: #ddd;
+}
+
+
+.inline-image {
+  display: inline-block;
+  text-align: center;
+  margin: 1rem 0;
+}
+
+.inline-image img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.inline-image figcaption {
+  font-size: 0.875rem; /* Tailwind's text-sm */
+  color: #6b7280; /* Tailwind's text-gray-500 */
+  margin-top: 0.5rem;
+}
+
+
+.container{
+  max-width: 1406px;
+}
+
+a.flex.items-center.space-x-2.px-2.py-1.bg-\[\#f6941e\].text-white.font-medium.rounded.hover\:bg-\[\#1d8f92\].transition-transform.duration-300.transform.hover\:scale-105.block {
+  max-width: 116px;
+}

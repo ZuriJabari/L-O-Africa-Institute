@@ -1,0 +1,88 @@
+/* src/components/CookieConsent.css */
+.cookie-consent {
+    position: fixed;
+    bottom: 20px; /* Position it slightly above the bottom */
+    left: 50%;
+    transform: translateX(-50%); /* Center it horizontally */
+    background-color: #2c3e50; /* Darker background color */
+    color: #ecf0f1; /* Light text color */
+    padding: 15px 20px; /* Reduced padding */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    z-index: 1000;
+    transition: bottom 0.5s ease-in-out; /* Smooth transition */
+    width: 90%; /* Responsive width */
+    max-width: 500px; /* Max width for larger screens */
+  }
+  
+  .cookie-consent.fade-in {
+    bottom: 20px; /* Slide in */
+  }
+  
+  .cookie-consent.fade-out {
+    bottom: -100px; /* Slide out */
+  }
+  
+  .cookie-consent-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center content */
+  }
+  
+  .close-button {
+    background: none;
+    border: none;
+    color: #ecf0f1;
+    font-size: 1.5rem;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+    transition: color 0.3s;
+  }
+  
+  .close-button:hover {
+    color: #e67e22; /* Change color on hover */
+  }
+  
+  .cookie-consent-title {
+    font-size: 1.2rem; /* Slightly smaller title */
+    margin-bottom: 5px;
+    font-weight: bold;
+    text-align: center; /* Center align title */
+  }
+  
+  .cookie-consent-options {
+    margin: 10px 0;
+    text-align: left;
+    width: 100%; /* Full width for options */
+  }
+  
+  .cookie-consent-options label {
+    display: block;
+    margin: 5px 0;
+    font-size: 0.9rem; /* Smaller font size */
+  }
+  
+  .cookie-consent-button {
+    margin: 5px 5px; /* Reduced margin */
+    padding: 8px 12px; /* Smaller padding */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s, transform 0.2s; /* Add transition for hover effects */
+  }
+  
+  .cookie-consent-button.save {
+    background-color: #e67e22; /* Orange color for Save Preferences */
+  }
+  
+  .cookie-consent-button.accept {
+    background-color: #27ae60; /* Green color for Accept All */
+  }
+  
+  .cookie-consent-button:hover {
+    opacity: 0.9;
+    transform: scale(1.05); /* Slightly enlarge on hover */
+  }
