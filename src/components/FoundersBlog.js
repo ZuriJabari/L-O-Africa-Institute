@@ -3,6 +3,27 @@ import { motion } from "framer-motion";
 import awelPhoto from "../assets/images/team/Awel.jpg";
 
 const FoundersBlog = () => {
+  const listVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.2
+      }
+    }
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, x: -20 },
+    visible: {
+      opacity: 1,
+      x: 0,
+      transition: {
+        duration: 0.5
+      }
+    }
+  };
+
   return (
     <section className="py-20 bg-gradient-to-r from-[#0B9A9E] to-[#F6911E] relative overflow-hidden">
       {/* Background Pattern */}
@@ -42,33 +63,66 @@ const FoundersBlog = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
             >
-              <h2 className="font-playfair text-4xl md:text-5xl font-bold mb-6 leading-tight">
-                The Founder's Blog
-              </h2>
-              <p className="text-lg mb-8 text-white/90">
-                Join Awel Uwihanganye as he shares insights on leadership, innovation, and Africa's transformative journey. 
-                Get unique perspectives on building impactful institutions and nurturing the next generation of African leaders.
-              </p>
-              <a
-                href="/blog/founders-blog"
-                className="inline-flex items-center px-6 py-3 bg-white text-[#0B9A9E] rounded-lg font-semibold hover:bg-opacity-90 transition-colors shadow-lg"
+              <motion.h2 
+                className="font-playfair text-4xl md:text-5xl font-bold mb-6 leading-tight"
+                initial={{ opacity: 0, y: -20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5 }}
               >
-                Read Latest Posts
-                <svg
-                  className="ml-2 w-5 h-5"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                  xmlns="http://www.w3.org/2000/svg"
+                The Founders' Blog
+              </motion.h2>
+              <div className="space-y-6">
+                <motion.p 
+                  className="font-inter text-xl opacity-90"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: 0.2 }}
                 >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M17 8l4 4m0 0l-4 4m4-4H3"
-                  />
-                </svg>
-              </a>
+                  Coming soon! Join our founder in exploring critical insights about leadership, innovation, and Africa's transformative journey.
+                </motion.p>
+                <motion.p 
+                  className="font-inter text-lg opacity-80"
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: 0.3 }}
+                >
+                  Discover thought-provoking perspectives on:
+                </motion.p>
+                <motion.ul 
+                  className="space-y-3 text-lg opacity-90"
+                  variants={listVariants}
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: true }}
+                >
+                  <motion.li variants={itemVariants} className="font-inter flex items-center">
+                    <span className="w-2 h-2 bg-white rounded-full mr-3"></span>
+                    Ethical Leadership in Practice
+                  </motion.li>
+                  <motion.li variants={itemVariants} className="font-inter flex items-center">
+                    <span className="w-2 h-2 bg-white rounded-full mr-3"></span>
+                    Innovation & Social Impact
+                  </motion.li>
+                  <motion.li variants={itemVariants} className="font-inter flex items-center">
+                    <span className="w-2 h-2 bg-white rounded-full mr-3"></span>
+                    Africa's Development Journey
+                  </motion.li>
+                </motion.ul>
+                <motion.div 
+                  className="mt-8"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: 0.8 }}
+                >
+                  <p className="font-inter text-xl font-semibold">
+                    Stay tuned for the launch!
+                  </p>
+                </motion.div>
+              </div>
             </motion.div>
           </div>
         </div>
