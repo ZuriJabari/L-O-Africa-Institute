@@ -60,7 +60,7 @@ const Footer = () => {
           </div>
         </div>
 
-        {/* Social Links */}
+        {/* Social Links and Copyright */}
         <div className="mt-12 border-t border-white/20 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <div className="flex space-x-6 mb-4 md:mb-0">
@@ -83,9 +83,27 @@ const Footer = () => {
                 <FaFlickr className="h-5 w-5" />
               </a>
             </div>
-            <p className="text-sm text-white/60">
-              &copy; {currentYear} LéO Africa Institute. All rights reserved.
-            </p>
+            <div className="flex flex-col md:flex-row items-center gap-2">
+              <p className="text-sm text-white/60">
+                &copy; {currentYear} LéO Africa Institute. All rights reserved.
+              </p>
+              <span className="hidden md:inline text-white/60 mx-2">|</span>
+              <div className="flex items-center gap-2 group">
+                <span className="text-sm text-white/60">Crafted with passion by</span>
+                <a 
+                  href="https://www.index.ug" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="flex items-center gap-2 text-sm font-medium text-white hover:text-[#f6911e] transition-colors"
+                >
+                  <span className="relative">
+                    index digital
+                    <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-[#f6911e] transition-all duration-300 group-hover:w-full"></span>
+                  </span>
+                  <span className="text-[#f6911e] transform transition-transform duration-300 group-hover:translate-x-1">→</span>
+                </a>
+              </div>
+            </div>
           </div>
         </div>
       </div>

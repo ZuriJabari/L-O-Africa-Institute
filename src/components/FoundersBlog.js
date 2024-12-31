@@ -1,6 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { StaticImage } from "gatsby-plugin-image";
+import awelPhoto from "../assets/images/team/Awel.jpg";
 
 const FoundersBlog = () => {
   return (
@@ -26,16 +26,10 @@ const FoundersBlog = () => {
             >
               <div className="relative max-w-sm mx-auto">
                 <div className="absolute inset-0 bg-gradient-to-r from-[#0B9A9E] to-[#F6911E] rounded-xl transform rotate-3"></div>
-                <StaticImage
-                  src="../assets/images/team/Awel.jpg"
+                <img
+                  src={awelPhoto}
                   alt="Awel Uwihanganye - Founder & CEO"
-                  className="relative z-10 rounded-xl shadow-2xl transform -rotate-2"
-                  imgClassName="rounded-xl"
-                  placeholder="blurred"
-                  width={400}
-                  height={500}
-                  objectFit="cover"
-                  quality={95}
+                  className="relative z-10 rounded-xl shadow-2xl transform -rotate-2 w-full h-[500px] object-cover"
                 />
               </div>
             </motion.div>
