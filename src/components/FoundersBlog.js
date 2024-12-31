@@ -27,8 +27,8 @@ const FoundersBlog = () => {
               <div className="relative max-w-sm mx-auto">
                 <div className="absolute inset-0 bg-gradient-to-r from-[#0B9A9E] to-[#F6911E] rounded-xl transform rotate-3"></div>
                 <StaticImage
-                  src="../assets/images/team/Awel.jpg"
-                  alt="Awel Uwihanganye"
+                  src="../assets/images/team/awel-uwihanganye.jpg"
+                  alt="Awel Uwihanganye - Founder & CEO"
                   className="relative z-10 rounded-xl shadow-2xl transform -rotate-2"
                   imgClassName="rounded-xl"
                   placeholder="blurred"
@@ -49,35 +49,32 @@ const FoundersBlog = () => {
               transition={{ duration: 0.6 }}
             >
               <h2 className="font-playfair text-4xl md:text-5xl font-bold mb-6 leading-tight">
-                The Founders' Blog
+                The Founder's Blog
               </h2>
-              <div className="space-y-6">
-                <p className="font-inter text-xl opacity-90">
-                  Coming soon! Join our founder in exploring critical insights about leadership, innovation, and Africa's transformative journey.
-                </p>
-                <p className="font-inter text-lg opacity-80">
-                  Discover thought-provoking perspectives on:
-                </p>
-                <ul className="space-y-3 text-lg opacity-90">
-                  <li className="font-inter flex items-center">
-                    <span className="w-2 h-2 bg-white rounded-full mr-3"></span>
-                    Ethical Leadership in Practice
-                  </li>
-                  <li className="font-inter flex items-center">
-                    <span className="w-2 h-2 bg-white rounded-full mr-3"></span>
-                    Innovation & Social Impact
-                  </li>
-                  <li className="font-inter flex items-center">
-                    <span className="w-2 h-2 bg-white rounded-full mr-3"></span>
-                    Africa's Development Journey
-                  </li>
-                </ul>
-                <div className="mt-8">
-                  <p className="font-inter text-xl font-semibold">
-                    Stay tuned for the launch!
-                  </p>
-                </div>
-              </div>
+              <p className="text-lg mb-8 text-white/90">
+                Join Awel Uwihanganye as he shares insights on leadership, innovation, and Africa's transformative journey. 
+                Get unique perspectives on building impactful institutions and nurturing the next generation of African leaders.
+              </p>
+              <a
+                href="/blog/founders-blog"
+                className="inline-flex items-center px-6 py-3 bg-white text-[#0B9A9E] rounded-lg font-semibold hover:bg-opacity-90 transition-colors shadow-lg"
+              >
+                Read Latest Posts
+                <svg
+                  className="ml-2 w-5 h-5"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M17 8l4 4m0 0l-4 4m4-4H3"
+                  />
+                </svg>
+              </a>
             </motion.div>
           </div>
         </div>

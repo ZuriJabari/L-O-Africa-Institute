@@ -12,12 +12,18 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 lg:gap-12">
           {/* Column 1 - Logo and Description */}
           <div className="lg:col-span-3">
-            <StaticImage
-              src="../assets/images/Leo-logo.png"
-              alt="LéO Africa Institute"
-              className="h-20 w-auto mb-4 brightness-0 invert"
-              placeholder="blurred"
-            />
+            <div className="w-48 mb-4">
+              <StaticImage
+                src="../assets/images/Leo-logo.png"
+                alt="LéO Africa Institute"
+                className="brightness-0 invert"
+                width={192}
+                height={80}
+                layout="constrained"
+                placeholder="blurred"
+                objectFit="contain"
+              />
+            </div>
             <p className="text-sm text-white/80 mb-6">
               Nurturing values-based, transformative leadership in Africa.
             </p>
