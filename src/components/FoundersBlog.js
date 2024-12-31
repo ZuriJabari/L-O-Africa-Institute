@@ -27,7 +27,7 @@ const FoundersBlog = () => {
               <div className="relative max-w-sm mx-auto">
                 <div className="absolute inset-0 bg-gradient-to-r from-[#0B9A9E] to-[#F6911E] rounded-xl transform rotate-3"></div>
                 <StaticImage
-                  src="../assets/images/team/awel-uwihanganye.jpg"
+                  src="../assets/images/team/Awel.jpg"
                   alt="Awel Uwihanganye - Founder & CEO"
                   className="relative z-10 rounded-xl shadow-2xl transform -rotate-2"
                   imgClassName="rounded-xl"
