@@ -24,8 +24,11 @@ const AboutPage = () => {
           <StaticImage
             src="../assets/images/about-hero.jpg"
             alt="About LéO Africa Institute"
-            className="w-full h-full object-cover"
+            className="w-full h-full"
+            imgClassName="object-cover"
             placeholder="blurred"
+            layout="fullWidth"
+            quality={100}
           />
           <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/60 to-transparent"></div>
         </div>
