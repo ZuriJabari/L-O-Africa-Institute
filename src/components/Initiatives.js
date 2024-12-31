@@ -1,7 +1,7 @@
 import React from 'react';
 import algLogo from '../assets/images/logo-color.svg';
 import hudumaLogo from '../assets/images/huduma-logo.svg';
-import leoReviewLogo from '../assets/images/LAR-logo.png';
+import leoReviewLogo from '../assets/images/leo-africa-review-logo.png';
 import yelpLogo from '../assets/images/YELP-Logo.svg';
 import { FiArrowRight } from 'react-icons/fi';
 

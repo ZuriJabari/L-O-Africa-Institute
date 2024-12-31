@@ -5,6 +5,7 @@ import heroImage2 from '../assets/images/ALG24-3.jpg';
 import heroImage3 from '../assets/images/hero3.jpg';
 import heroImage4 from '../assets/images/ALG24.jpg';
 import heroImage5 from '../assets/images/graduation.jpg';
+import { Link } from 'gatsby';
 
 const slides = [
   {
@@ -30,10 +31,10 @@ const slides = [
   },
   {
     image: heroImage4,
-    title: "Africa Leadership Gap (ALG) 2024",
-    description: "Be part of Africa's premier leadership discourse platform where thought leaders, policymakers, and change-makers converge to address contemporary leadership challenges and chart the way forward.",
-    ctaText: "Register Now",
-    ctaLink: "https://alg.leoafricainstitute.org"
+    title: "Annual Leaders Gathering (ALG)",
+    description: "Africa's premier leadership convergence, bringing together visionary leaders, influential policymakers, and dynamic change-makers to shape the continent's future through thought-provoking dialogue and actionable solutions.",
+    ctaText: "Explore ALG",
+    ctaLink: "/alg"
   },
   {
     image: heroImage5,
@@ -46,34 +47,26 @@ const slides = [
 
 const HeroSection = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [fadeEffect, setFadeEffect] = useState(true);
-
-  const nextSlide = () => {
-    setFadeEffect(false);
-    setTimeout(() => {
-      setCurrentIndex((prevIndex) => (prevIndex + 1) % slides.length);
-      setFadeEffect(true);
-    }, 200);
-  };
-
-  const prevSlide = () => {
-    setFadeEffect(false);
-    setTimeout(() => {
-      setCurrentIndex((prevIndex) => (prevIndex - 1 + slides.length) % slides.length);
-      setFadeEffect(true);
-    }, 200);
-  };
 
   useEffect(() => {
     const interval = setInterval(() => {
       nextSlide();
-    }, 12000);
+    }, 13000);
+
     return () => clearInterval(interval);
   }, []);
 
+  const nextSlide = () => {
+    setCurrentIndex((prevIndex) => (prevIndex + 1) % slides.length);
+  };
+
+  const prevSlide = () => {
+    setCurrentIndex((prevIndex) => (prevIndex - 1 + slides.length) % slides.length);
+  };
+
   return (
     <section 
-      className={`relative h-screen bg-cover bg-center flex items-center overflow-hidden transition-opacity duration-500 ${fadeEffect ? 'opacity-100' : 'opacity-0'}`}
+      className={`relative h-screen bg-cover bg-center flex items-center overflow-hidden transition-opacity duration-500 opacity-100`}
       style={{ backgroundImage: `url(${slides[currentIndex].image})` }}
     >
       {/* Main Content Positioned 20% Down */}
@@ -90,9 +83,27 @@ const HeroSection = () => {
         </h1>
 
         {/* Description */}
-        <p className="font-inter text-lg md:text-xl leading-relaxed opacity-90 tracking-wide text-left max-w-2xl">
-          {slides[currentIndex].description}
-        </p>
+        {currentIndex === 3 ? (
+          <div className="max-w-3xl">
+            <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">
+              Annual Leaders Gathering (ALG)
+            </h1>
+            <p className="text-xl text-gray-200 mb-8 leading-relaxed">
+              Africa's premier leadership convergence, bringing together visionary leaders, influential policymakers, and dynamic change-makers to shape the continent's future through thought-provoking dialogue and actionable solutions.
+            </p>
+            <Link
+              to="/alg"
+              className="inline-flex items-center px-6 py-3 text-lg font-medium text-white bg-[#f6911e] hover:bg-[#2bbecb] rounded-lg transition-colors duration-300"
+            >
+              Explore ALG
+              <FiArrowRight className="ml-2 group-hover:translate-x-1 transition-transform duration-300" />
+            </Link>
+          </div>
+        ) : (
+          <p className="font-inter text-lg md:text-xl leading-relaxed opacity-90 tracking-wide text-left max-w-2xl">
+            {slides[currentIndex].description}
+          </p>
+        )}
 
         {/* Event Date and Location (Optional) */}
         {slides[currentIndex].date && (
@@ -102,12 +113,14 @@ const HeroSection = () => {
         )}
 
         {/* Call-to-Action Button */}
-        <a 
-          href={slides[currentIndex].ctaLink} 
-          className="font-inter bg-[#f6941e] text-white hover:bg-white hover:text-[#f6941e] py-3 px-10 rounded-full transition-transform duration-300 hover:scale-110 shadow-lg font-semibold uppercase tracking-wider"
-        >
-          {slides[currentIndex].ctaText}
-        </a>
+        {currentIndex !== 3 && (
+          <a 
+            href={slides[currentIndex].ctaLink} 
+            className="font-inter bg-[#f6941e] text-white hover:bg-white hover:text-[#f6941e] py-3 px-10 rounded-full transition-transform duration-300 hover:scale-110 shadow-lg font-semibold uppercase tracking-wider"
+          >
+            {slides[currentIndex].ctaText}
+          </a>
+        )}
       </div>
 
       {/* Dark Overlay for Contrast - Moved after content for better gradient control */}

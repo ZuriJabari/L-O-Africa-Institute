@@ -5,7 +5,7 @@ import { navigate } from 'gatsby';
 import LOGO from '../assets/images/Leo-logo-primary.png';
 import ALGLogo from '../assets/images/logo-color.svg';
 import HudumaLogo from '../assets/images/huduma-logo.svg';
-import ReviewLogo from '../assets/images/LAR-logo.png';
+import ReviewLogo from '../assets/images/leo-africa-review-logo.png';
 import YelpLogo from '../assets/images/YELP-Logo.svg';
 import { useStaticQuery, graphql } from "gatsby";
 import { Link } from 'gatsby';
@@ -249,7 +249,8 @@ const Navbar = () => {
 
       {/* Column 3 - Latest from News */}
 <div>
-  <h2 className="text-xs uppercase font-normal text-gray-600 pb-1 mb-5" style={columnTitleStyle}>
+  <h2 className="text-xs uppercase font-normal text-gray-600 pb-1 mb-5" 
+      style={{ letterSpacing: '2px', fontSize: '13px', color: '#888', cursor: 'default', fontWeight: '500' }}>
     MORE INSIGHTS
   </h2>
   
@@ -363,7 +364,7 @@ const Navbar = () => {
                     
                     {/* Content Container */}
                     <div className="flex-1">
-                      <h3 className="font-semibold text-[16px] text-[#3b3b3b] group-hover:text-[#2bbecb] transition-colors duration-300 leading-snug mb-1">
+                      <h3 className="font-bold text-[16px] text-[#3b3b3b] group-hover:text-[#2bbecb] transition-colors duration-300 leading-snug mb-1">
                         <Link to={`/blog/${post.uid}`}>
                           {post.data.title || "Untitled Post"}
                         </Link>
@@ -415,13 +416,15 @@ const Navbar = () => {
       <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
         {/* ALG - Featured Event */}
         <div className="bg-white p-6 hover:bg-gray-50 transition-all duration-300 group border-b-4 border-[#f6911e]">
-          <div className="flex flex-col items-center text-center">
-            <div className="w-32 h-32 bg-white rounded-xl flex items-center justify-center mb-6">
-              <img 
-                src={ALGLogo} 
-                alt="ALG Logo" 
-                className="w-28 h-28 object-contain"
-              />
+          <div className="flex flex-col">
+            <div className="flex justify-center mb-6">
+              <div className="w-32 h-32 bg-white rounded-xl flex items-center justify-center">
+                <img 
+                  src={ALGLogo} 
+                  alt="ALG Logo" 
+                  className="w-28 h-28 object-contain"
+                />
+              </div>
             </div>
             <h3 className="text-xl font-semibold text-gray-900 mb-3">
               Annual Leaders Gathering
@@ -441,13 +444,15 @@ const Navbar = () => {
 
         {/* YELP */}
         <div className="bg-white p-6 hover:bg-gray-50 transition-all duration-300 group border-b-4 border-[#2bbecb]">
-          <div className="flex flex-col items-center text-center">
-            <div className="w-32 h-32 bg-white rounded-xl flex items-center justify-center mb-6">
-              <img 
-                src={YelpLogo} 
-                alt="YELP Logo" 
-                className="w-28 h-28 object-contain"
-              />
+          <div className="flex flex-col">
+            <div className="flex justify-center mb-6">
+              <div className="w-32 h-32 bg-white rounded-xl flex items-center justify-center">
+                <img 
+                  src={YelpLogo} 
+                  alt="YELP Logo" 
+                  className="w-28 h-28 object-contain"
+                />
+              </div>
             </div>
             <h3 className="text-xl font-semibold text-gray-900 mb-3">
               YELP
@@ -467,13 +472,15 @@ const Navbar = () => {
 
         {/* Huduma */}
         <div className="bg-white p-6 hover:bg-gray-50 transition-all duration-300 group border-b-4 border-[#2bbecb]">
-          <div className="flex flex-col items-center text-center">
-            <div className="w-32 h-32 bg-white rounded-xl flex items-center justify-center mb-6">
-              <img 
-                src={HudumaLogo} 
-                alt="Huduma Logo" 
-                className="w-28 h-28 object-contain"
-              />
+          <div className="flex flex-col">
+            <div className="flex justify-center mb-6">
+              <div className="w-32 h-32 bg-white rounded-xl flex items-center justify-center">
+                <img 
+                  src={HudumaLogo} 
+                  alt="Huduma Logo" 
+                  className="w-28 h-28 object-contain"
+                />
+              </div>
             </div>
             <h3 className="text-xl font-semibold text-gray-900 mb-3">
               Huduma Fellowship
@@ -493,13 +500,15 @@ const Navbar = () => {
 
         {/* LéO Africa Review */}
         <div className="bg-white p-6 hover:bg-gray-50 transition-all duration-300 group border-b-4 border-[#2bbecb]">
-          <div className="flex flex-col items-center text-center">
-            <div className="w-32 h-32 bg-white rounded-xl flex items-center justify-center mb-6">
-              <img 
-                src={ReviewLogo} 
-                alt="LéO Africa Review Logo" 
-                className="w-28 h-28 object-contain"
-              />
+          <div className="flex flex-col">
+            <div className="flex justify-center mb-6">
+              <div className="w-32 h-32 bg-white rounded-xl flex items-center justify-center">
+                <img 
+                  src={ReviewLogo} 
+                  alt="LéO Africa Review Logo" 
+                  className="w-28 h-28 object-contain"
+                />
+              </div>
             </div>
             <h3 className="text-xl font-semibold text-gray-900 mb-3">
               LéO Africa Review
