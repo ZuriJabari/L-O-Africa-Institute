@@ -89,7 +89,7 @@ const PartnerWithUs = () => {
 
             {/* CTA Button */}
             <a 
-              href="mailto:partnerships@leoafricainstitute.org"
+              href="//partner-with-us/"
               className="inline-flex items-center px-6 py-3 bg-[#0B9A9E] text-white rounded-lg hover:bg-[#0B9A9E]/90 transition-colors group relative z-10"
             >
               <span className="mr-2">Become a Partner</span>

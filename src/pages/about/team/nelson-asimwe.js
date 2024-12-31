@@ -1,18 +1,16 @@
-
 import React from "react";
 import TeamMemberTemplate from "../../../components/about/profile/TeamMemberTemplate";
 import AsiimwePhoto from "../../../assets/images/Asiimwe-Nelson-Mushabe.png";
 
 const NelsonAsimweProfile = () => {
   const profileData = {
-    name: "Nelson Asimwe",
-    subtitle: "Fellowships Coordinator & Programs Manager",
+    name: "Nelson Asiimwe Mushabe",
+    subtitle: "Fellowships & Program Manager",
     image: AsiimwePhoto,
     bio: [
-  "Nelson Asimwe coordinates the Institute's fellowship programs.",
-  "He manages program implementation and ensures high-quality delivery of leadership development initiatives.",
-  "His role is vital in nurturing emerging leaders across Africa."
-],
+      "Nelson Asiimwe Mushabe coordinates the Institute's fellowship programs.",
+      "His expertise in program management helps drive the Institute's mission of developing the next generation of Africa's leaders."
+    ],
     social: {}
   };
 

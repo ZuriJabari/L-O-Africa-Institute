@@ -12,7 +12,7 @@ import SubscriptionForm from "../components/SubscriptionForm";
 import Pillars from "../components/Pillars";
 import FoundersBlog from "../components/FoundersBlog";
 
-const HomePage = ({ data }) => {
+const HomePage = ({ data = { allPrismicBlogPosts: { nodes: [] } } }) => {
   return (
     <Layout>
       <HeroSection />

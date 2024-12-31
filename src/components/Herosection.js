@@ -1,23 +1,45 @@
 import React, { useState, useEffect } from 'react';
 import { FiArrowLeft, FiArrowRight } from 'react-icons/fi';
-import heroImage1 from '../assets/images/ALG24.jpg';
-import heroImage2 from '../assets/images/hero.jpg';
+import heroImage1 from '../assets/images/hero.jpg';
+import heroImage2 from '../assets/images/ALG24-3.jpg';
 import heroImage3 from '../assets/images/hero3.jpg';
-import heroImage4 from '../assets/images/hero4.jpg';
+import heroImage4 from '../assets/images/ALG24.jpg';
+import heroImage5 from '../assets/images/graduation.jpg';
 
 const slides = [
   {
     image: heroImage1,
-    title: "Huduma Fellowship",
-    description: "Training emerging civic & public sector champions in Uganda.",
-    ctaText: "Learn More",
-    ctaLink: "/huduma/about"
+    title: "Shaping Africa's Future Leaders",
+    description: "Since 2012, LéO Africa Institute has been at the forefront of nurturing ethical, visionary leaders who are transforming Africa's socio-economic landscape. Join us in building a legacy of impactful leadership.",
+    ctaText: "Our Story",
+    ctaLink: "/about"
+  },
+  {
+    image: heroImage2,
+    title: "Voices of Change",
+    description: "Discover compelling stories of innovation, resilience, and transformation from across Africa. Our media hub showcases thought-provoking insights from leaders shaping the continent's narrative.",
+    ctaText: "Latest Stories",
+    ctaLink: "/news"
+  },
+  {
+    image: heroImage3,
+    title: "Huduma Fellowship: Public Service Excellence",
+    description: "Equipping Africa's next generation of public servants with the tools, networks, and mindset to drive institutional transformation and deliver citizen-centric solutions.",
+    ctaText: "Join the Movement",
+    ctaLink: "/huduma"
   },
   {
     image: heroImage4,
-    title: "Young and Emerging Leaders Project",
-    description: "The Young and Emerging Leaders Project (YELP) is an initiative of the LéO Africa Institute that seeks to nurture values of integrity, commitment to social justice, and equality in emerging African leaders.",
-    ctaText: "Learn More",
+    title: "Africa Leadership Gap (ALG) 2024",
+    description: "Be part of Africa's premier leadership discourse platform where thought leaders, policymakers, and change-makers converge to address contemporary leadership challenges and chart the way forward.",
+    ctaText: "Register Now",
+    ctaLink: "https://alg.leoafricainstitute.org"
+  },
+  {
+    image: heroImage5,
+    title: "YELP: Catalyzing Young Leadership",
+    description: "The Young and Emerging Leaders Project is more than a fellowship—it's a transformative journey empowering Africa's brightest minds to lead with purpose, innovation, and ethical conviction.",
+    ctaText: "Begin Your Journey",
     ctaLink: "/yelp"
   }
 ];

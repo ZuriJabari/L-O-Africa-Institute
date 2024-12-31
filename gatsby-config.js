@@ -1,4 +1,5 @@
 module.exports = {
+  pathPrefix: `/`,
   siteMetadata: {
     title: `LéO Africa Institute`,
     description: `The LéO Africa Institute is a pan-African organization that nurtures and empowers young leaders to positively transform society.`,
@@ -18,15 +19,15 @@ module.exports = {
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        name: `pages`,
-        path: `${__dirname}/src/pages`,
+        name: `images`,
+        path: `${__dirname}/src/assets/images`,
       },
     },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        name: `images`,
-        path: `${__dirname}/src/assets/images`,
+        name: `pages`,
+        path: `${__dirname}/src/pages/`,
       },
     },
     {

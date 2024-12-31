@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import bgGrey from "../assets/images/bg-grey.svg";
 
 const darkenColor = (color, amount) => {
   const num = parseInt(color.replace("#", ""), 16);
@@ -95,14 +94,14 @@ const Pillars = () => {
       <div
         className="absolute top-0 left-0 w-full h-[45px] bg-no-repeat bg-cover"
         style={{
-          backgroundImage: `url(${bgGrey})`,
+          background: 'linear-gradient(to bottom, rgba(255,255,255,0.1), transparent)',
         }}
       ></div>
 
       <div
         className="absolute bottom-0 left-0 w-full h-[45px] bg-no-repeat bg-cover"
         style={{
-          backgroundImage: `url(${bgGrey})`,
+          background: 'linear-gradient(to top, rgba(255,255,255,0.1), transparent)',
         }}
       ></div>
 

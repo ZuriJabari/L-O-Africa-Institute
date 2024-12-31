@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { Link } from 'gatsby';
 import LeoLogo from '../../assets/images/Leo-logo-primary.png';
 import HudumaLogo from '../../assets/images/huduma-logo.svg';
+import HudumaFooter from './HudumaFooter';
 
 const HudumaLayout = ({ children }) => {
   const location = typeof window !== 'undefined' ? window.location.pathname : '';
@@ -80,8 +81,9 @@ const HudumaLayout = ({ children }) => {
       <main className="pt-20">
         {children}
       </main>
+      <HudumaFooter />
     </div>
   );
 };
 
-export default HudumaLayout; 
+export default HudumaLayout;

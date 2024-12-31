@@ -13,10 +13,21 @@ const firebaseConfig = {
   measurementId: "G-D6M589RRNP",
 };
 
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
+let firebaseApp;
+let firestoreDb;
 
-// Initialize Firestore
-const db = getFirestore(app);
+try {
+  // Initialize Firebase
+  firebaseApp = initializeApp(firebaseConfig);
+  console.log('Firebase initialized successfully');
+  
+  // Initialize Firestore
+  firestoreDb = getFirestore(firebaseApp);
+  console.log('Firestore initialized successfully');
+} catch (error) {
+  console.error('Firebase initialization error:', error);
+  throw new Error('Failed to initialize Firebase');
+}
 
-export default db;
+// Export both app and db instances
+export { firebaseApp, firestoreDb as default };

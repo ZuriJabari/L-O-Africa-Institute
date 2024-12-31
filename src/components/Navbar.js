@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { FiSearch, FiArrowRight, FiMenu, FiX } from 'react-icons/fi';
-import { FaFacebookF, FaTwitter, FaLinkedinIn, FaInstagram } from 'react-icons/fa';
+import { FaFacebookF, FaTwitter, FaLinkedinIn, FaInstagram, FaStar } from 'react-icons/fa';
 import { navigate } from 'gatsby';
 import LOGO from '../assets/images/Leo-logo-primary.png';
 import ALGLogo from '../assets/images/alg-color.svg';
@@ -16,9 +16,7 @@ import EmailSubscriptionForm from './EmailSubscriptionForm';
 import yelpLogo from '../../src/assets/images/YELP-Logo.svg';
 import hudumaLogo from '../../src/assets/images/huduma-logo.svg';
 
-
 // Ensure this path is correct
-
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -78,6 +76,20 @@ const Navbar = () => {
   `);
 
   const blogPosts = data.allPrismicBlogPosts.nodes;
+
+  const africanCountries = [
+    'Algeria', 'Angola', 'Benin', 'Botswana', 'Burkina Faso', 'Burundi', 'Cameroon',
+    'Cape Verde', 'Central African Republic', 'Chad', 'Comoros', 'Congo', 
+    'Democratic Republic of the Congo', 'Djibouti', 'Egypt', 'Equatorial Guinea',
+    'Eritrea', 'Ethiopia', 'Gabon', 'Gambia', 'Ghana', 'Guinea', 'Guinea-Bissau',
+    'Ivory Coast', 'Kenya', 'Lesotho', 'Liberia', 'Libya', 'Madagascar', 'Malawi',
+    'Mali', 'Mauritania', 'Mauritius', 'Morocco', 'Mozambique', 'Namibia', 'Niger',
+    'Nigeria', 'Rwanda', 'Sao Tome and Principe', 'Senegal', 'Seychelles', 
+    'Sierra Leone', 'Somalia', 'South Africa', 'South Sudan', 'Sudan', 'Swaziland',
+    'Tanzania', 'Togo', 'Tunisia', 'Uganda', 'Zambia', 'Zimbabwe'
+  ];
+
+  const [selectedCountry, setSelectedCountry] = useState('');
 
   return (
     <nav className="bg-white border-gray-200 shadow-md">
@@ -188,7 +200,7 @@ const Navbar = () => {
     <div className="grid max-w-screen-xl px-4 py-5 mx-auto text-sm md:grid-cols-3 md:px-6 gap-6">
       {/* Column 1 - By Type */}
       <ul className="mb-4 space-y-4">
-        <h2 className="text-xs uppercase font-normal text-gray-600 pb-1 mb-5" style={columnTitleStyle}>BY TYPE</h2>
+        <h2 className="text-xs uppercase font-normal text-gray-600 pb-1 mb-5" style={columnTitleStyle}>Media Center</h2>
         <li><a href="/news/" className="text-[#3b3b3b] hover:underline hover:text-[#2bbecb] text-[15px] leading-relaxed font-normal">Our Latest Articles</a></li>
         <li><a href="/news/founders-blog" className="text-[#3b3b3b] hover:underline hover:text-[#2bbecb] text-[15px] leading-relaxed font-normal">Introducing Founder's Blog</a></li>
         <li><a href="/publications" className="text-[#3b3b3b] hover:underline hover:text-[#2bbecb] text-[15px] leading-relaxed font-normal">Research Reports</a></li>
@@ -353,7 +365,7 @@ const Navbar = () => {
                     
                     {/* Content Container */}
                     <div className="flex-1">
-                      <h3 className="font-semibold text-[16px] text-[#3b3b3b] group-hover:text-[#2bbecb] transition-colors duration-300 mb-2">
+                      <h3 className="font-semibold text-[16px] text-[#3b3b3b] group-hover:text-[#2bbecb] transition-colors duration-300 leading-snug mb-1">
                         <Link to={`/blog/${post.uid}`}>
                           {post.data.title || "Untitled Post"}
                         </Link>
@@ -402,110 +414,95 @@ const Navbar = () => {
         Our Initiatives
       </h2>
 
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-        {/* Flagship Initiative - ALG */}
-        <div className="bg-white shadow-lg rounded-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
-          <div className="flex items-center p-6 gap-6">
-            <div className="w-24 h-24 flex-shrink-0">
-              <img
-                src={ALGLogo}
-                alt="Annual Leaders Gathering"
-                className="w-full h-full object-contain"
-              />
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        {/* ALG - Featured Event */}
+        <div className="bg-white rounded-xl p-6 shadow-md hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 border-l-4 border-[#f6911e] group">
+          <div className="flex flex-col items-center text-center">
+            <div className="w-20 h-20 bg-[#f6911e]/10 rounded-lg flex items-center justify-center mb-4 group-hover:bg-[#f6911e]/20 transition-colors duration-300">
+              <span className="text-3xl font-bold text-[#f6911e]">ALG</span>
             </div>
-            <div>
-              <h3 className="text-xl font-bold text-gray-800 mb-3">
-                Annual Leaders Gathering
-              </h3>
-              <p className="text-sm text-gray-600 leading-relaxed mb-3">
-                Our flagship event brings together African leaders for inspiring conversations and transformative sessions.
-              </p>
-              <a
-                href="https://alg.leoafricainstitute.org"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-[#2bbecb] font-medium hover:underline"
-              >
-                Learn More <FiArrowRight className="inline-block ml-1" />
-              </a>
-            </div>
+            <h3 className="text-lg font-semibold text-gray-900 mb-2 group-hover:text-[#f6911e] transition-colors duration-300">
+              Annual Leaders Gathering
+            </h3>
+            <p className="text-sm text-gray-600 mb-4">Our Flagship Leadership Conference</p>
+            <a 
+              href="/alg" 
+              className="inline-flex items-center text-[#f6911e] hover:text-[#2bbecb] font-medium transition-colors duration-300"
+            >
+              Learn more 
+              <FiArrowRight className="ml-2 group-hover:translate-x-1 transition-transform duration-300" />
+            </a>
           </div>
         </div>
 
-        {/* Regular Initiatives */}
-        <div className="lg:col-span-2 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {/* YELP Fellowship */}
-          <div className="bg-white shadow-lg rounded-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 text-center p-6">
-            <div className="w-20 h-20 mx-auto mb-4">
-              <img
-                src={YelpLogo}
-                alt="YELP Fellowship"
-                className="w-full h-full object-contain"
+        {/* YELP */}
+        <div className="bg-white rounded-xl p-6 shadow-md hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 group">
+          <div className="flex flex-col items-center text-center">
+            <div className="w-20 h-20 bg-gray-50 rounded-lg flex items-center justify-center mb-4 group-hover:bg-gray-100 transition-colors duration-300">
+              <img 
+                src={yelpLogo} 
+                alt="YELP Logo" 
+                className="w-16 h-16 object-contain"
               />
             </div>
-            <h4 className="text-lg font-semibold text-gray-800 mb-2">
-              YELP Fellowship
-            </h4>
-            <p className="text-sm text-gray-600 mb-4">
-              Training outstanding thought leaders in values and social responsibility.
-            </p>
-            <a
-              href="https://yelp.leoafricainstitute.org"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-[#2bbecb] font-medium hover:underline"
+            <h3 className="text-lg font-semibold text-gray-900 mb-2 group-hover:text-[#2bbecb] transition-colors duration-300">
+              YELP
+            </h3>
+            <p className="text-sm text-gray-600 mb-4">Young & Emerging Leaders Project</p>
+            <a 
+              href="/yelp" 
+              className="inline-flex items-center text-[#2bbecb] hover:text-[#f6911e] font-medium transition-colors duration-300"
             >
-              Learn More <FiArrowRight className="inline-block ml-1" />
+              Learn more 
+              <FiArrowRight className="ml-2 group-hover:translate-x-1 transition-transform duration-300" />
             </a>
           </div>
+        </div>
 
-          {/* Huduma Fellowship */}
-          <div className="bg-white shadow-lg rounded-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 text-center p-6">
-            <div className="w-20 h-20 mx-auto mb-4">
-              <img
-                src={HudumaLogo}
-                alt="Huduma Fellowship"
-                className="w-full h-full object-contain"
+        {/* Huduma */}
+        <div className="bg-white rounded-xl p-6 shadow-md hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 group">
+          <div className="flex flex-col items-center text-center">
+            <div className="w-20 h-20 bg-gray-50 rounded-lg flex items-center justify-center mb-4 group-hover:bg-gray-100 transition-colors duration-300">
+              <img 
+                src={hudumaLogo} 
+                alt="Huduma Logo" 
+                className="w-16 h-16 object-contain"
               />
             </div>
-            <h4 className="text-lg font-semibold text-gray-800 mb-2">
-              Huduma Fellowship
-            </h4>
-            <p className="text-sm text-gray-600 mb-4">
-              Training emerging civic & public sector champions in Uganda.
-            </p>
-            <a
-              href="https://huduma.leoafricainstitute.org"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-[#2bbecb] font-medium hover:underline"
+            <h3 className="text-lg font-semibold text-gray-900 mb-2 group-hover:text-[#2bbecb] transition-colors duration-300">
+              Huduma
+            </h3>
+            <p className="text-sm text-gray-600 mb-4">Fellowship Program</p>
+            <a 
+              href="/huduma" 
+              className="inline-flex items-center text-[#2bbecb] hover:text-[#f6911e] font-medium transition-colors duration-300"
             >
-              Learn More <FiArrowRight className="inline-block ml-1" />
+              Learn more 
+              <FiArrowRight className="ml-2 group-hover:translate-x-1 transition-transform duration-300" />
             </a>
           </div>
+        </div>
 
-          {/* LéO Africa Review */}
-          <div className="bg-white shadow-lg rounded-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 text-center p-6">
-            <div className="w-20 h-20 mx-auto mb-4">
-              <img
-                src={ReviewLogo}
-                alt="LéO Africa Review"
-                className="w-full h-full object-contain"
+        {/* LéO Africa Review */}
+        <div className="bg-white rounded-xl p-6 shadow-md hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 group">
+          <div className="flex flex-col items-center text-center">
+            <div className="w-20 h-20 bg-gray-50 rounded-lg flex items-center justify-center mb-4 group-hover:bg-gray-100 transition-colors duration-300">
+              <img 
+                src={ReviewLogo} 
+                alt="LéO Africa Review Logo" 
+                className="w-16 h-16 object-contain"
               />
             </div>
-            <h4 className="text-lg font-semibold text-gray-800 mb-2">
+            <h3 className="text-lg font-semibold text-gray-900 mb-2 group-hover:text-[#2bbecb] transition-colors duration-300">
               LéO Africa Review
-            </h4>
-            <p className="text-sm text-gray-600 mb-4">
-              Digital platform for thought-provoking insights on African leadership and development.
-            </p>
-            <a
-              href="https://leoafricareview.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-[#2bbecb] font-medium hover:underline"
+            </h3>
+            <p className="text-sm text-gray-600 mb-4">Digital Platform</p>
+            <a 
+              href="/review" 
+              className="inline-flex items-center text-[#2bbecb] hover:text-[#f6911e] font-medium transition-colors duration-300"
             >
-              Read More <FiArrowRight className="inline-block ml-1" />
+              Read More 
+              <FiArrowRight className="ml-2 group-hover:translate-x-1 transition-transform duration-300" />
             </a>
           </div>
         </div>
@@ -514,7 +511,6 @@ const Navbar = () => {
   </div>
 )}
 
-
        {/* Fellows & Champions Dropdown */}
       {activeMenu === 'Fellows & Champions' && (
         <div className="mt-1 bg-white border-gray-200 shadow-sm border-y">
@@ -522,7 +518,7 @@ const Navbar = () => {
             {/* Column 1 - Our Network */}
     <div>
       <h2 style={{ letterSpacing: '2px', fontSize: '13px', color: '#888', cursor: 'default', fontWeight: '500' }} className='uppercase mb-6'>Our Network</h2>
-      <div className="space-y-4">
+      <div className="space-y-6">
         {/* Huduma Fellowship */}
         <div className="flex items-center space-x-3">
           <img 
@@ -531,13 +527,13 @@ const Navbar = () => {
             className="w-12 h-12 object-contain"
           />
           <div>
-            <h4 className="font-semibold text-gray-800 mb-2">Huduma Fellowship</h4>
-            <p>Training emerging civic & public sector champions in Uganda.</p>
+            <h4 className="font-semibold text-gray-900 mb-2">Huduma Fellowship</h4>
+            <p className="text-gray-500 text-sm mb-2">Training emerging civic & public sector champions in Uganda.</p>
             <a 
               href="/huduma" 
-              className="text-[#2bbecb] hover:text-[#f6911e] text-sm transition-colors duration-300"
+              className="text-[#2bbecb] hover:text-[#f6911e] text-sm transition-colors duration-300 inline-flex items-center"
             >
-              Learn more →
+              Learn more <span className="ml-1">→</span>
             </a>
           </div>
         </div>
@@ -550,95 +546,152 @@ const Navbar = () => {
             className="w-12 h-12 object-contain"
           />
           <div>
-            <h4 className="font-semibold text-gray-800 mb-2">Young Emerging Leaders Program</h4>
-            <p>Training outstanding thought leaders in values and social responsibility.
-
-</p>
+            <h4 className="font-semibold text-gray-900 mb-2">Young Emerging Leaders Program</h4>
+            <p className="text-gray-500 text-sm mb-2">Training outstanding thought leaders in values and social responsibility.</p>
             <a 
               href="/yelp" 
-              className="text-[#2bbecb] hover:text-[#f6911e] text-sm transition-colors duration-300"
+              className="text-[#2bbecb] hover:text-[#f6911e] text-sm transition-colors duration-300 inline-flex items-center"
             >
-              Learn more →
+              Learn more <span className="ml-1">→</span>
             </a>
           </div>
         </div>
 
-        {/* African Champions */}
+        {/* Subtle divider */}
+        <div className="border-b border-gray-100"></div>
+
+        {/* Africa Champions */}
         <div className="flex items-center space-x-3">
           <div className="w-12 h-12 bg-gray-200 rounded-full flex items-center justify-center">
-            <span className="text-gray-400 text-xl">AC</span>
+            <span className="text-gray-400 text-lg">AC</span>
           </div>
           <div>
-            <h4 className="font-semibold text-gray-800 mb-2">African Champions</h4>
+            <h4 className="font-semibold text-gray-900 mb-2">Africa Champions</h4>
+            <p className="text-gray-500 text-sm mb-2">Distinguished leaders driving positive change across Africa through innovation and ethical leadership.</p>
             <a 
               href="#" 
-              className="text-[#2bbecb] hover:text-[#f6911e] text-sm transition-colors duration-300"
+              className="text-[#2bbecb] hover:text-[#f6911e] text-sm transition-colors duration-300 inline-flex items-center"
             >
-              Learn more →
+              Learn more <span className="ml-1">→</span>
+            </a>
+          </div>
+        </div>
+
+        {/* Associate Fellows */}
+        <div className="flex items-center space-x-3">
+          <div className="w-12 h-12 bg-gray-200 rounded-full flex items-center justify-center">
+            <span className="text-gray-400 text-lg">AF</span>
+          </div>
+          <div>
+            <h4 className="font-semibold text-gray-900 mb-2">Associate Fellows</h4>
+            <p className="text-gray-500 text-sm mb-2">Emerging talents and professionals contributing to Africa's development through mentorship and collaboration.</p>
+            <a 
+              href="#" 
+              className="text-[#2bbecb] hover:text-[#f6911e] text-sm transition-colors duration-300 inline-flex items-center"
+            >
+              Learn more <span className="ml-1">→</span>
             </a>
           </div>
         </div>
       </div>
     </div>
-            {/* How to Become a Member Column */}
-<div className="bg-gray-50 p-6 rounded-lg">
-  <h3 className="font-semibold text-gray-900 mb-4">How to Become a Member</h3>
-  <p className="text-sm text-gray-600 mb-6 leading-relaxed">
-    Join the growing LéO Africa Institute community by signing up as a member or fellow. Fill out the form below to get started.
-  </p>
-  <form className="space-y-4">
-    <div>
-      <input
-        type="text"
-        placeholder="Full Name"
-        className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-[#2bbecb]"
-      />
-    </div>
+
     
-    <div>
-      <input
-        type="email"
-        placeholder="Email Address"
-        className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-[#2bbecb]"
-      />
-    </div>
+            {/* How to Become a Member Column */}
+            <div className="bg-gray-50 p-6 rounded-lg">
+              <h3 className="font-semibold text-gray-900 mb-4">How to Become a Member</h3>
+              <p className="text-sm text-gray-600 mb-6 leading-relaxed">
+                Join the growing LéO Africa Institute community by signing up as a member or fellow. Fill out the form below to get started.
+              </p>
+              <form className="space-y-4">
+                <div>
+                  <label htmlFor="fullName" className="block text-sm font-medium text-gray-700 mb-1">
+                    Full Name
+                  </label>
+                  <input
+                    type="text"
+                    id="fullName"
+                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-[#2bbecb] focus:border-[#2bbecb]"
+                    placeholder="Enter your full name"
+                  />
+                </div>
 
-    <div className="space-y-3">
-      <p className="text-sm text-gray-600">I am interested in:</p>
-      
-      <label className="flex items-center space-x-2">
-        <input
-          type="checkbox"
-          className="w-4 h-4 text-[#2bbecb] border-gray-300 rounded focus:ring-[#2bbecb]"
-        />
-        <span className="text-sm text-gray-700">Joining the Fellowship Program</span>
-      </label>
+                <div>
+                  <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
+                    Email Address
+                  </label>
+                  <input
+                    type="email"
+                    id="email"
+                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-[#2bbecb] focus:border-[#2bbecb]"
+                    placeholder="Enter your email"
+                  />
+                </div>
 
-      <label className="flex items-center space-x-2">
-        <input
-          type="checkbox"
-          className="w-4 h-4 text-[#2bbecb] border-gray-300 rounded focus:ring-[#2bbecb]"
-        />
-        <span className="text-sm text-gray-700">African Champions Network</span>
-      </label>
+                <div>
+                  <label htmlFor="country" className="block text-sm font-medium text-gray-700 mb-1">
+                    Country
+                  </label>
+                  <select
+                    id="country"
+                    value={selectedCountry}
+                    onChange={(e) => setSelectedCountry(e.target.value)}
+                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-[#2bbecb] focus:border-[#2bbecb] bg-white"
+                  >
+                    <option value="">Select your country</option>
+                    {africanCountries.map((country) => (
+                      <option key={country} value={country}>
+                        {country}
+                      </option>
+                    ))}
+                  </select>
+                </div>
 
-      <label className="flex items-center space-x-2">
-        <input
-          type="checkbox"
-          className="w-4 h-4 text-[#2bbecb] border-gray-300 rounded focus:ring-[#2bbecb]"
-        />
-        <span className="text-sm text-gray-700">Supporting the Institute's Causes</span>
-      </label>
-    </div>
+                <div>
+                  <label className="text-sm font-medium text-gray-700 mb-2 block">
+                    I am interested in:
+                  </label>
+                  <label className="flex items-center space-x-2">
+                    <input
+                      type="checkbox"
+                      className="w-4 h-4 text-[#2bbecb] border-gray-300 rounded focus:ring-[#2bbecb]"
+                    />
+                    <span className="text-sm text-gray-700">Joining the Fellowship Program</span>
+                  </label>
 
-    <button
-      type="submit"
-      className="w-full px-4 py-2 bg-[#2bbecb] text-white rounded-md hover:bg-[#f6911e] transition-colors duration-300"
-    >
-      Submit
-    </button>
-  </form>
-</div>
+                  <label className="flex items-center space-x-2">
+                    <input
+                      type="checkbox"
+                      className="w-4 h-4 text-[#2bbecb] border-gray-300 rounded focus:ring-[#2bbecb]"
+                    />
+                    <span className="text-sm text-gray-700">Africa Champions Network</span>
+                  </label>
+
+                  <label className="flex items-center space-x-2">
+                    <input
+                      type="checkbox"
+                      className="w-4 h-4 text-[#2bbecb] border-gray-300 rounded focus:ring-[#2bbecb]"
+                    />
+                    <span className="text-sm text-gray-700">Supporting the Institute's Causes</span>
+                  </label>
+
+                  <label className="flex items-center space-x-2">
+                    <input
+                      type="checkbox"
+                      className="w-4 h-4 text-[#2bbecb] border-gray-300 rounded focus:ring-[#2bbecb]"
+                    />
+                    <span className="text-sm text-gray-700">Subscribe to Newsletter</span>
+                  </label>
+                </div>
+
+                <button
+                  type="submit"
+                  className="w-full px-4 py-2 bg-[#2bbecb] text-white rounded-md hover:bg-[#f6911e] transition-colors duration-300"
+                >
+                  Submit
+                </button>
+              </form>
+            </div>
 
             {/* Column 3 - Meet Our Champions */}
             <div>
@@ -693,8 +746,13 @@ const Navbar = () => {
           <div className="grid max-w-screen-xl px-4 py-5 mx-auto text-sm md:grid-cols-3 md:px-6 gap-6">
             {/* Column 1 */}
             <ul className="mb-4 space-y-4">
-              <h2 className="text-xs uppercase font-normal text-gray-600 pb-1 mb-5" style={columnTitleStyle}>Our Next Major Event</h2>
-              <li><a href="https://alg.leoafricainstitute.org" className="text-[#3b3b3b] hover:underline hover:text-[#2bbecb]">Annual Leaders Gathering</a></li>
+              <h2 className="text-xs uppercase font-normal text-gray-600 pb-1 mb-5" style={columnTitleStyle}>Our Main Events</h2>
+              <li>
+                <a href="https://alg.leoafricainstitute.org" className="text-[#3b3b3b] hover:underline hover:text-[#2bbecb] flex items-center">
+                  Annual Leaders Gathering
+                  <FaStar className="ml-2 text-[#f6911e] animate-pulse" />
+                </a>
+              </li>
               <li><a href="/yelp" className="text-[#3b3b3b] hover:underline hover:text-[#2bbecb]">YELP Fellowship</a></li>
               <li><a href="/huduma" className="text-[#3b3b3b] hover:underline hover:text-[#2bbecb]">Huduma Fellowship</a></li>
               <li><a href="#" className="text-[#3b3b3b] hover:underline hover:text-[#2bbecb]">LéO Talks</a></li>

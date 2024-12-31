@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { Link } from 'gatsby';
 import LeoLogo from '../../assets/images/Leo-logo-primary.png';
 import YelpLogo from '../../assets/images/YELP-Logo.svg';
+import YelpFooter from './YelpFooter';
 
 const YelpLayout = ({ children }) => {
   const location = typeof window !== 'undefined' ? window.location.pathname : '';
@@ -80,8 +81,9 @@ const YelpLayout = ({ children }) => {
       <main className="pt-20">
         {children}
       </main>
+      <YelpFooter />
     </div>
   );
 };
 
-export default YelpLayout; 
+export default YelpLayout;

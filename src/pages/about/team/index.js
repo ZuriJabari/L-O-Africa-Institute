@@ -43,24 +43,6 @@ const TeamPage = () => {
 
   const boardMembers = [
     {
-      name: "Dr. Maggie Kigozi",
-      role: "Board Member",
-      image: "../../../assets/images/team/board1.jpg",
-      bio: "Former Executive Director of Uganda Investment Authority."
-    },
-    {
-      name: "Morrison Rwakakamba",
-      role: "Board Member",
-      image: "../../../assets/images/team/board2.jpg",
-      bio: "CEO at Agency for Transformation."
-    },
-    {
-      name: "ABMAK Associates",
-      role: "Secretary to the Board",
-      image: "../../../assets/images/team/board3.jpg",
-      bio: "Legal advisory and corporate governance."
-    },
-    {
       name: "Catherinerose Barreto",
       role: "Board Member",
       bio: "Human Capital, Innovation, Entrepreneurship & Gender Consultant",
@@ -84,12 +66,14 @@ const TeamPage = () => {
     {
       name: "Conrad Mugisha",
       role: "Board Member",
-      image: "../../../assets/images/team/default-profile.png",
+      bio: "Business Development & Project Management Expert",
+      image: "../../../assets/images/team/cmugisha.jpg",
       slug: "conrad-mugisha"
     },
     {
       name: "Fiona Mbabazi",
       role: "Board Member",
+      bio: "Media and Communication Professional",
       image: "../../../assets/images/team/fiona.png",
       slug: "fiona-mbabazi"
     },
@@ -99,38 +83,22 @@ const TeamPage = () => {
       bio: "Leadership Coach",
       image: "../../../assets/images/team/Rosie-Lorie.png",
       slug: "rosie-lore"
-    },
-    {
-      name: "Wanjuhi Njoroge",
-      role: "Board Member",
-      image: "../../../assets/images/team/Wanjuhi.png",
-      bio: "Strategic leadership and social innovation expert."
     }
   ];
 
   const teamMembers = [
     {
-      name: "Sarah Nakimera",
-      role: "Program Officer",
-      image: "../../../assets/images/team/staff1.jpg",
-      bio: "Coordinates program implementation and stakeholder engagement."
-    },
-    {
-      name: "John Mugisha",
-      role: "Communications Officer",
-      image: "../../../assets/images/team/staff2.jpg",
-      bio: "Manages external communications and media relations."
-    },
-    {
       name: "Awel Uwihanganye",
       role: "Co-Founder & Program Lead",
       image: "../../../assets/images/team/Awel.jpg",
+      bio: "Passionate about harnessing Africa's growth prospects through ethical & values-based leadership.",
       slug: "awel-uwihanganye"
     },
     {
-      name: "Nelson Asiimwe",
+      name: "Nelson Asiimwe Mushabe",
       role: "Fellowships & Program Manager",
-      image: "../../../assets/images/team/Nelson.jpg",
+      image: "../../../assets/images/Asiimwe-Nelson-Mushabe.png",
+      bio: "Manages fellowship programs and coordinates program implementation.",
       slug: "nelson-asiimwe"
     },
     {
@@ -138,24 +106,6 @@ const TeamPage = () => {
       role: "Communications & Media Officer",
       image: "../../../assets/images/team/Nanda.jpg",
       slug: "nnanda-kizito"
-    },
-    {
-      name: "Bright Muhumuza",
-      role: "Program Officer",
-      image: "../../../assets/images/team/Bright.jpg",
-      bio: "Leads program implementation and stakeholder engagement."
-    },
-    {
-      name: "Ivan Mwine",
-      role: "Communications Lead",
-      image: "../../../assets/images/team/Ivan.png",
-      bio: "Manages communications strategy and media relations."
-    },
-    {
-      name: "Layola Emoit",
-      role: "Program Coordinator",
-      image: "../../../assets/images/team/Layola.png",
-      bio: "Coordinates program activities and partnerships."
     }
   ];
 
@@ -309,7 +259,7 @@ const TeamPage = () => {
               </p>
             </div>
 
-            <div className="grid md:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {/* Catherinerose Barreto */}
               <Link 
                 to="/about/team/catherinerose-barreto"
@@ -321,21 +271,20 @@ const TeamPage = () => {
                   viewport={{ once: true }}
                   className="bg-white rounded-xl p-8 shadow-sm hover:shadow-md transition-shadow"
                 >
-                  <div className="relative w-40 h-48 mx-auto mb-6">
+                  <div className="relative w-full aspect-square mb-4 max-w-[200px] mx-auto">
                     <StaticImage
                       src="../../../assets/images/team/Catherinerose.png"
                       alt="Catherinerose Barreto"
-                      className="w-full h-full object-cover rounded-lg"
+                      className="w-full h-full object-cover rounded-lg shadow-sm"
                       imgClassName="rounded-lg"
                       placeholder="blurred"
-                      layout="constrained"
-                      width={160}
-                      height={192}
+                      objectFit="cover"
                       quality={95}
                     />
                   </div>
-                  <h3 className="text-2xl font-bold mb-3">Catherinerose Barreto</h3>
-                  <p className="text-[#0B9A9E] font-medium text-lg mb-3">Human Capital, Innovation, Entrepreneurship & Gender Consultant</p>
+                  <h3 className="text-2xl font-bold mb-2 text-center">Catherinerose Barreto</h3>
+                  <p className="text-[#0B9A9E] text-lg font-medium mb-3 text-center">Board Member</p>
+                  <p className="text-gray-600 text-center">Human Capital, Innovation, Entrepreneurship & Gender Consultant</p>
                 </motion.div>
               </Link>
 
@@ -348,24 +297,22 @@ const TeamPage = () => {
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  transition={{ delay: 0.1 }}
                   className="bg-white rounded-xl p-8 shadow-sm hover:shadow-md transition-shadow"
                 >
-                  <div className="relative w-40 h-48 mx-auto mb-6">
+                  <div className="relative w-full aspect-square mb-4 max-w-[200px] mx-auto">
                     <StaticImage
                       src="../../../assets/images/team/Kevin_Langley.png"
                       alt="Kevin Langley"
-                      className="w-full h-full object-cover rounded-lg"
+                      className="w-full h-full object-cover rounded-lg shadow-sm"
                       imgClassName="rounded-lg"
                       placeholder="blurred"
-                      layout="constrained"
-                      width={160}
-                      height={192}
+                      objectFit="cover"
                       quality={95}
                     />
                   </div>
-                  <h3 className="text-2xl font-bold mb-3">Kevin Langley</h3>
-                  <p className="text-[#0B9A9E] font-medium text-lg mb-3">Head Of Marketing, Visa CEMEA</p>
+                  <h3 className="text-2xl font-bold mb-2 text-center">Kevin Langley</h3>
+                  <p className="text-[#0B9A9E] text-lg font-medium mb-3 text-center">Board Member</p>
+                  <p className="text-gray-600 text-center">Head Of Marketing, Visa CEMEA</p>
                 </motion.div>
               </Link>
 
@@ -378,24 +325,22 @@ const TeamPage = () => {
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  transition={{ delay: 0.2 }}
                   className="bg-white rounded-xl p-8 shadow-sm hover:shadow-md transition-shadow"
                 >
-                  <div className="relative w-40 h-48 mx-auto mb-6">
+                  <div className="relative w-full aspect-square mb-4 max-w-[200px] mx-auto">
                     <StaticImage
                       src="../../../assets/images/team/William.jpg"
                       alt="William Babigumira"
-                      className="w-full h-full object-cover rounded-lg"
+                      className="w-full h-full object-cover rounded-lg shadow-sm"
                       imgClassName="rounded-lg"
                       placeholder="blurred"
-                      layout="constrained"
-                      width={160}
-                      height={192}
+                      objectFit="cover"
                       quality={95}
                     />
                   </div>
-                  <h3 className="text-2xl font-bold mb-3">William Babigumira</h3>
-                  <p className="text-[#0B9A9E] font-medium text-lg mb-3">Certified Trade Advisor, Private Sector Federation Rwanda</p>
+                  <h3 className="text-2xl font-bold mb-2 text-center">William Babigumira</h3>
+                  <p className="text-[#0B9A9E] text-lg font-medium mb-3 text-center">Board Member</p>
+                  <p className="text-gray-600 text-center">Certified Trade Advisor, Private Sector Federation Rwanda</p>
                 </motion.div>
               </Link>
 
@@ -408,24 +353,22 @@ const TeamPage = () => {
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  transition={{ delay: 0.3 }}
                   className="bg-white rounded-xl p-8 shadow-sm hover:shadow-md transition-shadow"
                 >
-                  <div className="relative w-40 h-48 mx-auto mb-6">
+                  <div className="relative w-full aspect-square mb-4 max-w-[200px] mx-auto">
                     <StaticImage
-                      src="../../../assets/images/team/default-profile.png"
+                      src="../../../assets/images/team/cmugisha.jpg"
                       alt="Conrad Mugisha"
-                      className="w-full h-full object-cover rounded-lg"
+                      className="w-full h-full object-cover rounded-lg shadow-sm"
                       imgClassName="rounded-lg"
                       placeholder="blurred"
-                      layout="constrained"
-                      width={160}
-                      height={192}
+                      objectFit="cover"
                       quality={95}
                     />
                   </div>
-                  <h3 className="text-2xl font-bold mb-3">Conrad Mugisha</h3>
-                  <p className="text-[#0B9A9E] font-medium text-lg mb-3">Board Member</p>
+                  <h3 className="text-2xl font-bold mb-2 text-center">Conrad Mugisha</h3>
+                  <p className="text-[#0B9A9E] text-lg font-medium mb-3 text-center">Board Member</p>
+                  <p className="text-gray-600 text-center">Business Development & Project Management Expert</p>
                 </motion.div>
               </Link>
 
@@ -438,24 +381,22 @@ const TeamPage = () => {
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  transition={{ delay: 0.4 }}
                   className="bg-white rounded-xl p-8 shadow-sm hover:shadow-md transition-shadow"
                 >
-                  <div className="relative w-40 h-48 mx-auto mb-6">
+                  <div className="relative w-full aspect-square mb-4 max-w-[200px] mx-auto">
                     <StaticImage
                       src="../../../assets/images/team/fiona.png"
                       alt="Fiona Mbabazi"
-                      className="w-full h-full object-cover rounded-lg"
+                      className="w-full h-full object-cover rounded-lg shadow-sm"
                       imgClassName="rounded-lg"
                       placeholder="blurred"
-                      layout="constrained"
-                      width={160}
-                      height={192}
+                      objectFit="cover"
                       quality={95}
                     />
                   </div>
-                  <h3 className="text-2xl font-bold mb-3">Fiona Mbabazi</h3>
-                  <p className="text-[#0B9A9E] font-medium text-lg mb-3">Board Member</p>
+                  <h3 className="text-2xl font-bold mb-2 text-center">Fiona Mbabazi</h3>
+                  <p className="text-[#0B9A9E] text-lg font-medium mb-3 text-center">Board Member</p>
+                  <p className="text-gray-600 text-center">Media and Communication Professional</p>
                 </motion.div>
               </Link>
 
@@ -468,24 +409,22 @@ const TeamPage = () => {
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  transition={{ delay: 0.5 }}
                   className="bg-white rounded-xl p-8 shadow-sm hover:shadow-md transition-shadow"
                 >
-                  <div className="relative w-40 h-48 mx-auto mb-6">
+                  <div className="relative w-full aspect-square mb-4 max-w-[200px] mx-auto">
                     <StaticImage
                       src="../../../assets/images/team/Rosie-Lorie.png"
                       alt="Rosie Lore"
-                      className="w-full h-full object-cover rounded-lg"
+                      className="w-full h-full object-cover rounded-lg shadow-sm"
                       imgClassName="rounded-lg"
                       placeholder="blurred"
-                      layout="constrained"
-                      width={160}
-                      height={192}
+                      objectFit="cover"
                       quality={95}
                     />
                   </div>
-                  <h3 className="text-2xl font-bold mb-3">Rosie Lore</h3>
-                  <p className="text-[#0B9A9E] font-medium text-lg mb-3">Leadership Coach</p>
+                  <h3 className="text-2xl font-bold mb-2 text-center">Rosie Lore</h3>
+                  <p className="text-[#0B9A9E] text-lg font-medium mb-3 text-center">Board Member</p>
+                  <p className="text-gray-600 text-center">Leadership Coach</p>
                 </motion.div>
               </Link>
             </div>
@@ -529,11 +468,12 @@ const TeamPage = () => {
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  className="flex flex-col bg-white rounded-xl p-8 shadow-sm hover:shadow-md transition-shadow"
+                  transition={{ delay: 0.2 }}
+                  className="bg-white rounded-xl p-8 shadow-sm hover:shadow-md transition-shadow"
                 >
-                  <div className="relative w-full aspect-square mb-4 max-w-[200px]">
+                  <div className="relative w-full aspect-square mb-4 max-w-[200px] mx-auto">
                     <StaticImage
-                      src="../../../assets/images/team/Nelson.jpg"
+                      src="../../../assets/images/Asiimwe-Nelson-Mushabe.png"
                       alt="Nelson Asiimwe"
                       className="w-full h-full object-cover rounded-lg shadow-sm"
                       imgClassName="rounded-lg"
@@ -542,8 +482,9 @@ const TeamPage = () => {
                       quality={95}
                     />
                   </div>
-                  <h3 className="text-2xl font-bold mb-2">Nelson Asiimwe</h3>
-                  <p className="text-[#0B9A9E] text-lg font-medium">Fellowships & Program Manager</p>
+                  <h3 className="text-2xl font-bold mb-2 text-center">Nelson Asiimwe Mushabe</h3>
+                  <p className="text-[#0B9A9E] text-lg font-medium mb-3 text-center">Fellowships & Program Manager</p>
+                  <p className="text-gray-600 text-center">Manages fellowship programs and coordinates program implementation.</p>
                 </motion.div>
               </Link>
 
@@ -572,6 +513,34 @@ const TeamPage = () => {
                   </div>
                   <h3 className="text-2xl font-bold mb-2">Nnanda Kizito Seruwagi</h3>
                   <p className="text-[#0B9A9E] text-lg font-medium">Communications & Media Officer</p>
+                </motion.div>
+              </Link>
+
+              {/* Awel Uwihanganye */}
+              <Link 
+                to="/about/team/awel-uwihanganye"
+                className="block transition-transform hover:-translate-y-1"
+              >
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.2 }}
+                  className="flex flex-col bg-white rounded-xl p-8 shadow-sm hover:shadow-md transition-shadow"
+                >
+                  <div className="relative w-full aspect-square mb-4 max-w-[200px]">
+                    <StaticImage
+                      src="../../../assets/images/team/Awel.jpg"
+                      alt="Awel Uwihanganye"
+                      className="w-full h-full object-cover rounded-lg shadow-sm"
+                      imgClassName="rounded-lg"
+                      placeholder="blurred"
+                      objectFit="cover"
+                      quality={95}
+                    />
+                  </div>
+                  <h3 className="text-2xl font-bold mb-2">Awel Uwihanganye</h3>
+                  <p className="text-[#0B9A9E] text-lg font-medium">Co-Founder & Program Lead</p>
                 </motion.div>
               </Link>
             </div>

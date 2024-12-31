@@ -1,10 +1,9 @@
 // src/components/pillars-of-action.js
 import React from "react";
 import { motion } from "framer-motion";
-import Timeline from "../../components/Timeline";  // Updated path
 import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
-import { pillarsData } from "../../data/PillarsData";  // Update path based on data location
+import Pillars from "../../components/Pillars";
 
 const PillarsOfAction = () => {
   return (
@@ -39,22 +38,12 @@ const PillarsOfAction = () => {
           </div>
         </section>
 
-        {/* Timeline Section */}
-        <section className="py-16 px-4 bg-white">
-          <div className="max-w-7xl mx-auto">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.4 }}
-            >
-              <Timeline items={pillarsData} />
-            </motion.div>
-          </div>
-        </section>
+        {/* Pillars Section */}
+        <Pillars />
       </main>
       <Footer />
     </>
   );
 };
 
-export default PillarsOfAction;  // Fixed export name
+export default PillarsOfAction;

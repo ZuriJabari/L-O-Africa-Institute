@@ -10,22 +10,27 @@ const ContactPage = () => {
   return (
     <Layout>
       {/* Hero Section with the new background image */}
-      <section className="relative h-[65vh] bg-cover bg-center text-white flex flex-col justify-center items-center" style={{ backgroundImage: `url(${contactHero})` }}>
+      <section className="relative h-[65vh] bg-cover bg-center text-white" style={{ backgroundImage: `url(${contactHero})` }}>
         <div className="absolute inset-0 bg-black opacity-50"></div> {/* Dark overlay */}
-        <h1 className="relative z-10 text-4xl sm:text-6xl font-bold mb-4">Need Help? We're Here for You!</h1>
-        <p className="relative z-10 text-lg sm:text-xl max-w-3xl text-center">
-          Whether you have questions about the Annual Leaders Gathering, need support with registration, or want to partner with us, feel free to get in touch with our team. We're committed to providing the best experience.
-        </p>
+        <div className="relative z-10 h-full flex items-center">
+          <div className="max-w-7xl mx-auto px-6">
+            <h1 className="text-4xl sm:text-6xl font-bold mb-4">Need Help? We're Here for You!</h1>
+            <p className="text-lg sm:text-xl max-w-3xl">
+              Whether you have questions about the Annual Leaders Gathering, need support with registration, or want to partner with us, feel free to get in touch with our team. We're committed to providing the best experience.
+            </p>
+          </div>
+        </div>
       </section>
       <div className='prefooter'></div>
       {/* New Contact Information Section */}
       <section className="max-w-7xl mx-auto py-16 px-6">
         <div className="bg-gray-100 p-8 rounded-lg shadow-lg text-center text-lg leading-relaxed">
-          <p className="mb-4">
-            <a href="mailto:alg@leoafricainstitute.org" className="font-bold text-[#1d8f92] hover:underline">alg@leoafricainstitute.org</a> – for Annual Leaders Gathering inquiries
-          </p>
+          
           <p className="mb-4">
             <a href="mailto:communications@leoafricainstitute.org" className="font-bold text-[#1d8f92] hover:underline">communications@leoafricainstitute.org</a> – for General Inquiries
+          </p>
+          <p className="mb-4">
+            <a href="mailto:alg@leoafricainstitute.org" className="font-bold text-[#1d8f92] hover:underline">alg@leoafricainstitute.org</a> – for Annual Leaders Gathering inquiries
           </p>
           <p className="mb-4">
             Our social media accounts are also a great way to reach us and support conversations online using the hashtag <span className="font-bold text-[#1d8f92]">#ALG2024</span>

@@ -2,6 +2,8 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { FiArrowRight } from "react-icons/fi";
+import graduationImage from "../assets/images/graduation.jpg";
+import SubscriptionForm from "./SubscriptionForm";
 
 const BRAND_COLORS = {
   teal: '#00babc',
@@ -17,24 +19,29 @@ const SupportUs = () => {
       <motion.section 
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        className="relative bg-gradient-to-br from-gray-900 to-gray-800 text-white py-24"
+        className="relative h-[65vh] bg-cover bg-center text-white"
+        style={{ backgroundImage: `url(${graduationImage})` }}
       >
-        <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute inset-0 bg-[#00babc]/10 mix-blend-multiply" />
-          {/* Decorative elements */}
-          <div className="absolute top-0 left-0 w-96 h-96 bg-[#00babc]/20 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2" />
-          <div className="absolute bottom-0 right-0 w-96 h-96 bg-[#f89420]/20 rounded-full blur-3xl translate-x-1/2 translate-y-1/2" />
-        </div>
-
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
-          <motion.h1 
-            initial={{ y: 20, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ delay: 0.2 }}
-            className="font-playfair text-4xl md:text-5xl font-bold mb-6 text-center"
-          >
-            How You Can Support Our Work
-          </motion.h1>
+        <div className="absolute inset-0 bg-black/50" /> {/* Dark overlay */}
+        <div className="relative z-10 h-full flex items-center">
+          <div className="max-w-7xl mx-auto px-6">
+            <motion.h1 
+              initial={{ y: 20, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ delay: 0.2 }}
+              className="text-4xl sm:text-6xl font-bold mb-4"
+            >
+              Partner With Us
+            </motion.h1>
+            <motion.p
+              initial={{ y: 20, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ delay: 0.3 }}
+              className="text-lg sm:text-xl max-w-3xl"
+            >
+              Join us in our mission to empower and develop the next generation of Africa's thought leaders
+            </motion.p>
+          </div>
         </div>
       </motion.section>
 
@@ -93,11 +100,27 @@ const SupportUs = () => {
               <ul className="font-inter space-y-2 text-gray-600 mb-6">
                 <li>• Individual Giving</li>
                 <li>• Corporate or Institutional Giving</li>
+                <li>• Legacy Giving</li>
               </ul>
               <button className="font-inter flex items-center gap-2 text-[#f89420] font-semibold hover:gap-4 transition-all">
-                Donate now <FiArrowRight />
+                Support our work <FiArrowRight />
               </button>
             </motion.div>
+          </motion.div>
+
+          {/* Subscription Form */}
+          <motion.div
+            initial={{ y: 20, opacity: 0 }}
+            whileInView={{ y: 0, opacity: 1 }}
+            viewport={{ once: true }}
+            className="mt-16"
+          >
+            <div className="bg-gradient-to-br from-[#00babc] to-[#008486] rounded-xl p-8 md:p-12">
+              <h2 className="font-playfair text-3xl font-bold text-white mb-8 text-center">
+                Join Our Community
+              </h2>
+              <SubscriptionForm />
+            </div>
           </motion.div>
 
           {/* Partnership CTA */}

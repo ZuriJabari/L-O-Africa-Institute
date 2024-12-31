@@ -49,18 +49,12 @@ const AboutPage = () => {
               {...fadeIn}
               transition={{ delay: 0.4 }}
             >
-              <Link 
-                to="/join" 
+              <a 
+                href="#join-our-community" 
                 className="bg-[#F6911E] hover:bg-[#F6911E]/90 text-white px-8 py-3 rounded-lg font-inter font-semibold transition-colors"
               >
                 Join Our Community
-              </Link>
-              <Link 
-                to="/programs" 
-                className="bg-white/10 hover:bg-white/20 text-white px-8 py-3 rounded-lg font-inter font-semibold backdrop-blur-sm transition-colors"
-              >
-                Explore Programs
-              </Link>
+              </a>
             </motion.div>
           </div>
         </div>
@@ -475,7 +469,7 @@ const AboutPage = () => {
       <OurPartners />
 
       {/* Join Us Section */}
-      <section className="py-24 bg-gradient-to-br from-[#0B9A9E]/5 to-[#F6911E]/5 relative overflow-hidden">
+      <section className="py-24 bg-gradient-to-br from-[#0B9A9E]/5 to-[#F6911E]/5 relative overflow-hidden" id="join-our-community">
         <div className="absolute inset-0">
           <div className="absolute top-0 right-0 w-96 h-96 bg-[#0B9A9E]/10 rounded-full blur-3xl"></div>
           <div className="absolute bottom-0 left-0 w-96 h-96 bg-[#F6911E]/10 rounded-full blur-3xl"></div>
