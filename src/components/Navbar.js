@@ -3,7 +3,7 @@ import { FiSearch, FiArrowRight, FiMenu, FiX } from 'react-icons/fi';
 import { FaFacebookF, FaTwitter, FaLinkedinIn, FaInstagram, FaStar } from 'react-icons/fa';
 import { navigate } from 'gatsby';
 import LOGO from '../assets/images/Leo-logo-primary.png';
-import ALGLogo from '../assets/images/alg-color.svg';
+import ALGLogo from '../assets/images/logo-color.svg';
 import HudumaLogo from '../assets/images/huduma-logo.svg';
 import ReviewLogo from '../assets/images/LAR-logo.png';
 import YelpLogo from '../assets/images/YELP-Logo.svg';
@@ -13,8 +13,6 @@ import ALGICON from '../assets/images/alg-icon.png';
 import LucyPhoto from '../assets/images/Lucy.png';
 import CarlPhoto from '../assets/images/carl.jpg';
 import EmailSubscriptionForm from './EmailSubscriptionForm';
-import yelpLogo from '../../src/assets/images/YELP-Logo.svg';
-import hudumaLogo from '../../src/assets/images/huduma-logo.svg';
 
 // Ensure this path is correct
 
@@ -440,7 +438,7 @@ const Navbar = () => {
           <div className="flex flex-col items-center text-center">
             <div className="w-20 h-20 bg-gray-50 rounded-lg flex items-center justify-center mb-4 group-hover:bg-gray-100 transition-colors duration-300">
               <img 
-                src={yelpLogo} 
+                src={YelpLogo} 
                 alt="YELP Logo" 
                 className="w-16 h-16 object-contain"
               />
@@ -464,7 +462,7 @@ const Navbar = () => {
           <div className="flex flex-col items-center text-center">
             <div className="w-20 h-20 bg-gray-50 rounded-lg flex items-center justify-center mb-4 group-hover:bg-gray-100 transition-colors duration-300">
               <img 
-                src={hudumaLogo} 
+                src={HudumaLogo} 
                 alt="Huduma Logo" 
                 className="w-16 h-16 object-contain"
               />
@@ -522,7 +520,7 @@ const Navbar = () => {
         {/* Huduma Fellowship */}
         <div className="flex items-center space-x-3">
           <img 
-            src={hudumaLogo} 
+            src={HudumaLogo} 
             alt="Huduma Fellowship Logo" 
             className="w-12 h-12 object-contain"
           />
@@ -541,7 +539,7 @@ const Navbar = () => {
         {/* YELP */}
         <div className="flex items-center space-x-3">
           <img 
-            src={yelpLogo} 
+            src={YelpLogo} 
             alt="YELP Logo" 
             className="w-12 h-12 object-contain"
           />
@@ -823,7 +821,7 @@ const Navbar = () => {
                   {/* ALG Logo - Left Side */}
                   <div className="flex-shrink-0 w-24 h-24 overflow-hidden rounded-lg">
                     <img
-                      src={ALGICON}
+                      src={ALGLogo}
                       alt="Annual Leaders Gathering"
                       className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-300"
                     />
