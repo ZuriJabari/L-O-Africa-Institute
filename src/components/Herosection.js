@@ -77,10 +77,12 @@ const HeroSection = () => {
           {slides[currentIndex].h3}
         </h3>
 
-        {/* Main Heading */}
-        <h1 className="font-playfair text-4xl md:text-6xl font-bold leading-tight tracking-wide text-left max-w-2xl">
-          {slides[currentIndex].title}
-        </h1>
+        {/* Title */}
+        {currentIndex !== 3 && (
+          <h1 className="font-playfair text-4xl md:text-6xl font-bold leading-tight tracking-wide text-left max-w-2xl">
+            {slides[currentIndex].title}
+          </h1>
+        )}
 
         {/* Description */}
         {currentIndex === 3 ? (
@@ -91,13 +93,15 @@ const HeroSection = () => {
             <p className="text-xl text-gray-200 mb-8 leading-relaxed">
               Africa's premier leadership convergence, bringing together visionary leaders, influential policymakers, and dynamic change-makers to shape the continent's future through thought-provoking dialogue and actionable solutions.
             </p>
-            <Link
-              to="/alg"
+            <a
+              href="https://alg.leoafricainstitute.org"
+              target="_blank"
+              rel="noopener noreferrer"
               className="inline-flex items-center px-6 py-3 text-lg font-medium text-white bg-[#f6911e] hover:bg-[#2bbecb] rounded-lg transition-colors duration-300"
             >
               Explore ALG
               <FiArrowRight className="ml-2 group-hover:translate-x-1 transition-transform duration-300" />
-            </Link>
+            </a>
           </div>
         ) : (
           <p className="font-inter text-lg md:text-xl leading-relaxed opacity-90 tracking-wide text-left max-w-2xl">
