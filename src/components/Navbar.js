@@ -412,21 +412,23 @@ const Navbar = () => {
         Our Initiatives
       </h2>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
         {/* ALG - Featured Event */}
-        <div className="bg-white rounded-xl p-6 shadow-md hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 border-l-4 border-[#f6911e] group">
+        <div className="bg-white p-6 hover:bg-gray-50 transition-all duration-300 group border-b-4 border-[#f6911e]">
           <div className="flex flex-col items-center text-center">
-            <div className="w-20 h-20 bg-gray-50 rounded-lg flex items-center justify-center mb-4 group-hover:bg-gray-100 transition-colors duration-300">
+            <div className="w-32 h-32 bg-white rounded-xl flex items-center justify-center mb-6">
               <img 
                 src={ALGLogo} 
                 alt="ALG Logo" 
-                className="w-16 h-16 object-contain"
+                className="w-28 h-28 object-contain"
               />
             </div>
-            <h3 className="text-lg font-semibold text-gray-900 mb-2 group-hover:text-[#f6911e] transition-colors duration-300">
+            <h3 className="text-xl font-semibold text-gray-900 mb-3">
               Annual Leaders Gathering
             </h3>
-            <p className="text-sm text-gray-600 mb-4">Our Flagship Leadership Conference</p>
+            <p className="text-gray-600 mb-4 leading-relaxed">
+              Our flagship leadership conference bringing together emerging leaders from across Africa for dialogue, learning, and networking.
+            </p>
             <a 
               href="/alg" 
               className="inline-flex items-center text-[#f6911e] hover:text-[#2bbecb] font-medium transition-colors duration-300"
@@ -438,19 +440,21 @@ const Navbar = () => {
         </div>
 
         {/* YELP */}
-        <div className="bg-white rounded-xl p-6 shadow-md hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 group">
+        <div className="bg-white p-6 hover:bg-gray-50 transition-all duration-300 group border-b-4 border-[#2bbecb]">
           <div className="flex flex-col items-center text-center">
-            <div className="w-20 h-20 bg-gray-50 rounded-lg flex items-center justify-center mb-4 group-hover:bg-gray-100 transition-colors duration-300">
+            <div className="w-32 h-32 bg-white rounded-xl flex items-center justify-center mb-6">
               <img 
                 src={YelpLogo} 
                 alt="YELP Logo" 
-                className="w-16 h-16 object-contain"
+                className="w-28 h-28 object-contain"
               />
             </div>
-            <h3 className="text-lg font-semibold text-gray-900 mb-2 group-hover:text-[#2bbecb] transition-colors duration-300">
+            <h3 className="text-xl font-semibold text-gray-900 mb-3">
               YELP
             </h3>
-            <p className="text-sm text-gray-600 mb-4">Young & Emerging Leaders Project</p>
+            <p className="text-gray-600 mb-4 leading-relaxed">
+              Young & Emerging Leaders Project nurtures the next generation of thought leaders through values-based leadership training.
+            </p>
             <a 
               href="/yelp" 
               className="inline-flex items-center text-[#2bbecb] hover:text-[#f6911e] font-medium transition-colors duration-300"
@@ -462,19 +466,21 @@ const Navbar = () => {
         </div>
 
         {/* Huduma */}
-        <div className="bg-white rounded-xl p-6 shadow-md hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 group">
+        <div className="bg-white p-6 hover:bg-gray-50 transition-all duration-300 group border-b-4 border-[#2bbecb]">
           <div className="flex flex-col items-center text-center">
-            <div className="w-20 h-20 bg-gray-50 rounded-lg flex items-center justify-center mb-4 group-hover:bg-gray-100 transition-colors duration-300">
+            <div className="w-32 h-32 bg-white rounded-xl flex items-center justify-center mb-6">
               <img 
                 src={HudumaLogo} 
                 alt="Huduma Logo" 
-                className="w-16 h-16 object-contain"
+                className="w-28 h-28 object-contain"
               />
             </div>
-            <h3 className="text-lg font-semibold text-gray-900 mb-2 group-hover:text-[#2bbecb] transition-colors duration-300">
-              Huduma
+            <h3 className="text-xl font-semibold text-gray-900 mb-3">
+              Huduma Fellowship
             </h3>
-            <p className="text-sm text-gray-600 mb-4">Fellowship Program</p>
+            <p className="text-gray-600 mb-4 leading-relaxed">
+              Empowering emerging civic and public sector leaders in Uganda through intensive leadership development and mentorship.
+            </p>
             <a 
               href="/huduma" 
               className="inline-flex items-center text-[#2bbecb] hover:text-[#f6911e] font-medium transition-colors duration-300"
@@ -486,24 +492,26 @@ const Navbar = () => {
         </div>
 
         {/* LéO Africa Review */}
-        <div className="bg-white rounded-xl p-6 shadow-md hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 group">
+        <div className="bg-white p-6 hover:bg-gray-50 transition-all duration-300 group border-b-4 border-[#2bbecb]">
           <div className="flex flex-col items-center text-center">
-            <div className="w-20 h-20 bg-gray-50 rounded-lg flex items-center justify-center mb-4 group-hover:bg-gray-100 transition-colors duration-300">
+            <div className="w-32 h-32 bg-white rounded-xl flex items-center justify-center mb-6">
               <img 
                 src={ReviewLogo} 
                 alt="LéO Africa Review Logo" 
-                className="w-16 h-16 object-contain"
+                className="w-28 h-28 object-contain"
               />
             </div>
-            <h3 className="text-lg font-semibold text-gray-900 mb-2 group-hover:text-[#2bbecb] transition-colors duration-300">
+            <h3 className="text-xl font-semibold text-gray-900 mb-3">
               LéO Africa Review
             </h3>
-            <p className="text-sm text-gray-600 mb-4">Digital Platform</p>
+            <p className="text-gray-600 mb-4 leading-relaxed">
+              Our digital platform showcasing African thought leadership, innovation, and ideas shaping the continent's future.
+            </p>
             <a 
               href="/review" 
               className="inline-flex items-center text-[#2bbecb] hover:text-[#f6911e] font-medium transition-colors duration-300"
             >
-              Read More 
+              Learn more 
               <FiArrowRight className="ml-2 group-hover:translate-x-1 transition-transform duration-300" />
             </a>
           </div>
