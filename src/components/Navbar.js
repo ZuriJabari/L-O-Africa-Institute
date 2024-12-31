@@ -416,8 +416,12 @@ const Navbar = () => {
         {/* ALG - Featured Event */}
         <div className="bg-white rounded-xl p-6 shadow-md hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 border-l-4 border-[#f6911e] group">
           <div className="flex flex-col items-center text-center">
-            <div className="w-20 h-20 bg-[#f6911e]/10 rounded-lg flex items-center justify-center mb-4 group-hover:bg-[#f6911e]/20 transition-colors duration-300">
-              <span className="text-3xl font-bold text-[#f6911e]">ALG</span>
+            <div className="w-20 h-20 bg-gray-50 rounded-lg flex items-center justify-center mb-4 group-hover:bg-gray-100 transition-colors duration-300">
+              <img 
+                src={ALGLogo} 
+                alt="ALG Logo" 
+                className="w-16 h-16 object-contain"
+              />
             </div>
             <h3 className="text-lg font-semibold text-gray-900 mb-2 group-hover:text-[#f6911e] transition-colors duration-300">
               Annual Leaders Gathering
@@ -819,11 +823,11 @@ const Navbar = () => {
               <div>
                 <div className="group flex items-start space-x-4">
                   {/* ALG Logo - Left Side */}
-                  <div className="flex-shrink-0 w-24 h-24 overflow-hidden rounded-lg">
+                  <div className="flex-shrink-0 w-24 h-24 overflow-hidden rounded-lg bg-gray-50 flex items-center justify-center">
                     <img
                       src={ALGLogo}
                       alt="Annual Leaders Gathering"
-                      className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-300"
+                      className="w-20 h-20 object-contain"
                     />
                   </div>
                   
