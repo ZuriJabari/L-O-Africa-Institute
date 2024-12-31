@@ -50,8 +50,20 @@ module.exports = {
         background_color: `#ffffff`,
         theme_color: `#0B9A9E`,
         display: `standalone`,
-        icon: `src/assets/images/Leo-logo-primary.png`,
+        icon: `static/favicon.ico`,
+        icon_options: {
+          purpose: `any maskable`,
+        },
+        cache_busting_mode: 'none'
       },
+    },
+    {
+      resolve: 'gatsby-plugin-offline',
+      options: {
+        workboxConfig: {
+          globPatterns: ['**/*']
+        }
+      }
     },
     `gatsby-plugin-react-helmet`,
     {
