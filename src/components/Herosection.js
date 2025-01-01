@@ -31,14 +31,14 @@ const slides = [
   },
   {
     image: heroImage4,
-    title: "Annual Leaders Gathering (ALG)",
+    title: "Annual Leaders Gathering",
     description: "Africa's premier leadership convergence, bringing together visionary leaders, influential policymakers, and dynamic change-makers to shape the continent's future through thought-provoking dialogue and actionable solutions.",
     ctaText: "Explore ALG",
     ctaLink: "/alg"
   },
   {
     image: heroImage5,
-    title: "YELP: Catalyzing Young Leadership",
+    title: "YELP: Catalyzing Youth Leadership",
     description: "The Young and Emerging Leaders Project is more than a fellowship—it's a transformative journey empowering Africa's brightest minds to lead with purpose, innovation, and ethical conviction.",
     ctaText: "Begin Your Journey",
     ctaLink: "/yelp"
