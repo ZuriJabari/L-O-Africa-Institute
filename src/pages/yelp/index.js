@@ -1,11 +1,56 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'gatsby';
 import YelpLogo from '../../assets/images/YELP-Logo.svg';
 import YelpHero from '../../assets/images/yelp.jpg';
 import YelpLayout from '../../components/layout/YelpLayout';
+import { submitFormToFirebase, FORM_TYPES } from '../../utils/forms';
 
 const YelpHome = () => {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: ''
+  });
+  const [loading, setLoading] = useState(false);
+  const [message, setMessage] = useState('');
+  const [success, setSuccess] = useState(false);
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+    setMessage('');
+
+    try {
+      const result = await submitFormToFirebase(FORM_TYPES.JOIN, {
+        ...formData,
+        source: 'yelp_join_movement'
+      });
+
+      if (result.success) {
+        setSuccess(true);
+        setMessage(result.message);
+        setFormData({ name: '', email: '' });
+      } else {
+        setSuccess(false);
+        setMessage(result.message);
+      }
+    } catch (error) {
+      console.error('Form submission error:', error);
+      setSuccess(false);
+      setMessage('An error occurred. Please try again later.');
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
     <YelpLayout>
       {/* Hero Section */}
@@ -137,24 +182,47 @@ const YelpHome = () => {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.4 }}
           >
-            <form className="space-y-4">
-              <input 
-                type="text"
-                placeholder="Your Name"
-                className="w-full p-4 rounded-xl bg-white text-gray-800 focus:outline-none focus:ring-2 focus:ring-[#0B9A9E]"
-              />
-              <input 
-                type="email"
-                placeholder="Your Email"
-                className="w-full p-4 rounded-xl bg-white text-gray-800 focus:outline-none focus:ring-2 focus:ring-[#0B9A9E]"
-              />
-              <button 
-                type="submit"
-                className="w-full p-4 bg-white text-[#0B9A9E] rounded-xl font-bold hover:bg-white/90 transition-all duration-300"
-              >
-                Join Now
-              </button>
-            </form>
+            {success ? (
+              <div className="text-center py-8">
+                <div className="w-16 h-16 bg-white rounded-full mx-auto flex items-center justify-center mb-4">
+                  <svg className="w-8 h-8 text-[#0B9A9E]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                  </svg>
+                </div>
+                <p className="text-white text-lg">{message}</p>
+              </div>
+            ) : (
+              <form onSubmit={handleSubmit} className="space-y-4">
+                <input 
+                  type="text"
+                  name="name"
+                  value={formData.name}
+                  onChange={handleChange}
+                  placeholder="Your Name"
+                  className="w-full p-4 rounded-xl bg-white text-gray-800 focus:outline-none focus:ring-2 focus:ring-[#0B9A9E]"
+                  required
+                />
+                <input 
+                  type="email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleChange}
+                  placeholder="Your Email"
+                  className="w-full p-4 rounded-xl bg-white text-gray-800 focus:outline-none focus:ring-2 focus:ring-[#0B9A9E]"
+                  required
+                />
+                <button 
+                  type="submit"
+                  disabled={loading}
+                  className="w-full p-4 bg-white text-[#0B9A9E] rounded-xl font-bold hover:bg-white/90 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+                >
+                  {loading ? 'Submitting...' : 'Join Now'}
+                </button>
+                {message && !success && (
+                  <p className="text-white text-sm mt-2">{message}</p>
+                )}
+              </form>
+            )}
           </motion.div>
         </div>
       </section>

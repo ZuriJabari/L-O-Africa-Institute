@@ -12,7 +12,9 @@ import RosiePhoto from '../assets/images/Rosie-Lorie.png';
 import DrKigoziPhoto from '../assets/images/Dr-Kigozi.png';
 import MorrisonPhoto from '../assets/images/team/tem.jpg';
 import DefaultPhoto from '../assets/images/team/tem.jpg';
-import NelsonPhoto from '../assets/images/team/tem.jpg';
+import NelsonPhoto from '../assets/images/Asiimwe-Nelson-Mushabe.png';
+import ConradPhoto from '../assets/images/team/conrad.jpg';
+import NandaPhoto from '../assets/images/team/Nanda.jpg';
 import Ivanphoto from '../assets/images/fellows/Ivan-Kibuuka.jpg';
 import AziziPhoto from '../assets/images/fellows/Mujjuzi-Abdulazizi.jpg';
 import SaxonPhoto from '../assets/images/fellows/Saxon-Ssekitooleko.jpg';
@@ -32,7 +34,6 @@ import AgnesPhoto from '../assets/images/team/Agnes.jpg';
 import BeverlyPhoto from '../assets/images/team/Beverly.png';
 import DavidPhoto from '../assets/images/team/David.jpg';
 import JamesPhoto from '../assets/images/team/James.jpg';
-import NandaPhoto from '../assets/images/team/Nanda.jpg';
 
 const profiles = {
   fellows: [
@@ -223,7 +224,7 @@ const profiles = {
       {
         name: "Conrad Mugisha",
         title: "Board Member",
-        photo: DefaultPhoto,
+        photo: ConradPhoto,
         bio: "Experienced professional bringing strategic insights to organizational development and leadership."
       },
       {
@@ -237,6 +238,12 @@ const profiles = {
         title: "Board Member",
         photo: RosiePhoto,
         bio: "Leadership Coach with extensive experience in personal and professional development, helping leaders reach their full potential."
+      },
+      {
+        name: "Magnus Mchngunzi",
+        title: "Chairman Board of Directors",
+        photo: MagnusPhoto,
+        bio: "A visionary leader committed to fostering collaborative leadership and empowering Africa's next generation of leaders."
       }
     ],
     staff: [
@@ -253,8 +260,8 @@ const profiles = {
         bio: "Managing fellowship programs and alumni engagement"
       },
       {
-        name: "TBC",
-        title: "Finance & Operations Manager",
+        name: "Abdallah Zubedah",
+        title: "Finance & Administration",
         photo: DefaultPhoto,
         bio: "Overseeing financial management and operations"
       },
@@ -317,7 +324,7 @@ const TeamSection = () => {
   return (
     <div className="space-y-16">
       <div className="text-center">
-        <h2 className="text-3xl font-bold text-gray-900 mb-4">Our Team</h2>
+        <h2 className="text-3xl font-bold text-gray-900 mb-4">Meet Our Team</h2>
         <p className="text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed">
           Meet our dedicated team committed to shaping leadership that actively contributes to building the Africa we want.
         </p>
@@ -583,7 +590,147 @@ const OurPeople = () => {
           <ChampionsSection />
         )}
 
-        {activeTab === "team" && <TeamSection />}
+        {activeTab === "team" && (
+          <div className="max-w-6xl mx-auto">
+            <motion.div 
+              className="text-center mb-16"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.8 }}
+            >
+              <h2 className="font-playfair text-5xl font-bold mb-6">Meet Our Team</h2>
+              <div className="w-24 h-1 bg-[#F6911E] mx-auto"></div>
+            </motion.div>
+
+            {/* Board Section */}
+            <div className="mb-24">
+              <motion.div 
+                className="text-center mb-12"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.8 }}
+              >
+                <h3 className="font-playfair text-3xl font-bold mb-4">The Governing Board of Directors</h3>
+                <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+                  Our governance board is constituted with individuals whose integrity is beyond reproach and with whom we share a commitment to create a better society and future with young people at the center of shaping leadership action.
+                </p>
+              </motion.div>
+
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                {/* Chairman Card - Highlighted */}
+                <motion.div
+                  className="group col-span-full lg:col-span-1 bg-gradient-to-br from-[#0B9A9E] to-[#0B9A9E]/90 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden text-white"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 0.1 }}
+                >
+                  <div className="flex flex-col md:flex-row items-center">
+                    <div className="md:w-2/5 p-4">
+                      <div className="relative w-48 h-48 md:w-full md:h-64 rounded-full md:rounded-xl overflow-hidden mx-auto border-4 border-white/20">
+                        <img
+                          src={profiles.team.board.find(m => m.name === "Magnus Mchngunzi")?.photo || DefaultPhoto}
+                          alt="Magnus Mchngunzi"
+                          className="w-full h-full object-cover object-center transform group-hover:scale-105 transition-duration-500"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                      </div>
+                    </div>
+                    <div className="md:w-3/5 p-6 md:p-8">
+                      <span className="inline-block px-3 py-1 bg-white/10 rounded-full text-sm font-medium mb-3">
+                        Chairman
+                      </span>
+                      <h3 className="text-2xl font-bold mb-2">Magnus Mchngunzi</h3>
+                      <p className="text-sm font-medium text-white/80 mb-3">Co-Founder & Chairman Board of Directors</p>
+                      <p className="text-sm text-white/70 mb-4 line-clamp-3">
+                        A visionary leader committed to fostering collaborative leadership and empowering Africa's next generation of leaders.
+                      </p>
+                    </div>
+                  </div>
+                </motion.div>
+
+                {/* Other Board Members */}
+                {profiles.team.board
+                  .filter(member => member.name !== "Magnus Mchngunzi")
+                  .map((member, index) => (
+                    <motion.div
+                      key={index}
+                      className="group bg-white rounded-lg shadow-sm hover:shadow-md transition-all duration-300 overflow-hidden"
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      transition={{ delay: (index + 1) * 0.1 }}
+                    >
+                      <div className="flex flex-col md:flex-row items-center">
+                        <div className="md:w-2/5 p-4">
+                          <div className="relative w-48 h-48 md:w-full md:h-64 rounded-full md:rounded-xl overflow-hidden mx-auto">
+                            <img
+                              src={member.photo || DefaultPhoto}
+                              alt={member.name}
+                              className="w-full h-full object-cover object-center transform group-hover:scale-105 transition-duration-500"
+                            />
+                            <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                          </div>
+                        </div>
+                        <div className="md:w-3/5 p-6 md:p-8">
+                          <h3 className="text-xl font-bold text-gray-900 mb-2">{member.name}</h3>
+                          <p className="text-sm font-medium text-[#0B9A9E] mb-3">{member.title}</p>
+                          {member.bio && (
+                            <p className="text-sm text-gray-600 mb-4 line-clamp-3">{member.bio}</p>
+                          )}
+                        </div>
+                      </div>
+                    </motion.div>
+                  ))}
+              </div>
+            </div>
+
+            {/* Team Section */}
+            <div>
+              <motion.div 
+                className="text-center mb-12"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.8 }}
+              >
+                <h3 className="font-playfair text-3xl font-bold mb-4">The Team Leading on Delivering on the Tasks</h3>
+                <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+                  Meet our dynamic team committed to shaping leadership that actively contributes to building the Africa we want.
+                </p>
+              </motion.div>
+
+              <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                {profiles.team.staff.map((member, index) => (
+                  <motion.div
+                    key={index}
+                    className="group bg-white rounded-lg shadow-sm hover:shadow-md transition-all duration-300 overflow-hidden"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ delay: index * 0.1 }}
+                  >
+                    <div className="flex flex-col md:flex-row items-center">
+                      <div className="md:w-2/5 p-4">
+                        <div className="relative w-48 h-48 md:w-full md:h-64 rounded-full md:rounded-xl overflow-hidden mx-auto">
+                          <img
+                            src={member.photo || DefaultPhoto}
+                            alt={member.name}
+                            className="w-full h-full object-cover object-center transform group-hover:scale-105 transition-duration-500"
+                          />
+                          <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                        </div>
+                      </div>
+                      <div className="md:w-3/5 p-6 md:p-8">
+                        <h3 className="text-xl font-bold text-gray-900 mb-2">{member.name}</h3>
+                        <p className="text-sm font-medium text-blue-600 mb-3">{member.title}</p>
+                        {member.bio && (
+                          <p className="text-sm text-gray-600 mb-4 line-clamp-3">{member.bio}</p>
+                        )}
+                      </div>
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+            </div>
+          </div>
+        )}
 
         {activeTab === "fellows" && (
           <div className="text-center mt-12">

@@ -12,16 +12,17 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 lg:gap-12">
           {/* Column 1 - Logo and Description */}
           <div className="lg:col-span-3">
-            <div className="w-48 mb-4">
+            <div className="w-48 h-20 mb-4 flex items-center">
               <StaticImage
-                src="../assets/images/Leo-logo.png"
+                src="../assets/images/leo-logo-vibrant-whitescale-transparent.png"
                 alt="LéO Africa Institute"
-                className="brightness-0 invert"
+                className="w-full h-full"
                 width={192}
                 height={80}
-                layout="constrained"
+                layout="fullWidth"
                 placeholder="blurred"
                 objectFit="contain"
+                imgStyle={{ objectFit: 'contain' }}
               />
             </div>
             <p className="text-sm text-white/80 mb-6">
@@ -47,7 +48,7 @@ const Footer = () => {
             <ul className="space-y-2">
               <li><a href="#" className="font-inter text-sm hover:text-white/80 transition-colors">Sign In</a></li>
               <li><a href="/partner-with-us" className="font-inter text-sm hover:text-white/80 transition-colors">Partner with Us</a></li>
-              <li><a href="/partner-with-us" className="font-inter text-sm hover:text-white/80 transition-colors">Become a Member</a></li>
+              <li><a href="/donate" className="font-inter text-sm hover:text-white/80 transition-colors">Donate to the Institute</a></li>
               <li><a href="/contact" className="font-inter text-sm hover:text-white/80 transition-colors">Contact Us</a></li>
             </ul>
           </div>

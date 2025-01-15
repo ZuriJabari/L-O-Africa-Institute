@@ -45,22 +45,28 @@ const SubscriptionForm = () => {
     e.preventDefault();
     setLoading(true);
     setMessage('');
+    console.log('Form submission started');
 
     try {
       const response = await subscriptionService.addSubscriber({
         ...formData,
         type: SUBSCRIPTION_TYPES.MEMBERSHIP,
-        source: 'main_form'
+        source: 'join_movement_form',
+        submissionDate: new Date().toISOString()
       });
+      console.log('Form submission response:', response);
 
       if (response.success) {
         setSuccess(true);
         setMessage(response.message);
         setFormData({ name: '', email: '', country: '', interests: [] });
       } else {
+        setSuccess(false);
         setMessage(response.message);
       }
     } catch (error) {
+      console.error('Form submission error:', error);
+      setSuccess(false);
       setMessage('There was an error. Please try again.');
     } finally {
       setLoading(false);

@@ -56,94 +56,18 @@ const LectureSeries = () => {
 
       {/* Main Content */}
       <section className="py-20 bg-gradient-to-b from-white to-gray-50">
-        <div className="max-w-screen-xl mx-auto px-4">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div>
-              <div className="relative">
-                <SubsectionTitle className="mb-6">
-                  Our Impact
-                </SubsectionTitle>
-                <SectionTitle className="mb-6">
-                  Shaping Africa's Future Through Dialogue
-                </SectionTitle>
-                <div className="prose max-w-none">
-                  <BodyText className="text-lg leading-relaxed text-gray-600">
-                    The Lecture Series allow us to deepen our understanding of economic, political and social issues that shape Africa and the rest of the world.
-                  </BodyText>
-                </div>
-                <div className="mt-8 grid grid-cols-2 gap-6">
-                  <div className="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow">
-                    <div className="w-12 h-12 bg-[#0B9A9E]/10 rounded-lg flex items-center justify-center mb-4">
-                      <svg className="w-6 h-6 text-[#0B9A9E]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
-                      </svg>
-                    </div>
-                    <SubsectionTitle className="mb-2">
-                      Economic Growth
-                    </SubsectionTitle>
-                    <BodyText className="text-gray-600">
-                      Understanding economic dynamics and opportunities
-                    </BodyText>
-                  </div>
-                  <div className="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow">
-                    <div className="w-12 h-12 bg-[#F6911E]/10 rounded-lg flex items-center justify-center mb-4">
-                      <svg className="w-6 h-6 text-[#F6911E]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
-                      </svg>
-                    </div>
-                    <SubsectionTitle className="mb-2">
-                      Social Impact
-                    </SubsectionTitle>
-                    <BodyText className="text-gray-600">
-                      Addressing key social challenges and solutions
-                    </BodyText>
-                  </div>
-                  <div className="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow">
-                    <div className="w-12 h-12 bg-[#0B9A9E]/10 rounded-lg flex items-center justify-center mb-4">
-                      <svg className="w-6 h-6 text-[#0B9A9E]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 14v3m4-3v3m4-3v3M3 21h18M3 10h18M3 7l9-4 9 4M4 10h16v11H4V10z" />
-                      </svg>
-                    </div>
-                    <SubsectionTitle className="mb-2">
-                      Political Discourse
-                    </SubsectionTitle>
-                    <BodyText className="text-gray-600">
-                      Fostering meaningful political dialogue
-                    </BodyText>
-                  </div>
-                  <div className="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow">
-                    <div className="w-12 h-12 bg-[#F6911E]/10 rounded-lg flex items-center justify-center mb-4">
-                      <svg className="w-6 h-6 text-[#F6911E]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
-                      </svg>
-                    </div>
-                    <SubsectionTitle className="mb-2">
-                      Global Perspective
-                    </SubsectionTitle>
-                    <BodyText className="text-gray-600">
-                      Connecting Africa to the world stage
-                    </BodyText>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="relative">
-              <div className="aspect-square bg-[#0B9A9E]/5 rounded-3xl overflow-hidden">
-                <div className="absolute inset-0 bg-gradient-to-br from-[#0B9A9E]/20 to-transparent"></div>
-                <div className="relative h-full flex flex-col items-center justify-center p-8 text-center">
-                  <div className="w-16 h-16 bg-white/10 backdrop-blur-sm rounded-full flex items-center justify-center mb-6">
-                    <svg className="w-8 h-8 text-[#0B9A9E]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 4a2 2 0 114 0v1a1 1 0 001 1h3a1 1 0 011 1v3a1 1 0 01-1 1h-1a2 2 0 100 4h1a1 1 0 011 1v3a1 1 0 01-1 1h-3a1 1 0 01-1-1v-1a2 2 0 10-4 0v1a1 1 0 01-1 1H7a1 1 0 01-1-1v-3a1 1 0 00-1-1H4a2 2 0 110-4h1a1 1 0 001-1V7a1 1 0 011-1h3a1 1 0 001-1V4z" />
-                    </svg>
-                  </div>
-                  <BodyLarge className="text-gray-800 mb-4">
-                    "Shaping tomorrow's leaders through today's dialogue"
-                  </BodyLarge>
-                  <BodyText className="text-gray-600">
-                    Join us in building Africa's future
-                  </BodyText>
-                </div>
-              </div>
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto">
+            <div className="text-center mb-16">
+              <SubsectionTitle className="mb-4">
+                About the Series
+              </SubsectionTitle>
+              <SectionTitle className="mb-6">
+                Shaping Africa's Future Through Dialogue
+              </SectionTitle>
+              <BodyText className="text-lg leading-relaxed text-gray-600">
+                The Lecture Series allow us to deepen our understanding of economic, political and social issues that shape Africa and the rest of the world. Through these dialogues, we connect thought leaders with emerging voices to foster meaningful conversations about Africa's future.
+              </BodyText>
             </div>
           </div>
         </div>
@@ -152,30 +76,72 @@ const LectureSeries = () => {
       {/* Ali Mufuruki Lecture Series */}
       <section className="py-20 bg-[#0B9A9E]/5">
         <div className="max-w-screen-xl mx-auto px-4">
-          <div className="max-w-3xl">
-            <SubsectionTitle className="mb-6">
-              Special Series
-            </SubsectionTitle>
-            <SectionTitle className="mb-6">
-              Ali Mufuruki Lecture Series
-            </SectionTitle>
-            <div className="prose max-w-none text-gray-600">
-              <BodyText className="text-lg mb-6">
-                The Ali Mufuruki Distinguished Lecture series (DLS) is a joint project of the LéO Africa Institute and the Africa Leadership Initiative East Africa. The Lecture platform is focused on preserving the memory and legacy work of the late Ali Mufuruki.
-              </BodyText>
-              <BodyText className="text-lg mb-8">
-                Ali was a transformational leader and pan-Africanist. The project is designed to inspire the young and emerging generation of leaders in Africa and to provide insight into the often-complex topics of leadership and the development of society.
-              </BodyText>
-              <div className="mt-8">
-                <Link 
-                  to="/events"
-                  className="inline-flex items-center gap-2 px-8 py-4 bg-[#0B9A9E] text-white rounded-lg font-semibold hover:bg-[#0B9A9E]/90 transition-colors"
-                >
-                  Check out our calendar for the inaugural Lecture
-                  <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div className="relative order-2 lg:order-1">
+              <div className="relative">
+                <div className="aspect-square max-w-md mx-auto">
+                  <StaticImage 
+                    src="../../assets/images/AliMufuruki.jpeg"
+                    alt="Ali Mufuruki"
+                    className="w-full h-full rounded-2xl shadow-xl"
+                    imgClassName="w-full h-full object-cover rounded-2xl"
+                    placeholder="blurred"
+                    layout="fullWidth"
+                    quality={95}
+                  />
+                  {/* Decorative elements */}
+                  <div className="absolute -top-4 -left-4 w-24 h-24 bg-[#F6911E]/10 rounded-full -z-10"></div>
+                  <div className="absolute -bottom-4 -right-4 w-32 h-32 bg-[#0B9A9E]/10 rounded-full -z-10"></div>
+                  <div className="absolute top-1/2 -translate-y-1/2 -left-4 w-8 h-32 bg-gradient-to-r from-[#0B9A9E]/20 to-transparent rounded-l-full"></div>
+                </div>
+                {/* Quote overlay */}
+                <div className="absolute bottom-8 right-0 lg:-right-8 bg-white/95 backdrop-blur-sm p-6 rounded-xl shadow-lg max-w-sm">
+                  <svg className="w-8 h-8 text-[#F6911E] mb-2 opacity-50" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
                   </svg>
-                </Link>
+                  <BodyText className="text-gray-800 italic mb-4">
+                    "A transformational leader and pan-Africanist who inspired generations."
+                  </BodyText>
+                  <div className="text-sm text-gray-600 font-medium">
+                    - LéO Africa Institute
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="order-1 lg:order-2">
+              <SubsectionTitle className="mb-6">
+                Special Series
+              </SubsectionTitle>
+              <SectionTitle className="mb-6">
+                Ali Mufuruki Lecture Series
+              </SectionTitle>
+              <div className="prose max-w-none text-gray-600">
+                <BodyText className="text-lg mb-6">
+                  The Ali Mufuruki Distinguished Lecture series (DLS) is a joint project of the LéO Africa Institute and the Africa Leadership Initiative East Africa. The Lecture platform is focused on preserving the memory and legacy work of the late Ali Mufuruki.
+                </BodyText>
+                <BodyText className="text-lg mb-8">
+                  Ali was a transformational leader and pan-Africanist. The project is designed to inspire the young and emerging generation of leaders in Africa and to provide insight into the often-complex topics of leadership and the development of society.
+                </BodyText>
+                <div className="flex flex-wrap gap-4">
+                  <Link 
+                    to="/events/lecture-series/ali-mufuruki"
+                    className="inline-flex items-center gap-2 px-6 py-3 bg-[#0B9A9E] text-white rounded-lg hover:bg-[#0B9A9E]/90 transition-all"
+                  >
+                    <span className="font-semibold">Learn More About Ali</span>
+                    <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                    </svg>
+                  </Link>
+                  <Link 
+                    to="/events/lecture-series/schedule"
+                    className="inline-flex items-center gap-2 px-6 py-3 bg-[#F6911E]/10 text-[#F6911E] rounded-lg hover:bg-[#F6911E]/20 transition-all"
+                  >
+                    <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                    </svg>
+                    <span className="font-semibold">View Lecture Schedule</span>
+                  </Link>
+                </div>
               </div>
             </div>
           </div>

@@ -1,12 +1,35 @@
 import React from 'react';
-import Layout from '../../../components/Layout';
-import { StaticImage } from 'gatsby-plugin-image';
+import { graphql } from 'gatsby';
+import { GatsbyImage, getImage, StaticImage } from 'gatsby-plugin-image';
 import { motion } from 'framer-motion';
-import { FaLinkedin, FaTwitter, FaEnvelope } from 'react-icons/fa';
 import { Link } from 'gatsby';
-import FoundersBlog from '../../../components/FoundersBlog';
+import Layout from '../../../components/Layout';
 
-const TeamPage = () => {
+export const query = graphql`
+  query {
+    allFile(filter: { sourceInstanceName: { eq: "images" }, relativeDirectory: { eq: "team" } }) {
+      edges {
+        node {
+          relativePath
+          name
+          childImageSharp {
+            gatsbyImageData(
+              width: 300
+              height: 300
+              placeholder: BLURRED
+              transformOptions: {
+                fit: COVER
+                cropFocus: CENTER
+              }
+            )
+          }
+        }
+      }
+    }
+  }
+`;
+
+const TeamPage = ({ data }) => {
   const fadeIn = {
     initial: { opacity: 0, y: 20 },
     whileInView: { opacity: 1, y: 0 },
@@ -14,75 +37,90 @@ const TeamPage = () => {
     transition: { duration: 0.6 }
   };
 
-  const founders = [
-    {
-      name: "Awel Uwihanganye",
-      role: "Co-Founder & Program Lead",
-      image: "../../../assets/images/team/Awel.jpg",
-      bio: "Passionate about harnessing Africa's growth prospects through ethical & values-based leadership.",
-      slug: "awel-uwihanganye",
-      social: {
-        linkedin: "#",
-        twitter: "#",
-        email: "awel@leoafricainstitute.org"
-      }
-    },
-    {
-      name: "Magnus Mchnguzi",
-      role: "Co-Founder & Chairman",
-      image: "../../../assets/images/team/Magnus.png",
-      bio: "An entrepreneur committed to creating opportunities for young African leaders.",
-      slug: "magnus-mchunguzi",
-      social: {
-        linkedin: "#",
-        twitter: "#",
-        email: "magnus@leoafricainstitute.org"
-      }
-    }
-  ];
+  // Helper function to get image
+  const getTeamImage = (imageName) => {
+    const imageNode = data.allFile.edges.find(
+      ({ node }) => node.name === imageName
+    )?.node;
+    return imageNode ? getImage(imageNode.childImageSharp) : null;
+  };
+
+  // Team Card Component
+  const TeamCard = ({ name, role, imageName, bio, delay = 0 }) => {
+    const imageData = getTeamImage(imageName);
+
+    return (
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6, delay }}
+        className="flex flex-col bg-white rounded-xl p-6 shadow-sm hover:shadow-md transition-all hover:-translate-y-1"
+      >
+        <div className="relative w-full aspect-square mb-4 max-w-[200px] mx-auto">
+          <div className="absolute inset-0 bg-gradient-to-r from-[#0B9A9E] to-[#F6911E] rounded-lg transform rotate-3"></div>
+          {imageData ? (
+            <GatsbyImage
+              image={imageData}
+              alt={name}
+              className="relative z-10 w-full h-full object-cover rounded-lg shadow-lg transform -rotate-2"
+            />
+          ) : (
+            <div className="relative z-10 w-full h-full bg-gray-100 rounded-lg shadow-lg transform -rotate-2 flex items-center justify-center">
+              <span className="text-gray-400 text-4xl font-bold">{name.charAt(0)}</span>
+            </div>
+          )}
+        </div>
+        <div className="text-center">
+          <h3 className="text-2xl font-bold mb-2">{name}</h3>
+          <p className="text-[#0B9A9E] text-lg font-medium mb-4">{role}</p>
+          {bio && <p className="text-gray-600 text-lg leading-relaxed">{bio}</p>}
+        </div>
+      </motion.div>
+    );
+  };
 
   const boardMembers = [
     {
+      name: "Magnus Mchnguzi",
+      role: "Co-Founder & Chairman of the Board",
+      imageName: "Magnus",
+      bio: "A distinguished leader with extensive experience in organizational development and strategic leadership in East Africa.",
+      slug: "magnus-mchnguzi"
+    },
+    {
+      name: "Awel Uwihanganye",
+      role: "Co-founder & Board Member",
+      imageName: "Awel",
+      bio: "A passionate advocate for ethical leadership and social innovation in Africa.",
+      slug: "awel-uwihanganye"
+    },
+    {
       name: "Catherinerose Barreto",
       role: "Board Member",
+      imageName: "Catherinerose",
       bio: "Human Capital, Innovation, Entrepreneurship & Gender Consultant",
-      image: "../../../assets/images/team/Catherinerose.png",
       slug: "catherinerose-barreto"
     },
     {
       name: "Kevin Langley",
       role: "Board Member",
+      imageName: "Kevin_Langley",
       bio: "Head Of Marketing, Visa CEMEA",
-      image: "../../../assets/images/team/Kevin_Langley.png",
       slug: "kevin-langley"
     },
     {
       name: "William Babigumira",
       role: "Board Member",
+      imageName: "William",
       bio: "Certified Trade Advisor, Private Sector Federation Rwanda",
-      image: "../../../assets/images/team/William.jpg",
       slug: "william-babigumira"
     },
     {
       name: "Conrad Mugisha",
       role: "Board Member",
-      bio: "Business Development & Project Management Expert",
-      image: "../../../assets/images/team/cmugisha.jpg",
+      imageName: "conrad",
       slug: "conrad-mugisha"
-    },
-    {
-      name: "Fiona Mbabazi",
-      role: "Board Member",
-      bio: "Media and Communication Professional",
-      image: "../../../assets/images/team/fiona.png",
-      slug: "fiona-mbabazi"
-    },
-    {
-      name: "Rosie Lore",
-      role: "Board Member",
-      bio: "Leadership Coach",
-      image: "../../../assets/images/team/Rosie-Lorie.png",
-      slug: "rosie-lore"
     }
   ];
 
@@ -90,22 +128,30 @@ const TeamPage = () => {
     {
       name: "Awel Uwihanganye",
       role: "Co-Founder & Program Lead",
-      image: "../../../assets/images/team/Awel.jpg",
-      bio: "Passionate about harnessing Africa's growth prospects through ethical & values-based leadership.",
+      imageName: "Awel",
+      bio: "A passionate advocate for ethical leadership and social innovation in Africa.",
       slug: "awel-uwihanganye"
     },
     {
       name: "Nelson Asiimwe Mushabe",
-      role: "Fellowships & Program Manager",
-      image: "../../../assets/images/Asiimwe-Nelson-Mushabe.png",
-      bio: "Manages fellowship programs and coordinates program implementation.",
+      role: "Program Manager",
+      imageName: "Nelson",
+      bio: "Leads program implementation and stakeholder engagement.",
       slug: "nelson-asiimwe"
     },
     {
       name: "Nnanda Kizito Seruwagi",
       role: "Communications & Media Officer",
-      image: "../../../assets/images/team/Nanda.jpg",
+      imageName: "Nanda",
+      bio: "Manages communications and media relations.",
       slug: "nnanda-kizito"
+    },
+    {
+      name: "Abdallah Zubedah",
+      role: "Program Officer",
+      imageName: "default-profile",
+      bio: "Coordinates program activities and partnerships.",
+      slug: "abdallah-zubedah"
     }
   ];
 
@@ -113,436 +159,117 @@ const TeamPage = () => {
     <Layout>
       {/* Hero Section */}
       <section className="relative bg-gradient-to-r from-[#0B9A9E] to-[#F6911E] py-24">
-        {/* Background Pattern */}
         <div className="absolute inset-0 opacity-10">
-          <div className="absolute inset-0" style={{
-            backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.4'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
-            backgroundSize: '24px 24px'
-          }}></div>
-        </div>
-
-        {/* Floating Shapes */}
-        <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute top-20 left-10 w-20 h-20 bg-white opacity-10 rounded-full transform rotate-45"></div>
-          <div className="absolute bottom-20 right-10 w-32 h-32 bg-white opacity-10 rounded-full"></div>
-          <div className="absolute top-40 right-20 w-16 h-16 bg-white opacity-10 transform rotate-12"></div>
+          <div className="absolute inset-0 bg-pattern"></div>
         </div>
         
         <div className="container mx-auto px-4 relative">
           <div className="max-w-4xl">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-              className="mb-8"
-            >
-              <h1 className="text-6xl md:text-7xl font-bold text-white mb-6 text-left">
-                Our Team
+            <motion.div {...fadeIn} className="mb-8">
+              <h1 className="text-6xl md:text-7xl font-bold text-white mb-6">
+                Meet the Team
               </h1>
               <div className="w-24 h-1.5 bg-white opacity-80"></div>
             </motion.div>
-
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              className="text-2xl md:text-3xl text-white opacity-90 max-w-3xl font-light leading-relaxed"
-            >
-              Meet the dedicated individuals driving our mission to transform leadership in Africa through innovation, ethical practices, and sustainable development.
+            
+            <motion.p {...fadeIn} className="text-2xl md:text-3xl text-white opacity-90 max-w-3xl font-light leading-relaxed">
+              Meet the dedicated individuals driving positive change through leadership development in Africa.
             </motion.p>
           </div>
         </div>
       </section>
 
-      {/* Meet Our Founders Section */}
-      <section className="py-16 bg-white">
+      {/* Quote Section */}
+      <section className="py-20 bg-gray-50">
         <div className="container mx-auto px-4">
-          <div className="max-w-7xl mx-auto">
-            <div className="mb-12">
-              <h2 className="text-4xl md:text-5xl font-bold mb-6 text-left">Meet Our Founders</h2>
-              <p className="text-gray-600 text-xl md:text-2xl leading-relaxed max-w-3xl mb-12">
-                Visionary leaders committed to transforming Africa through ethical leadership and innovation.
-              </p>
-            </div>
-            
-            <div className="grid lg:grid-cols-2 gap-12">
-              {/* Magnus's Profile */}
-              <Link 
-                to="/about/team/magnus-mchnguzi"
-                className="block transition-transform hover:-translate-y-1"
-              >
-                <motion.div
-                  initial={{ opacity: 0, x: -20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.6 }}
-                  className="flex gap-8 items-start bg-white rounded-xl p-8 shadow-sm hover:shadow-md transition-shadow"
-                >
-                  <div className="relative flex-shrink-0">
-                    <div className="w-48 h-56 relative">
-                      <div className="absolute inset-0 bg-gradient-to-r from-[#0B9A9E] to-[#F6911E] rounded-lg transform rotate-3"></div>
-                      <StaticImage
-                        src="../../../assets/images/team/Magnus.png"
-                        alt="Magnus Mchnguzi"
-                        className="relative z-10 w-full h-full object-cover rounded-lg shadow-lg transform -rotate-2"
-                        imgClassName="rounded-lg"
-                        placeholder="blurred"
-                        layout="constrained"
-                        width={192}
-                        height={224}
-                        quality={95}
-                      />
-                    </div>
-                  </div>
-                  <div className="flex-1">
-                    <h3 className="text-2xl font-bold mb-3">Magnus Mchnguzi</h3>
-                    <p className="text-[#0B9A9E] font-medium text-lg mb-4">Co-Founder & Chairman</p>
-                    <p className="text-gray-600 text-lg leading-relaxed">
-                      A distinguished leader with extensive experience in organizational development and strategic leadership.
-                      Magnus drives innovation in governance and ethical leadership across East Africa.
-                    </p>
-                  </div>
-                </motion.div>
-              </Link>
-
-              {/* Awel's Profile */}
-              <Link 
-                to="/about/team/awel-uwihanganye"
-                className="block transition-transform hover:-translate-y-1"
-              >
-                <motion.div
-                  initial={{ opacity: 0, x: 20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.6, delay: 0.2 }}
-                  className="flex gap-8 items-start bg-white rounded-xl p-8 shadow-sm hover:shadow-md transition-shadow"
-                >
-                  <div className="relative flex-shrink-0">
-                    <div className="w-48 h-56 relative">
-                      <div className="absolute inset-0 bg-gradient-to-r from-[#0B9A9E] to-[#F6911E] rounded-lg transform -rotate-3"></div>
-                      <StaticImage
-                        src="../../../assets/images/team/Awel.jpg"
-                        alt="Awel Uwihanganye"
-                        className="relative z-10 w-full h-full object-cover rounded-lg shadow-lg transform rotate-2"
-                        imgClassName="rounded-lg"
-                        placeholder="blurred"
-                        layout="constrained"
-                        width={192}
-                        height={224}
-                        quality={95}
-                      />
-                    </div>
-                  </div>
-                  <div className="flex-1">
-                    <h3 className="text-2xl font-bold mb-3">Awel Uwihanganye</h3>
-                    <p className="text-[#0B9A9E] font-medium text-lg mb-4">Co-founder & Program Lead</p>
-                    <p className="text-gray-600 text-lg leading-relaxed">
-                      A passionate advocate for ethical leadership and social innovation in Africa. 
-                      Awel brings extensive experience in policy, governance, and social entrepreneurship.
-                    </p>
-                  </div>
-                </motion.div>
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Board Members Section */}
-      <section className="py-16 bg-gray-50">
-        <div className="container mx-auto px-4">
-          <div className="max-w-7xl mx-auto">
-            <div className="mb-16">
-              <h2 className="text-4xl md:text-5xl font-bold mb-6 text-left">Governing Board of Directors</h2>
-              <p className="text-gray-600 max-w-3xl text-xl md:text-2xl leading-relaxed">
-                Our distinguished board members bring diverse expertise and leadership experience to guide LEO's strategic direction.
-              </p>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {/* Catherinerose Barreto */}
-              <Link 
-                to="/about/team/catherinerose-barreto"
-                className="block transition-transform hover:-translate-y-1"
-              >
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  className="bg-white rounded-xl p-8 shadow-sm hover:shadow-md transition-shadow"
-                >
-                  <div className="relative w-full aspect-square mb-4 max-w-[200px] mx-auto">
-                    <StaticImage
-                      src="../../../assets/images/team/Catherinerose.png"
-                      alt="Catherinerose Barreto"
-                      className="w-full h-full object-cover rounded-lg shadow-sm"
-                      imgClassName="rounded-lg"
-                      placeholder="blurred"
-                      objectFit="cover"
-                      quality={95}
-                    />
-                  </div>
-                  <h3 className="text-2xl font-bold mb-2 text-center">Catherinerose Barreto</h3>
-                  <p className="text-[#0B9A9E] text-lg font-medium mb-3 text-center">Board Member</p>
-                  <p className="text-gray-600 text-center">Human Capital, Innovation, Entrepreneurship & Gender Consultant</p>
-                </motion.div>
-              </Link>
-
-              {/* Kevin Langley */}
-              <Link 
-                to="/about/team/kevin-langley"
-                className="block transition-transform hover:-translate-y-1"
-              >
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  className="bg-white rounded-xl p-8 shadow-sm hover:shadow-md transition-shadow"
-                >
-                  <div className="relative w-full aspect-square mb-4 max-w-[200px] mx-auto">
-                    <StaticImage
-                      src="../../../assets/images/team/Kevin_Langley.png"
-                      alt="Kevin Langley"
-                      className="w-full h-full object-cover rounded-lg shadow-sm"
-                      imgClassName="rounded-lg"
-                      placeholder="blurred"
-                      objectFit="cover"
-                      quality={95}
-                    />
-                  </div>
-                  <h3 className="text-2xl font-bold mb-2 text-center">Kevin Langley</h3>
-                  <p className="text-[#0B9A9E] text-lg font-medium mb-3 text-center">Board Member</p>
-                  <p className="text-gray-600 text-center">Head Of Marketing, Visa CEMEA</p>
-                </motion.div>
-              </Link>
-
-              {/* William Babigumira */}
-              <Link 
-                to="/about/team/william-babigumira"
-                className="block transition-transform hover:-translate-y-1"
-              >
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  className="bg-white rounded-xl p-8 shadow-sm hover:shadow-md transition-shadow"
-                >
-                  <div className="relative w-full aspect-square mb-4 max-w-[200px] mx-auto">
-                    <StaticImage
-                      src="../../../assets/images/team/William.jpg"
-                      alt="William Babigumira"
-                      className="w-full h-full object-cover rounded-lg shadow-sm"
-                      imgClassName="rounded-lg"
-                      placeholder="blurred"
-                      objectFit="cover"
-                      quality={95}
-                    />
-                  </div>
-                  <h3 className="text-2xl font-bold mb-2 text-center">William Babigumira</h3>
-                  <p className="text-[#0B9A9E] text-lg font-medium mb-3 text-center">Board Member</p>
-                  <p className="text-gray-600 text-center">Certified Trade Advisor, Private Sector Federation Rwanda</p>
-                </motion.div>
-              </Link>
-
-              {/* Conrad Mugisha */}
-              <Link 
-                to="/about/team/conrad-mugisha"
-                className="block transition-transform hover:-translate-y-1"
-              >
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  className="bg-white rounded-xl p-8 shadow-sm hover:shadow-md transition-shadow"
-                >
-                  <div className="relative w-full aspect-square mb-4 max-w-[200px] mx-auto">
-                    <StaticImage
-                      src="../../../assets/images/team/cmugisha.jpg"
-                      alt="Conrad Mugisha"
-                      className="w-full h-full object-cover rounded-lg shadow-sm"
-                      imgClassName="rounded-lg"
-                      placeholder="blurred"
-                      objectFit="cover"
-                      quality={95}
-                    />
-                  </div>
-                  <h3 className="text-2xl font-bold mb-2 text-center">Conrad Mugisha</h3>
-                  <p className="text-[#0B9A9E] text-lg font-medium mb-3 text-center">Board Member</p>
-                  <p className="text-gray-600 text-center">Business Development & Project Management Expert</p>
-                </motion.div>
-              </Link>
-
-              {/* Fiona Mbabazi */}
-              <Link 
-                to="/about/team/fiona-mbabazi"
-                className="block transition-transform hover:-translate-y-1"
-              >
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  className="bg-white rounded-xl p-8 shadow-sm hover:shadow-md transition-shadow"
-                >
-                  <div className="relative w-full aspect-square mb-4 max-w-[200px] mx-auto">
-                    <StaticImage
-                      src="../../../assets/images/team/fiona.png"
-                      alt="Fiona Mbabazi"
-                      className="w-full h-full object-cover rounded-lg shadow-sm"
-                      imgClassName="rounded-lg"
-                      placeholder="blurred"
-                      objectFit="cover"
-                      quality={95}
-                    />
-                  </div>
-                  <h3 className="text-2xl font-bold mb-2 text-center">Fiona Mbabazi</h3>
-                  <p className="text-[#0B9A9E] text-lg font-medium mb-3 text-center">Board Member</p>
-                  <p className="text-gray-600 text-center">Media and Communication Professional</p>
-                </motion.div>
-              </Link>
-
-              {/* Rosie Lore */}
-              <Link 
-                to="/about/team/rosie-lore"
-                className="block transition-transform hover:-translate-y-1"
-              >
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  className="bg-white rounded-xl p-8 shadow-sm hover:shadow-md transition-shadow"
-                >
-                  <div className="relative w-full aspect-square mb-4 max-w-[200px] mx-auto">
-                    <StaticImage
-                      src="../../../assets/images/team/Rosie-Lorie.png"
-                      alt="Rosie Lore"
-                      className="w-full h-full object-cover rounded-lg shadow-sm"
-                      imgClassName="rounded-lg"
-                      placeholder="blurred"
-                      objectFit="cover"
-                      quality={95}
-                    />
-                  </div>
-                  <h3 className="text-2xl font-bold mb-2 text-center">Rosie Lore</h3>
-                  <p className="text-[#0B9A9E] text-lg font-medium mb-3 text-center">Board Member</p>
-                  <p className="text-gray-600 text-center">Leadership Coach</p>
-                </motion.div>
-              </Link>
-            </div>
-
-            {/* Secretary to the Board */}
+          <div className="max-w-5xl mx-auto text-center">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: 0.6 }}
-              className="mt-16"
+              className="relative"
             >
-              <h3 className="text-3xl font-bold text-gray-800 mb-3 text-left">Secretary to the Board</h3>
-              <p className="text-[#0B9A9E] font-medium text-xl">ABMAK Associates</p>
+              <svg 
+                className="w-12 h-12 text-[#0B9A9E] mb-6 mx-auto opacity-40" 
+                fill="currentColor" 
+                viewBox="0 0 32 32"
+                aria-hidden="true"
+              >
+                <path d="M9.352 4C4.456 7.456 1 13.12 1 19.36c0 5.088 3.072 8.064 6.624 8.064 3.36 0 5.856-2.688 5.856-5.856 0-3.168-2.208-5.472-5.088-5.472-.576 0-1.344.096-1.536.192.48-3.264 3.552-7.104 6.624-9.024L9.352 4zm16.512 0c-4.8 3.456-8.256 9.12-8.256 15.36 0 5.088 3.072 8.064 6.624 8.064 3.264 0 5.856-2.688 5.856-5.856 0-3.168-2.304-5.472-5.184-5.472-.576 0-1.248.096-1.44.192.48-3.264 3.456-7.104 6.528-9.024L25.864 4z" />
+              </svg>
+              <blockquote className="relative z-10">
+                <p className="text-2xl md:text-3xl font-medium text-gray-900 mb-8 leading-relaxed max-w-4xl mx-auto">
+                  "In a fast-changing world, with increased human and environmental challenges, transformational and ethical leadership becomes a critical tool to build better societies, and indeed a better world."
+                </p>
+                <div className="flex items-center gap-6 justify-center">
+                  <div className="relative">
+                    <StaticImage
+                      src="../../../assets/images/William.jpg"
+                      alt="William Babigumira"
+                      className="w-14 h-14 rounded-full object-cover"
+                      placeholder="dominantColor"
+                    />
+                    <div className="absolute -bottom-1 -right-1 w-5 h-5 bg-white rounded-full flex items-center justify-center">
+                      <div className="w-3 h-3 rounded-full bg-gradient-to-r from-[#F6911E] to-[#0B9A9E]"></div>
+                    </div>
+                  </div>
+                  <div>
+                    <div className="font-medium text-gray-900">William Babigumira</div>
+                    <div className="text-sm text-[#0B9A9E]">Senior Faculty & Member of the Board of Directors</div>
+                  </div>
+                </div>
+              </blockquote>
+              <div className="absolute inset-0 -z-10">
+                <div className="h-full w-full opacity-5 bg-gradient-to-r from-[#0B9A9E] to-[#F6911E]"></div>
+              </div>
             </motion.div>
           </div>
         </div>
       </section>
 
-      {/* Founders Blog Section */}
-      <FoundersBlog />
-
-      {/* Staff Section */}
+      {/* Board Members Section */}
       <section className="py-16 bg-white">
         <div className="container mx-auto px-4">
           <div className="max-w-7xl mx-auto">
             <div className="mb-12">
-              <h2 className="text-4xl md:text-5xl font-bold mb-6 text-left">Our Team</h2>
+              <h2 className="text-4xl md:text-5xl font-bold mb-6">Governing Board of Directors</h2>
               <p className="text-gray-600 text-xl md:text-2xl leading-relaxed max-w-3xl">
-                Meet our dynamic team committed to shaping leadership that actively contributes to building the Africa we want.
+                Our distinguished board members and founders guide LEO Africa Institute's vision and strategic direction.
               </p>
             </div>
             
-            <div className="grid md:grid-cols-4 gap-6">
-              {/* Nelson Asiimwe */}
-              <Link 
-                to="/about/team/nelson-asiimwe"
-                className="block transition-transform hover:-translate-y-1"
-              >
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: 0.2 }}
-                  className="bg-white rounded-xl p-8 shadow-sm hover:shadow-md transition-shadow"
-                >
-                  <div className="relative w-full aspect-square mb-4 max-w-[200px] mx-auto">
-                    <StaticImage
-                      src="../../../assets/images/Asiimwe-Nelson-Mushabe.png"
-                      alt="Nelson Asiimwe"
-                      className="w-full h-full object-cover rounded-lg shadow-sm"
-                      imgClassName="rounded-lg"
-                      placeholder="blurred"
-                      objectFit="cover"
-                      quality={95}
-                    />
-                  </div>
-                  <h3 className="text-2xl font-bold mb-2 text-center">Nelson Asiimwe Mushabe</h3>
-                  <p className="text-[#0B9A9E] text-lg font-medium mb-3 text-center">Fellowships & Program Manager</p>
-                  <p className="text-gray-600 text-center">Manages fellowship programs and coordinates program implementation.</p>
-                </motion.div>
-              </Link>
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {boardMembers.map((member, index) => (
+                <TeamCard 
+                  key={member.name}
+                  {...member}
+                  delay={index * 0.1}
+                />
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
 
-              {/* Nnanda Kizito */}
-              <Link 
-                to="/about/team/nnanda-kizito"
-                className="block transition-transform hover:-translate-y-1"
-              >
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: 0.1 }}
-                  className="flex flex-col bg-white rounded-xl p-8 shadow-sm hover:shadow-md transition-shadow"
-                >
-                  <div className="relative w-full aspect-square mb-4 max-w-[200px]">
-                    <StaticImage
-                      src="../../../assets/images/team/Nanda.jpg"
-                      alt="Nnanda Kizito Seruwagi"
-                      className="w-full h-full object-cover rounded-lg shadow-sm"
-                      imgClassName="rounded-lg"
-                      placeholder="blurred"
-                      objectFit="cover"
-                      quality={95}
-                    />
-                  </div>
-                  <h3 className="text-2xl font-bold mb-2">Nnanda Kizito Seruwagi</h3>
-                  <p className="text-[#0B9A9E] text-lg font-medium">Communications & Media Officer</p>
-                </motion.div>
-              </Link>
-
-              {/* Awel Uwihanganye */}
-              <Link 
-                to="/about/team/awel-uwihanganye"
-                className="block transition-transform hover:-translate-y-1"
-              >
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: 0.2 }}
-                  className="flex flex-col bg-white rounded-xl p-8 shadow-sm hover:shadow-md transition-shadow"
-                >
-                  <div className="relative w-full aspect-square mb-4 max-w-[200px]">
-                    <StaticImage
-                      src="../../../assets/images/team/Awel.jpg"
-                      alt="Awel Uwihanganye"
-                      className="w-full h-full object-cover rounded-lg shadow-sm"
-                      imgClassName="rounded-lg"
-                      placeholder="blurred"
-                      objectFit="cover"
-                      quality={95}
-                    />
-                  </div>
-                  <h3 className="text-2xl font-bold mb-2">Awel Uwihanganye</h3>
-                  <p className="text-[#0B9A9E] text-lg font-medium">Co-Founder & Program Lead</p>
-                </motion.div>
-              </Link>
+      {/* Team Members Section */}
+      <section className="py-16 bg-gray-50">
+        <div className="container mx-auto px-4">
+          <div className="max-w-7xl mx-auto">
+            <div className="mb-12">
+              <h2 className="text-4xl md:text-5xl font-bold mb-6">Our Secretariat Team</h2>
+              <p className="text-gray-600 text-xl md:text-2xl leading-relaxed max-w-3xl">
+                Meet our dynamic team leading our programs and operations.
+              </p>
+            </div>
+            
+            <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+              {teamMembers.map((member, index) => (
+                <TeamCard 
+                  key={member.name}
+                  {...member}
+                  delay={index * 0.1}
+                />
+              ))}
             </div>
           </div>
         </div>

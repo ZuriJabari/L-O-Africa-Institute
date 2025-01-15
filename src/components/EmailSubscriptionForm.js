@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
-import { collection, addDoc } from "firebase/firestore";
-import db from "../firebaseConfig";
+import { submitFormToFirebase, FORM_TYPES } from "../utils/forms";
 
 const EmailSubscriptionForm = ({ 
   title = "Subscribe to Our Updates", 
@@ -11,27 +10,46 @@ const EmailSubscriptionForm = ({
   placeholderText = "Enter your email to subscribe"
 }) => {
   const [email, setEmail] = useState("");
+  const [status, setStatus] = useState("idle"); // idle, loading, success, error
   const [message, setMessage] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    try {
-      // Determine the collection based on the title
-      const collectionName = title.toLowerCase().includes("member") 
-        ? "membership_subscribers" 
-        : "newsletter_subscribers";
+    console.log('Form submission started');
+    
+    if (!email) {
+      console.log('Email validation failed: empty email');
+      setStatus("error");
+      setMessage("Please enter your email address");
+      return;
+    }
 
-      // Save email to Firestore
-      await addDoc(collection(db, collectionName), { 
+    console.log('Attempting to submit email:', email);
+    setStatus("loading");
+    try {
+      const formData = {
         email,
-        timestamp: new Date(),
-        source: title 
-      });
+        subscriptionType: title.toLowerCase().includes("member") ? "membership" : "newsletter",
+        source: title
+      };
+      console.log('Form data prepared:', formData);
+
+      const result = await submitFormToFirebase(FORM_TYPES.SUBSCRIPTION, formData);
+      console.log('Firebase submission result:', result);
       
-      setMessage("Thank you for subscribing!");
-      setEmail(""); // Clear the input field
+      if (result.success) {
+        console.log('Submission successful');
+        setStatus("success");
+        setMessage(result.message);
+        setEmail(""); // Clear the input field
+      } else {
+        console.log('Submission failed:', result.message);
+        setStatus("error");
+        setMessage(result.message);
+      }
     } catch (error) {
-      console.error("Error saving email: ", error);
+      console.error("Error during submission:", error);
+      setStatus("error");
       setMessage("There was an issue. Please try again.");
     }
   };
@@ -66,19 +84,31 @@ const EmailSubscriptionForm = ({
             onChange={(e) => setEmail(e.target.value)}
             placeholder={placeholderText}
             required
-            className="w-full px-4 py-3 rounded-full text-gray-800 focus:outline-none shadow-md"
+            disabled={status === "loading"}
+            className="w-full px-4 py-3 rounded-full text-gray-800 focus:outline-none shadow-md disabled:opacity-50"
           />
           <button
             type="submit"
-            className="w-full sm:w-auto px-8 py-3 text-lg font-medium bg-[#515254] text-white rounded-full shadow-md hover:bg-[#2bbecb] transition-all duration-300"
+            disabled={status === "loading"}
+            className={`w-full sm:w-auto px-8 py-3 text-lg font-medium rounded-full shadow-md transition-all duration-300 ${
+              status === "loading"
+                ? "bg-gray-400 cursor-not-allowed"
+                : status === "success"
+                ? "bg-green-500 hover:bg-green-600"
+                : status === "error"
+                ? "bg-red-500 hover:bg-red-600"
+                : "bg-[#515254] hover:bg-[#2bbecb]"
+            }`}
           >
-            Subscribe
+            {status === "loading" ? "Subscribing..." : "Subscribe"}
           </button>
         </form>
         
         {message && (
           <motion.p 
-            className="mt-4 text-center text-lg text-yellow-200"
+            className={`mt-4 text-center text-lg ${
+              status === "success" ? "text-yellow-200" : "text-red-200"
+            }`}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
           >

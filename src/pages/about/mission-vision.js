@@ -1,199 +1,299 @@
-import React from "react";
-import { Link } from "gatsby";
-import Layout from "../../components/Layout";
-import { motion } from "framer-motion";
-import { FiArrowRight, FiTarget, FiEye, FiUsers, FiMessageCircle, FiGlobe, FiLink } from "react-icons/fi";
-import hero3 from "../../assets/images/huduma-about.jpg";
+import React from 'react';
+import Layout from '../../components/Layout';
+import { StaticImage } from 'gatsby-plugin-image';
+import { motion } from 'framer-motion';
+import { FaStar, FaShieldAlt, FaRocket, FaQuoteLeft } from 'react-icons/fa';
 
-const MissionVision = () => {
+const MissionVisionPage = () => {
+  const fadeIn = {
+    initial: { opacity: 0, y: 20 },
+    whileInView: { opacity: 1, y: 0 },
+    viewport: { once: true },
+    transition: { duration: 0.6 }
+  };
+
   return (
     <Layout>
       {/* Hero Section */}
-      <div className="relative">
-        <motion.div 
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1 }}
-          className="relative h-[70vh] min-h-[600px]"
-        >
-          <img
-            src={hero3}
-            alt="LEO Institute Mission and Vision"
-            className="absolute inset-0 w-full h-full object-cover"
+      <section className="relative h-[70vh] min-h-[600px] flex items-center overflow-hidden">
+        {/* Background Image Layer */}
+        <div className="absolute inset-0">
+          <StaticImage
+            src="../../assets/images/ALG24.jpg"
+            alt="Our Mission & Vision"
+            className="w-full h-full"
+            imgClassName="object-cover"
+            placeholder="dominantColor"
+            quality={100}
+            formats={["auto", "webp", "avif"]}
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/50 to-black/30"></div>
-          
-          <div className="relative h-full flex flex-col justify-center">
-            <div className="max-w-screen-xl mx-auto px-4 text-white">
+          <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-transparent"></div>
+          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/30 to-transparent"></div>
+        </div>
+
+        {/* Content Layer */}
+        <div className="container mx-auto px-4 relative z-10">
+          <div className="max-w-3xl">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+              className="mb-8"
+            >
+              <div className="flex items-center gap-4 mb-6">
+                <div className="w-12 h-[2px] bg-[#F6911E]"></div>
+                <span className="inline-block bg-[#F6911E]/10 border border-[#F6911E]/20 text-[#F6911E] px-6 py-2 text-sm font-semibold rounded-full">
+                  Our Purpose
+                </span>
+              </div>
+              <h1 className="font-playfair text-5xl md:text-6xl font-bold text-white leading-tight mb-6">
+                What We DO!
+              </h1>
+              <p className="text-xl text-white/90 max-w-2xl">
+                Shaping Africa's future through transformative leadership and meaningful dialogue
+              </p>
+            </motion.div>
+          </div>
+        </div>
+
+        {/* Bottom Transition */}
+        <div className="absolute bottom-0 left-0 w-full">
+          <div className="h-24 w-full" style={{
+            backgroundImage: `url('../../assets/images/bg-grey.svg')`,
+            backgroundRepeat: 'no-repeat',
+            backgroundPosition: 'bottom center',
+            backgroundSize: 'cover'
+          }}></div>
+        </div>
+      </section>
+
+      {/* Challenge & Opportunity Section */}
+      <section className="py-24 bg-gray-50">
+        <div className="container mx-auto px-4">
+          <motion.div 
+            className="max-w-4xl mx-auto"
+            {...fadeIn}
+          >
+            <h2 className="font-playfair text-4xl font-bold mb-8">The Challenge & Opportunity</h2>
+            <p className="font-inter text-xl text-gray-700 mb-8">
+              With an estimated 30% of the world's mineral reserves and an unprecedented natural resource endowment in general, a home market of 1.2 billion and growing, exponential growth in infrastructure and technology, and with the youngest population in the world, Africa stands at the greatest point of opportunity.
+            </p>
+            <div className="bg-white p-8 rounded-2xl shadow-lg">
+              <div className="flex items-start gap-8">
+                <div className="flex-shrink-0">
+                  <div className="w-20 h-20 rounded-full overflow-hidden border-2 border-[#F6911E]">
+                    <StaticImage
+                      src="../../assets/images/Awel1.jpg"
+                      alt="Awel Uwihanganye"
+                      className="w-full h-full object-cover"
+                      placeholder="dominantColor"
+                    />
+                  </div>
+                </div>
+                <div className="flex-grow">
+                  <FaQuoteLeft className="text-[#F6911E] text-3xl mb-4" />
+                  <blockquote className="font-inter text-xl italic text-gray-700 mb-4">
+                    "We believe leadership can be the driver of growth and tackling the bottlenecks that hinder progress."
+                  </blockquote>
+                  <footer className="font-inter font-semibold text-[#0B9A9E]">
+                    – Awel Uwihanganye, Co-founder & Program Lead
+                  </footer>
+                </div>
+              </div>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* What We Do Content Section */}
+      <section className="py-24 bg-white relative overflow-hidden">
+        <div className="container mx-auto px-4">
+          <div className="max-w-7xl mx-auto">
+            <div className="grid lg:grid-cols-2 gap-16 items-center">
+              {/* Left Column - Main Content */}
               <motion.div
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.2 }}
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8 }}
+                className="relative"
               >
-                <h1 className="font-sans text-5xl md:text-7xl font-bold mb-8 leading-tight">
-                  Our Mission <br className="hidden md:block" /><span className="text-[#F6911E]">& Vision</span>
-                </h1>
-                <p className="font-sans text-xl md:text-2xl leading-relaxed max-w-3xl">
-                  Empowering Africa's next generation of leaders through collaboration, innovation, and meaningful dialogue.
-                </p>
-                <motion.nav 
-                  className="breadcrumb mt-8 text-white/80 text-sm tracking-wide"
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ duration: 0.6, delay: 0.6 }}
-                >
-                  <Link to="/" className="hover:text-[#F6911E] transition-colors">Home</Link>
-                  {" "}/{" "}
-                  <Link to="/about" className="hover:text-[#F6911E] transition-colors">About</Link>
-                  {" "}/ <span className="text-[#F6911E]">Mission & Vision</span>
-                </motion.nav>
+                <div className="space-y-8">
+                  <div>
+                    <h3 className="font-playfair text-2xl font-bold text-gray-900 mb-4 relative inline-block">
+                      Public Platforms
+                      <div className="absolute -bottom-2 left-0 w-full h-1 bg-gradient-to-r from-[#F6911E] to-transparent"></div>
+                    </h3>
+                    <p className="text-gray-700 leading-relaxed">
+                      Through our public platforms, we provide space for young and emerging leaders to engage in collaboration with key leaders in government, civil society and private sector in shaping ideas, and determining viable solutions to pressing issues such as unemployment, poverty & inequality, climate change, public health and others.
+                    </p>
+                  </div>
+
+                  <div>
+                    <h3 className="font-playfair text-2xl font-bold text-gray-900 mb-4 relative inline-block">
+                      Inter-generation Dialogue
+                      <div className="absolute -bottom-2 left-0 w-full h-1 bg-gradient-to-r from-[#0B9A9E] to-transparent"></div>
+                    </h3>
+                    <p className="text-gray-700 leading-relaxed">
+                      In engagement we emphasize inter-generation dialogue as a strong basis for continuity of ideas and sustainability of policy actions and results, they produce.
+                    </p>
+                  </div>
+
+                  <div>
+                    <h3 className="font-playfair text-2xl font-bold text-gray-900 mb-4 relative inline-block">
+                      Strategic Partnerships
+                      <div className="absolute -bottom-2 left-0 w-full h-1 bg-gradient-to-r from-[#F6911E] to-transparent"></div>
+                    </h3>
+                    <p className="text-gray-700 leading-relaxed">
+                      In the pursuit of building critical linkages, the Institute puts particular focus on building mutually beneficial partnerships with others at home and around the world.
+                    </p>
+                  </div>
+                </div>
+              </motion.div>
+
+              {/* Right Column - Focus Areas */}
+              <motion.div
+                initial={{ opacity: 0, x: 20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8 }}
+                className="relative"
+              >
+                <div className="bg-gray-50 rounded-3xl p-10 relative">
+                  <div className="absolute -left-3 top-0 bottom-0 w-[6px]">
+                    <div className="h-full w-full bg-gradient-to-b from-[#F6911E] via-[#0B9A9E] to-transparent rounded-full"></div>
+                  </div>
+                  <h3 className="font-playfair text-2xl font-bold text-gray-900 mb-8">Focus Areas</h3>
+                  <div className="grid grid-cols-2 gap-4">
+                    {[
+                      "Unemployment",
+                      "Poverty & Inequality",
+                      "Climate Change",
+                      "Public Health",
+                      "Civil Society",
+                      "Government Relations",
+                      "Private Sector",
+                      "Youth Leadership"
+                    ].map((area, index) => (
+                      <motion.div
+                        key={area}
+                        initial={{ opacity: 0, y: 10 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.4, delay: index * 0.1 }}
+                        className="bg-white p-4 rounded-xl shadow-sm hover:shadow-md transition-shadow duration-300"
+                      >
+                        <p className="text-gray-700 font-medium">{area}</p>
+                      </motion.div>
+                    ))}
+                  </div>
+                </div>
               </motion.div>
             </div>
-          </div>
-        </motion.div>
-      </div>
-
-      {/* Mission and Vision Cards */}
-      <section className="py-24 bg-gradient-to-b from-white to-gray-50">
-        <div className="max-w-screen-xl mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-            {/* Mission Card */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              viewport={{ once: true }}
-              className="group bg-white p-10 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100"
-            >
-              <div className="flex items-center mb-6">
-                <div className="w-12 h-12 bg-[#F6911E]/10 rounded-xl flex items-center justify-center group-hover:bg-[#F6911E] transition-colors duration-300">
-                  <FiTarget className="w-6 h-6 text-[#F6911E] group-hover:text-white transition-colors duration-300" />
-                </div>
-                <h3 className="font-sans text-sm font-medium text-[#F6911E] uppercase tracking-wider ml-4">Our Mission</h3>
-              </div>
-              <h2 className="font-sans text-3xl font-bold mb-6 leading-tight group-hover:text-[#F6911E] transition-colors duration-300">
-                Fostering Leadership Excellence
-              </h2>
-              <p className="font-sans text-gray-600 leading-relaxed mb-8">
-                We are dedicated to creating platforms that enable young African leaders to engage meaningfully with key stakeholders in government, civil society, and the private sector. Our mission is to facilitate the exchange of ideas and development of solutions to pressing challenges facing our continent.
-              </p>
-              <Link 
-                to="/about" 
-                className="inline-flex items-center text-[#F6911E] hover:text-[#0B9A9E] transition-colors group"
-              >
-                Learn more 
-                <FiArrowRight className="ml-2 transform group-hover:translate-x-1 transition-transform duration-300" />
-              </Link>
-            </motion.div>
-
-            {/* Vision Card */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              viewport={{ once: true }}
-              className="group bg-white p-10 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100"
-            >
-              <div className="flex items-center mb-6">
-                <div className="w-12 h-12 bg-[#0B9A9E]/10 rounded-xl flex items-center justify-center group-hover:bg-[#0B9A9E] transition-colors duration-300">
-                  <FiEye className="w-6 h-6 text-[#0B9A9E] group-hover:text-white transition-colors duration-300" />
-                </div>
-                <h3 className="font-sans text-sm font-medium text-[#0B9A9E] uppercase tracking-wider ml-4">Our Vision</h3>
-              </div>
-              <h2 className="font-sans text-3xl font-bold mb-6 leading-tight group-hover:text-[#0B9A9E] transition-colors duration-300">
-                Shaping Africa's Future
-              </h2>
-              <p className="font-sans text-gray-600 leading-relaxed mb-8">
-                We envision an Africa where young leaders are empowered to drive positive change through innovative thinking and collaborative action. Our goal is to build a network of visionary leaders who will shape the continent's future through sustainable solutions and inclusive growth.
-              </p>
-              <Link 
-                to="/about" 
-                className="inline-flex items-center text-[#0B9A9E] hover:text-[#F6911E] transition-colors group"
-              >
-                Learn more 
-                <FiArrowRight className="ml-2 transform group-hover:translate-x-1 transition-transform duration-300" />
-              </Link>
-            </motion.div>
           </div>
         </div>
       </section>
 
-      {/* What We Do Section */}
-      <section className="py-24 bg-white">
-        <div className="max-w-screen-xl mx-auto px-4">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-            className="max-w-3xl mx-auto text-center mb-16"
-          >
-            <h3 className="font-sans text-sm font-medium text-[#F6911E] uppercase tracking-wider mb-4">What We Do</h3>
-            <h2 className="font-sans text-4xl md:text-5xl font-bold mb-8 leading-tight">
-              Building <span className="text-[#F6911E]">Tomorrow's</span> Leaders
-            </h2>
-            <p className="font-sans text-xl text-gray-600 leading-relaxed">
-              Through strategic partnerships and innovative programs, we create opportunities for emerging leaders to develop their skills and make meaningful contributions to Africa's development.
-            </p>
-          </motion.div>
+      {/* Mission & Vision Section */}
+      <section className="py-24 bg-white relative overflow-hidden">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_#0B9A9E08_1px,_transparent_1px)] bg-[length:24px_24px]"></div>
+        <div className="container mx-auto px-4 relative z-10">
+          <div className="max-w-7xl mx-auto">
+            <div className="grid lg:grid-cols-2 gap-16">
+              {/* Mission */}
+              <motion.div
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8 }}
+                className="relative"
+              >
+                <div className="bg-gradient-to-br from-[#F6911E]/5 to-transparent p-10 rounded-3xl">
+                  <div className="absolute -left-3 top-0 bottom-0 w-[6px]">
+                    <div className="h-full w-full bg-gradient-to-b from-[#F6911E] to-transparent rounded-full"></div>
+                  </div>
+                  <span className="text-[#F6911E] text-sm font-semibold tracking-wider uppercase">Our Mission</span>
+                  <p className="text-xl text-gray-700 leading-relaxed">
+                    We are building an effective network of over 10,000 individuals leading transformative change in critical areas of challenge and who amplify Africa's influence globally by 2035.
+                  </p>
+                </div>
+              </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {/* Feature 1 */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              viewport={{ once: true }}
-              className="group bg-gray-50 p-8 rounded-xl hover:bg-[#F6911E]/5 transition-colors duration-300"
+              {/* Vision */}
+              <motion.div
+                initial={{ opacity: 0, x: 20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8 }}
+                className="relative"
+              >
+                <div className="bg-gradient-to-br from-[#0B9A9E]/5 to-transparent p-10 rounded-3xl">
+                  <div className="absolute -left-3 top-0 bottom-0 w-[6px]">
+                    <div className="h-full w-full bg-gradient-to-b from-[#0B9A9E] to-transparent rounded-full"></div>
+                  </div>
+                  <span className="text-[#0B9A9E] text-sm font-semibold tracking-wider uppercase">Our Vision</span>
+                  <p className="text-xl text-gray-700 leading-relaxed">
+                    We are inspiring, empowering, connecting and enabling generations of ethical and value-based leaders in Africa and beyond.
+                  </p>
+                </div>
+              </motion.div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Core Values Section */}
+      <section className="py-24 bg-gray-50">
+        <div className="container mx-auto px-4">
+          <div className="max-w-7xl mx-auto">
+            <motion.div 
+              className="text-center mb-16"
+              {...fadeIn}
             >
-              <div className="w-12 h-12 bg-[#F6911E]/10 rounded-xl flex items-center justify-center mb-6 group-hover:bg-[#F6911E] transition-colors duration-300">
-                <FiUsers className="w-6 h-6 text-[#F6911E] group-hover:text-white transition-colors duration-300" />
-              </div>
-              <h3 className="font-sans text-2xl font-bold mb-4 group-hover:text-[#F6911E] transition-colors duration-300">
-                Public Platforms
-              </h3>
-              <p className="font-sans text-gray-600 leading-relaxed">
-                We provide spaces for meaningful dialogue between emerging leaders and established stakeholders across sectors.
-              </p>
+              <span className="text-[#F6911E] text-sm font-semibold tracking-wider uppercase">Our Foundation</span>
+              <h2 className="font-playfair text-4xl font-bold mt-4 mb-6">Core Values</h2>
+              <div className="w-24 h-1 bg-[#F6911E] mx-auto"></div>
             </motion.div>
 
-            {/* Feature 2 */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.1 }}
-              viewport={{ once: true }}
-              className="group bg-gray-50 p-8 rounded-xl hover:bg-[#0B9A9E]/5 transition-colors duration-300"
-            >
-              <div className="w-12 h-12 bg-[#0B9A9E]/10 rounded-xl flex items-center justify-center mb-6 group-hover:bg-[#0B9A9E] transition-colors duration-300">
-                <FiMessageCircle className="w-6 h-6 text-[#0B9A9E] group-hover:text-white transition-colors duration-300" />
-              </div>
-              <h3 className="font-sans text-2xl font-bold mb-4 group-hover:text-[#0B9A9E] transition-colors duration-300">
-                Inter-generation Dialogue
-              </h3>
-              <p className="font-sans text-gray-600 leading-relaxed">
-                We facilitate knowledge transfer and mentorship between experienced leaders and the next generation.
-              </p>
-            </motion.div>
-
-            {/* Feature 3 */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              viewport={{ once: true }}
-              className="group bg-gray-50 p-8 rounded-xl hover:bg-[#F6911E]/5 transition-colors duration-300"
-            >
-              <div className="w-12 h-12 bg-[#F6911E]/10 rounded-xl flex items-center justify-center mb-6 group-hover:bg-[#F6911E] transition-colors duration-300">
-                <FiGlobe className="w-6 h-6 text-[#F6911E] group-hover:text-white transition-colors duration-300" />
-              </div>
-              <h3 className="font-sans text-2xl font-bold mb-4 group-hover:text-[#F6911E] transition-colors duration-300">
-                Strategic Partnerships
-              </h3>
-              <p className="font-sans text-gray-600 leading-relaxed">
-                We build mutually beneficial relationships with organizations at home and around the world.
-              </p>
-            </motion.div>
+            <div className="grid lg:grid-cols-3 gap-8">
+              {[
+                {
+                  icon: <FaStar className="w-8 h-8" />,
+                  title: "Excellence",
+                  description: "We focus on producing the most engaging meetings and discussion sessions that meet the specific needs of our countries and communities, to ensure we make a lasting contribution to the development of our nations",
+                  color: "from-[#F6911E]"
+                },
+                {
+                  icon: <FaShieldAlt className="w-8 h-8" />,
+                  title: "Respect, Integrity & Trust",
+                  description: "We are committed to fostering an environment of respect and trust in which the utmost value is placed on integrity",
+                  color: "from-[#0B9A9E]"
+                },
+                {
+                  icon: <FaRocket className="w-8 h-8" />,
+                  title: "Innovation & Enterprise",
+                  description: "We are committed to providing resources and opportunities for personal and professional development and fostering a culture that encourages innovation",
+                  color: "from-[#F6911E]"
+                }
+              ].map((value, index) => (
+                <motion.div
+                  key={value.title}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6, delay: index * 0.2 }}
+                  className="group"
+                >
+                  <div className="bg-white rounded-3xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 h-full border border-gray-100">
+                    <div className={`w-16 h-16 rounded-2xl bg-gradient-to-br ${value.color} to-transparent/10 flex items-center justify-center mb-6 text-white`}>
+                      {value.icon}
+                    </div>
+                    <h3 className="font-playfair text-2xl font-bold text-gray-900 mb-4">{value.title}</h3>
+                    <p className="text-gray-600">{value.description}</p>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
@@ -201,4 +301,4 @@ const MissionVision = () => {
   );
 };
 
-export default MissionVision;
+export default MissionVisionPage;

@@ -132,6 +132,26 @@ const BlogPage = ({ data }) => {
         </div>
       </section>
 
+      {/* Summary Section */}
+      <section className="bg-gradient-to-br from-gray-50 to-white py-12 border-b border-gray-100">
+        <div className="container mx-auto px-6 lg:px-20">
+          <div className="max-w-4xl mx-auto">
+            {/* Temporary Summary from Excerpt */}
+            <div className="mb-8">
+              <h2 className="text-xl font-semibold text-gray-900 mb-4 flex items-center">
+                <div className="w-1 h-16 bg-[#f6911e] mr-3"></div>
+                <span>Key Takeaways</span>
+              </h2>
+              <div className="bg-white rounded-xl p-6 shadow-sm">
+                <div className="prose prose-lg max-w-none">
+                  <p className="text-gray-700">{blog.excerpt}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Content Area */}
       <article
         id="article-content"
@@ -296,24 +316,22 @@ const BlogPage = ({ data }) => {
 };
 
 export const query = graphql`
-  query ($id: String!) {
+  query BlogPostQuery($id: String!) {
     prismicBlogPosts(id: { eq: $id }) {
+      id
       data {
         title
+        publish_date
         author
         author_picture {
           url
         }
-        publish_date
-        content {
-          raw
-        }
-        introduction {
-          raw
-        }
-        excerpt
         featured_image {
           url
+        }
+        excerpt
+        content {
+          raw
         }
         categories {
           category
@@ -321,9 +339,9 @@ export const query = graphql`
       }
     }
     allPrismicBlogPosts(
-      limit: 5,
       filter: { id: { ne: $id } }
       sort: { data: { publish_date: DESC } }
+      limit: 3
     ) {
       edges {
         node {
@@ -332,12 +350,12 @@ export const query = graphql`
           data {
             title
             author
-            author_picture {
-              url
-            }
             publish_date
             excerpt
             featured_image {
+              url
+            }
+            author_picture {
               url
             }
             categories {

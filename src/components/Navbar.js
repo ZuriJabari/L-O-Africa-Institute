@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect,useRef } from 'react';
 import { FiSearch, FiArrowRight, FiMenu, FiX } from 'react-icons/fi';
 import { FaFacebookF, FaTwitter, FaLinkedinIn, FaInstagram, FaStar } from 'react-icons/fa';
 import { navigate } from 'gatsby';
@@ -13,6 +13,7 @@ import ALGICON from '../assets/images/alg-icon.png';
 import LucyPhoto from '../assets/images/Lucy.png';
 import CarlPhoto from '../assets/images/carl.jpg';
 import EmailSubscriptionForm from './EmailSubscriptionForm';
+import { submitFormToFirebase, FORM_TYPES } from '../utils/forms';
 
 // Ensure this path is correct
 
@@ -21,10 +22,42 @@ const Navbar = () => {
   const [activeMenu, setActiveMenu] = useState(null);
   const [searchQuery, setSearchQuery] = useState("");
   const [isSearchOpen, setIsSearchOpen] = useState(false);
+  const navRef = useRef(null);
 
-  const handleMenuToggle = (menu) => {
-    setActiveMenu((prevMenu) => (prevMenu === menu ? null : menu));
+  // Membership form state
+  const [membershipForm, setMembershipForm] = useState({
+    name: '',
+    email: '',
+    membershipType: ''
+  });
+  const [membershipSubmitting, setMembershipSubmitting] = useState(false);
+  const [membershipSuccess, setMembershipSuccess] = useState(false);
+  const [membershipMessage, setMembershipMessage] = useState('');
+
+  // Track hover state
+  const [isHovering, setIsHovering] = useState(false);
+  const hoverTimeoutRef = useRef(null);
+
+  // Animation styles
+  const dropdownAnimation = {
+    enter: {
+      animation: 'dropdownEnter 0.2s ease-out forwards',
+      transformOrigin: 'top'
+    }
   };
+
+  const dropdownStyles = `
+    @keyframes dropdownEnter {
+      from {
+        opacity: 0;
+        transform: translateY(-8px) scale(0.98);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+  `;
 
   const handleSearchToggle = () => {
     setIsSearchOpen(!isSearchOpen);
@@ -39,6 +72,75 @@ const Navbar = () => {
     navigate(`/searchResults?query=${searchQuery}`);
   };
 
+  const handleMembershipChange = (e) => {
+    const { name, value } = e.target;
+    setMembershipForm(prev => ({
+      ...prev,
+      [name]: value
+    }));
+  };
+
+  const handleMembershipSubmit = async (e) => {
+    e.preventDefault();
+    console.log('Membership form submission started');
+
+    setMembershipSubmitting(true);
+    setMembershipMessage('');
+
+    try {
+      const result = await submitFormToFirebase(FORM_TYPES.JOIN, {
+        ...membershipForm,
+        source: 'navbar_form'
+      });
+      console.log('Membership submission result:', result);
+
+      if (result.success) {
+        setMembershipSuccess(true);
+        setMembershipMessage(result.message);
+        setMembershipForm({
+          name: '',
+          email: '',
+          membershipType: ''
+        });
+      } else {
+        setMembershipSuccess(false);
+        setMembershipMessage(result.message);
+      }
+    } catch (error) {
+      console.error('Membership submission error:', error);
+      setMembershipSuccess(false);
+      setMembershipMessage('An error occurred. Please try again later.');
+    } finally {
+      setMembershipSubmitting(false);
+    }
+  };
+
+  const handleMenuEnter = (menu) => {
+    if (hoverTimeoutRef.current) {
+      clearTimeout(hoverTimeoutRef.current);
+    }
+    setIsHovering(true);
+    setActiveMenu(menu);
+  };
+
+  const handleMenuLeave = () => {
+    setIsHovering(false);
+    // Only close if we're not hovering
+    hoverTimeoutRef.current = setTimeout(() => {
+      if (!isHovering) {
+        setActiveMenu(null);
+      }
+    }, 150);
+  };
+
+  useEffect(() => {
+    return () => {
+      if (hoverTimeoutRef.current) {
+        clearTimeout(hoverTimeoutRef.current);
+      }
+    };
+  }, []);
+
   // Common h2 style for all dropdown menus
   const columnTitleStyle = { 
     letterSpacing: '2px', 
@@ -49,6 +151,20 @@ const Navbar = () => {
     cursor: 'default', 
     fontWeight: '400' 
   };
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (activeMenu) {
+        setActiveMenu(null);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, [activeMenu]);
 
   // Add this Prismic query
   const data = useStaticQuery(graphql`
@@ -90,111 +206,106 @@ const Navbar = () => {
   const [selectedCountry, setSelectedCountry] = useState('');
 
   return (
-    <nav className="bg-white border-gray-200 shadow-md">
-      {/* Top Bar */}
-      <div className="max-w-screen-xl mx-auto flex justify-between items-center py-4 px-6">
-        <div className="hidden md:flex space-x-5">
-          <a href="https://www.facebook.com/LeOAfricaInstitute/" className="hover:text-[#0B9A9E] transition duration-300 text-lg">
-            <FaFacebookF />
-          </a>
-          <a href="https://x.com/LeoAfricaInst" className="hover:text-[#0B9A9E] transition duration-300 text-lg">
-            <FaTwitter />
-          </a>
-          <a href="https://www.linkedin.com/company/18203194/admin/page-posts/published/" className="hover:text-[#0B9A9E] transition duration-300 text-lg">
-            <FaLinkedinIn />
-          </a>
-          <a href="https://www.instagram.com/leoafricainst/" className="hover:text-[#0B9A9E] transition duration-300 text-lg">
-            <FaInstagram />
-          </a>
-        </div>
-        <div className="flex items-center space-x-8">
-          <button onClick={handleSearchToggle} className="hover:text-[#0B9A9E] transition duration-300">
-            <FiSearch className="w-6 h-6" />
-          </button>
-          <a href="/partner-with-us/" className="hover:text-[#0B9A9E] transition duration-300 text-base">
-          Partner with Us
-          </a>
-          <a href="/contact" className="hover:text-[#0B9A9E] transition duration-300 text-base">
-             Contact Us
-          </a>
-        </div>
-      </div>
-
-      {/* Search Bar */}
-      {isSearchOpen && (
-        <div className="bg-gray-100 py-3 px-6">
-          <form onSubmit={handleSearchSubmit} className="flex items-center">
-            <input
-              type="text"
-              value={searchQuery}
-              onChange={handleSearchChange}
-              placeholder="Search..."
-              className="flex-1 bg-white border border-gray-300 rounded-md px-5 py-3 text-base focus:outline-none focus:ring-2 focus:ring-[#0B9A9E]"
-            />
-            <button type="submit" className="ml-3 bg-[#0B9A9E] hover:bg-[#0B9A9E]/90 text-white px-6 py-3 rounded-md transition duration-300 text-base">
-              Search
+    <>
+      <style>{dropdownStyles}</style>
+      <nav className="bg-white border-gray-200 shadow-md" ref={navRef}>
+        {/* Top Bar */}
+        <div className="max-w-screen-xl mx-auto flex justify-between items-center py-4 px-6"
+             onMouseLeave={handleMenuLeave}>
+          <div className="hidden md:flex space-x-5">
+            <a href="https://www.facebook.com/LeOAfricaInstitute/" className="hover:text-[#0B9A9E] transition duration-300 text-lg">
+              <FaFacebookF />
+            </a>
+            <a href="https://x.com/LeoAfricaInst" className="hover:text-[#0B9A9E] transition duration-300 text-lg">
+              <FaTwitter />
+            </a>
+            <a href="https://www.linkedin.com/company/18203194/admin/page-posts/published/" className="hover:text-[#0B9A9E] transition duration-300 text-lg">
+              <FaLinkedinIn />
+            </a>
+            <a href="https://www.instagram.com/leoafricainst/" className="hover:text-[#0B9A9E] transition duration-300 text-lg">
+              <FaInstagram />
+            </a>
+          </div>
+          <div className="flex items-center space-x-8">
+            <button onClick={handleSearchToggle} className="hover:text-[#0B9A9E] transition duration-300">
+              <FiSearch className="w-6 h-6" />
             </button>
-          </form>
+            <a href="/partner-with-us/" className="hover:text-[#0B9A9E] transition duration-300 text-base">
+            Partner with Us
+            </a>
+            <a href="/contact" className="hover:text-[#0B9A9E] transition duration-300 text-base">
+               Contact Us
+            </a>
+          </div>
         </div>
-      )}
 
-      {/* Full-Width Horizontal Line */}
-      <div className="w-full h-px bg-gray-300"></div>
+        {/* Search Bar */}
+        {isSearchOpen && (
+          <div className="bg-gray-100 py-3 px-6">
+            <form onSubmit={handleSearchSubmit} className="flex items-center">
+              <input
+                type="text"
+                value={searchQuery}
+                onChange={handleSearchChange}
+                placeholder="Search..."
+                className="flex-1 bg-white border border-gray-300 rounded-md px-5 py-3 text-base focus:outline-none focus:ring-2 focus:ring-[#0B9A9E]"
+              />
+              <button type="submit" className="ml-3 bg-[#0B9A9E] hover:bg-[#0B9A9E]/90 text-white px-6 py-3 rounded-md transition duration-300 text-base">
+                Search
+              </button>
+            </form>
+          </div>
+        )}
 
-      {/* Main Navigation */}
-      <div className="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl p-6">
-        <a href="/" className="flex items-center space-x-3">
-          <img 
-            src={LOGO} 
-            className="h-16" 
-            alt="Leo Africa Institute Logo" 
-          />
-        </a>
+        {/* Full-Width Horizontal Line */}
+        <div className="w-full h-px bg-gray-300"></div>
 
-        <button
-          onClick={() => setIsMenuOpen(!isMenuOpen)}
-          className="inline-flex items-center p-3 w-12 h-12 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 transition duration-300"
-        >
-          <span className="sr-only">Open main menu</span>
-          {isMenuOpen ? <FiX className="w-6 h-6" /> : <FiMenu className="w-6 h-6" />}
-        </button>
+        {/* Main Navigation */}
+        <div className="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl p-6">
+          <a href="/" className="flex items-center space-x-3">
+            <img 
+              src={LOGO} 
+              className="h-16" 
+              alt="Leo Africa Institute Logo" 
+            />
+          </a>
 
-        <div className={`${isMenuOpen ? 'block' : 'hidden'} w-full md:flex md:w-auto md:order-1 transition-transform duration-500 ease-in-out`}>
-          <ul className="flex flex-col mt-4 font-medium md:flex-row md:mt-0 md:space-x-10">
-            {['About Us', 'Events & Gatherings', 'Fellows & Champions', 'News & Media', 'Initiatives'].map(
-              (menu) => (
-                <li key={menu}>
-                  <button
-                    onClick={() => handleMenuToggle(menu)}
-                    className="flex items-center justify-between w-full py-3 px-4 text-xl font-bold text-gray-900 md:w-auto hover:text-[#0B9A9E] md:p-0 transition duration-300"
-                  >
-                    {menu}
-                    <svg
-                      className="w-3 h-3 ms-3"
-                      aria-hidden="true"
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="none"
-                      viewBox="0 0 10 6"
-                    >
-                      <path
-                        stroke="currentColor"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth="2"
-                        d="m1 1 4 4 4-4"
-                      />
-                    </svg>
-                  </button>
-                </li>
-              )
-            )}
-          </ul>
+          <button
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            className="inline-flex items-center p-3 w-12 h-12 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 transition duration-300"
+          >
+            <span className="sr-only">Open main menu</span>
+            {isMenuOpen ? <FiX className="w-6 h-6" /> : <FiMenu className="w-6 h-6" />}
+          </button>
+
+          <div className={`${isMenuOpen ? 'block' : 'hidden'} w-full md:flex md:w-auto md:order-1`}>
+            <ul className="flex flex-col mt-4 font-medium md:flex-row md:mt-0 md:space-x-10">
+              {['About Us', 'Events & Gatherings', 'Fellows & Champions', 'News & Media', 'Initiatives'].map(
+                (menu) => (
+                  <li key={menu} 
+                      className="relative menu-container"
+                      onMouseEnter={() => handleMenuEnter(menu)}
+                      onMouseLeave={handleMenuLeave}>
+                    <button className="flex items-center justify-between w-full py-3 px-4 text-xl font-bold text-gray-900 md:w-auto hover:text-[#0B9A9E] md:p-0 transition duration-300">
+                      {menu}
+                      <svg className="w-3 h-3 ms-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                        <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="m1 1 4 4 4-4"/>
+                      </svg>
+                    </button>
+                  </li>
+                )
+              )}
+            </ul>
+          </div>
         </div>
-      </div>
 
-      {/* News & Media Dropdown */}
+        {/* News & Media Dropdown */}
 {activeMenu === 'News & Media' && (
-  <div className="mt-1 bg-white border-gray-200 shadow-sm border-y">
+  <div 
+    className="mt-1 bg-white border-gray-200 shadow-sm border-y transform transition-all duration-200 ease-out"
+    style={dropdownAnimation.enter}
+    onMouseEnter={() => setIsHovering(true)}
+    onMouseLeave={() => setIsHovering(false)}>
     <div className="grid max-w-screen-xl px-4 py-5 mx-auto text-sm md:grid-cols-3 md:px-6 gap-6">
       {/* Column 1 - By Type */}
       <ul className="mb-4 space-y-4">
@@ -288,7 +399,11 @@ const Navbar = () => {
 
        {/* About Us Mega Menu */}
       {activeMenu === 'About Us' && (
-        <div className="mt-1 bg-white border-gray-200 shadow-sm border-y">
+        <div 
+          className="mt-1 bg-white border-gray-200 shadow-sm border-y transform transition-all duration-200 ease-out"
+          style={dropdownAnimation.enter}
+          onMouseEnter={() => setIsHovering(true)}
+          onMouseLeave={() => setIsHovering(false)}>
           <div className="grid max-w-screen-xl px-4 py-5 mx-auto text-sm md:grid-cols-3 md:px-6 gap-6">
             {/* First Column */}
             <ul className="mb-4 space-y-4">
@@ -299,9 +414,7 @@ const Navbar = () => {
               <li><a href="/about/team" className="text-[#3b3b3b] hover:underline hover:text-[#2bbecb] text-[15px] leading-relaxed font-normal">The Leadership Team</a></li>
               <li><a href="/about/pillars-of-action" className="text-[#3b3b3b] hover:underline hover:text-[#2bbecb] text-[15px] leading-relaxed font-normal">Our Pillars of Action</a></li>
               <li><a href="/about/faqs" className="text-[#3b3b3b] hover:underline hover:text-[#2bbecb] text-[15px] leading-relaxed font-normal">Frequently Asked Questions</a></li>
-              <a href="/about" className="inline-flex items-center mt-4 text-[#f6911e] hover:underline">
-                Learn More About Us <FiArrowRight className="ml-2" />
-              </a>
+              
             </ul>
             {/* Second Column */}
             <ul className="mb-4 space-y-4">
@@ -309,7 +422,7 @@ const Navbar = () => {
             Connect
               </h2>
               <li><a href="/contact" className="text-[#3b3b3b] hover:underline hover:text-[#2bbecb] text-[15px] leading-relaxed">Contact Us</a></li>
-              <li><a href="/partner-with-us/" className="text-[#3b3b3b] hover:underline hover:text-[#2bbecb] text-[15px] leading-relaxed">Get Involved</a></li>
+              <li><a href="/donate/" className="text-[#3b3b3b] hover:underline hover:text-[#2bbecb] text-[15px] leading-relaxed">Donate to the Institute</a></li>
               <li><a href="/partner-with-us/" className="text-[#3b3b3b] hover:underline hover:text-[#2bbecb] text-[15px] leading-relaxed">Partner with Us</a></li>
               
               {/* Social Media Icons */}
@@ -409,9 +522,10 @@ const Navbar = () => {
   <div className="mt-1 bg-white border-t border-gray-200 shadow-lg">
     <div className="max-w-screen-xl px-6 py-10 mx-auto">
       {/* Section Title */}
-      <h2 className="text-2xl font-bold text-center text-gray-800 mb-10">
-        Our Initiatives
-      </h2>
+      <h2 className="text-xs uppercase font-normal text-gray-600 pb-1 mb-5" 
+      style={{ letterSpacing: '2px', fontSize: '13px', color: '#888', cursor: 'default', fontWeight: '500' }}>
+    Our Initiatives
+  </h2>
 
       <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
         {/* ALG - Featured Event */}
@@ -622,93 +736,61 @@ const Navbar = () => {
               <p className="text-sm text-gray-600 mb-6 leading-relaxed">
                 Join the growing LéO Africa Institute community by signing up as a member or fellow. Fill out the form below to get started.
               </p>
-              <form className="space-y-4">
+              <form onSubmit={handleMembershipSubmit} className="space-y-4">
                 <div>
-                  <label htmlFor="fullName" className="block text-sm font-medium text-gray-700 mb-1">
-                    Full Name
-                  </label>
                   <input
                     type="text"
-                    id="fullName"
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-[#2bbecb] focus:border-[#2bbecb]"
-                    placeholder="Enter your full name"
+                    name="name"
+                    placeholder="Full Name"
+                    value={membershipForm.name}
+                    onChange={handleMembershipChange}
+                    className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-[#0B9A9E] focus:border-transparent"
+                    required
                   />
                 </div>
-
                 <div>
-                  <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
-                    Email Address
-                  </label>
                   <input
                     type="email"
-                    id="email"
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-[#2bbecb] focus:border-[#2bbecb]"
-                    placeholder="Enter your email"
+                    name="email"
+                    placeholder="Email Address"
+                    value={membershipForm.email}
+                    onChange={handleMembershipChange}
+                    className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-[#0B9A9E] focus:border-transparent"
+                    required
                   />
                 </div>
-
                 <div>
-                  <label htmlFor="country" className="block text-sm font-medium text-gray-700 mb-1">
-                    Country
-                  </label>
                   <select
-                    id="country"
-                    value={selectedCountry}
-                    onChange={(e) => setSelectedCountry(e.target.value)}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-[#2bbecb] focus:border-[#2bbecb] bg-white"
+                    name="membershipType"
+                    value={membershipForm.membershipType}
+                    onChange={handleMembershipChange}
+                    className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-[#0B9A9E] focus:border-transparent"
+                    required
                   >
-                    <option value="">Select your country</option>
-                    {africanCountries.map((country) => (
-                      <option key={country} value={country}>
-                        {country}
-                      </option>
-                    ))}
+                    <option value="">Select Membership Type</option>
+                    <option value="fellow">Fellow</option>
+                    <option value="associate">Associate Fellow</option>
+                    <option value="member">Member</option>
                   </select>
                 </div>
-
-                <div>
-                  <label className="text-sm font-medium text-gray-700 mb-2 block">
-                    I am interested in:
-                  </label>
-                  <label className="flex items-center space-x-2">
-                    <input
-                      type="checkbox"
-                      className="w-4 h-4 text-[#2bbecb] border-gray-300 rounded focus:ring-[#2bbecb]"
-                    />
-                    <span className="text-sm text-gray-700">Joining the Fellowship Program</span>
-                  </label>
-
-                  <label className="flex items-center space-x-2">
-                    <input
-                      type="checkbox"
-                      className="w-4 h-4 text-[#2bbecb] border-gray-300 rounded focus:ring-[#2bbecb]"
-                    />
-                    <span className="text-sm text-gray-700">Africa Champions Network</span>
-                  </label>
-
-                  <label className="flex items-center space-x-2">
-                    <input
-                      type="checkbox"
-                      className="w-4 h-4 text-[#2bbecb] border-gray-300 rounded focus:ring-[#2bbecb]"
-                    />
-                    <span className="text-sm text-gray-700">Supporting the Institute's Causes</span>
-                  </label>
-
-                  <label className="flex items-center space-x-2">
-                    <input
-                      type="checkbox"
-                      className="w-4 h-4 text-[#2bbecb] border-gray-300 rounded focus:ring-[#2bbecb]"
-                    />
-                    <span className="text-sm text-gray-700">Subscribe to Newsletter</span>
-                  </label>
-                </div>
-
                 <button
                   type="submit"
-                  className="w-full px-4 py-2 bg-[#2bbecb] text-white rounded-md hover:bg-[#f6911e] transition-colors duration-300"
+                  disabled={membershipSubmitting}
+                  className={`w-full py-2 px-4 rounded-lg text-white font-medium transition-colors duration-200 ${
+                    membershipSubmitting
+                      ? 'bg-gray-400 cursor-not-allowed'
+                      : membershipSuccess
+                      ? 'bg-green-500 hover:bg-green-600'
+                      : 'bg-[#0B9A9E] hover:bg-[#0B9A9E]/90'
+                  }`}
                 >
-                  Submit
+                  {membershipSubmitting ? 'Submitting...' : 'Submit Application'}
                 </button>
+                {membershipMessage && (
+                  <p className={`text-sm ${membershipSuccess ? 'text-green-600' : 'text-red-600'}`}>
+                    {membershipMessage}
+                  </p>
+                )}
               </form>
             </div>
 
@@ -765,17 +847,16 @@ const Navbar = () => {
           <div className="grid max-w-screen-xl px-4 py-5 mx-auto text-sm md:grid-cols-3 md:px-6 gap-6">
             {/* Column 1 */}
             <ul className="mb-4 space-y-4">
-              <h2 className="text-xs uppercase font-normal text-gray-600 pb-1 mb-5" style={columnTitleStyle}>Our Main Events</h2>
+              <h2 className="text-xs uppercase font-normal text-gray-600 pb-1 mb-5" style={columnTitleStyle}>Dialogue, Conversation & Ideas Space</h2>
               <li>
                 <a href="https://alg.leoafricainstitute.org" className="text-[#3b3b3b] hover:underline hover:text-[#2bbecb] flex items-center">
                   Annual Leaders Gathering
                   <FaStar className="ml-2 text-[#f6911e] animate-pulse" />
                 </a>
               </li>
-              <li><a href="/yelp" className="text-[#3b3b3b] hover:underline hover:text-[#2bbecb]">YELP Fellowship</a></li>
-              <li><a href="/huduma" className="text-[#3b3b3b] hover:underline hover:text-[#2bbecb]">Huduma Fellowship</a></li>
-              <li><a href="#" className="text-[#3b3b3b] hover:underline hover:text-[#2bbecb]">LéO Talks</a></li>
-              <li><a href="#" className="text-[#3b3b3b] hover:underline hover:text-[#2bbecb]">LéO Debates</a></li>
+              <li><a href="/events/harambe-symposium/" className="text-[#3b3b3b] hover:underline hover:text-[#2bbecb]">Harambe Symposium</a></li>
+              <li><a href="/events/leo-talks" className="text-[#3b3b3b] hover:underline hover:text-[#2bbecb]"><span>The LéO Africa Talks, Conversations worth Having</span></a></li>
+              <li><a href="/events/lecture-series/" className="text-[#3b3b3b] hover:underline hover:text-[#2bbecb]">Distinguished Lectures Series</a></li>
               <a href="/events" className="inline-flex items-center mt-4 text-[#f6911e] hover:underline text-[15px] font-medium">
                 Browse All Events <FiArrowRight className="ml-2" />
               </a>
@@ -880,6 +961,7 @@ const Navbar = () => {
      
       
       </nav>
+    </>
   );
 };
 

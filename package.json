@@ -6,8 +6,8 @@
   "license": "0BSD",
   "scripts": {
     "build": "gatsby build",
-    "develop": "gatsby develop",
-    "start": "gatsby develop",
+    "develop": "GATSBY_DEVELOPMENT_HTTPS=false gatsby develop",
+    "start": "GATSBY_DEVELOPMENT_HTTPS=false gatsby develop",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"

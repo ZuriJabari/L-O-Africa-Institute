@@ -2,7 +2,7 @@ import React from 'react';
 import Layout from '../components/Layout';
 import { StaticImage } from 'gatsby-plugin-image';
 import { motion } from 'framer-motion';
-import { FaHandshake, FaLightbulb, FaUsers, FaGlobe, FaStar, FaHeart, FaRocket, FaQuoteLeft, FaTwitter, FaFacebookF, FaLinkedinIn, FaInstagram, FaGraduationCap, FaBookReader } from 'react-icons/fa';
+import { FaHandshake, FaLightbulb, FaUsers, FaGlobe, FaStar, FaHeart, FaRocket, FaQuoteLeft, FaTwitter, FaFacebookF, FaLinkedinIn, FaInstagram, FaGraduationCap, FaBookReader, FaEnvelope } from 'react-icons/fa';
 import SubscriptionForm from '../components/SubscriptionForm';
 import { Link } from 'gatsby';
 import { SectionTitle, BodyLarge, SubsectionTitle, BodyText } from '../components/Typography';
@@ -19,47 +19,102 @@ const AboutPage = () => {
   return (
     <Layout>
       {/* Hero Section */}
-      <section className="relative h-[80vh] min-h-[600px] flex items-center justify-center overflow-hidden">
+      <section className="relative h-[93.6vh] min-h-[624px] flex items-center justify-center overflow-hidden">
+        {/* Background Image Layer */}
         <div className="absolute inset-0">
           <StaticImage
             src="../assets/images/about-hero.jpg"
             alt="About LéO Africa Institute"
             className="w-full h-full"
             imgClassName="object-cover"
-            placeholder="blurred"
-            layout="fullWidth"
+            placeholder="dominantColor"
             quality={100}
+            formats={["auto", "webp", "avif"]}
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/60 to-transparent"></div>
+          <div className="absolute inset-0 bg-gradient-to-r from-black/50 via-black/30 to-black/20"></div>
+          <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-black/20 to-transparent"></div>
+          {/* Overlay Pattern */}
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_#ffffff03_1px,_transparent_1px)] bg-[length:32px_32px]"></div>
         </div>
-        <div className="container mx-auto px-4 relative z-10 text-white">
-          <div className="max-w-4xl">
-            <motion.h1 
-              className="font-playfair text-6xl font-bold text-white mb-8"
-              {...fadeIn}
+
+        {/* Content Layer */}
+        <div className="container mx-auto px-4 relative z-10">
+          <div className="max-w-3xl">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+              className="mb-12"
             >
-              Empowering Africa's Next Generation of Leaders
-            </motion.h1>
+              <div className="flex items-center gap-4 mb-8">
+                <div className="w-12 h-[2px] bg-[#F6911E]"></div>
+                <span className="inline-block bg-[#F6911E]/10 border border-[#F6911E]/20 text-[#F6911E] px-6 py-2 text-sm font-semibold rounded-full">
+                  Shaping Africa's Future
+                </span>
+              </div>
+              <h1 className="font-playfair text-5xl md:text-6xl font-bold text-white leading-[1.2] tracking-tight mb-8">
+                Empowering Africa's{' '}
+                <span className="relative inline-block">
+                  Next
+                  <div className="absolute -bottom-2 left-0 w-full h-1 bg-[#F6911E]/30"></div>
+                </span>{' '}
+                Generation of Leaders
+              </h1>
+            </motion.div>
+
             <motion.p 
-              className="font-inter text-xl leading-relaxed text-white/90 mb-8 max-w-2xl"
-              {...fadeIn}
-              transition={{ delay: 0.2 }}
+              className="font-inter text-xl md:text-2xl leading-relaxed text-white/80 mb-12 max-w-2xl"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
             >
               Since 2012, we've been nurturing ethical leadership and fostering thought-provoking dialogue to shape Africa's future. Through our innovative programs and collaborative networks, we're building a community of visionary leaders committed to Africa's transformation.
             </motion.p>
+
             <motion.div 
-              className="flex gap-4"
-              {...fadeIn}
-              transition={{ delay: 0.4 }}
+              className="flex flex-wrap gap-6"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.4 }}
             >
               <a 
                 href="#join-our-community" 
-                className="bg-[#F6911E] hover:bg-[#F6911E]/90 text-white px-8 py-3 rounded-lg font-inter font-semibold transition-colors"
+                className="group bg-[#F6911E] hover:bg-[#F6911E]/90 text-white px-10 py-5 rounded-xl font-inter font-semibold transition-all duration-300 hover:translate-y-[-2px] hover:shadow-lg flex items-center gap-2"
               >
                 Join Our Community
+                <motion.span 
+                  className="inline-block"
+                  initial={{ x: 0 }}
+                  whileHover={{ x: 4 }}
+                >
+                  →
+                </motion.span>
+              </a>
+              <a 
+                href="#our-programs" 
+                className="group bg-white/5 hover:bg-white/10 text-white px-10 py-5 rounded-xl font-inter font-semibold backdrop-blur-sm transition-all duration-300 hover:translate-y-[-2px] border border-white/10 flex items-center gap-2"
+              >
+                Explore Programs
+                <motion.span 
+                  className="inline-block opacity-50 group-hover:opacity-100"
+                  initial={{ x: 0 }}
+                  whileHover={{ x: 4 }}
+                >
+                  →
+                </motion.span>
               </a>
             </motion.div>
           </div>
+        </div>
+
+        {/* Bottom Transition */}
+        <div className="absolute bottom-0 left-0 w-full">
+          <div className="h-24 w-full" style={{
+            backgroundImage: `url('../assets/images/bg-grey.svg')`,
+            backgroundRepeat: 'no-repeat',
+            backgroundPosition: 'bottom center',
+            backgroundSize: 'cover'
+          }}></div>
         </div>
       </section>
 
@@ -70,93 +125,59 @@ const AboutPage = () => {
             <h2 className="font-playfair text-4xl font-bold mb-6">Our Story</h2>
             <div className="w-24 h-1 bg-[#F6911E] mb-12"></div>
             
-            <div className="grid lg:grid-cols-5 gap-12">
-              {/* Left Column - Story Content */}
-              <div className="lg:col-span-3">
-                <div className="space-y-8">
-                  <div className="bg-white p-8 rounded-2xl shadow-sm relative">
-                    <div className="absolute -right-4 top-8 w-8 h-8 bg-[#0B9A9E] rounded-full flex items-center justify-center">
-                      <FaQuoteLeft className="text-white w-4 h-4" />
-                    </div>
-                    <p className="font-inter text-xl text-gray-600 leading-relaxed mb-12">
-                      The LéO Africa Institute was born out of a desire to nurture a new generation of ethical, visionary, and transformative leaders across Africa. Our journey began with a simple yet powerful idea: that through mentorship, dialogue, and collaboration, we could inspire positive change across the continent.
-                    </p>
-                    <div className="border-l-4 border-[#F6911E] pl-6">
-                      <blockquote className="font-inter text-lg italic text-gray-600 mb-4">
-                        "Through our fellowship programs, events and other activities, we foster quality networks among Africa's young and emerging leaders. We are working towards building a critical mass of ethical and values-based leaders."
+            <div className="max-w-4xl mx-auto">
+              {/* Story Content */}
+              <div className="space-y-8">
+                <div className="bg-white p-8 rounded-2xl shadow-sm relative overflow-hidden">
+                  {/* Decorative elements */}
+                  <div className="absolute top-0 right-0 w-32 h-32 bg-[#0B9A9E]/5 rounded-full -translate-y-1/2 translate-x-1/2"></div>
+                  <div className="absolute bottom-0 left-0 w-24 h-24 bg-[#F6911E]/5 rounded-full translate-y-1/2 -translate-x-1/2"></div>
+                  
+                  {/* Quote content */}
+                  <div className="relative">
+                    <div className="flex items-start gap-6 mb-8">
+                      <div className="flex-shrink-0">
+                        <div className="w-12 h-12 bg-gradient-to-br from-[#0B9A9E] to-[#0B9A9E]/80 rounded-full flex items-center justify-center shadow-lg">
+                          <FaQuoteLeft className="text-white w-5 h-5" />
+                        </div>
+                      </div>
+                      <blockquote className="text-2xl text-gray-700 leading-normal italic font-normal mb-8">
+                        Through our fellowship programs, events and other activities, we foster quality networks among Africa's young and emerging leaders. We are working towards building a critical mass of ethical and values-based leaders.
                       </blockquote>
-                      <footer className="font-inter font-semibold text-[#0B9A9E]">
-                        – Awel Uwihanganye, Co-founder & Program Lead
-                      </footer>
                     </div>
-                  </div>
-
-                  <div className="bg-[#0B9A9E]/5 p-8 rounded-2xl relative">
-                    <div className="absolute -right-16 top-8 w-8 h-8 bg-[#F6911E] rounded-full flex items-center justify-center">
-                      <FaLightbulb className="text-white w-4 h-4" />
+                    
+                    {/* Author section */}
+                    <div className="flex items-center gap-6">
+                      <div className="relative">
+                        <StaticImage
+                          src="../assets/images/Awel.jpg"
+                          alt="Awel Uwihanganye"
+                          className="w-14 h-14 rounded-full object-cover"
+                          placeholder="dominantColor"
+                        />
+                        <div className="absolute -bottom-1 -right-1 w-5 h-5 bg-white rounded-full flex items-center justify-center">
+                          <div className="w-3 h-3 rounded-full bg-gradient-to-r from-[#F6911E] to-[#0B9A9E]"></div>
+                        </div>
+                      </div>
+                      <div>
+                        <div className="font-medium text-gray-900">Awel Uwihanganye</div>
+                        <div className="text-sm text-gray-500">Co-founder & Program Lead</div>
+                      </div>
                     </div>
-                    <h3 className="font-playfair text-2xl font-bold mb-4 text-[#0B9A9E]">Our Foundation</h3>
-                    <p className="font-inter text-gray-600 mb-6">
-                      Established in 2012, the LéO Africa Institute (Swahili for Today's Africa) emerged from a vision shared by two friends, Awel Uwihanganye and Magnus Mchunguzi. Their passion? Harnessing Africa's immense potential through ethical & values-based leadership.
-                    </p>
-                    <p className="font-inter text-gray-600">
-                      Through our fellowship programs, events, and collaborative initiatives, we foster meaningful connections among Africa's emerging leaders. Our focus on ethical leadership and values-based decision-making creates a foundation for sustainable change and innovation across the continent.
-                    </p>
-                  </div>
-
-                  <div className="bg-white p-8 rounded-2xl shadow-sm relative">
-                    <div className="absolute -right-16 top-8 w-8 h-8 bg-[#0B9A9E] rounded-full flex items-center justify-center">
-                      <FaRocket className="text-white w-4 h-4" />
-                    </div>
-                    <h3 className="font-playfair text-2xl font-bold mb-4 text-[#0B9A9E]">Looking Forward</h3>
-                    <p className="font-inter text-gray-600">
-                      As we continue to grow, our commitment to fostering ethical leadership remains unwavering. We envision a future where African leaders are at the forefront of global innovation, social justice, and sustainable development.
-                    </p>
                   </div>
                 </div>
-              </div>
 
-              {/* Right Column - Timeline */}
-              <div className="lg:col-span-2 pl-8">
-                <div className="relative">
-                  <div className="absolute -right-3 top-0 w-px h-full bg-gradient-to-b from-[#0B9A9E] to-[#F6911E]"></div>
-                  <div className="space-y-16">
-                    <div className="relative">
-                      <div className="absolute -right-6 top-0 w-6 h-6 bg-[#0B9A9E] rounded-full border-4 border-white"></div>
-                      <div className="pr-12">
-                        <span className="font-playfair text-3xl font-bold text-[#0B9A9E] block mb-2">2012</span>
-                        <h3 className="font-playfair text-xl font-bold text-gray-800 mb-2">The Beginning</h3>
-                        <p className="font-inter text-gray-600">Founded with a vision to nurture ethical leadership in Africa</p>
-                      </div>
-                    </div>
-
-                    <div className="relative">
-                      <div className="absolute -right-6 top-0 w-6 h-6 bg-[#0B9A9E] rounded-full border-4 border-white"></div>
-                      <div className="pr-12">
-                        <span className="font-playfair text-3xl font-bold text-[#0B9A9E] block mb-2">2015</span>
-                        <h3 className="font-playfair text-xl font-bold text-gray-800 mb-2">YELP Launch</h3>
-                        <p className="font-inter text-gray-600">Launched the Young Emerging Leaders Project, our flagship leadership program</p>
-                      </div>
-                    </div>
-
-                    <div className="relative">
-                      <div className="absolute -right-6 top-0 w-6 h-6 bg-[#0B9A9E] rounded-full border-4 border-white"></div>
-                      <div className="pr-12">
-                        <span className="font-playfair text-3xl font-bold text-[#0B9A9E] block mb-2">2018</span>
-                        <h3 className="font-playfair text-xl font-bold text-gray-800 mb-2">Annual Leaders Gathering</h3>
-                        <p className="font-inter text-gray-600">Established our premier event bringing together leaders from across Africa</p>
-                      </div>
-                    </div>
-
-                    <div className="relative">
-                      <div className="absolute -right-6 top-0 w-6 h-6 bg-[#F6911E] rounded-full border-4 border-white"></div>
-                      <div className="pr-12">
-                        <span className="font-playfair text-3xl font-bold text-[#F6911E] block mb-2">2023</span>
-                        <h3 className="font-playfair text-xl font-bold text-gray-800 mb-2">Regional Expansion</h3>
-                        <p className="font-inter text-gray-600">Expanded our reach and impact across East Africa with new partnerships</p>
-                      </div>
-                    </div>
+                <div className="bg-[#0B9A9E]/5 p-8 rounded-2xl relative">
+                  <div className="absolute -right-4 top-8 w-8 h-8 bg-[#F6911E] rounded-full flex items-center justify-center">
+                    <FaLightbulb className="text-white w-4 h-4" />
                   </div>
+                  <h3 className="font-playfair text-2xl font-bold mb-4 text-[#0B9A9E]">Our Foundation</h3>
+                  <p className="text-lg text-gray-700 mb-6">
+                    Established in 2012, the LéO Africa Institute (Swahili for Today's Africa) emerged from a vision shared by two friends, Awel Uwihanganye and Magnus Mchunguzi. Their passion? Harnessing Africa's immense potential through ethical & values-based leadership.
+                  </p>
+                  <p className="text-lg text-gray-700">
+                    Through our fellowship programs, events, and collaborative initiatives, we foster meaningful connections among Africa's emerging leaders. Our focus on ethical leadership and values-based decision-making creates a foundation for sustainable change and innovation across the continent.
+                  </p>
                 </div>
               </div>
             </div>
@@ -164,157 +185,107 @@ const AboutPage = () => {
         </div>
       </section>
 
-      {/* Vision & Mission Section */}
-      <section className="relative py-32 overflow-hidden">
-        <div className="absolute inset-0">
-          <StaticImage
-            src="../assets/images/about-hero.jpg"
-            alt="Background"
-            className="w-full h-full object-cover"
-            placeholder="blurred"
-          />
-          <div className="absolute inset-0 bg-gradient-to-br from-[#0B9A9E]/95 to-[#000000]/90"></div>
-        </div>
-        
-        <div className="container mx-auto px-4 relative z-10">
-          <motion.div 
-            className="max-w-6xl mx-auto mb-16"
-            {...fadeIn}
-          >
-            <h2 className="font-playfair text-5xl font-bold mb-6 text-white">Our Purpose</h2>
-            <div className="w-24 h-1 bg-[#F6911E]"></div>
-          </motion.div>
-
-          <div className="grid lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
-            <motion.div 
-              className="relative group"
-              {...fadeIn}
-            >
-              <div className="absolute inset-0 bg-gradient-to-r from-[#F6911E] to-[#F6911E]/80 rounded-2xl transform rotate-1 transition-transform group-hover:rotate-2"></div>
-              <div className="relative bg-white p-12 rounded-2xl transform -rotate-1 transition-transform group-hover:-rotate-2">
-                <h3 className="font-playfair text-3xl font-bold mb-6 text-[#F6911E] flex items-center">
-                  <span className="bg-[#F6911E] text-white w-12 h-12 rounded-full flex items-center justify-center text-xl mr-4">V</span>
-                  Our Vision
-                </h3>
-                <p className="font-inter text-xl leading-relaxed text-gray-700">
-                  We envision an Africa where young leaders are empowered to drive positive change through innovative thinking and collaborative action. Our goal is to build a network of visionary leaders who will shape the continent's future through sustainable solutions and inclusive growth.
-                </p>
-              </div>
-            </motion.div>
-
-            <motion.div 
-              className="relative group"
-              {...fadeIn}
-              transition={{ delay: 0.2 }}
-            >
-              <div className="absolute inset-0 bg-gradient-to-r from-[#0B9A9E] to-[#0B9A9E]/80 rounded-2xl transform -rotate-1 transition-transform group-hover:-rotate-2"></div>
-              <div className="relative bg-white p-12 rounded-2xl transform rotate-1 transition-transform group-hover:rotate-2">
-                <h3 className="font-playfair text-3xl font-bold mb-6 text-[#0B9A9E] flex items-center">
-                  <span className="bg-[#0B9A9E] text-white w-12 h-12 rounded-full flex items-center justify-center text-xl mr-4">M</span>
-                  Our Mission
-                </h3>
-                <p className="font-inter text-xl leading-relaxed text-gray-700">
-                  We are dedicated to creating platforms that enable young African leaders to engage meaningfully with key stakeholders in government, civil society, and the private sector. Our mission is to facilitate the exchange of ideas and development of solutions to pressing challenges facing our continent.
-                </p>
-              </div>
-            </motion.div>
-          </div>
-        </div>
-
-        {/* Decorative Elements */}
-        <div className="absolute top-0 left-0 w-96 h-96 bg-[#F6911E]/20 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-0 right-0 w-96 h-96 bg-[#0B9A9E]/20 rounded-full blur-3xl"></div>
-      </section>
-
-      {/* What We Do Section */}
-      <section className="py-24 bg-white">
+      {/* Purpose Section */}
+      <section className="relative py-32 bg-white overflow-hidden">
         <div className="container mx-auto px-4">
-          <div className="max-w-6xl mx-auto">
-            <div className="mb-16">
-              <SectionTitle>What We Do</SectionTitle>
-              <div className="w-24 h-1 bg-[#F6911E] mb-8"></div>
-              <BodyLarge>
-                Through our programs and initiatives, we empower Africa's next generation of leaders with the skills, networks, and opportunities they need to drive positive change.
-              </BodyLarge>
-            </div>
-
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
-              <motion.div 
-                className="bg-white p-8 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300"
-                whileHover={{ y: -10 }}
-              >
-                <div className="w-16 h-16 bg-[#0B9A9E]/10 rounded-2xl flex items-center justify-center mb-6">
-                  <FaGraduationCap className="w-8 h-8 text-[#0B9A9E]" />
+          <div className="max-w-7xl mx-auto">
+            {/* Why We Do What We Do */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+              viewport={{ once: true }}
+              className="text-center mb-24"
+            >
+              <span className="text-sm font-inter uppercase tracking-wider text-[#F6911E] mb-4 block">Our Purpose</span>
+              <h2 className="text-5xl font-playfair font-bold text-gray-900 mb-16">
+                Why We do What We DO!
+              </h2>
+              <div className="max-w-4xl mx-auto">
+                <div className="relative">
+                  <div className="absolute -left-8 top-0 w-16 h-16 text-[#0B9A9E]">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/>
+                    </svg>
+                  </div>
+                  <div className="relative z-10">
+                    <div className="relative pl-12 py-8">
+                      {/* Subtle vertical line */}
+                      <div className="absolute left-0 top-0 bottom-0 w-[1px] bg-gradient-to-b from-[#F6911E] via-[#0B9A9E] to-transparent opacity-30"></div>
+                      
+                      {/* Quote content */}
+                      <div className="space-y-6">
+                        <p className="text-2xl text-gray-800 leading-normal italic font-normal">
+                          We believe that ideas matter in moving our societies forward. We also strongly believe networks of thinkers and doers are valuable in advancing global collaborations and partnerships for development.
+                        </p>
+                      </div>
+                      
+                      {/* Author section */}
+                      <div className="mt-8 flex items-center gap-6">
+                        <div className="relative">
+                          <StaticImage
+                            src="../assets/images/Magnus.png"
+                            alt="Magnus Mchngunzi"
+                            className="w-14 h-14 rounded-full object-cover"
+                            placeholder="dominantColor"
+                          />
+                          <div className="absolute -bottom-1 -right-1 w-5 h-5 bg-white rounded-full flex items-center justify-center">
+                            <div className="w-3 h-3 rounded-full bg-gradient-to-r from-[#F6911E] to-[#0B9A9E]"></div>
+                          </div>
+                        </div>
+                        <div>
+                          <div className="font-medium text-gray-900">Magnus Mchngunzi</div>
+                          <div className="text-sm text-gray-500">Co-Founder & Chairman</div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
-                <SubsectionTitle className="mb-4">Leadership Programs</SubsectionTitle>
-                <BodyText>
-                  Our flagship YELP program and specialized training initiatives develop critical leadership skills and foster ethical decision-making.
-                </BodyText>
+              </div>
+            </motion.div>
+
+            {/* Purpose Cards */}
+            <div className="grid md:grid-cols-3 gap-8">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.2 }}
+                viewport={{ once: true }}
+                className="bg-gray-50 p-8 rounded-2xl hover:shadow-lg transition-shadow duration-300"
+              >
+                <div className="w-12 h-12 bg-[#F6911E]/10 rounded-lg flex items-center justify-center mb-6">
+                  <FaLightbulb className="w-6 h-6 text-[#F6911E]" />
+                </div>
+                <h3 className="font-playfair text-xl font-bold text-gray-900 mb-4">Thought Leadership</h3>
+                <p className="text-gray-600">Fostering innovative ideas and perspectives that drive African progress.</p>
               </motion.div>
 
-              <motion.div 
-                className="bg-white p-8 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300"
-                whileHover={{ y: -10 }}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.4 }}
+                viewport={{ once: true }}
+                className="bg-gray-50 p-8 rounded-2xl hover:shadow-lg transition-shadow duration-300"
               >
-                <div className="w-16 h-16 bg-[#0B9A9E]/10 rounded-2xl flex items-center justify-center mb-6">
-                  <FaUsers className="w-8 h-8 text-[#0B9A9E]" />
+                <div className="w-12 h-12 bg-[#0B9A9E]/10 rounded-lg flex items-center justify-center mb-6">
+                  <FaUsers className="w-6 h-6 text-[#0B9A9E]" />
                 </div>
-                <SubsectionTitle className="mb-4">Networking Events</SubsectionTitle>
-                <BodyText>
-                  We create platforms for meaningful connections through our Annual Leaders Gathering, workshops, and regional meetups.
-                </BodyText>
+                <h3 className="font-playfair text-xl font-bold text-gray-900 mb-4">Network Building</h3>
+                <p className="text-gray-600">Creating meaningful connections that catalyze change across the continent.</p>
               </motion.div>
 
-              <motion.div 
-                className="bg-white p-8 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300"
-                whileHover={{ y: -10 }}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.6 }}
+                viewport={{ once: true }}
+                className="bg-gray-50 p-8 rounded-2xl hover:shadow-lg transition-shadow duration-300"
               >
-                <div className="w-16 h-16 bg-[#0B9A9E]/10 rounded-2xl flex items-center justify-center mb-6">
-                  <FaBookReader className="w-8 h-8 text-[#0B9A9E]" />
+                <div className="w-12 h-12 bg-[#F6911E]/10 rounded-lg flex items-center justify-center mb-6">
+                  <FaGlobe className="w-6 h-6 text-[#F6911E]" />
                 </div>
-                <SubsectionTitle className="mb-4">Knowledge Hub</SubsectionTitle>
-                <BodyText>
-                  Our publications, research, and digital resources provide insights and best practices in leadership and governance.
-                </BodyText>
-              </motion.div>
-
-              <motion.div 
-                className="bg-white p-8 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300"
-                whileHover={{ y: -10 }}
-              >
-                <div className="w-16 h-16 bg-[#0B9A9E]/10 rounded-2xl flex items-center justify-center mb-6">
-                  <FaHandshake className="w-8 h-8 text-[#0B9A9E]" />
-                </div>
-                <SubsectionTitle className="mb-4">Partnerships</SubsectionTitle>
-                <BodyText>
-                  We collaborate with organizations across Africa and globally to expand opportunities for emerging leaders.
-                </BodyText>
-              </motion.div>
-
-              <motion.div 
-                className="bg-white p-8 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300"
-                whileHover={{ y: -10 }}
-              >
-                <div className="w-16 h-16 bg-[#0B9A9E]/10 rounded-2xl flex items-center justify-center mb-6">
-                  <FaLightbulb className="w-8 h-8 text-[#0B9A9E]" />
-                </div>
-                <SubsectionTitle className="mb-4">Innovation Hub</SubsectionTitle>
-                <BodyText>
-                  We support and showcase innovative solutions to Africa's development challenges through our network.
-                </BodyText>
-              </motion.div>
-
-              <motion.div 
-                className="bg-white p-8 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300"
-                whileHover={{ y: -10 }}
-              >
-                <div className="w-16 h-16 bg-[#0B9A9E]/10 rounded-2xl flex items-center justify-center mb-6">
-                  <FaGlobe className="w-8 h-8 text-[#0B9A9E]" />
-                </div>
-                <SubsectionTitle className="mb-4">Global Engagement</SubsectionTitle>
-                <BodyText>
-                  We facilitate international exchanges and dialogues to promote African leadership on the global stage.
-                </BodyText>
+                <h3 className="font-playfair text-xl font-bold text-gray-900 mb-4">Global Impact</h3>
+                <p className="text-gray-600">Advancing partnerships that drive sustainable development in Africa.</p>
               </motion.div>
             </div>
           </div>
@@ -322,78 +293,149 @@ const AboutPage = () => {
       </section>
 
       {/* Agaciro Philosophy Section */}
-      <section className="py-24 bg-[#0B9A9E] relative overflow-hidden">
+      <section className="py-32 bg-gradient-to-br from-gray-50 via-white to-gray-50 relative overflow-hidden">
+        {/* Decorative Elements */}
         <div className="absolute inset-0">
-          <div className="absolute top-0 right-0 w-96 h-96 bg-white/10 rounded-full blur-3xl"></div>
-          <div className="absolute bottom-0 left-0 w-96 h-96 bg-[#F6911E]/20 rounded-full blur-3xl"></div>
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_#0B9A9E08_1px,_transparent_1px)] bg-[length:24px_24px]"></div>
+          <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-[#0B9A9E]/5 rounded-full blur-[120px] -translate-y-1/2"></div>
+          <div className="absolute bottom-0 left-0 w-[800px] h-[800px] bg-[#F6911E]/5 rounded-full blur-[120px] translate-y-1/2"></div>
         </div>
-        <div className="container mx-auto px-4 relative z-10">
-          <motion.div 
-            className="max-w-4xl mx-auto"
-            {...fadeIn}
-          >
-            <h2 className="font-playfair text-5xl font-bold mb-8 text-white">Agaciro</h2>
-            <p className="font-inter text-2xl leading-relaxed mb-8 text-white/90">
-              Our guiding philosophy of dignity, self-worth, and identity shapes the African mindset for leadership and self-determination.
-            </p>
-            <div className="w-24 h-1 bg-[#F6911E]"></div>
-          </motion.div>
-        </div>
-      </section>
 
-      {/* Strategic Pillars Section */}
-      <section className="py-24 bg-white">
-        <div className="container mx-auto px-4">
-          <motion.div 
-            className="max-w-6xl mx-auto mb-16"
-            {...fadeIn}
-          >
-            <h2 className="font-playfair text-4xl font-bold mb-6">Strategic Pillars</h2>
-            <p className="font-inter text-xl text-gray-600 max-w-2xl">
-              Our focus areas for driving African Renaissance
-            </p>
-          </motion.div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
-            {[
-              {
-                icon: <FaStar />,
-                title: "Ethical Leadership",
-                description: "Building Character for Responsible Leadership"
-              },
-              {
-                icon: <FaUsers />,
-                title: "Population & Health",
-                description: "Leveraging Demographics for Sustainability"
-              },
-              {
-                icon: <FaHeart />,
-                title: "Identity & Society",
-                description: "Reclaiming African Narratives"
-              },
-              {
-                icon: <FaGlobe />,
-                title: "Climate Action",
-                description: "Empowering Leaders in Climate Change"
-              }
-            ].map((pillar, index) => (
+        <div className="container mx-auto px-4 relative z-10">
+          <div className="max-w-7xl mx-auto">
+            {/* Header */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+              className="text-center mb-24"
+            >
+              <div className="flex items-center justify-center gap-4 mb-6">
+                <div className="w-12 h-[2px] bg-[#F6911E]"></div>
+                <span className="inline-block bg-[#F6911E]/10 border border-[#F6911E]/20 text-[#F6911E] px-6 py-2 text-sm font-semibold rounded-full">
+                  Our Guiding Philosophy
+                </span>
+                <div className="w-12 h-[2px] bg-[#F6911E]"></div>
+              </div>
+              <h2 className="font-playfair text-7xl font-bold text-gray-900 mb-8 tracking-tight">
+                Agaciro
+              </h2>
+              <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+                The cornerstone of mindset shaping for leaders and self-determination for every African
+              </p>
+            </motion.div>
+
+            <div className="grid lg:grid-cols-2 gap-16 items-start">
+              {/* Left Column - Main Content */}
               <motion.div
-                key={pillar.title}
-                className="bg-gray-50 p-8 rounded-2xl text-center hover:shadow-xl transition-shadow duration-300"
-                {...fadeIn}
-                transition={{ delay: index * 0.1 }}
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8 }}
+                className="relative"
               >
-                <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-[#0B9A9E]/10 text-[#0B9A9E] mb-6">
-                  {React.cloneElement(pillar.icon, { className: "w-8 h-8" })}
+                <div className="absolute -left-8 -top-8 text-[#F6911E]/10 text-[180px] font-serif leading-none z-0">"</div>
+                <div className="bg-white rounded-3xl p-12 shadow-xl relative z-10 border border-gray-100 overflow-hidden">
+                  {/* Decorative Background Elements */}
+                  <div className="absolute -right-24 -top-24 w-48 h-48 bg-[#F6911E]/5 rounded-full blur-2xl"></div>
+                  <div className="absolute -left-24 -bottom-24 w-48 h-48 bg-[#0B9A9E]/5 rounded-full blur-2xl"></div>
+                  
+                  {/* Quote Mark */}
+                  <div className="absolute -left-2 top-0 w-24 h-24">
+                    <div className="relative w-full h-full">
+                      <div className="absolute inset-0 bg-gradient-to-br from-[#F6911E] to-[#0B9A9E] rounded-br-3xl opacity-10"></div>
+                      <div className="absolute bottom-4 right-4 text-[#F6911E] text-5xl">
+                        <FaQuoteLeft />
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Quote Content */}
+                  <div className="relative z-10 ml-8">
+                    <blockquote className="text-2xl text-gray-700 leading-relaxed mb-12">
+                      <p className="italic">
+                        Underpinning the work we do is the principle of{' '}
+                        <span className="text-[#F6911E] font-semibold not-italic inline-flex items-center">
+                          Agaciro
+                          <span className="inline-block w-2 h-2 bg-[#F6911E] rounded-full ml-2"></span>
+                        </span>{' '}
+                        a Kinyarwanda word which espouses the sense of dignity, self-worth, and identity of the African as the cornerstone of mindset shaping for leaders, and self-determination for every African.
+                      </p>
+                    </blockquote>
+
+                    {/* Author Section */}
+                    <div className="flex items-center gap-8 pt-8 border-t border-gray-100">
+                      <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-[#F6911E] to-[#0B9A9E] p-[1px] rotate-3 transform hover:rotate-0 transition-transform duration-300">
+                        <div className="w-full h-full rounded-2xl bg-white flex items-center justify-center">
+                          <span className="text-transparent bg-clip-text bg-gradient-to-br from-[#F6911E] to-[#0B9A9E] text-2xl font-bold">LéO</span>
+                        </div>
+                      </div>
+                      <div>
+                        <p className="text-[#0B9A9E] font-medium mb-1">Our Guiding Principle</p>
+                        <p className="text-sm text-gray-500">LéO Africa Institute</p>
+                      </div>
+                    </div>
+                  </div>
                 </div>
-                <h3 className="font-playfair text-xl font-bold mb-4">
-                  {pillar.title}
-                </h3>
-                <p className="font-inter text-gray-600">
-                  {pillar.description}
-                </p>
               </motion.div>
-            ))}
+
+              {/* Right Column - Values */}
+              <div className="space-y-6">
+                {[
+                  {
+                    word: "Dignity",
+                    description: "Recognizing and upholding the inherent worth of every African individual",
+                    icon: "👑",
+                    gradient: "from-[#F6911E] to-[#F6911E]/80"
+                  },
+                  {
+                    word: "Self-Worth",
+                    description: "Building confidence and pride in African identity and capabilities",
+                    icon: "⭐",
+                    gradient: "from-[#0B9A9E] to-[#0B9A9E]/80"
+                  },
+                  {
+                    word: "Identity",
+                    description: "Embracing and celebrating our rich cultural heritage and values",
+                    icon: "🌍",
+                    gradient: "from-[#F6911E] to-[#0B9A9E]"
+                  }
+                ].map((item, index) => (
+                  <motion.div
+                    key={item.word}
+                    initial={{ opacity: 0, x: 20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.6, delay: index * 0.2 }}
+                    className="group"
+                  >
+                    <div className="bg-gradient-to-br from-white to-gray-50 rounded-2xl p-[1px] shadow-lg hover:shadow-xl transition-all duration-300">
+                      <div className="bg-white rounded-2xl p-8">
+                        <div className="flex items-start gap-6">
+                          <div className={`w-14 h-14 rounded-xl bg-gradient-to-br ${item.gradient} flex items-center justify-center text-2xl shadow-lg`}>
+                            {item.icon}
+                          </div>
+                          <div>
+                            <h3 className="text-2xl font-playfair font-bold text-gray-900 mb-3 group-hover:text-[#F6911E] transition-colors">
+                              {item.word}
+                            </h3>
+                            <p className="text-gray-600 group-hover:text-gray-700 transition-colors">
+                              {item.description}
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+            </div>
           </div>
+        </div>
+        {/* Add prefooter-gray with padding */}
+        <div className="mt-32 relative">
+          <div className="prefooter-gray"></div>
         </div>
       </section>
 
@@ -413,144 +455,62 @@ const AboutPage = () => {
               <blockquote className="font-inter text-xl italic text-gray-700 mb-4">
                 "We believe leadership can be the driver of growth and tackling the bottlenecks that hinder progress."
               </blockquote>
-              <footer className="font-inter font-semibold text-[#0B9A9E]">
-                – Awel Uwihanganye, Co-founder & Program Lead
-              </footer>
+              <div className="flex items-center gap-6">
+                <div className="relative">
+                  <StaticImage
+                    src="../assets/images/Awel.jpg"
+                    alt="Awel Uwihanganye"
+                    className="w-14 h-14 rounded-full object-cover"
+                    placeholder="dominantColor"
+                  />
+                  <div className="absolute -bottom-1 -right-1 w-5 h-5 bg-white rounded-full flex items-center justify-center">
+                    <div className="w-3 h-3 rounded-full bg-gradient-to-r from-[#F6911E] to-[#0B9A9E]"></div>
+                  </div>
+                </div>
+                <div>
+                  <div className="font-medium text-gray-900">Awel Uwihanganye</div>
+                  <div className="text-sm text-gray-500">Co-founder & Program Lead</div>
+                </div>
+              </div>
             </div>
           </motion.div>
         </div>
       </section>
 
-      {/* Core Values Section */}
-      <section className="py-24 bg-white">
-        <div className="container mx-auto px-4">
-          <motion.div 
-            className="max-w-6xl mx-auto mb-16"
-            {...fadeIn}
-          >
-            <h2 className="font-playfair text-4xl font-bold mb-6">Our Core Values</h2>
-            <p className="font-inter text-xl text-gray-600 max-w-2xl">
-              The principles that guide our mission and shape our community
-            </p>
-          </motion.div>
-          <div className="grid md:grid-cols-3 gap-8">
-            {[
-              {
-                icon: <FaStar className="w-12 h-12" />,
-                title: "Excellence",
-                description: "We focus on producing the most engaging meetings and discussion sessions that meet the specific needs of our countries and communities, to ensure we make a lasting contribution to the development of our nations."
-              },
-              {
-                icon: <FaHandshake className="w-12 h-12" />,
-                title: "Respect, Integrity & Trust",
-                description: "We are committed to fostering an environment of respect and trust in which the utmost value is placed on integrity."
-              },
-              {
-                icon: <FaLightbulb className="w-12 h-12" />,
-                title: "Innovation & Enterprise",
-                description: "We are committed to providing resources and opportunities for personal and professional development and fostering a culture that encourages innovation."
-              }
-            ].map((value, index) => (
-              <motion.div
-                key={value.title}
-                className="group bg-gray-50 p-8 rounded-2xl hover:bg-white hover:shadow-xl transition-all duration-300"
-                {...fadeIn}
-                transition={{ delay: index * 0.2 }}
-              >
-                <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-[#0B9A9E]/10 text-[#0B9A9E] mb-6">
-                  {value.icon}
-                </div>
-                <h3 className="font-playfair text-2xl font-bold mb-4">{value.title}</h3>
-                <p className="font-inter text-gray-600">{value.description}</p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Our Partners Section */}
-      <OurPartners />
-
-      {/* Join Us Section */}
-      <section className="py-24 bg-gradient-to-br from-[#0B9A9E]/5 to-[#F6911E]/5 relative overflow-hidden" id="join-our-community">
+      {/* Newsletter Section */}
+      <section className="py-32 bg-gradient-to-br from-[#0B9A9E] to-[#0B9A9E]/90 relative overflow-hidden">
+        {/* Decorative Elements */}
         <div className="absolute inset-0">
-          <div className="absolute top-0 right-0 w-96 h-96 bg-[#0B9A9E]/10 rounded-full blur-3xl"></div>
-          <div className="absolute bottom-0 left-0 w-96 h-96 bg-[#F6911E]/10 rounded-full blur-3xl"></div>
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_#ffffff08_1px,_transparent_1px)] bg-[length:24px_24px]"></div>
+          <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-white/5 rounded-full blur-[120px] -translate-y-1/2"></div>
+          <div className="absolute bottom-0 left-0 w-[800px] h-[800px] bg-[#F6911E]/10 rounded-full blur-[120px] translate-y-1/2"></div>
         </div>
+
         <div className="container mx-auto px-4 relative z-10">
-          <motion.div 
-            className="max-w-6xl mx-auto mb-16"
-            {...fadeIn}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="text-center"
           >
-            <h2 className="font-playfair text-4xl font-bold mb-6">Join Our Community</h2>
-            <p className="font-inter text-xl text-gray-600 max-w-2xl mb-12">
-              Join in the community of Friends & Champions in contributing to building the Africa We Want.
+            <h2 className="font-playfair text-4xl font-bold text-white mb-4">Stay Connected</h2>
+            <p className="text-lg text-white/80 mb-12">
+              Join our community of African leaders and receive updates on programs and events
             </p>
-          </motion.div>
-          <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-6 max-w-5xl mx-auto">
-            {[
-              { title: "For Individuals", href: "/join/individuals" },
-              { title: "For Corporate", href: "/join/corporate" },
-              { title: "For Media", href: "/join/media" },
-              { title: "For Government", href: "/join/government" }
-            ].map((item, index) => (
-              <motion.a
-                key={item.title}
-                href={item.href}
-                className="group bg-white p-6 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300"
-                whileHover={{ y: -5 }}
-                {...fadeIn}
-                transition={{ delay: index * 0.1 }}
-              >
-                <h3 className="font-playfair text-xl font-bold text-[#0B9A9E] group-hover:text-[#F6911E] transition-colors duration-300">
-                  {item.title}
-                </h3>
-              </motion.a>
-            ))}
-          </div>
-        </div>
-      </section>
 
-      {/* Contact Section */}
-      <section className="py-24 bg-white">
-        <div className="container mx-auto px-4">
-          <motion.div 
-            className="max-w-6xl mx-auto"
-            {...fadeIn}
-          >
-            <h2 className="font-playfair text-4xl font-bold mb-8">Get in Touch</h2>
-            <div className="grid md:grid-cols-3 gap-8">
-              <div className="bg-gray-50 p-8 rounded-2xl">
-                <h3 className="font-playfair text-2xl font-bold mb-4 text-[#0B9A9E]">Visit Us</h3>
-                <p className="font-inter text-lg text-gray-600">Plot 27, Bandali Rise, Bugolobi</p>
-                <p className="font-inter text-lg text-gray-600">P.O. Box 1287, Kampala, Uganda</p>
-              </div>
-              
-              <div className="bg-gray-50 p-8 rounded-2xl">
-                <h3 className="font-playfair text-2xl font-bold mb-4 text-[#0B9A9E]">Contact Info</h3>
-                <p className="font-inter text-lg text-gray-600">Phone: +256 393 277 588</p>
-                <p className="font-inter text-lg text-gray-600">
-                  <a href="mailto:info@leoafricainstitute.org" className="hover:text-[#0B9A9E] transition-colors">
-                    info@leoafricainstitute.org
-                  </a>
-                </p>
-              </div>
-
-              <div className="bg-gray-50 p-8 rounded-2xl">
-                <h3 className="font-playfair text-2xl font-bold mb-4 text-[#0B9A9E]">Follow Us</h3>
-                <div className="flex gap-4">
-                  <a href="https://twitter.com/LeoAfricaInst" target="_blank" rel="noopener noreferrer" className="text-gray-600 hover:text-[#0B9A9E] transition-colors">
-                    <FaTwitter className="w-6 h-6" />
-                  </a>
-                  <a href="https://www.facebook.com/LeOAfricaInstitute" target="_blank" rel="noopener noreferrer" className="text-gray-600 hover:text-[#0B9A9E] transition-colors">
-                    <FaFacebookF className="w-6 h-6" />
-                  </a>
-                  <a href="https://www.linkedin.com/company/leo-africa-institute" target="_blank" rel="noopener noreferrer" className="text-gray-600 hover:text-[#0B9A9E] transition-colors">
-                    <FaLinkedinIn className="w-6 h-6" />
-                  </a>
-                  <a href="https://www.instagram.com/leoafricainst" target="_blank" rel="noopener noreferrer" className="text-gray-600 hover:text-[#0B9A9E] transition-colors">
-                    <FaInstagram className="w-6 h-6" />
-                  </a>
+            <div className="bg-white/10 backdrop-blur-md p-12 border border-white/10">
+              <div className="max-w-5xl mx-auto">
+                <SubscriptionForm />
+                <div className="mt-8 flex items-center justify-center gap-12 text-sm text-white/60">
+                  <div className="flex items-center gap-3">
+                    <FaBookReader className="w-5 h-5" />
+                    <span>Monthly Insights</span>
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <FaGraduationCap className="w-5 h-5" />
+                    <span>Program Updates</span>
+                  </div>
                 </div>
               </div>
             </div>

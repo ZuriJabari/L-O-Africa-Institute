@@ -11,7 +11,7 @@ const MultimediaHome = ({ data = { allPrismicBlogPosts: { nodes: [] } } }) => {
         <div className="flex justify-between items-center mb-6">
           <h2 className="font-playfair text-4xl font-bold text-gray-800">Featured</h2>
           <Link
-            to="/blog"
+            to="/news"
             className="font-inter text-[#1d8f92] font-semibold hover:underline"
           >
             View All Insights →
@@ -32,7 +32,7 @@ const MultimediaHome = ({ data = { allPrismicBlogPosts: { nodes: [] } } }) => {
       <div className="flex justify-between items-center mb-6">
         <h2 className="font-playfair text-4xl font-bold text-gray-800">Featured</h2>
         <Link
-          to="/blog"
+          to="/news"
           className="font-inter text-[#1d8f92] font-semibold hover:underline"
         >
           View All Insights →

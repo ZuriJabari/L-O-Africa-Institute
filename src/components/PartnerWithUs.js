@@ -1,6 +1,6 @@
 import React from 'react';
 import { FiArrowRight } from 'react-icons/fi';
-import { FaHandshake, FaGraduationCap, FaLightbulb, FaUsers } from 'react-icons/fa';
+import { FaHandshake, FaGraduationCap, FaLightbulb, FaUsers, FaHeart, FaHandHoldingHeart, FaGift, FaSeedling } from 'react-icons/fa';
 import kasLogo from '../assets/images/partners/KAS.png';
 import SegalLogo from '../assets/images/partners/SFF.svg';
 import AbmakLogo from '../assets/images/partners/ABMAKS.jpg';
@@ -24,7 +24,7 @@ const PartnerWithUs = () => {
         </div>
 
         {/* Main Content Grid */}
-        <div className="grid md:grid-cols-2 gap-12">
+        <div className="grid md:grid-cols-3 gap-12">
           {/* Partners Grid */}
           <div className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 relative overflow-hidden">
             {/* Background Decoration */}
@@ -64,35 +64,73 @@ const PartnerWithUs = () => {
             {/* Background Decoration */}
             <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-[#F6911E]/5 to-transparent rounded-bl-[50px] -z-0"></div>
             
-            <h3 className="text-2xl font-bold text-gray-900 mb-6 relative z-10">Partner With Us</h3>
+            <h3 className="text-2xl font-bold text-gray-900 mb-4 relative z-10">Partner With Us</h3>
             
-            <p className="text-gray-600 mb-8 relative z-10">
+            <p className="text-gray-600 mb-6 relative z-10 text-sm leading-relaxed">
               Join us in our mission to nurture the next generation of ethical, effective, and enlightened African leaders.
             </p>
 
             {/* Program Areas */}
-            <div className="grid grid-cols-2 gap-6 mb-8 relative z-10">
+            <div className="space-y-4 mb-8 relative z-10">
               {[
                 { icon: FaGraduationCap, text: "Leadership Development" },
                 { icon: FaLightbulb, text: "Research & Policy" },
                 { icon: FaUsers, text: "Youth Empowerment" },
                 { icon: FaHandshake, text: "Knowledge Exchange" }
               ].map((item, index) => (
-                <div key={index} className="flex items-start space-x-3 group">
-                  <div className="w-10 h-10 rounded-lg bg-[#0B9A9E]/10 flex items-center justify-center flex-shrink-0 group-hover:bg-[#0B9A9E]/20 transition-colors">
-                    <item.icon className="w-5 h-5 text-[#0B9A9E]" />
+                <div key={index} className="flex items-center space-x-4 group hover:bg-gray-50 p-2 rounded-lg transition-colors">
+                  <div className="w-8 h-8 rounded-lg bg-[#0B9A9E]/10 flex items-center justify-center flex-shrink-0 group-hover:bg-[#0B9A9E]/20 transition-colors">
+                    <item.icon className="w-4 h-4 text-[#0B9A9E]" />
                   </div>
-                  <div className="text-sm text-gray-700">{item.text}</div>
+                  <div className="text-sm text-gray-700 font-medium">{item.text}</div>
                 </div>
               ))}
             </div>
 
             {/* CTA Button */}
             <a 
-              href="//partner-with-us/"
-              className="inline-flex items-center px-6 py-3 bg-[#0B9A9E] text-white rounded-lg hover:bg-[#0B9A9E]/90 transition-colors group relative z-10"
+              href="/partner-with-us/"
+              className="inline-flex items-center px-6 py-3 bg-[#0B9A9E] text-white rounded-lg hover:bg-[#0B9A9E]/90 transition-colors group relative z-10 w-full justify-center"
             >
               <span className="mr-2">Become a Partner</span>
+              <FiArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+            </a>
+          </div>
+
+          {/* Donation Section */}
+          <div className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 relative overflow-hidden">
+            {/* Background Decoration */}
+            <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-[#F6911E]/5 to-transparent rounded-bl-[50px] -z-0"></div>
+            
+            <h3 className="text-2xl font-bold text-gray-900 mb-4 relative z-10">Make a Donation</h3>
+            
+            <p className="text-gray-600 mb-6 relative z-10 text-sm leading-relaxed">
+              Support our work in developing the next generation of African leaders through your generous contribution.
+            </p>
+
+            {/* Impact Areas */}
+            <div className="space-y-4 mb-8 relative z-10">
+              {[
+                { icon: FaHeart, text: "Support Programs" },
+                { icon: FaHandHoldingHeart, text: "Empower Youth" },
+                { icon: FaGift, text: "Enable Innovation" },
+                { icon: FaSeedling, text: "Sustain Growth" }
+              ].map((item, index) => (
+                <div key={index} className="flex items-center space-x-4 group hover:bg-gray-50 p-2 rounded-lg transition-colors">
+                  <div className="w-8 h-8 rounded-lg bg-[#F6911E]/10 flex items-center justify-center flex-shrink-0 group-hover:bg-[#F6911E]/20 transition-colors">
+                    <item.icon className="w-4 h-4 text-[#F6911E]" />
+                  </div>
+                  <div className="text-sm text-gray-700 font-medium">{item.text}</div>
+                </div>
+              ))}
+            </div>
+
+            {/* CTA Button */}
+            <a 
+              href="/donate/"
+              className="inline-flex items-center px-6 py-3 bg-[#F6911E] text-white rounded-lg hover:bg-[#F6911E]/90 transition-colors group relative z-10 w-full justify-center"
+            >
+              <span className="mr-2">Make a Donation</span>
               <FiArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
             </a>
           </div>
