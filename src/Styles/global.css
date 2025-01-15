@@ -39,7 +39,7 @@ p.signup-title {
 }
 
 .prefooter{
-  background-image: url(../assets/images/Artboard.svg);
+  background-image: url('../assets/images/Artboard.svg');
   height: 42px;
   background-color: #2bbecb;
 }
@@ -53,8 +53,8 @@ h3.text-xs.font-semibold.text-\[\#fff\].tracking-wider.uppercase.cursor-default.
 }
 
 .prefooter-gray{
-  background-image: url(../assets/images/bg-grey.svg);
-  height: 45px;
+  background-image: url('../assets/images/bg-grey.svg');
+  height: 40px;
   background-color: #424242;
 }
 

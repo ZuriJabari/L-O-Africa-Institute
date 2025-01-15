@@ -97,7 +97,7 @@ const EventsAndGatherings = () => {
                   </div>
                   <div className="absolute -bottom-6 left-1/2 -translate-x-1/2 bg-white px-8 py-3 rounded-full shadow-xl transform transition-all duration-300 group-hover:-translate-y-2 hover:shadow-2xl">
                     <span className="text-[#0B9A9E] font-semibold bg-gradient-to-r from-[#0B9A9E] to-[#F6911E] bg-clip-text text-transparent">
-                      November 2024
+                      November 2025
                     </span>
                   </div>
                 </div>
@@ -107,6 +107,182 @@ const EventsAndGatherings = () => {
           </div>
         </div>
         <div className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-[#0B9A9E] via-[#F6911E] to-[#0B9A9E] opacity-20"></div>
+      </section>
+
+      {/* 2025 Events Calendar */}
+      <section className="py-20 bg-white">
+        <div className="container mx-auto px-4">
+          <div className="max-w-5xl mx-auto">
+            <div className="mb-16">
+              <div className="text-[#F6911E] font-semibold text-lg tracking-wide uppercase mb-4">2025 Events Calendar</div>
+              <h2 className="text-4xl font-bold text-gray-900 mb-6">Upcoming Events</h2>
+              <div className="w-24 h-1 bg-[#F6911E] mb-8"></div>
+              <p className="text-xl text-gray-600">
+                Join us throughout 2025 for a series of transformative events designed to inspire, connect, and empower leaders across Africa.
+              </p>
+            </div>
+
+            <div className="space-y-8">
+              {/* June 2025 - Kigali Event */}
+              <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-8 hover:border-[#0B9A9E] transition-all">
+                <div className="flex flex-col md:flex-row gap-8">
+                  <div className="w-full md:w-48 flex-shrink-0">
+                    <div className="bg-gradient-to-br from-[#0B9A9E]/10 to-[#F6911E]/10 rounded-lg p-4 text-center">
+                      <div className="text-[#0B9A9E] font-semibold uppercase tracking-wider text-sm mb-1">June</div>
+                      <div className="text-4xl font-bold text-gray-900">2025</div>
+                      <div className="text-gray-600 mt-1">Kigali, Rwanda</div>
+                    </div>
+                  </div>
+                  <div className="flex-1">
+                    <h3 className="text-2xl font-bold text-gray-900 mb-3">Harambe Symposium</h3>
+                    <p className="text-gray-600 mb-4">
+                      Join us in Kigali for a transformative gathering focused on strengthening collaborative leadership across Africa.
+                    </p>
+                    <div className="flex flex-wrap gap-4">
+                      <Link to="/events/harambe-symposium" className="inline-flex items-center gap-2 px-4 py-2 bg-[#0B9A9E]/10 text-[#0B9A9E] rounded-lg hover:bg-[#0B9A9E]/20 transition-all">
+                        <span className="font-semibold">Learn More</span>
+                        <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                        </svg>
+                      </Link>
+                      <button className="inline-flex items-center gap-2 px-4 py-2 bg-[#F6911E]/10 text-[#F6911E] rounded-lg hover:bg-[#F6911E]/20 transition-all">
+                        <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                        </svg>
+                        <span className="font-semibold">Add to Calendar</span>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* LéO Talks */}
+              <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-8 hover:border-[#0B9A9E] transition-all">
+                <div className="flex flex-col md:flex-row gap-8">
+                  <div className="w-full md:w-48 flex-shrink-0">
+                    <div className="bg-gradient-to-br from-[#0B9A9E]/10 to-[#F6911E]/10 rounded-lg p-4 text-center">
+                      <div className="text-[#0B9A9E] font-semibold uppercase tracking-wider text-sm mb-1">Quarterly</div>
+                      <div className="text-4xl font-bold text-gray-900">2025</div>
+                      <div className="text-gray-600 mt-1">Virtual & In-Person</div>
+                    </div>
+                  </div>
+                  <div className="flex-1">
+                    <h3 className="text-2xl font-bold text-gray-900 mb-3">LéO Talks Series</h3>
+                    <p className="text-gray-600 mb-4">
+                      Join our quarterly conversation series featuring distinguished speakers sharing their vision for Africa's future.
+                    </p>
+                    <div className="flex flex-wrap gap-4">
+                      <Link to="/events/leo-talks" className="inline-flex items-center gap-2 px-4 py-2 bg-[#0B9A9E]/10 text-[#0B9A9E] rounded-lg hover:bg-[#0B9A9E]/20 transition-all">
+                        <span className="font-semibold">View Schedule</span>
+                        <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                        </svg>
+                      </Link>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Distinguished Lecture Series */}
+              <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-8 hover:border-[#0B9A9E] transition-all">
+                <div className="flex flex-col md:flex-row gap-8">
+                  <div className="w-full md:w-48 flex-shrink-0">
+                    <div className="bg-gradient-to-br from-[#0B9A9E]/10 to-[#F6911E]/10 rounded-lg p-4 text-center">
+                      <div className="text-[#0B9A9E] font-semibold uppercase tracking-wider text-sm mb-1">Bi-Monthly</div>
+                      <div className="text-4xl font-bold text-gray-900">2025</div>
+                      <div className="text-gray-600 mt-1">Multiple Venues</div>
+                    </div>
+                  </div>
+                  <div className="flex-1">
+                    <h3 className="text-2xl font-bold text-gray-900 mb-3">Distinguished Lecture Series</h3>
+                    <p className="text-gray-600 mb-4">
+                      A prestigious series featuring thought leaders and experts discussing contemporary issues shaping Africa.
+                    </p>
+                    <div className="flex flex-wrap gap-4">
+                      <Link to="/events/lecture-series" className="inline-flex items-center gap-2 px-4 py-2 bg-[#0B9A9E]/10 text-[#0B9A9E] rounded-lg hover:bg-[#0B9A9E]/20 transition-all">
+                        <span className="font-semibold">View Series</span>
+                        <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                        </svg>
+                      </Link>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Ali Mufuruki Memorial Lecture */}
+              <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-8 hover:border-[#0B9A9E] transition-all">
+                <div className="flex flex-col md:flex-row gap-8">
+                  <div className="w-full md:w-48 flex-shrink-0">
+                    <div className="bg-gradient-to-br from-[#0B9A9E]/10 to-[#F6911E]/10 rounded-lg p-4 text-center">
+                      <div className="text-[#0B9A9E] font-semibold uppercase tracking-wider text-sm mb-1">October</div>
+                      <div className="text-4xl font-bold text-gray-900">2025</div>
+                      <div className="text-gray-600 mt-1">East Africa</div>
+                    </div>
+                  </div>
+                  <div className="flex-1">
+                    <h3 className="text-2xl font-bold text-gray-900 mb-3">Ali Mufuruki Memorial Lecture</h3>
+                    <p className="text-gray-600 mb-4">
+                      Annual memorial lecture honoring the legacy of Ali Mufuruki, inspiring the next generation of African leaders.
+                    </p>
+                    <div className="flex flex-wrap gap-4">
+                      <Link to="/events/lecture-series" className="inline-flex items-center gap-2 px-4 py-2 bg-[#0B9A9E]/10 text-[#0B9A9E] rounded-lg hover:bg-[#0B9A9E]/20 transition-all">
+                        <span className="font-semibold">Learn More</span>
+                        <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                        </svg>
+                      </Link>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Annual Leaders Gathering 2025 */}
+              <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-8 hover:border-[#0B9A9E] transition-all">
+                <div className="flex flex-col md:flex-row gap-8">
+                  <div className="w-full md:w-48 flex-shrink-0">
+                    <div className="bg-gradient-to-br from-[#0B9A9E]/10 to-[#F6911E]/10 rounded-lg p-4 text-center">
+                      <div className="text-[#0B9A9E] font-semibold uppercase tracking-wider text-sm mb-1">November</div>
+                      <div className="text-4xl font-bold text-gray-900">2025</div>
+                      <div className="text-gray-600 mt-1">East Africa</div>
+                    </div>
+                  </div>
+                  <div className="flex-1">
+                    <h3 className="text-2xl font-bold text-gray-900 mb-3">Annual Leaders Gathering 2025</h3>
+                    <p className="text-gray-600 mb-4">
+                      Join Africa's most influential gathering of thought leaders, innovators, and change-makers for our flagship event. Connect with visionary leaders and shape the future of leadership on the continent.
+                    </p>
+                    <div className="flex flex-wrap gap-4">
+                      <Link to="/events/alg-2025" className="inline-flex items-center gap-2 px-4 py-2 bg-[#0B9A9E]/10 text-[#0B9A9E] rounded-lg hover:bg-[#0B9A9E]/20 transition-all">
+                        <span className="font-semibold">Learn More</span>
+                        <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                        </svg>
+                      </Link>
+                      <button className="inline-flex items-center gap-2 px-4 py-2 bg-[#F6911E]/10 text-[#F6911E] rounded-lg hover:bg-[#F6911E]/20 transition-all">
+                        <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                        </svg>
+                        <span className="font-semibold">Add to Calendar</span>
+                      </button>
+                      <a 
+                        href="https://alg.leoafricainstitute.org" 
+                        target="_blank" 
+                        rel="noopener noreferrer" 
+                        className="inline-flex items-center gap-2 px-4 py-2 bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200 transition-all"
+                      >
+                        <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                        </svg>
+                        <span className="font-semibold">Visit ALG Website</span>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </section>
 
       {/* Looking Back Section */}
@@ -277,92 +453,6 @@ const EventsAndGatherings = () => {
                     </div>
                   </div>
                 </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Our Programs Section */}
-      <section className="py-20 bg-white">
-        <div className="container mx-auto px-4">
-          <div className="max-w-5xl mx-auto">
-            <div className="mb-16">
-              <div className="text-[#F6911E] font-semibold text-lg tracking-wide uppercase mb-4">Our Programs</div>
-              <h2 className="text-4xl font-bold text-gray-900 mb-6">Signature Events & Platforms</h2>
-              <div className="w-24 h-1 bg-[#F6911E]"></div>
-            </div>
-
-            <div className="grid md:grid-cols-2 gap-8">
-              {/* Ali Mufuruki Distinguished Lecture Series */}
-              <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-6 hover:border-[#0B9A9E] transition-all">
-                <div className="mb-4">
-                  <h3 className="text-2xl font-bold text-gray-900 mb-2">Ali Mufuruki Distinguished Lecture Series</h3>
-                  <div className="h-1 w-16 bg-[#F6911E]"></div>
-                </div>
-                <p className="text-base text-gray-600 mb-4">
-                  A joint project with the Africa Leadership Initiative East Africa, preserving the memory and legacy of the late Ali Mufuruki. This platform inspires young and emerging leaders through insights into complex topics of leadership and societal development.
-                </p>
-                <Link to="/events/lecture-series" className="text-[#0B9A9E] font-medium hover:underline inline-flex items-center gap-2">
-                  View Upcoming Lectures
-                  <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                  </svg>
-                </Link>
-              </div>
-
-              {/* Harambe Symposium */}
-              <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-6 hover:border-[#0B9A9E] transition-all">
-                <div className="mb-4">
-                  <h3 className="text-2xl font-bold text-gray-900 mb-2">Harambe Symposium</h3>
-                  <div className="h-1 w-16 bg-[#F6911E]"></div>
-                </div>
-                <p className="text-base text-gray-600 mb-4">
-                  Built on the premise of urgency to strengthen collaborative leadership culture in Africa. Inspired by the Kinyarwanda concept of "Agaciro," the symposium explores collective responses to challenges and innovative systems for societal transformation.
-                </p>
-                <div className="text-sm text-gray-500 italic mb-4">
-                  "Harambe" - A Swahili word meaning "we all pull together"
-                </div>
-                <Link to="/events/harambe-symposium" className="text-[#0B9A9E] font-medium hover:underline inline-flex items-center gap-2">
-                  Learn More
-                  <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                  </svg>
-                </Link>
-              </div>
-
-              {/* LéO Africa Talks */}
-              <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-6 hover:border-[#0B9A9E] transition-all">
-                <div className="mb-4">
-                  <h3 className="text-2xl font-bold text-gray-900 mb-2">LéO Africa Talks</h3>
-                  <div className="h-1 w-16 bg-[#F6911E]"></div>
-                </div>
-                <p className="text-base text-gray-600 mb-4">
-                  A conversation series inspiring the next generation of African leaders. Distinguished speakers share their vision for Africa, bridging the gap between youth and leadership while guiding young Africans into successful careers in public service, business, and other professional fields.
-                </p>
-                <Link to="/events/talks" className="text-[#0B9A9E] font-medium hover:underline inline-flex items-center gap-2">
-                  Sign Up for Next Talk
-                  <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                  </svg>
-                </Link>
-              </div>
-
-              {/* Distinguished Public Lecture Series */}
-              <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-6 hover:border-[#0B9A9E] transition-all">
-                <div className="mb-4">
-                  <h3 className="text-2xl font-bold text-gray-900 mb-2">Distinguished Public Lecture Series</h3>
-                  <div className="h-1 w-16 bg-[#F6911E]"></div>
-                </div>
-                <p className="text-base text-gray-600 mb-4">
-                  A channel for presentation and discussion on contemporary issues, featuring distinguished authorities sharing original studies. These series deepen our understanding of economic, political, and social issues shaping Africa and the world.
-                </p>
-                <Link to="/events/public-lectures" className="text-[#0B9A9E] font-medium hover:underline inline-flex items-center gap-2">
-                  View Calendar
-                  <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                  </svg>
-                </Link>
               </div>
             </div>
           </div>

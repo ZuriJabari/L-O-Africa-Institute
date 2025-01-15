@@ -2,10 +2,10 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import LucyHero from '../../assets/images/ALG24.jpg';
 import LucyPhoto from '../../assets/images/Lucy.png';
-import CarlPhoto from '../../assets/images/carl.jpg'; // Add Carl's photo
-import Navbar from '../../components/Navbar'; // Adjust the path to your Navbar component
-import Footer from '../../components/Footer'; // Adjust the path to your Footer component
-import Layout from '../../components/Layout'; // If you have a layout component
+import CarlPhoto from '../../assets/images/carl.jpg'; 
+import Navbar from '../../components/Navbar'; 
+import Footer from '../../components/Footer'; 
+import Layout from '../../components/Layout'; 
 
 const Champions = () => {
   return (
@@ -16,7 +16,7 @@ const Champions = () => {
         <div 
           className="absolute inset-0 bg-cover bg-center"
           style={{
-            backgroundImage: 'linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url("/path/to/hero-bg.jpg")'
+            backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(${LucyHero})`
           }}
         />
 
@@ -28,10 +28,10 @@ const Champions = () => {
             transition={{ duration: 0.8 }}
             className="text-center mb-16"
           >
-            <h1 className="text-white text-5xl md:text-6xl font-bold mb-6">
+            <h1 className="font-playfair text-white text-5xl md:text-6xl font-bold mb-6">
               Meet Our Champions
             </h1>
-            <p className="text-gray-300 text-xl max-w-2xl mx-auto">
+            <p className="font-inter text-gray-300 text-xl max-w-2xl mx-auto">
               Visionary leaders driving positive change across Africa
             </p>
           </motion.div>
@@ -51,8 +51,8 @@ const Champions = () => {
                   className="w-20 h-20 rounded-full object-cover border-2 border-[#2bbecb]"
                 />
                 <div>
-                  <h2 className="text-white text-2xl font-bold">Lucy Mbabazi</h2>
-                  <p className="text-gray-300">Managing Director, Better than Cash Alliance</p>
+                  <h3 className="font-playfair text-white text-xl font-semibold">Lucy Mbabazi</h3>
+                  <p className="font-inter text-gray-300">Managing Director, Better than Cash Alliance</p>
                 </div>
               </div>
             </motion.div>
@@ -71,8 +71,8 @@ const Champions = () => {
                   className="w-20 h-20 rounded-full object-cover border-2 border-[#2bbecb]"
                 />
                 <div>
-                  <h2 className="text-white text-2xl font-bold">Carl Manlan</h2>
-                  <p className="text-gray-300">Vice President, Social Impact - Visa CEMEA</p>
+                  <h3 className="font-playfair text-white text-xl font-semibold">Carl Manlan</h3>
+                  <p className="font-inter text-gray-300">Vice President, Social Impact - Visa CEMEA</p>
                 </div>
               </div>
             </motion.div>
@@ -94,10 +94,10 @@ const Champions = () => {
               className="h-32 w-32 object-cover rounded-lg" 
             />
             <div>
-              <h3 className="font-bold text-[#3b3b3b] text-lg mb-1">Lucy Mbabazi</h3>
-              <h4 className="text-sm font-medium text-gray-600 mb-1">Managing Director, Better than Cash Alliance</h4>
+              <h3 className="font-playfair text-[#3b3b3b] text-lg mb-1">Lucy Mbabazi</h3>
+              <h4 className="font-inter text-sm font-medium text-gray-600 mb-1">Managing Director, Better than Cash Alliance</h4>
               <hr className="border-gray-300 my-2" />
-              <p className="text-sm text-[#444] leading-relaxed">
+              <p className="font-inter text-sm text-[#444] leading-relaxed">
                 Lucy is the Managing Director of the Better Than Cash Alliance, hosted by the UN, and Chairperson Emeritus of the LéO Africa Institute. Previously, she led Africa Policy, Advocacy, and Partnerships for the Alliance.
                 <br /><br />
                 Lucy's purpose is FREEDOM. She works tirelessly to ensure digital and financial inclusion for every African. Her passion extends to mentoring girls in STEM, inspiring African girls to pursue technology and engineering fields.
@@ -113,10 +113,10 @@ const Champions = () => {
               className="h-32 w-32 object-cover rounded-lg" 
             />
             <div>
-              <h3 className="font-bold text-[#3b3b3b] text-lg mb-1">Carl Manlan</h3>
-              <h4 className="text-sm font-medium text-gray-600 mb-1">Vice President, Social Impact - Visa CEMEA</h4>
+              <h3 className="font-playfair text-[#3b3b3b] text-lg mb-1">Carl Manlan</h3>
+              <h4 className="font-inter text-sm font-medium text-gray-600 mb-1">Vice President, Social Impact - Visa CEMEA</h4>
               <hr className="border-gray-300 my-2" />
-              <p className="text-sm text-[#444] leading-relaxed">
+              <p className="font-inter text-sm text-[#444] leading-relaxed">
                 Carl is the Vice President of Social Impact at Visa CEMEA. He has a strong background in public health and economic development, working to improve the lives of people across Africa.
                 <br /><br />
                 Carl's mission is to drive social impact through innovative solutions and partnerships. He is dedicated to creating opportunities for underserved communities and fostering inclusive growth.

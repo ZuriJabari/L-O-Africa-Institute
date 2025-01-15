@@ -1,8 +1,29 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { StaticImage } from "gatsby-plugin-image";
+import awelPhoto from "../assets/images/team/Awel.jpg";
 
 const FoundersBlog = () => {
+  const listVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.2
+      }
+    }
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, x: -20 },
+    visible: {
+      opacity: 1,
+      x: 0,
+      transition: {
+        duration: 0.5
+      }
+    }
+  };
+
   return (
     <section className="py-20 bg-gradient-to-r from-[#0B9A9E] to-[#F6911E] relative overflow-hidden">
       {/* Background Pattern */}
@@ -26,16 +47,10 @@ const FoundersBlog = () => {
             >
               <div className="relative max-w-sm mx-auto">
                 <div className="absolute inset-0 bg-gradient-to-r from-[#0B9A9E] to-[#F6911E] rounded-xl transform rotate-3"></div>
-                <StaticImage
-                  src="../assets/images/team/Awel.jpg"
-                  alt="Awel Uwihanganye"
-                  className="relative z-10 rounded-xl shadow-2xl transform -rotate-2"
-                  imgClassName="rounded-xl"
-                  placeholder="blurred"
-                  width={400}
-                  height={500}
-                  objectFit="cover"
-                  quality={95}
+                <img
+                  src={awelPhoto}
+                  alt="Awel Uwihanganye - Founder & CEO"
+                  className="relative z-10 rounded-xl shadow-2xl transform -rotate-2 w-full h-[500px] object-cover"
                 />
               </div>
             </motion.div>
@@ -48,35 +63,65 @@ const FoundersBlog = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
             >
-              <h2 className="font-playfair text-4xl md:text-5xl font-bold mb-6 leading-tight">
+              <motion.h2 
+                className="font-playfair text-4xl md:text-5xl font-bold mb-6 leading-tight"
+                initial={{ opacity: 0, y: -20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5 }}
+              >
                 The Founders' Blog
-              </h2>
+              </motion.h2>
               <div className="space-y-6">
-                <p className="font-inter text-xl opacity-90">
+                <motion.p 
+                  className="font-inter text-xl opacity-90"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: 0.2 }}
+                >
                   Coming soon! Join our founder in exploring critical insights about leadership, innovation, and Africa's transformative journey.
-                </p>
-                <p className="font-inter text-lg opacity-80">
+                </motion.p>
+                <motion.p 
+                  className="font-inter text-lg opacity-80"
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: 0.3 }}
+                >
                   Discover thought-provoking perspectives on:
-                </p>
-                <ul className="space-y-3 text-lg opacity-90">
-                  <li className="font-inter flex items-center">
+                </motion.p>
+                <motion.ul 
+                  className="space-y-3 text-lg opacity-90"
+                  variants={listVariants}
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: true }}
+                >
+                  <motion.li variants={itemVariants} className="font-inter flex items-center">
                     <span className="w-2 h-2 bg-white rounded-full mr-3"></span>
                     Ethical Leadership in Practice
-                  </li>
-                  <li className="font-inter flex items-center">
+                  </motion.li>
+                  <motion.li variants={itemVariants} className="font-inter flex items-center">
                     <span className="w-2 h-2 bg-white rounded-full mr-3"></span>
                     Innovation & Social Impact
-                  </li>
-                  <li className="font-inter flex items-center">
+                  </motion.li>
+                  <motion.li variants={itemVariants} className="font-inter flex items-center">
                     <span className="w-2 h-2 bg-white rounded-full mr-3"></span>
                     Africa's Development Journey
-                  </li>
-                </ul>
-                <div className="mt-8">
+                  </motion.li>
+                </motion.ul>
+                <motion.div 
+                  className="mt-8"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: 0.8 }}
+                >
                   <p className="font-inter text-xl font-semibold">
                     Stay tuned for the launch!
                   </p>
-                </div>
+                </motion.div>
               </div>
             </motion.div>
           </div>

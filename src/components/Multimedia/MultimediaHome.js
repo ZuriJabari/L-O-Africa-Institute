@@ -1,21 +1,38 @@
 import React from "react";
 import { Link } from "gatsby";
 
-const MultimediaHome = ({ data }) => {
+const MultimediaHome = ({ data = { allPrismicBlogPosts: { nodes: [] } } }) => {
   const multimediaItems = data?.allPrismicBlogPosts?.nodes || [];
-  const featuredItem = multimediaItems[0]; // The first item as featured
-  const otherItems = multimediaItems.slice(1, 4); // Limit to next 3 items for More Insights
-
-  if (multimediaItems.length === 0) {
-    return <p className="text-center text-gray-600">No multimedia items available.</p>;
+  
+  // If no items are available, return a minimal section
+  if (!multimediaItems || multimediaItems.length === 0) {
+    return (
+      <section className="container mx-auto px-6 lg:px-20 py-12">
+        <div className="flex justify-between items-center mb-6">
+          <h2 className="font-playfair text-4xl font-bold text-gray-800">Featured</h2>
+          <Link
+            to="/news"
+            className="font-inter text-[#1d8f92] font-semibold hover:underline"
+          >
+            View All Insights →
+          </Link>
+        </div>
+        <p className="font-inter text-lg text-gray-600 mb-10">
+          Stay tuned for our latest multimedia content, stories, and impactful updates.
+        </p>
+      </section>
+    );
   }
+
+  const featuredItem = multimediaItems[0];
+  const otherItems = multimediaItems.slice(1, 4);
 
   return (
     <section className="container mx-auto px-6 lg:px-20 py-12">
       <div className="flex justify-between items-center mb-6">
         <h2 className="font-playfair text-4xl font-bold text-gray-800">Featured</h2>
         <Link
-          to="/blog"
+          to="/news"
           className="font-inter text-[#1d8f92] font-semibold hover:underline"
         >
           View All Insights →
@@ -35,98 +52,80 @@ const MultimediaHome = ({ data }) => {
                 <span className="font-inter text-sm font-medium bg-[#f6941e] text-white px-3 py-1 rounded-full">
                   Featured
                 </span>
-                {featuredItem.data.categories?.length > 0 && (
+                {featuredItem.data?.categories?.length > 0 && (
                   <span className="font-inter text-sm font-medium bg-[#1d8f92] text-white px-3 py-1 rounded-full">
                     {featuredItem.data.categories[0].category}
                   </span>
                 )}
               </div>
               <p className="font-inter text-gray-500 text-sm">
-                Published on {featuredItem.data.publish_date} by{" "}
-                {featuredItem.data.author || "Unknown"}
+                {featuredItem.data?.publish_date ? `Published on ${featuredItem.data.publish_date}` : ''} 
+                {featuredItem.data?.author ? ` by ${featuredItem.data.author}` : ''}
               </p>
               <h3 className="font-playfair text-4xl font-extrabold leading-tight text-gray-800">
                 <Link to={`/blog/${featuredItem.uid}`} className="hover:underline">
-                  {featuredItem.data.title}
+                  {featuredItem.data?.title || 'Untitled Post'}
                 </Link>
               </h3>
-              {featuredItem.data.introduction && (
-                <div className="font-inter text-lg text-gray-600 space-y-4">
-                  {featuredItem.data.introduction.map((block, index) => (
-                    <p key={index}>{block.text}</p>
-                  ))}
-                </div>
-              )}
-              <p className="font-inter text-lg text-gray-600">{featuredItem.data.excerpt}</p>
-              <Link
-                to={`/blog/${featuredItem.uid}`}
-                className="font-inter inline-block bg-[#1d8f92] text-white px-6 py-3 rounded-lg font-medium hover:bg-[#f6941e] transition-all duration-300"
-              >
-                Read More →
-              </Link>
             </div>
 
             {/* Right: Image */}
-            <div className="relative h-80 lg:h-full rounded-lg overflow-hidden shadow-lg">
-              <img
-                src={featuredItem.data.featured_image.url}
-                alt={featuredItem.data.featured_image.alt || featuredItem.data.title}
-                className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
-              />
+            <div className="relative h-full min-h-[300px] lg:min-h-[400px]">
+              {featuredItem.data?.featured_image?.url ? (
+                <img
+                  src={featuredItem.data.featured_image.url}
+                  alt={featuredItem.data?.title || 'Featured post'}
+                  className="absolute inset-0 w-full h-full object-cover"
+                />
+              ) : (
+                <div className="absolute inset-0 bg-gray-200 flex items-center justify-center">
+                  <span className="text-gray-400">No image available</span>
+                </div>
+              )}
             </div>
           </div>
         </div>
       )}
 
-      {/* More Insights Section */}
-      <h3 className="font-playfair text-3xl font-bold text-gray-800 mb-6">More Insights</h3>
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        {otherItems.map((item) => (
-          <div
-            key={item.id}
-            className="bg-white shadow-lg rounded-lg overflow-hidden hover:shadow-xl transition-shadow duration-300"
-          >
-            <Link to={`/blog/${item.uid}`}>
-              {item.data.featured_image?.url && (
-                <img
-                  src={item.data.featured_image.url}
-                  alt={item.data.title || "Article"}
-                  className="w-full h-48 object-cover"
-                />
-              )}
-            </Link>
-            <div className="p-4">
-              <h4 className="font-playfair text-xl font-bold text-gray-800 mb-2">
-                <Link to={`/blog/${item.uid}`} className="hover:underline">
-                  {item.data.title}
-                </Link>
-              </h4>
-              <p className="font-inter text-sm text-gray-600 mb-4">{item.data.excerpt}</p>
-              <div className="flex items-center justify-between">
-                <span className="font-inter text-xs text-gray-500">
-                  {item.data.publish_date}
-                </span>
-                <Link
-                  to={`/blog/${item.uid}`}
-                  className="font-inter text-[#1d8f92] text-sm hover:underline"
-                >
-                  Read More →
-                </Link>
+      {/* More Insights Grid */}
+      {otherItems.length > 0 && (
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {otherItems.map((item) => (
+            <Link
+              key={item.id}
+              to={`/blog/${item.uid}`}
+              className="group bg-white shadow-lg rounded-lg overflow-hidden hover:shadow-xl transition-shadow duration-300"
+            >
+              <div className="relative h-48">
+                {item.data?.featured_image?.url ? (
+                  <img
+                    src={item.data.featured_image.url}
+                    alt={item.data?.title || 'Blog post'}
+                    className="w-full h-full object-cover"
+                  />
+                ) : (
+                  <div className="w-full h-full bg-gray-200 flex items-center justify-center">
+                    <span className="text-gray-400">No image available</span>
+                  </div>
+                )}
               </div>
-            </div>
-          </div>
-        ))}
-      </div>
-
-      {/* Browse More News Link */}
-      <div className="text-right mt-8">
-        <Link
-          to="/news"
-          className="font-inter text-[#1d8f92] font-semibold hover:underline"
-        >
-          Browse More News →
-        </Link>
-      </div>
+              <div className="p-6">
+                {item.data?.categories?.length > 0 && (
+                  <span className="inline-block font-inter text-sm font-medium bg-[#1d8f92] text-white px-3 py-1 rounded-full mb-4">
+                    {item.data.categories[0].category}
+                  </span>
+                )}
+                <h3 className="font-playfair text-xl font-bold text-gray-800 mb-2 group-hover:text-[#f6941e]">
+                  {item.data?.title || 'Untitled Post'}
+                </h3>
+                <p className="font-inter text-sm text-gray-500">
+                  {item.data?.publish_date ? `Published on ${item.data.publish_date}` : ''}
+                </p>
+              </div>
+            </Link>
+          ))}
+        </div>
+      )}
     </section>
   );
 };

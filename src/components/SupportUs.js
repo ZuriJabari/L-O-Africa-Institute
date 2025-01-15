@@ -1,126 +1,129 @@
 // SupportUs.js
-import React from "react";
-import { motion } from "framer-motion";
-import { FiArrowRight } from "react-icons/fi";
-
-const BRAND_COLORS = {
-  teal: '#00babc',
-  orange: '#f89420', 
-  gray: '#545456',
-  burgundy: '#9a1a2f'
-};
+import React from 'react'
+import { motion } from 'framer-motion'
+import { FaMapMarkerAlt, FaPhone, FaEnvelope, FaGlobe } from 'react-icons/fa'
 
 const SupportUs = () => {
   return (
-    <div className="min-h-screen">
+    <section className="relative overflow-hidden">
       {/* Hero Section */}
-      <motion.section 
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        className="relative bg-gradient-to-br from-gray-900 to-gray-800 text-white py-24"
-      >
-        <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute inset-0 bg-[#00babc]/10 mix-blend-multiply" />
-          {/* Decorative elements */}
-          <div className="absolute top-0 left-0 w-96 h-96 bg-[#00babc]/20 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2" />
-          <div className="absolute bottom-0 right-0 w-96 h-96 bg-[#f89420]/20 rounded-full blur-3xl translate-x-1/2 translate-y-1/2" />
+      <div className="relative bg-gradient-to-br from-gray-900 via-[#0B9A9E]/90 to-gray-900 py-24">
+        <div className="absolute inset-0 bg-[url('/pattern.svg')] opacity-10"></div>
+        <div className="absolute top-0 right-0 w-1/3 h-full bg-gradient-to-l from-[#F6911E]/20 to-transparent"></div>
+        
+        <div className="container mx-auto px-4 relative">
+          <div className="max-w-4xl">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+            >
+              <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">
+                Partner with Us & Support our Work
+              </h1>
+              <div className="w-24 h-1 bg-[#F6911E] mb-8"></div>
+              <p className="text-xl text-white/80 max-w-2xl">
+                The LéO Africa Institute is a non-profit organization dedicated to fostering leadership and positive change across Africa.
+              </p>
+            </motion.div>
+          </div>
         </div>
-
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
-          <motion.h1 
-            initial={{ y: 20, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ delay: 0.2 }}
-            className="font-playfair text-4xl md:text-5xl font-bold mb-6 text-center"
-          >
-            How You Can Support Our Work
-          </motion.h1>
-        </div>
-      </motion.section>
+      </div>
 
       {/* Main Content */}
-      <section className="py-16 px-4">
-        <div className="max-w-4xl mx-auto space-y-16">
-          {/* Introduction */}
-          <motion.div
-            initial={{ y: 20, opacity: 0 }}
-            whileInView={{ y: 0, opacity: 1 }}
-            viewport={{ once: true }}
-            className="font-inter text-lg text-gray-600 space-y-6"
-          >
-            <p>
-              From its inception, the LéO Africa Institute has enjoyed the support of individuals who have made generous financial contributions and volunteered their valuable time towards supporting Institute programs.
-            </p>
-            <p>
-              We have also worked with great organizations that share our firm conviction in the opportunity Africa presents if we build a critical mass of ethical and values-based leaders to be in charge of managing society.
-            </p>
-            <p>
-              You can join this growing community of Africans and friends of Africa by making your contribution to strengthening the institute's investment in building a community of leaders who are driving positive change in Africa.
-            </p>
-          </motion.div>
+      <div className="py-24 bg-white">
+        <div className="container mx-auto px-4">
+          <div className="max-w-7xl">
+            {/* Content Section */}
+            <div className="grid lg:grid-cols-2 gap-16 mb-16">
+              {/* Left Column */}
+              <motion.div
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.6 }}
+                viewport={{ once: true }}
+                className="space-y-8"
+              >
+                <div className="prose prose-lg">
+                  <p className="text-gray-600 leading-relaxed">
+                    We want to work with individuals, actors from industry, and public sector who support us with financial donations, and in kind with their time, and other offerings.
+                  </p>
+                  <p className="text-gray-600 leading-relaxed">
+                    We invite you to join us; to support our efforts by donating, or collaborating on exciting projects building change agents in our communities and countries.
+                  </p>
+                  <p className="text-gray-600 leading-relaxed font-medium">
+                    Join in the community of Friends & Champions in contributing to building the Africa We Want.
+                  </p>
+                </div>
+              </motion.div>
 
-          {/* Support Options */}
-          <motion.div
-            initial={{ y: 20, opacity: 0 }}
-            whileInView={{ y: 0, opacity: 1 }}
-            viewport={{ once: true }}
-            className="grid md:grid-cols-2 gap-8"
-          >
-            {/* Champion Network Card */}
-            <motion.div
-              whileHover={{ scale: 1.02 }}
-              className="bg-white rounded-xl shadow-lg p-8 border border-gray-100"
-            >
-              <h3 className="font-playfair text-2xl font-bold mb-4 text-[#00babc]">
-                Join Africa Champion Network
-              </h3>
-              <p className="font-inter text-gray-600 mb-6">
-                Connect with like-minded leaders and contribute to positive change across Africa.
-              </p>
-              <button className="font-inter flex items-center gap-2 text-[#00babc] font-semibold hover:gap-4 transition-all">
-                Sign up now <FiArrowRight />
-              </button>
-            </motion.div>
+              {/* Right Column - Contact Information */}
+              <motion.div
+                initial={{ opacity: 0, x: 20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.6 }}
+                viewport={{ once: true }}
+                className="bg-gray-50 rounded-2xl p-8"
+              >
+                <h3 className="text-2xl font-bold text-gray-900 mb-8">General Contact Information</h3>
+                <div className="space-y-6">
+                  <div className="flex items-start gap-4">
+                    <div className="flex items-center justify-center w-12 h-12 bg-[#0B9A9E]/10 rounded-full shrink-0">
+                      <FaMapMarkerAlt className="w-6 h-6 text-[#0B9A9E]" />
+                    </div>
+                    <div>
+                      <p className="text-gray-600">
+                        Block D Suite9, Ntinda Complex,<br />
+                        Ntinda Road, Kampala Uganda
+                      </p>
+                    </div>
+                  </div>
 
-            {/* Donation Card */}
-            <motion.div
-              whileHover={{ scale: 1.02 }}
-              className="bg-white rounded-xl shadow-lg p-8 border border-gray-100"
-            >
-              <h3 className="font-playfair text-2xl font-bold mb-4 text-[#f89420]">
-                Make a Donation
-              </h3>
-              <ul className="font-inter space-y-2 text-gray-600 mb-6">
-                <li>• Individual Giving</li>
-                <li>• Corporate or Institutional Giving</li>
-              </ul>
-              <button className="font-inter flex items-center gap-2 text-[#f89420] font-semibold hover:gap-4 transition-all">
-                Donate now <FiArrowRight />
-              </button>
-            </motion.div>
-          </motion.div>
+                  <div className="flex items-start gap-4">
+                    <div className="flex items-center justify-center w-12 h-12 bg-[#0B9A9E]/10 rounded-full shrink-0">
+                      <FaPhone className="w-6 h-6 text-[#0B9A9E]" />
+                    </div>
+                    <div>
+                      <p className="text-gray-600">+256-(0) 776 891 933</p>
+                    </div>
+                  </div>
 
-          {/* Partnership CTA */}
-          <motion.div
-            initial={{ y: 20, opacity: 0 }}
-            whileInView={{ y: 0, opacity: 1 }}
-            viewport={{ once: true }}
-            className="text-center"
-          >
-            <h3 className="font-playfair text-2xl font-bold mb-6 text-[#9a1a2f]">
-              Partner with us on our Initiatives
-            </h3>
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              className="font-inter px-8 py-4 bg-gradient-to-r from-[#00babc] to-[#f89420] text-white rounded-full font-semibold shadow-lg hover:shadow-xl transition-all"
-            >
-              Explore Partnership Opportunities
-            </motion.button>
-          </motion.div>
+                  <div className="flex items-start gap-4">
+                    <div className="flex items-center justify-center w-12 h-12 bg-[#0B9A9E]/10 rounded-full shrink-0">
+                      <FaEnvelope className="w-6 h-6 text-[#0B9A9E]" />
+                    </div>
+                    <div>
+                      <a href="mailto:communications@leoafricainstitute.org" className="text-[#0B9A9E] hover:underline">
+                        communications@leoafricainstitute.org
+                      </a>
+                    </div>
+                  </div>
+
+                  <div className="flex items-start gap-4">
+                    <div className="flex items-center justify-center w-12 h-12 bg-[#0B9A9E]/10 rounded-full shrink-0">
+                      <FaGlobe className="w-6 h-6 text-[#0B9A9E]" />
+                    </div>
+                    <div>
+                      <a 
+                        href="https://www.leoafricainstitute.org" 
+                        target="_blank" 
+                        rel="noopener noreferrer" 
+                        className="text-[#0B9A9E] hover:underline"
+                      >
+                        www.leoafricainstitute.org
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </motion.div>
+            </div>
+
+            
+          </div>
         </div>
-      </section>
-    </div>
-  );
-};
+      </div>
+    </section>
+  )
+}
 
-export default SupportUs;
+export default SupportUs

@@ -1,10 +1,42 @@
 module.exports = {
+  flags: {
+    DEV_SSR: false,
+    FAST_DEV: true,
+    PRESERVE_FILE_DOWNLOAD_CACHE: true,
+    PARALLEL_SOURCING: true
+  },
+  pathPrefix: `/`,
   siteMetadata: {
     title: `LéO Africa Institute`,
     description: `The LéO Africa Institute is a pan-African organization that nurtures and empowers young leaders to positively transform society.`,
     siteUrl: `https://leoafricainstitute.org`,
   },
   plugins: [
+    {
+      resolve: `gatsby-plugin-manifest`,
+      options: {
+        name: `LéO Africa Institute`,
+        short_name: `LéO Africa`,
+        start_url: `/`,
+        background_color: `#ffffff`,
+        theme_color: `#0B9A9E`,
+        display: `standalone`,
+        icon: `static/favicon.ico`,
+        icon_options: {
+          purpose: `any maskable`,
+        },
+        cache_busting_mode: 'none'
+      },
+    },
+    {
+      resolve: 'gatsby-plugin-offline',
+      options: {
+        workboxConfig: {
+          globPatterns: ['**/*']
+        }
+      }
+    },
+    // Move the rest of your plugins after manifest and offline plugins
     `gatsby-plugin-image`,
     `gatsby-plugin-sharp`,
     `gatsby-transformer-sharp`,
@@ -18,15 +50,15 @@ module.exports = {
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        name: `pages`,
-        path: `${__dirname}/src/pages`,
+        name: `images`,
+        path: `${__dirname}/src/assets/images`,
       },
     },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        name: `images`,
-        path: `${__dirname}/src/assets/images`,
+        name: `pages`,
+        path: `${__dirname}/src/pages/`,
       },
     },
     {
@@ -38,18 +70,6 @@ module.exports = {
           blog_posts: require('./src/schemas/blog_posts.json'),
           publications: require('./src/schemas/publication.json'),
         },
-      },
-    },
-    {
-      resolve: `gatsby-plugin-manifest`,
-      options: {
-        name: `LéO Africa Institute`,
-        short_name: `LéO Africa`,
-        start_url: `/`,
-        background_color: `#ffffff`,
-        theme_color: `#0B9A9E`,
-        display: `standalone`,
-        icon: `src/assets/images/Leo-logo-primary.png`,
       },
     },
     `gatsby-plugin-react-helmet`,

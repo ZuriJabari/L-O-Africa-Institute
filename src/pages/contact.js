@@ -1,128 +1,131 @@
-import React from 'react';
-import Layout from '../components/Layout'; // Import the Layout component
-import { FaTwitter, FaFacebookF, FaInstagram, FaLinkedinIn } from 'react-icons/fa'; // Social and Contact Icons
-import YELPLogo from '../assets/images/YELP-Logo.svg'; // YELP Logo
-import HudumaLogo from '../assets/images/huduma-logo.svg'; // Huduma Fellowship Logo
-import LARLogo from '../assets/images/LAR-logo.png'; // LéO Africa Review Logo
-import contactHero from '../assets/images/contact-hero.jpg'; // Contact hero image
+import React from 'react'
+import { motion } from 'framer-motion'
+import Layout from '../components/Layout'
+import SupportUs from '../components/SupportUs'
+import { FaTwitter, FaFacebook, FaInstagram, FaLinkedin, FaEnvelope } from 'react-icons/fa'
 
 const ContactPage = () => {
+  const socialLinks = [
+    {
+      name: 'Twitter',
+      icon: <FaTwitter className="w-6 h-6" />,
+      url: 'https://twitter.com/LeoAfricaInst',
+    },
+    {
+      name: 'Facebook',
+      icon: <FaFacebook className="w-6 h-6" />,
+      url: 'https://facebook.com/LeoAfricaInstitute',
+    },
+    {
+      name: 'Instagram',
+      icon: <FaInstagram className="w-6 h-6" />,
+      url: 'https://instagram.com/leoafricainstitute',
+    },
+    {
+      name: 'LinkedIn',
+      icon: <FaLinkedin className="w-6 h-6" />,
+      url: 'https://linkedin.com/company/leo-africa-institute',
+    },
+  ]
+
   return (
     <Layout>
-      {/* Hero Section with the new background image */}
-      <section className="relative h-[65vh] bg-cover bg-center text-white flex flex-col justify-center items-center" style={{ backgroundImage: `url(${contactHero})` }}>
-        <div className="absolute inset-0 bg-black opacity-50"></div> {/* Dark overlay */}
-        <h1 className="relative z-10 text-4xl sm:text-6xl font-bold mb-4">Need Help? We're Here for You!</h1>
-        <p className="relative z-10 text-lg sm:text-xl max-w-3xl text-center">
-          Whether you have questions about the Annual Leaders Gathering, need support with registration, or want to partner with us, feel free to get in touch with our team. We're committed to providing the best experience.
-        </p>
-      </section>
-      <div className='prefooter'></div>
-      {/* New Contact Information Section */}
-      <section className="max-w-7xl mx-auto py-16 px-6">
-        <div className="bg-gray-100 p-8 rounded-lg shadow-lg text-center text-lg leading-relaxed">
-          <p className="mb-4">
-            <a href="mailto:alg@leoafricainstitute.org" className="font-bold text-[#1d8f92] hover:underline">alg@leoafricainstitute.org</a> – for Annual Leaders Gathering inquiries
-          </p>
-          <p className="mb-4">
-            <a href="mailto:communications@leoafricainstitute.org" className="font-bold text-[#1d8f92] hover:underline">communications@leoafricainstitute.org</a> – for General Inquiries
-          </p>
-          <p className="mb-4">
-            Our social media accounts are also a great way to reach us and support conversations online using the hashtag <span className="font-bold text-[#1d8f92]">#ALG2024</span>
-          </p>
-
-          {/* Social Media Icons with hover animation */}
-          <div className="mt-8 flex justify-center space-x-8 text-4xl text-gray-600">
-            <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="hover:text-[#1d8f92] transition-all duration-300 transform hover:scale-110">
-              <FaTwitter />
-            </a>
-            <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="hover:text-[#1d8f92] transition-all duration-300 transform hover:scale-110">
-              <FaFacebookF />
-            </a>
-            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="hover:text-[#1d8f92] transition-all duration-300 transform hover:scale-110">
-              <FaInstagram />
-            </a>
-            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="hover:text-[#1d8f92] transition-all duration-300 transform hover:scale-110">
-              <FaLinkedinIn />
-            </a>
+      {/* Hero Section */}
+      <section className="relative bg-gradient-to-br from-gray-900 via-[#0B9A9E]/90 to-gray-900 py-24">
+        <div className="absolute inset-0 bg-[url('/pattern.svg')] opacity-10"></div>
+        <div className="absolute top-0 right-0 w-1/3 h-full bg-gradient-to-l from-[#F6911E]/20 to-transparent"></div>
+        
+        <div className="container mx-auto px-4 relative">
+          <div className="max-w-4xl">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+            >
+              <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">
+                Get in Touch
+              </h1>
+              <div className="w-24 h-1 bg-[#F6911E] mb-8"></div>
+              <p className="text-xl text-white/80 max-w-2xl">
+                Have a question or want to get involved? We'd love to hear from you.
+              </p>
+            </motion.div>
           </div>
         </div>
       </section>
 
-      {/* Redesigned Initiatives Section with Logos */}
-      <section className="max-w-7xl mx-auto py-16 px-6">
-        <h2 className="text-3xl font-bold text-center mb-8">Check out other initiatives of the LéO Africa Institute</h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {/* Huduma Fellowship */}
-          <a
-            href="https://huduma.leoafricainstitute.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="group relative bg-gray-50 p-8 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
-          >
-            <div className="absolute inset-0 opacity-20 bg-pattern"></div>
-            <img src={HudumaLogo} alt="Huduma Fellowship Logo" className="h-24 mx-auto mb-4 z-10 relative" />
-            <h3 className="text-2xl font-bold text-gray-900 mb-4 z-10 relative">Huduma Fellowship</h3>
-            <p className="text-lg text-gray-700 z-10 relative">Empowering public service leaders to drive positive change.</p>
-          </a>
+      {/* Contact Information Section */}
+      <section className="py-24 bg-white">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto">
+            {/* Email Contacts */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true }}
+              className="space-y-8 mb-16"
+            >
+              <div className="flex flex-col items-center text-center gap-4">
+                <div className="flex items-center justify-center w-16 h-16 bg-[#0B9A9E]/10 rounded-full shrink-0">
+                  <FaEnvelope className="w-8 h-8 text-[#0B9A9E]" />
+                </div>
+                <div>
+                  <h3 className="text-2xl font-bold text-gray-900 mb-2">General Inquiries</h3>
+                  <a href="mailto:communications@leoafricainstitute.org" className="text-[#0B9A9E] hover:underline text-lg">
+                    communications@leoafricainstitute.org
+                  </a>
+                </div>
+              </div>
 
-          {/* YELP */}
-          <a
-            href="https://yelp.leoafricainstitute.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="group relative bg-gray-50 p-8 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
-          >
-            <div className="absolute inset-0 opacity-20 bg-pattern"></div>
-            <img src={YELPLogo} alt="YELP Logo" className="h-24 mx-auto mb-4 z-10 relative" />
-            <h3 className="text-2xl font-bold text-gray-900 mb-4 z-10 relative">YELP</h3>
-            <p className="text-lg text-gray-700 z-10 relative">Cultivating the next generation of visionary African leaders.</p>
-          </a>
+              <div className="flex flex-col items-center text-center gap-4">
+                <div className="flex items-center justify-center w-16 h-16 bg-[#0B9A9E]/10 rounded-full shrink-0">
+                  <FaEnvelope className="w-8 h-8 text-[#0B9A9E]" />
+                </div>
+                <div>
+                  <h3 className="text-2xl font-bold text-gray-900 mb-2">Annual Leaders Gathering</h3>
+                  <a href="mailto:alg@leoafricainstitute.org" className="text-[#0B9A9E] hover:underline text-lg">
+                    alg@leoafricainstitute.org
+                  </a>
+                </div>
+              </div>
+            </motion.div>
 
-          {/* LéO Africa Review */}
-          <a
-            href="https://leoafricareview.com/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="group relative bg-gray-50 p-8 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
-          >
-            <div className="absolute inset-0 opacity-20 bg-pattern"></div>
-            <img src={LARLogo} alt="LéO Africa Review Logo" className="h-24 mx-auto mb-4 z-10 relative" />
-            <h3 className="text-2xl font-bold text-gray-900 mb-4 z-10 relative">LéO Africa Review</h3>
-            <p className="text-lg text-gray-700 z-10 relative">Insights and analyses on African development and leadership.</p>
-          </a>
+            {/* Social Media */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true }}
+              className="text-center mb-16"
+            >
+              <h3 className="text-2xl font-bold text-gray-900 mb-6">Connect With Us</h3>
+              <p className="text-gray-600 mb-8 text-lg">
+                Our social media accounts are also a great way to reach us and support conversations online using the hashtag <span className="font-semibold text-[#0B9A9E]">#ALG2024</span>
+              </p>
+              <div className="flex justify-center gap-6">
+                {socialLinks.map((social, index) => (
+                  <a
+                    key={social.name}
+                    href={social.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center justify-center w-14 h-14 bg-gray-100 text-gray-600 rounded-full hover:bg-[#0B9A9E] hover:text-white transition-colors"
+                    aria-label={social.name}
+                  >
+                    {social.icon}
+                  </a>
+                ))}
+              </div>
+            </motion.div>
+          </div>
         </div>
       </section>
 
-      {/* Subscription Section */}
-      <section className="bg-[#0a4445] text-white py-16 text-center">
-        <h2 className="text-4xl font-bold mb-4">Subscribe for Updates</h2>
-        <p className="max-w-3xl mx-auto text-lg mb-8">
-          Stay in the loop! Subscribe to our mailing list and be the first to hear about upcoming events, news, and exclusive content from the LéO Africa Institute.
-        </p>
-
-        <form
-          action="https://leoafricainstitute.us3.list-manage.com/subscribe/post?u=cecb072ded342121a9e74ffb0&amp;id=82be85988f" // Replace with your Mailchimp form URL
-          method="POST"
-          className="max-w-lg mx-auto flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-4"
-        >
-          <input
-            type="email"
-            name="EMAIL"
-            placeholder="Enter your email address"
-            className="w-full sm:w-auto flex-1 px-4 py-3 rounded-lg text-gray-900 focus:outline-none focus:ring focus:ring-[#1d8f92]"
-            required
-          />
-          <button
-            type="submit"
-            className="bg-[#f6941e] text-white font-bold py-3 px-8 rounded-lg shadow-lg hover:bg-white hover:text-[#1d8f92] transition-all duration-300"
-          >
-            Subscribe
-          </button>
-        </form>
-      </section>
+      {/* Support Us Section */}
+      <SupportUs />
     </Layout>
-  );
-};
+  )
+}
 
-export default ContactPage;
+export default ContactPage

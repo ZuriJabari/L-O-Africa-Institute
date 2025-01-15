@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import { FiMail, FiArrowRight, FiUser, FiMapPin, FiCheck, FiChevronDown } from 'react-icons/fi';
-import { collection, addDoc } from 'firebase/firestore';
-import db from '../firebaseConfig';
 import { motion } from 'framer-motion';
+import { subscriptionService, SUBSCRIPTION_TYPES } from '../services/subscriptionService';
 
 const africanCountries = [
   "Algeria", "Angola", "Benin", "Botswana", "Burkina Faso", "Burundi", 
@@ -28,7 +27,8 @@ const SubscriptionForm = () => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
-    country: ''
+    country: '',
+    interests: []
   });
   const [message, setMessage] = useState('');
   const [loading, setLoading] = useState(false);
@@ -45,14 +45,28 @@ const SubscriptionForm = () => {
     e.preventDefault();
     setLoading(true);
     setMessage('');
+    console.log('Form submission started');
 
     try {
-      await addDoc(collection(db, 'subscribers'), formData);
-      setSuccess(true);
-      setMessage('Welcome to the movement! Check your email for next steps.');
-      setFormData({ name: '', email: '', country: '' });
+      const response = await subscriptionService.addSubscriber({
+        ...formData,
+        type: SUBSCRIPTION_TYPES.MEMBERSHIP,
+        source: 'join_movement_form',
+        submissionDate: new Date().toISOString()
+      });
+      console.log('Form submission response:', response);
+
+      if (response.success) {
+        setSuccess(true);
+        setMessage(response.message);
+        setFormData({ name: '', email: '', country: '', interests: [] });
+      } else {
+        setSuccess(false);
+        setMessage(response.message);
+      }
     } catch (error) {
-      console.error('Error adding subscriber to Firestore:', error);
+      console.error('Form submission error:', error);
+      setSuccess(false);
       setMessage('There was an error. Please try again.');
     } finally {
       setLoading(false);
