@@ -8,6 +8,10 @@ node_modules/
 dist/
 build/
 
+# Build archives
+leo-website.zip
+*.zip
+
 # Large files
 src/assets/images/partners/WebCatalog-61.1.0-universal.dmg
 
