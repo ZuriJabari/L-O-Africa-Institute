@@ -85,14 +85,14 @@ const TeamPage = () => {
 
   const boardMembers = [
     {
-      name: "Magnus Mchnguzi",
+      name: "Magnus Mchunguzi",
       role: "Co-Founder & Chairman of the Board",
       image: Magnus,
-      // bio: "A distinguished leader with extensive experience in organizational development and strategic leadership in East Africa.",
-      slug: "magnus-mchnguzi",
+      // bio: "Magnus Mchunguzi is a distinguished leader with extensive experience in organizational development and strategic leadership.",
+      slug: "magnus-mchunguzi",
       social: {
-        linkedin: "https://www.linkedin.com/in/magnus-mchnguzi",
-        twitter: "https://twitter.com/MagnusMchnguzi"
+        linkedin: "https://www.linkedin.com/in/magnus-mchunguzi",
+        twitter: "https://twitter.com/MagnusMchunguzi"
       }
     },
     {
@@ -193,7 +193,7 @@ const TeamPage = () => {
       }
     },
     {
-      name: "Nnanda Kizito Seruwagi",
+      name: "Nnanda Kizito Sseruwagi",
       role: "Communications & Media Officer",
       image: Nanda,
       // bio: "Manages communications and media relations.",

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { StaticImage } from 'gatsby-plugin-image';
+import { Link } from 'gatsby';
 import { fellowsData } from '../../data/fellows-data';
 import YelpLogo from '../../assets/images/YELP-Logo.svg';
 
@@ -127,32 +128,40 @@ const Fellows = () => {
               className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8"
             >
               {fellowsData[activeTab].map((fellow) => (
-                <motion.div
+                <Link
                   key={fellow.name}
-                  variants={itemVariants}
-                  className="group relative bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300"
-                  whileHover={{ y: -5 }}
+                  to={`/yelp/fellows/${fellow.slug}`}
+                  className="block"
                 >
-                  <div className="aspect-w-1 aspect-h-1 relative overflow-hidden">
-                    <img
-                      src={fellow.image}
-                      alt={fellow.name}
-                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                    />
-                    <motion.div 
-                      className="absolute inset-0 bg-gradient-to-t from-[#0B9A9E]/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                      initial={false}
-                    />
-                  </div>
-                  <div className="p-6">
-                    <h3 className="text-xl font-semibold text-gray-900 mb-2 group-hover:text-[#0B9A9E] transition-colors duration-300">
-                      {fellow.name}
-                    </h3>
-                    <p className="text-[#0B9A9E] font-medium opacity-75">
-                      Class of {activeTab}
-                    </p>
-                  </div>
-                </motion.div>
+                  <motion.div
+                    variants={itemVariants}
+                    className="group relative bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300"
+                    whileHover={{ y: -5 }}
+                  >
+                    <div className="aspect-w-1 aspect-h-1 relative overflow-hidden">
+                      <img
+                        src={fellow.image}
+                        alt={fellow.name}
+                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                      />
+                      <motion.div 
+                        className="absolute inset-0 bg-gradient-to-t from-[#0B9A9E]/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                        initial={false}
+                      />
+                    </div>
+                    <div className="p-6">
+                      <h3 className="text-xl font-semibold text-gray-900 mb-2 group-hover:text-[#0B9A9E] transition-colors duration-300">
+                        {fellow.name}
+                      </h3>
+                      <p className="text-[#0B9A9E] font-medium opacity-75">
+                        Class of {activeTab}
+                      </p>
+                      <p className="text-gray-600 mt-2 line-clamp-2">
+                        {fellow.role}
+                      </p>
+                    </div>
+                  </motion.div>
+                </Link>
               ))}
             </motion.div>
           </AnimatePresence>

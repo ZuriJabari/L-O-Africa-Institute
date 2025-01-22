@@ -62,7 +62,7 @@ const TeamMember = ({ pageContext: { data } }) => {
               </nav>
             </div>
           </div>
-
+          
           {/* Hero Content */}
           <div className="container mx-auto px-4">
             <div className="grid lg:grid-cols-2 gap-8 items-center py-12">
@@ -76,9 +76,20 @@ const TeamMember = ({ pageContext: { data } }) => {
                 <h1 className="text-5xl lg:text-6xl font-bold text-white mb-4">
                   {data.name}
                 </h1>
-                <p className="text-2xl lg:text-3xl text-white/90 font-light mb-8">
+                <p className="text-2xl lg:text-3xl text-white/90 font-light mb-12">
                   {data.subtitle}
                 </p>
+
+                {data.quote && (
+                  <motion.blockquote
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6, delay: 0.2 }}
+                    className="text-xl text-white/90 italic font-light mb-12 max-w-2xl"
+                  >
+                    "{data.quote}"
+                  </motion.blockquote>
+                )}
                 
                 {/* Social Links in Hero */}
                 {data.social && (
@@ -158,23 +169,6 @@ const TeamMember = ({ pageContext: { data } }) => {
                 )}
               </motion.div>
 
-              {/* Quote Section */}
-              {data.quote && (
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: 0.5 }}
-                  className="my-24 relative"
-                >
-                  <div className="absolute -left-8 -top-8">
-                    <FaQuoteLeft size={32} className="text-[#0B9A9E]/20" />
-                  </div>
-                  <blockquote className="pl-8 text-2xl text-gray-700 italic font-light">
-                    "{data.quote}"
-                  </blockquote>
-                </motion.div>
-              )}
-
               {/* Back to Team Link */}
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
@@ -182,7 +176,7 @@ const TeamMember = ({ pageContext: { data } }) => {
                 transition={{ duration: 0.6, delay: 0.6 }}
                 className="mt-16 text-center"
               >
-                <Link 
+                <Link
                   to="/about/team"
                   className="inline-flex items-center text-[#0B9A9E] hover:text-[#F6911E] transition-colors group"
                 >
