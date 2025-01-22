@@ -410,7 +410,7 @@ const Navbar = () => {
               <h2 className="text-xs uppercase font-normal text-gray-600 pb-1 mb-5" style={columnTitleStyle}>
               Our Story</h2>
               <li><a href="/about" className="text-[#3b3b3b] hover:underline hover:text-[#2bbecb] text-[15px] leading-relaxed font-normal">About LéO Africa Institute</a></li>
-              <li><a href="/about/mission-vision" className="text-[#3b3b3b] hover:underline hover:text-[#2bbecb] text-[15px] leading-relaxed font-normal">History / Mission & Vision</a></li>
+              <li><a href="/about/mission-vision" className="text-[#3b3b3b] hover:underline hover:text-[#2bbecb] text-[15px] leading-relaxed font-normal">Mission, Vision & Core Values</a></li>
               <li><a href="/about/team" className="text-[#3b3b3b] hover:underline hover:text-[#2bbecb] text-[15px] leading-relaxed font-normal">The Leadership Team</a></li>
               <li><a href="/about/pillars-of-action" className="text-[#3b3b3b] hover:underline hover:text-[#2bbecb] text-[15px] leading-relaxed font-normal">Our Pillars of Action</a></li>
               <li><a href="/about/faqs" className="text-[#3b3b3b] hover:underline hover:text-[#2bbecb] text-[15px] leading-relaxed font-normal">Frequently Asked Questions</a></li>

@@ -105,94 +105,7 @@ const MissionVisionPage = () => {
         </div>
       </section>
 
-      {/* What We Do Content Section */}
-      <section className="py-24 bg-white relative overflow-hidden">
-        <div className="container mx-auto px-4">
-          <div className="max-w-7xl mx-auto">
-            <div className="grid lg:grid-cols-2 gap-16 items-center">
-              {/* Left Column - Main Content */}
-              <motion.div
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.8 }}
-                className="relative"
-              >
-                <div className="space-y-8">
-                  <div>
-                    <h3 className="font-playfair text-2xl font-bold text-gray-900 mb-4 relative inline-block">
-                      Public Platforms
-                      <div className="absolute -bottom-2 left-0 w-full h-1 bg-gradient-to-r from-[#F6911E] to-transparent"></div>
-                    </h3>
-                    <p className="text-gray-700 leading-relaxed">
-                      Through our public platforms, we provide space for young and emerging leaders to engage in collaboration with key leaders in government, civil society and private sector in shaping ideas, and determining viable solutions to pressing issues such as unemployment, poverty & inequality, climate change, public health and others.
-                    </p>
-                  </div>
 
-                  <div>
-                    <h3 className="font-playfair text-2xl font-bold text-gray-900 mb-4 relative inline-block">
-                      Inter-generation Dialogue
-                      <div className="absolute -bottom-2 left-0 w-full h-1 bg-gradient-to-r from-[#0B9A9E] to-transparent"></div>
-                    </h3>
-                    <p className="text-gray-700 leading-relaxed">
-                      In engagement we emphasize inter-generation dialogue as a strong basis for continuity of ideas and sustainability of policy actions and results, they produce.
-                    </p>
-                  </div>
-
-                  <div>
-                    <h3 className="font-playfair text-2xl font-bold text-gray-900 mb-4 relative inline-block">
-                      Strategic Partnerships
-                      <div className="absolute -bottom-2 left-0 w-full h-1 bg-gradient-to-r from-[#F6911E] to-transparent"></div>
-                    </h3>
-                    <p className="text-gray-700 leading-relaxed">
-                      In the pursuit of building critical linkages, the Institute puts particular focus on building mutually beneficial partnerships with others at home and around the world.
-                    </p>
-                  </div>
-                </div>
-              </motion.div>
-
-              {/* Right Column - Focus Areas */}
-              <motion.div
-                initial={{ opacity: 0, x: 20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.8 }}
-                className="relative"
-              >
-                <div className="bg-gray-50 rounded-3xl p-10 relative">
-                  <div className="absolute -left-3 top-0 bottom-0 w-[6px]">
-                    <div className="h-full w-full bg-gradient-to-b from-[#F6911E] via-[#0B9A9E] to-transparent rounded-full"></div>
-                  </div>
-                  <h3 className="font-playfair text-2xl font-bold text-gray-900 mb-8">Focus Areas</h3>
-                  <div className="grid grid-cols-2 gap-4">
-                    {[
-                      "Unemployment",
-                      "Poverty & Inequality",
-                      "Climate Change",
-                      "Public Health",
-                      "Civil Society",
-                      "Government Relations",
-                      "Private Sector",
-                      "Youth Leadership"
-                    ].map((area, index) => (
-                      <motion.div
-                        key={area}
-                        initial={{ opacity: 0, y: 10 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.4, delay: index * 0.1 }}
-                        className="bg-white p-4 rounded-xl shadow-sm hover:shadow-md transition-shadow duration-300"
-                      >
-                        <p className="text-gray-700 font-medium">{area}</p>
-                      </motion.div>
-                    ))}
-                  </div>
-                </div>
-              </motion.div>
-            </div>
-          </div>
-        </div>
-      </section>
 
       {/* Mission & Vision Section */}
       <section className="py-24 bg-white relative overflow-hidden">
@@ -206,16 +119,24 @@ const MissionVisionPage = () => {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.8 }}
-                className="relative"
+                className="relative group"
               >
-                <div className="bg-gradient-to-br from-[#F6911E]/5 to-transparent p-10 rounded-3xl">
+                <div className="bg-white shadow-lg hover:shadow-xl transition-all duration-300 p-12 rounded-3xl relative overflow-hidden">
                   <div className="absolute -left-3 top-0 bottom-0 w-[6px]">
-                    <div className="h-full w-full bg-gradient-to-b from-[#F6911E] to-transparent rounded-full"></div>
+                    <div className="h-full w-full bg-gradient-to-b from-[#F6911E] to-[#F6911E]/30 rounded-full"></div>
                   </div>
-                  <span className="text-[#F6911E] text-sm font-semibold tracking-wider uppercase">Our Mission</span>
-                  <p className="text-xl text-gray-700 leading-relaxed">
-                    We are building an effective network of over 10,000 individuals leading transformative change in critical areas of challenge and who amplify Africa's influence globally by 2035.
+                  <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-[#F6911E]/10 to-transparent rounded-bl-full -z-1"></div>
+                  <div className="flex items-center gap-3 mb-6">
+                    <FaRocket className="text-[#F6911E] text-3xl" />
+                    <span className="text-[#F6911E] text-lg font-bold tracking-wider uppercase">Our Mission</span>
+                  </div>
+                  <p className="text-2xl text-gray-700 leading-relaxed mb-6">
+                    We are building an effective network of over <span className="font-semibold text-[#F6911E]">10,000 individuals</span> leading transformative change in critical areas of challenge and who amplify Africa's influence globally by 2035.
                   </p>
+                  <div className="flex items-center gap-4 text-gray-600">
+                    <FaStar className="text-[#F6911E]" />
+                    <span className="text-sm">Transforming Africa through leadership</span>
+                  </div>
                 </div>
               </motion.div>
 
@@ -225,16 +146,24 @@ const MissionVisionPage = () => {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.8 }}
-                className="relative"
+                className="relative group"
               >
-                <div className="bg-gradient-to-br from-[#0B9A9E]/5 to-transparent p-10 rounded-3xl">
+                <div className="bg-white shadow-lg hover:shadow-xl transition-all duration-300 p-12 rounded-3xl relative overflow-hidden">
                   <div className="absolute -left-3 top-0 bottom-0 w-[6px]">
-                    <div className="h-full w-full bg-gradient-to-b from-[#0B9A9E] to-transparent rounded-full"></div>
+                    <div className="h-full w-full bg-gradient-to-b from-[#0B9A9E] to-[#0B9A9E]/30 rounded-full"></div>
                   </div>
-                  <span className="text-[#0B9A9E] text-sm font-semibold tracking-wider uppercase">Our Vision</span>
-                  <p className="text-xl text-gray-700 leading-relaxed">
-                    We are inspiring, empowering, connecting and enabling generations of ethical and value-based leaders in Africa and beyond.
+                  <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-[#0B9A9E]/10 to-transparent rounded-bl-full -z-1"></div>
+                  <div className="flex items-center gap-3 mb-6">
+                    <FaShieldAlt className="text-[#0B9A9E] text-3xl" />
+                    <span className="text-[#0B9A9E] text-lg font-bold tracking-wider uppercase">Our Vision</span>
+                  </div>
+                  <p className="text-2xl text-gray-700 leading-relaxed mb-6">
+                    We are <span className="font-semibold text-[#0B9A9E]">inspiring, empowering, connecting</span> and enabling generations of ethical and values based leaders in Africa and beyond.
                   </p>
+                  <div className="flex items-center gap-4 text-gray-600">
+                    <FaStar className="text-[#0B9A9E]" />
+                    <span className="text-sm">Building a legacy of ethical leadership</span>
+                  </div>
                 </div>
               </motion.div>
             </div>

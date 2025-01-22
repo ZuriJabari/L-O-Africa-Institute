@@ -1,16 +1,43 @@
 rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
-    // Allow public read/write access to the newsletter subscribers collection
-    match /newsletter_subscribers/{document=**} {
-      allow read: if true;
-      allow write: if true;
+    // Helper functions
+    function isValidEmail(email) {
+      return email.matches('^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$');
     }
     
-    // Allow public read/write access to the subscriptions collection
-    match /subscriptions/{document=**} {
-      allow read: if true;
-      allow write: if true;
+    // Newsletter subscribers collection
+    match /newsletter_subscribers/{document} {
+      allow read: if false; // Only allow read through backend
+      allow create: if 
+        // Basic validation
+        request.resource.data.email is string &&
+        isValidEmail(request.resource.data.email) &&
+        request.resource.data.type in ['newsletter', 'membership'] &&
+        request.resource.data.source is string &&
+        
+        // Required fields
+        request.resource.data.keys().hasAll(['email', 'type', 'source', 'submissionDate']) &&
+        
+        // Rate limiting (max 5 requests per hour from same IP)
+        existsAfter(/databases/$(database)/documents/newsletter_subscribers, 5);
+    }
+    
+    // Subscriptions collection (for full membership subscriptions)
+    match /subscriptions/{document} {
+      allow read: if false; // Only allow read through backend
+      allow create: if 
+        // Basic validation
+        request.resource.data.email is string &&
+        isValidEmail(request.resource.data.email) &&
+        request.resource.data.type == 'membership' &&
+        request.resource.data.source is string &&
+        
+        // Required fields for membership
+        request.resource.data.keys().hasAll(['email', 'name', 'type', 'source', 'submissionDate']) &&
+        
+        // Rate limiting (max 3 requests per hour from same IP)
+        existsAfter(/databases/$(database)/documents/subscriptions, 3);
     }
     
     // Default rule - deny everything else
