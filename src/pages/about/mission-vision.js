@@ -3,6 +3,7 @@ import Layout from '../../components/Layout';
 import { StaticImage } from 'gatsby-plugin-image';
 import { motion } from 'framer-motion';
 import { FaStar, FaShieldAlt, FaRocket, FaQuoteLeft } from 'react-icons/fa';
+import BgGrey from '../../assets/images/bg-grey.svg';
 
 const MissionVisionPage = () => {
   const fadeIn = {
@@ -23,9 +24,9 @@ const MissionVisionPage = () => {
             alt="Our Mission & Vision"
             className="w-full h-full"
             imgClassName="object-cover"
-            placeholder="dominantColor"
-            quality={100}
-            formats={["auto", "webp", "avif"]}
+            placeholder="blurred"
+            formats={["jpg"]}
+            quality={90}
           />
           <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-transparent"></div>
           <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/30 to-transparent"></div>
@@ -58,12 +59,19 @@ const MissionVisionPage = () => {
 
         {/* Bottom Transition */}
         <div className="absolute bottom-0 left-0 w-full">
-          <div className="h-24 w-full" style={{
-            backgroundImage: `url('../../assets/images/bg-grey.svg')`,
-            backgroundRepeat: 'no-repeat',
-            backgroundPosition: 'bottom center',
-            backgroundSize: 'cover'
-          }}></div>
+          <div class="prefooter-gray">
+            <div className="container mx-auto px-4 flex justify-center items-center h-full">
+              <StaticImage
+                src="../../assets/images/Leo-logo.png"
+                alt="LéO Africa Institute"
+                className="h-8"
+                imgClassName="object-contain"
+                placeholder="blurred"
+                formats={["png"]}
+                quality={90}
+              />
+            </div>
+          </div>
         </div>
       </section>
 
@@ -83,10 +91,14 @@ const MissionVisionPage = () => {
                 <div className="flex-shrink-0">
                   <div className="w-20 h-20 rounded-full overflow-hidden border-2 border-[#F6911E]">
                     <StaticImage
-                      src="../../assets/images/Awel1.jpg"
+                      src="../../assets/images/Awel.jpg"
                       alt="Awel Uwihanganye"
-                      className="w-full h-full object-cover"
-                      placeholder="dominantColor"
+                      className="w-full h-full"
+                      imgClassName="object-cover"
+                      placeholder="blurred"
+                      formats={["jpg"]}
+                      quality={90}
+                      layout="fullWidth"
                     />
                   </div>
                 </div>
@@ -104,8 +116,6 @@ const MissionVisionPage = () => {
           </motion.div>
         </div>
       </section>
-
-
 
       {/* Mission & Vision Section */}
       <section className="py-24 bg-white relative overflow-hidden">

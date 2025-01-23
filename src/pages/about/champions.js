@@ -6,6 +6,7 @@ import CarlPhoto from '../../assets/images/carl.jpg';
 import Navbar from '../../components/Navbar'; 
 import Footer from '../../components/Footer'; 
 import Layout from '../../components/Layout'; 
+import { StaticImage } from 'gatsby-plugin-image';
 
 const Champions = () => {
   return (
@@ -13,12 +14,18 @@ const Champions = () => {
       {/* Hero Section */}
       <section className="relative h-[70vh] overflow-hidden">
         {/* Background Image */}
-        <div 
-          className="absolute inset-0 bg-cover bg-center"
-          style={{
-            backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(${LucyHero})`
-          }}
-        />
+        <div className="absolute inset-0">
+          <StaticImage
+            src="../../assets/images/ALG24.jpg"
+            alt="Champions Hero"
+            className="w-full h-full"
+            imgClassName="object-cover"
+            placeholder="blurred"
+            formats={["jpg"]}
+            quality={90}
+          />
+          <div className="absolute inset-0 bg-black/70"></div>
+        </div>
 
         {/* Content */}
         <div className="relative max-w-7xl mx-auto px-4 h-full flex flex-col justify-center">

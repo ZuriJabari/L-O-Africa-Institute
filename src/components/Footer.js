@@ -19,8 +19,10 @@ const Footer = () => {
                 className="w-full h-full"
                 width={192}
                 height={80}
-                layout="fullWidth"
-                placeholder="blurred"
+                loading="eager"
+                quality={100}
+                formats={["auto", "webp", "png"]}
+                placeholder="none"
                 objectFit="contain"
                 imgStyle={{ objectFit: 'contain' }}
               />

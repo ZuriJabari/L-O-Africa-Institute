@@ -41,7 +41,7 @@ const Navbar = () => {
   // Animation styles
   const dropdownAnimation = {
     enter: {
-      animation: 'dropdownEnter 0.2s ease-out forwards',
+      animation: 'dropdownEnter 0.3s cubic-bezier(0.4, 0, 0.2, 1) forwards',
       transformOrigin: 'top'
     }
   };
@@ -51,11 +51,71 @@ const Navbar = () => {
       from {
         opacity: 0;
         transform: translateY(-8px) scale(0.98);
+        backdrop-filter: blur(0px);
       }
       to {
         opacity: 1;
         transform: translateY(0) scale(1);
+        backdrop-filter: blur(8px);
       }
+    }
+
+    .menu-container button {
+      position: relative;
+    }
+
+    .menu-container button::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: -2px;
+      left: 50%;
+      background: #0B9A9E;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      transform: translateX(-50%);
+    }
+
+    .menu-container:hover button::after {
+      width: 100%;
+    }
+
+    .social-icon {
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .social-icon:hover {
+      transform: translateY(-2px);
+      color: #0B9A9E;
+    }
+
+    .nav-link {
+      position: relative;
+      transition: all 0.3s ease;
+    }
+
+    .nav-link::before {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background-color: #0B9A9E;
+      transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .nav-link:hover::before {
+      width: 100%;
+    }
+
+    .dropdown-card {
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .dropdown-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
     }
   `;
 
@@ -213,28 +273,28 @@ const Navbar = () => {
         <div className="max-w-screen-xl mx-auto flex justify-between items-center py-4 px-6"
              onMouseLeave={handleMenuLeave}>
           <div className="hidden md:flex space-x-5">
-            <a href="https://www.facebook.com/LeOAfricaInstitute/" className="hover:text-[#0B9A9E] transition duration-300 text-lg">
+            <a href="https://www.facebook.com/LeOAfricaInstitute/" className="social-icon">
               <FaFacebookF />
             </a>
-            <a href="https://x.com/LeoAfricaInst" className="hover:text-[#0B9A9E] transition duration-300 text-lg">
+            <a href="https://x.com/LeoAfricaInst" className="social-icon">
               <FaTwitter />
             </a>
-            <a href="https://www.linkedin.com/company/18203194/admin/page-posts/published/" className="hover:text-[#0B9A9E] transition duration-300 text-lg">
+            <a href="https://www.linkedin.com/company/18203194/admin/page-posts/published/" className="social-icon">
               <FaLinkedinIn />
             </a>
-            <a href="https://www.instagram.com/leoafricainst/" className="hover:text-[#0B9A9E] transition duration-300 text-lg">
+            <a href="https://www.instagram.com/leoafricainst/" className="social-icon">
               <FaInstagram />
             </a>
           </div>
           <div className="flex items-center space-x-8">
-            <button onClick={handleSearchToggle} className="hover:text-[#0B9A9E] transition duration-300">
+            <button onClick={handleSearchToggle} className="nav-link">
               <FiSearch className="w-6 h-6" />
             </button>
-            <a href="/partner-with-us/" className="hover:text-[#0B9A9E] transition duration-300 text-base">
-            Partner with Us
+            <a href="/partner-with-us/" className="nav-link">
+              Partner with Us
             </a>
-            <a href="/contact" className="hover:text-[#0B9A9E] transition duration-300 text-base">
-               Contact Us
+            <a href="/contact" className="nav-link">
+              Contact Us
             </a>
           </div>
         </div>
@@ -311,9 +371,9 @@ const Navbar = () => {
       <ul className="mb-4 space-y-4">
         <h2 className="text-xs uppercase font-normal text-gray-600 pb-1 mb-5" style={columnTitleStyle}>Media Center</h2>
         <li><a href="/news/" className="text-[#3b3b3b] hover:underline hover:text-[#2bbecb] text-[15px] leading-relaxed font-normal">Our Latest Articles</a></li>
-        <li><a href="/news/founders-blog" className="text-[#3b3b3b] hover:underline hover:text-[#2bbecb] text-[15px] leading-relaxed font-normal">Introducing Founder's Blog</a></li>
+        {/* <li><a href="/news/founders-blog" className="text-[#3b3b3b] hover:underline hover:text-[#2bbecb] text-[15px] leading-relaxed font-normal">Introducing Founder's Blog</a></li> */}
         <li><a href="/publications" className="text-[#3b3b3b] hover:underline hover:text-[#2bbecb] text-[15px] leading-relaxed font-normal">Research Reports</a></li>
-        <li><a href="/blog" className="text-[#3b3b3b] hover:underline hover:text-[#2bbecb] text-[15px] leading-relaxed font-normal">Blog</a></li>
+        <li><a href="/blog" className="text-[#3b3b3b] hover:underline hover:text-[#2bbecb] text-[15px] leading-relaxed font-normal">Visit our Blog</a></li>
         <a href="/news" className="inline-flex items-center mt-4 text-[#f6911e] hover:underline text-[15px] font-medium">
           View All Insights & Research <FiArrowRight className="ml-2" />
         </a>
@@ -529,7 +589,7 @@ const Navbar = () => {
 
       <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
         {/* ALG - Featured Event */}
-        <div className="bg-white p-6 hover:bg-gray-50 transition-all duration-300 group border-b-4 border-[#f6911e]">
+        <div className="dropdown-card bg-white p-6 hover:bg-gray-50 transition-all duration-300 group border-b-4 border-[#f6911e]">
           <div className="flex flex-col">
             <div className="flex justify-center mb-6">
               <div className="w-32 h-32 bg-white rounded-xl flex items-center justify-center">
@@ -547,7 +607,7 @@ const Navbar = () => {
               Our flagship leadership conference bringing together emerging leaders from across Africa for dialogue, learning, and networking.
             </p>
             <a 
-              href="/alg" 
+              href="https://alg.leoafricainstitute.org/" 
               className="inline-flex items-center text-[#f6911e] hover:text-[#2bbecb] font-medium transition-colors duration-300"
             >
               Learn more 
@@ -557,7 +617,7 @@ const Navbar = () => {
         </div>
 
         {/* YELP */}
-        <div className="bg-white p-6 hover:bg-gray-50 transition-all duration-300 group border-b-4 border-[#2bbecb]">
+        <div className="dropdown-card bg-white p-6 hover:bg-gray-50 transition-all duration-300 group border-b-4 border-[#2bbecb]">
           <div className="flex flex-col">
             <div className="flex justify-center mb-6">
               <div className="w-32 h-32 bg-white rounded-xl flex items-center justify-center">
@@ -585,7 +645,7 @@ const Navbar = () => {
         </div>
 
         {/* Huduma */}
-        <div className="bg-white p-6 hover:bg-gray-50 transition-all duration-300 group border-b-4 border-[#2bbecb]">
+        <div className="dropdown-card bg-white p-6 hover:bg-gray-50 transition-all duration-300 group border-b-4 border-[#2bbecb]">
           <div className="flex flex-col">
             <div className="flex justify-center mb-6">
               <div className="w-32 h-32 bg-white rounded-xl flex items-center justify-center">
@@ -613,7 +673,7 @@ const Navbar = () => {
         </div>
 
         {/* LéO Africa Review */}
-        <div className="bg-white p-6 hover:bg-gray-50 transition-all duration-300 group border-b-4 border-[#2bbecb]">
+        <div className="dropdown-card bg-white p-6 hover:bg-gray-50 transition-all duration-300 group border-b-4 border-[#2bbecb]">
           <div className="flex flex-col">
             <div className="flex justify-center mb-6">
               <div className="w-32 h-32 bg-white rounded-xl flex items-center justify-center">
@@ -631,7 +691,7 @@ const Navbar = () => {
               Our digital platform showcasing African thought leadership, innovation, and ideas shaping the continent's future.
             </p>
             <a 
-              href="/review" 
+              href="https://leoafricareview.com/" 
               className="inline-flex items-center text-[#2bbecb] hover:text-[#f6911e] font-medium transition-colors duration-300"
             >
               Learn more 
@@ -653,79 +713,75 @@ const Navbar = () => {
       <h2 style={{ letterSpacing: '2px', fontSize: '13px', color: '#888', cursor: 'default', fontWeight: '500' }} className='uppercase mb-6'>Our Network</h2>
       <div className="space-y-6">
         {/* Huduma Fellowship */}
-        <div className="flex items-center space-x-3">
-          <img 
-            src={HudumaLogo} 
-            alt="Huduma Fellowship Logo" 
-            className="w-12 h-12 object-contain"
-          />
-          <div>
-            <h4 className="font-semibold text-gray-900 mb-2">Huduma Fellowship</h4>
-            <p className="text-gray-500 text-sm mb-2">Training emerging civic & public sector champions in Uganda.</p>
-            <a 
-              href="/huduma" 
-              className="text-[#2bbecb] hover:text-[#f6911e] text-sm transition-colors duration-300 inline-flex items-center"
-            >
-              Learn more <span className="ml-1">→</span>
-            </a>
+        <a href="/huduma" className="block group hover:bg-gray-50 p-3 rounded-lg transition-all duration-300">
+          <div className="flex items-center space-x-3">
+            <img 
+              src={HudumaLogo} 
+              alt="Huduma Fellowship Logo" 
+              className="w-12 h-12 object-contain"
+            />
+            <div>
+              <h4 className="font-semibold text-gray-900 group-hover:text-[#2bbecb] transition-colors duration-300 mb-2">Huduma Fellowship</h4>
+              <p className="text-gray-500 text-sm mb-2">Training emerging civic & public sector champions in Uganda.</p>
+              <span className="text-[#2bbecb] group-hover:text-[#f6911e] text-sm transition-colors duration-300 inline-flex items-center">
+                Learn more <span className="ml-1 group-hover:translate-x-1 transition-transform duration-300">→</span>
+              </span>
+            </div>
           </div>
-        </div>
+        </a>
 
         {/* YELP */}
-        <div className="flex items-center space-x-3">
-          <img 
-            src={YelpLogo} 
-            alt="YELP Logo" 
-            className="w-12 h-12 object-contain"
-          />
-          <div>
-            <h4 className="font-semibold text-gray-900 mb-2">Young Emerging Leaders Program</h4>
-            <p className="text-gray-500 text-sm mb-2">Training outstanding thought leaders in values and social responsibility.</p>
-            <a 
-              href="/yelp" 
-              className="text-[#2bbecb] hover:text-[#f6911e] text-sm transition-colors duration-300 inline-flex items-center"
-            >
-              Learn more <span className="ml-1">→</span>
-            </a>
+        <a href="/yelp" className="block group hover:bg-gray-50 p-3 rounded-lg transition-all duration-300">
+          <div className="flex items-center space-x-3">
+            <img 
+              src={YelpLogo} 
+              alt="YELP Logo" 
+              className="w-12 h-12 object-contain"
+            />
+            <div>
+              <h4 className="font-semibold text-gray-900 group-hover:text-[#2bbecb] transition-colors duration-300 mb-2">Young Emerging Leaders Program</h4>
+              <p className="text-gray-500 text-sm mb-2">Training outstanding thought leaders in values and social responsibility.</p>
+              <span className="text-[#2bbecb] group-hover:text-[#f6911e] text-sm transition-colors duration-300 inline-flex items-center">
+                Learn more <span className="ml-1 group-hover:translate-x-1 transition-transform duration-300">→</span>
+              </span>
+            </div>
           </div>
-        </div>
+        </a>
 
         {/* Subtle divider */}
         <div className="border-b border-gray-100"></div>
 
         {/* Africa Champions */}
-        <div className="flex items-center space-x-3">
-          <div className="w-12 h-12 bg-gray-200 rounded-full flex items-center justify-center">
-            <span className="text-gray-400 text-lg">AC</span>
+        <a href="#" className="block group hover:bg-gray-50 p-3 rounded-lg transition-all duration-300">
+          <div className="flex items-center space-x-3">
+            <div className="w-12 h-12 bg-gray-200 rounded-full flex items-center justify-center">
+              <span className="text-gray-400 text-lg">AC</span>
+            </div>
+            <div>
+              <h4 className="font-semibold text-gray-900 group-hover:text-[#2bbecb] transition-colors duration-300 mb-2">Africa Champions</h4>
+              <p className="text-gray-500 text-sm mb-2">Distinguished leaders driving positive change across Africa through innovation and ethical leadership.</p>
+              <span className="text-[#2bbecb] group-hover:text-[#f6911e] text-sm transition-colors duration-300 inline-flex items-center">
+                Learn more <span className="ml-1 group-hover:translate-x-1 transition-transform duration-300">→</span>
+              </span>
+            </div>
           </div>
-          <div>
-            <h4 className="font-semibold text-gray-900 mb-2">Africa Champions</h4>
-            <p className="text-gray-500 text-sm mb-2">Distinguished leaders driving positive change across Africa through innovation and ethical leadership.</p>
-            <a 
-              href="#" 
-              className="text-[#2bbecb] hover:text-[#f6911e] text-sm transition-colors duration-300 inline-flex items-center"
-            >
-              Learn more <span className="ml-1">→</span>
-            </a>
-          </div>
-        </div>
+        </a>
 
         {/* Associate Fellows */}
-        <div className="flex items-center space-x-3">
-          <div className="w-12 h-12 bg-gray-200 rounded-full flex items-center justify-center">
-            <span className="text-gray-400 text-lg">AF</span>
+        <a href="#" className="block group hover:bg-gray-50 p-3 rounded-lg transition-all duration-300">
+          <div className="flex items-center space-x-3">
+            <div className="w-12 h-12 bg-gray-200 rounded-full flex items-center justify-center">
+              <span className="text-gray-400 text-lg">AF</span>
+            </div>
+            <div>
+              <h4 className="font-semibold text-gray-900 group-hover:text-[#2bbecb] transition-colors duration-300 mb-2">Associate Fellows</h4>
+              <p className="text-gray-500 text-sm mb-2">Emerging talents and professionals contributing to Africa's development through mentorship and collaboration.</p>
+              <span className="text-[#2bbecb] group-hover:text-[#f6911e] text-sm transition-colors duration-300 inline-flex items-center">
+                Learn more <span className="ml-1 group-hover:translate-x-1 transition-transform duration-300">→</span>
+              </span>
+            </div>
           </div>
-          <div>
-            <h4 className="font-semibold text-gray-900 mb-2">Associate Fellows</h4>
-            <p className="text-gray-500 text-sm mb-2">Emerging talents and professionals contributing to Africa's development through mentorship and collaboration.</p>
-            <a 
-              href="#" 
-              className="text-[#2bbecb] hover:text-[#f6911e] text-sm transition-colors duration-300 inline-flex items-center"
-            >
-              Learn more <span className="ml-1">→</span>
-            </a>
-          </div>
-        </div>
+        </a>
       </div>
     </div>
 
@@ -796,36 +852,39 @@ const Navbar = () => {
 
             {/* Column 3 - Meet Our Champions */}
             <div>
-              <h2 className="text-xs uppercase font-normal text-gray-600 pb-2 mb-4" style={columnTitleStyle}>Meet Our Champions</h2>
-              <div className="mb-8">
-                <div className="flex items-start space-x-4">
+              <h2 style={{ letterSpacing: '2px', fontSize: '13px', color: '#888', cursor: 'default', fontWeight: '500' }} className='uppercase mb-6'>Meet Our Champions</h2>
+              
+              {/* Lucy Mbabazi Card */}
+              <a href="/about/champions" className="block group mb-8">
+                <div className="flex items-start space-x-4 hover:bg-gray-50 p-3 rounded-lg transition-all duration-300">
                   <img
                     src={LucyPhoto}
                     alt="Lucy Mbabazi"
                     className="h-20 w-20 object-cover rounded-lg"
                   />
                   <div className="flex-1">
-                    <h3 className="font-bold text-[#3b3b3b] hover:text-[#2bbecb] text-lg mb-1">Lucy Mbabazi</h3>
+                    <h3 className="font-bold text-[#3b3b3b] group-hover:text-[#2bbecb] text-lg mb-1 transition-colors duration-300">Lucy Mbabazi</h3>
                     <h4 className="text-sm font-medium text-gray-600 mb-1">Managing Director, Better than Cash Alliance</h4>
                     <hr className="border-gray-300 my-2" />
                   </div>
                 </div>
-              </div>
+              </a>
 
-              <div className="mb-8">
-                <div className="flex items-start space-x-4">
+              {/* Carl Manlan Card */}
+              <a href="/about/champions" className="block group mb-8">
+                <div className="flex items-start space-x-4 hover:bg-gray-50 p-3 rounded-lg transition-all duration-300">
                   <img
                     src={CarlPhoto}
                     alt="Carl Manlan"
                     className="h-20 w-20 object-cover rounded-lg"
                   />
                   <div className="flex-1">
-                    <h3 className="font-bold text-[#3b3b3b] hover:text-[#2bbecb] text-lg mb-1">Carl Manlan</h3>
+                    <h3 className="font-bold text-[#3b3b3b] group-hover:text-[#2bbecb] text-lg mb-1 transition-colors duration-300">Carl Manlan</h3>
                     <h4 className="text-sm font-medium text-gray-600 mb-1">Vice President, Social Impact for Visa Central and Eastern Europe, Middle East, and Africa</h4>
                     <hr className="border-gray-300 my-2" />
                   </div>
                 </div>
-              </div>
+              </a>
 
               <div className="flex justify-end mt-6">
                 <Link 
@@ -896,7 +955,7 @@ const Navbar = () => {
         <span className="text-xs text-gray-500">Details will be available soon</span>
       </div>
       <h3 className="text-sm font-semibold text-gray-900 group-hover:text-[#00babc] transition-colors duration-300">
-        LéO Arambe Symposium - Kigali
+        Harambe Symposium - Kigali
       </h3>
       <p className="mt-1 text-xs text-gray-600 line-clamp-2">
         Pan-African conference fostering collaboration among emerging leaders.

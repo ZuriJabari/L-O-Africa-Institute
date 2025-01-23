@@ -1,46 +1,19 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { FaUsers, FaAward, FaUserTie, FaTwitter, FaLinkedinIn, FaFacebookF, FaInstagram, FaLinkedin } from "react-icons/fa";
-import AwelPhoto from '../assets/images/team/Awel.jpg';
-import MagnusPhoto from '../assets/images/team/Magnus.png';
-import ABMAKPhoto from '../assets/images/team/abmaks.jpg';
-import CatherinerosePhoto from '../assets/images/team/Catherinerose.png';
-import KevinPhoto from '../assets/images/Kevin_Langley.png';
-import WilliamPhoto from '../assets/images/team/William.jpg';
-import FionaPhoto from '../assets/images/team/fiona.png';
-import RosiePhoto from '../assets/images/Rosie-Lorie.png';
-import DrKigoziPhoto from '../assets/images/Dr-Kigozi.png';
-import MorrisonPhoto from '../assets/images/team/tem.jpg';
-import DefaultPhoto from '../assets/images/team/tem.jpg';
-import NelsonPhoto from '../assets/images/Asiimwe-Nelson-Mushabe.png';
-import ConradPhoto from '../assets/images/team/conrad.jpg';
-import NandaPhoto from '../assets/images/team/Nanda.jpg';
-import Ivanphoto from '../assets/images/fellows/Ivan-Kibuuka.jpg';
-import AziziPhoto from '../assets/images/fellows/Mujjuzi-Abdulazizi.jpg';
-import SaxonPhoto from '../assets/images/fellows/Saxon-Ssekitooleko.jpg';
-import JoelPhoto from '../assets/images/fellows/Joel-Sengendo.jpg';
-import Mohamedphoto from '../assets/images/fellows/Mohamed-Sharif.jpg';
-import LoisePhoto from '../assets/images/fellows/Loise-Machira.jpg';
-import Mshidane from '../assets/images/fellows/Mohamed-Shidane.jpg';
-import TaongaPhoto from '../assets/images/fellows/Taonga-Chisamanga.jpg';
-import VanessaPhoto from '../assets/images/fellows/Vanessa-Nkesha.jpg';
-import SameerPhoto from '../assets/images/fellows/Sameer-Luyombo.jpg';
-import AristidePhoto from '../assets/images/fellows/Aristide-Kambale.jpg';
-import PriscillaPhoto from '../assets/images/fellows/Priscilla-Busulwa.jpg';
-import CHristinePhoto from '../assets/images/fellows/Christine-Isimbi.jpg';
-import LucyPhoto from '../assets/images/Lucy.png';
-import CarlPhoto from '../assets/images/carl.jpg';
-import AgnesPhoto from '../assets/images/team/Agnes.jpg';
-import BeverlyPhoto from '../assets/images/team/Beverly.png';
-import DavidPhoto from '../assets/images/team/David.jpg';
-import JamesPhoto from '../assets/images/team/James.jpg';
+
+// Helper function to get image path
+const getImagePath = (imageName, type = 'team') => {
+  if (!imageName) return '/images/default-fellow.jpg';
+  return `/images/${type}/${imageName}`;
+};
 
 const profiles = {
   fellows: [
     {
       name: "IVAN KIBUUKA",
       title: "Founder at Arudem",
-      photo: Ivanphoto,
+      photo: "Ivan-Kibuuka.jpg",
       socials: {
         twitter: "https://twitter.com/ivankibuuka_",
         linkedin: "https://www.linkedin.com/in/ivan-kibuuka/",
@@ -51,7 +24,7 @@ const profiles = {
     {
       name: "Mujjuzi Azizi",
       title: "Planning Officer, Buganda Kingdom",
-      photo: AziziPhoto,
+      photo: "Mujjuzi-Abdulazizi.jpg",
       socials: {
         twitter: "https://x.com/AMujjuzi?t=AfH145tw0m3gZaqTLLHK_g&s=09",
         linkedin: "https://www.linkedin.com/in/mujjuzia",
@@ -62,7 +35,7 @@ const profiles = {
     {
       name: "Saxon Ssekitooleko",
       title: "Drilling & Completions Engineer, TotalEnergies E&P Uganda",
-      photo: SaxonPhoto,
+      photo: "Saxon-Ssekitooleko.jpg",
       socials: {
         twitter: "https://x.com/____sesa",
         linkedin: "https://www.linkedin.com/in/saxon-ssekitooleko",
@@ -73,13 +46,13 @@ const profiles = {
     {
       name: "Joel Sengendo",
       title: "Management Analyst, Steadman Global Consulting",
-      photo: JoelPhoto,
+      photo: "Joel-Sengendo.jpg",
       socials: {}
     },
     {
       name: "Mohamed Sharif",
       title: "Somalia Peacebuilding Programme Advisor, Life and Peace Institute",
-      photo: Mohamedphoto,
+      photo: "Mohamed-Sharif.jpg",
       socials: {
         twitter: "https://twitter.com/mosharriif",
         linkedin: "https://www.linkedin.com/in/sharrif/",
@@ -90,7 +63,7 @@ const profiles = {
     {
       name: "Loise Machira",
       title: "Independent Consultant",
-      photo: LoisePhoto,
+      photo: "Loise-Machira.jpg",
       socials: {
         twitter: "https://twitter.com/loisemachira",
         linkedin: "https://www.linkedin.com/in/loise-machira-80a09b71/",
@@ -100,7 +73,7 @@ const profiles = {
     {
       name: "Mohamed Shidane",
       title: "Policy Advisor, Ministry of State for the Presidency, The Presidency, Somalia",
-      photo: Mshidane,
+      photo: "Mohamed-Shidane.jpg",
       socials: {
         twitter: "https://twitter.com/MIShidane",
         linkedin: "https://www.linkedin.com/in/shidane",
@@ -111,7 +84,7 @@ const profiles = {
     {
       name: "Taonga Chisamanga",
       title: "Manager - Governance and Compliance, Bank of Zambia",
-      photo: TaongaPhoto,
+      photo: "Taonga-Chisamanga.jpg",
       socials: {
         linkedin: "https://www.linkedin.com/in/taonga-chisamanga-4b235185"
       }
@@ -119,7 +92,7 @@ const profiles = {
     {
       name: "Vanessa Nkesha",
       title: "Employer Partnerships Officer, The Bridge Talent Services",
-      photo: VanessaPhoto,
+      photo: "Vanessa-Nkesha.jpg",
       socials: {
         twitter: "https://twitter.com/vanessa_nkesha",
         linkedin: "https://www.linkedin.com/in/vanessa-nkesha-msc-8544aa132"
@@ -128,13 +101,13 @@ const profiles = {
     {
       name: "Sameer Luyombo",
       title: "Director, Taibah International Schools Ltd.",
-      photo: SameerPhoto,
+      photo: "Sameer-Luyombo.jpg",
       socials: {}
     },
     {
       name: "Christine Isimbi",
       title: "Associate, Economic Transformation at Tony Blair Institute for Global Change",
-      photo: CHristinePhoto,
+      photo: "Christine-Isimbi.jpg",
       socials: {
         linkedin: "https://www.linkedin.com/in/christineisimbi/"
       }
@@ -142,7 +115,7 @@ const profiles = {
     {
       name: "Aristide Kambale",
       title: "Consultant, Global Resilience Partnership",
-      photo: AristidePhoto,
+      photo: "Aristide-Kambale.jpg",
       socials: {
         twitter: "https://twitter.com/KambaleAristide",
         linkedin: "https://www.linkedin.com/in/aristidek/",
@@ -153,7 +126,7 @@ const profiles = {
     {
       name: "Priscilla Busulwa",
       title: "Lawyer and Legal Consultant, Impact Investments",
-      photo: PriscillaPhoto,
+      photo: "Priscilla-Busulwa.jpg",
       socials: {
         linkedin: "https://www.linkedin.com/in/priscillabusulwa/?originalSubdomain=ug"
       }
@@ -163,12 +136,12 @@ const profiles = {
     {
       name: "Lucy Mbabazi",
       title: "Managing Director, Better than Cash Alliance",
-      photo: LucyPhoto,
+      photo: "Lucy.png",
     },
     {
       name: "Carl Manlan",
       title: "Vice President, Social Impact for Visa Central and Eastern Europe, Middle East, and Africa.",
-      photo: CarlPhoto,
+      photo: "carl.jpg",
     }
   ],
   team: {
@@ -176,7 +149,7 @@ const profiles = {
       {
         name: "Awel Uwihanganye",
         title: "Co-Founder & Program Lead",
-        photo: AwelPhoto,
+        photo: "Awel.jpg",
         bio: "Passionate about harnessing Africa's growth prospects through ethical & values-based leadership.",
         socials: {
           linkedin: "#",
@@ -187,7 +160,7 @@ const profiles = {
       {
         name: "Magnus Mchnguzi",
         title: "Co-Founder & Chairman",
-        photo: MagnusPhoto,
+        photo: "Magnus.png",
         bio: "An entrepreneur committed to creating opportunities for young African leaders.",
         socials: {
           linkedin: "#",
@@ -200,49 +173,49 @@ const profiles = {
       {
         name: "Awel Uwihanganye",
         title: "Co-founder & Program Lead",
-        photo: AwelPhoto,
+        photo: "Awel.jpg",
         bio: "Awel is a social entrepreneur and development practitioner with over 15 years of experience in leadership development, public policy and governance."
       },
       {
         name: "Catherinerose Barreto",
         title: "Board Member",
-        photo: CatherinerosePhoto,
+        photo: "Catherinerose.png",
         bio: "Human Capital, Innovation, Entrepreneurship & Gender Consultant with extensive experience in organizational development and leadership training."
       },
       {
         name: "Kevin Langley",
         title: "Board Member",
-        photo: KevinPhoto,
+        photo: "Kevin-Langley.jpg",
         bio: "Head Of Marketing at Visa CEMEA, bringing extensive experience in global marketing and business development."
       },
       {
         name: "William Babigumira",
         title: "Board Member",
-        photo: WilliamPhoto,
+        photo: "William.jpg",
         bio: "Certified Trade Advisor at Private Sector Federation Rwanda, with expertise in regional trade and business development."
       },
       {
         name: "Conrad Mugisha",
         title: "Board Member",
-        photo: ConradPhoto,
+        photo: "Conrad.jpg",
         bio: "Experienced professional bringing strategic insights to organizational development and leadership."
       },
       {
         name: "Fiona Mbabazi",
         title: "Board Member",
-        photo: FionaPhoto,
+        photo: "Fiona.png",
         bio: "Accomplished professional with expertise in corporate governance and strategic leadership."
       },
       {
         name: "Rosie Lore",
         title: "Board Member",
-        photo: RosiePhoto,
+        photo: "Rosie-Lorie.png",
         bio: "Leadership Coach with extensive experience in personal and professional development, helping leaders reach their full potential."
       },
       {
         name: "Magnus Mchngunzi",
         title: "Chairman Board of Directors",
-        photo: MagnusPhoto,
+        photo: "Magnus.png",
         bio: "A visionary leader committed to fostering collaborative leadership and empowering Africa's next generation of leaders."
       }
     ],
@@ -250,25 +223,25 @@ const profiles = {
       {
         name: "Awel Uwihanganye",
         title: "Co-Founder & Program Lead",
-        photo: AwelPhoto,
+        photo: "Awel.jpg",
         bio: "Leading the vision and strategy of LEO Africa Institute"
       },
       {
         name: "Nelson Asiimwe",
         title: "Fellowships & Program Manager",
-        photo: NelsonPhoto,
+        photo: "Asiimwe-Nelson-Mushabe.png",
         bio: "Managing fellowship programs and alumni engagement"
       },
       {
         name: "Abdallah Zubedah",
         title: "Finance & Administration",
-        photo: DefaultPhoto,
+        photo: "tem.jpg",
         bio: "Overseeing financial management and operations"
       },
       {
         name: "Nnanda Kizito Seruwagi",
         title: "Communications & Media Officer",
-        photo: NandaPhoto,
+        photo: "Nanda.jpg",
         bio: "Managing communications and media relations"
       }
     ]
@@ -276,47 +249,35 @@ const profiles = {
 };
 
 const ProfileCard = ({ member, size = "large" }) => {
-  const sizeClasses = {
-    large: "w-full md:w-1/2 lg:w-1/3 p-4",
-    medium: "w-full sm:w-1/2 md:w-1/3 lg:w-1/4 p-3",
-    small: "w-full sm:w-1/2 md:w-1/3 lg:w-1/4 p-2"
-  };
-
+  const imageUrl = member.photo ? getImagePath(member.photo, member.type || (member.title.includes("Fellow") ? 'fellows' : 'team')) : '/images/default-fellow.jpg';
+  
   return (
-    <div className={sizeClasses[size]}>
-      <div className="group bg-white rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300">
-        <div className={`relative overflow-hidden ${size === "large" ? "aspect-w-4 aspect-h-5" : "aspect-w-3 aspect-h-4"}`}>
-          <img
-            src={member.photo || DefaultPhoto}
-            alt={member.name}
-            className="w-full h-full object-cover object-center transform group-hover:scale-105 transition-duration-500"
-          />
-          {member.socials && Object.keys(member.socials).length > 0 && (
-            <div className="absolute inset-0 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-              <div className="flex space-x-4">
-                {member.socials.linkedin && (
-                  <a href={member.socials.linkedin} target="_blank" rel="noopener noreferrer" className="text-white hover:text-blue-400">
-                    <FaLinkedin className="w-6 h-6" />
-                  </a>
-                )}
-                {member.socials.twitter && (
-                  <a href={member.socials.twitter} target="_blank" rel="noopener noreferrer" className="text-white hover:text-blue-400">
-                    <FaTwitter className="w-6 h-6" />
-                  </a>
-                )}
-              </div>
-            </div>
-          )}
-        </div>
-        <div className="p-4">
-          <h3 className="text-lg font-semibold text-gray-900">{member.name}</h3>
-          <p className="text-sm text-gray-600 mt-1">{member.title}</p>
-          {member.bio && size === "large" && (
-            <p className="text-sm text-gray-500 mt-2 line-clamp-2">{member.bio}</p>
-          )}
-        </div>
+    <motion.div
+      whileHover={{ scale: 1.02 }}
+      className={`bg-white rounded-lg shadow-md overflow-hidden ${size === "large" ? "w-full" : "w-64"}`}
+    >
+      <div className="relative">
+        <img
+          src={imageUrl}
+          alt={member.name}
+          className={`w-full object-cover ${size === "large" ? "h-72" : "h-48"}`}
+          onError={(e) => {
+            if (e.target.src.endsWith('.jpg')) {
+              e.target.src = e.target.src.replace('.jpg', '.png');
+            } else if (e.target.src.endsWith('.png')) {
+              e.target.src = '/images/default-fellow.jpg';
+            }
+          }}
+        />
       </div>
-    </div>
+      <div className="p-4">
+        <h3 className="text-lg font-semibold text-gray-900">{member.name}</h3>
+        <p className="text-sm text-gray-600 mt-1">{member.title}</p>
+        {member.bio && size === "large" && (
+          <p className="text-sm text-gray-500 mt-2 line-clamp-2">{member.bio}</p>
+        )}
+      </div>
+    </motion.div>
   );
 };
 
@@ -343,7 +304,7 @@ const TeamSection = () => {
                 <div className="md:w-2/5 p-4">
                   <div className="relative w-48 h-48 md:w-full md:h-64 rounded-full md:rounded-xl overflow-hidden mx-auto">
                     <img
-                      src={member.photo || DefaultPhoto}
+                      src={member.photo ? getImagePath(member.photo, 'team') : '/images/default-fellow.jpg'}
                       alt={member.name}
                       className="w-full h-full object-cover object-center transform group-hover:scale-105 transition-duration-500"
                     />
@@ -388,7 +349,7 @@ const TeamSection = () => {
             >
               <div className="flex-shrink-0">
                 <img
-                  src={member.photo || DefaultPhoto}
+                  src={member.photo ? getImagePath(member.photo, 'team') : '/images/default-fellow.jpg'}
                   alt={member.name}
                   className="w-16 h-16 rounded-full object-cover border-2 border-gray-100"
                 />
@@ -413,7 +374,7 @@ const TeamSection = () => {
             >
               <div className="flex-shrink-0">
                 <img
-                  src={member.photo || DefaultPhoto}
+                  src={member.photo ? getImagePath(member.photo, 'team') : '/images/default-fellow.jpg'}
                   alt={member.name}
                   className="w-16 h-16 rounded-full object-cover border-2 border-gray-100"
                 />
@@ -450,9 +411,16 @@ const ChampionsSection = () => {
           <div className="flex flex-col md:flex-row">
             <div className="md:w-2/5 relative overflow-hidden">
               <img
-                src={champion.photo}
+                src={getImagePath(champion.photo)}
                 alt={champion.name}
                 className="w-full h-64 md:h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                onError={(e) => {
+                  if (e.target.src.endsWith('.jpg')) {
+                    e.target.src = e.target.src.replace('.jpg', '.png');
+                  } else if (e.target.src.endsWith('.png')) {
+                    e.target.src = '/images/default-fellow.jpg';
+                  }
+                }}
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
             </div>
@@ -553,17 +521,20 @@ const OurPeople = () => {
                   whileHover={{ scale: 1.03 }}
                 >
                   <div className="flex flex-col items-center">
-                    {person.photo ? (
+                    <div className="relative w-24 h-24 rounded-full mb-4 overflow-hidden">
                       <img
-                        src={person.photo}
+                        src={getImagePath(person.photo, 'fellows')}
                         alt={person.name}
-                        className="w-24 h-24 rounded-full mb-4 object-cover transition-transform transform group-hover:scale-110"
+                        className="w-full h-full object-cover transition-transform transform group-hover:scale-110"
+                        onError={(e) => {
+                          if (e.target.src.endsWith('.jpg')) {
+                            e.target.src = e.target.src.replace('.jpg', '.png');
+                          } else if (e.target.src.endsWith('.png')) {
+                            e.target.src = '/images/default-fellow.jpg';
+                          }
+                        }}
                       />
-                    ) : (
-                      <div className="w-24 h-24 rounded-full mb-4 bg-gray-300 flex items-center justify-center">
-                        <span className="text-xl text-gray-600">No Photo</span>
-                      </div>
-                    )}
+                    </div>
                     <h3 className="text-xl font-semibold text-center">
                       {person.name}
                     </h3>
@@ -628,7 +599,9 @@ const OurPeople = () => {
                     <div className="md:w-2/5 p-4">
                       <div className="relative w-48 h-48 md:w-full md:h-64 rounded-full md:rounded-xl overflow-hidden mx-auto border-4 border-white/20">
                         <img
-                          src={profiles.team.board.find(m => m.name === "Magnus Mchngunzi")?.photo || DefaultPhoto}
+                          src={profiles.team.board.find(m => m.name === "Magnus Mchngunzi")?.photo ? 
+                              getImagePath(profiles.team.board.find(m => m.name === "Magnus Mchngunzi").photo, 'team') : 
+                              '/images/default-fellow.jpg'}
                           alt="Magnus Mchngunzi"
                           className="w-full h-full object-cover object-center transform group-hover:scale-105 transition-duration-500"
                         />
@@ -663,7 +636,7 @@ const OurPeople = () => {
                         <div className="md:w-2/5 p-4">
                           <div className="relative w-48 h-48 md:w-full md:h-64 rounded-full md:rounded-xl overflow-hidden mx-auto">
                             <img
-                              src={member.photo || DefaultPhoto}
+                              src={member.photo ? getImagePath(member.photo, 'team') : '/images/default-fellow.jpg'}
                               alt={member.name}
                               className="w-full h-full object-cover object-center transform group-hover:scale-105 transition-duration-500"
                             />
@@ -710,7 +683,7 @@ const OurPeople = () => {
                       <div className="md:w-2/5 p-4">
                         <div className="relative w-48 h-48 md:w-full md:h-64 rounded-full md:rounded-xl overflow-hidden mx-auto">
                           <img
-                            src={member.photo || DefaultPhoto}
+                            src={member.photo ? getImagePath(member.photo, 'team') : '/images/default-fellow.jpg'}
                             alt={member.name}
                             className="w-full h-full object-cover object-center transform group-hover:scale-105 transition-duration-500"
                           />

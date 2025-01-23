@@ -74,10 +74,14 @@ const PillarsOfAction = () => {
                     <div className="relative inline-block">
                       <div className="w-48 h-48 md:w-56 md:h-56 rounded-2xl overflow-hidden transform rotate-3 shadow-xl">
                         <StaticImage
-                          src="../../assets/images/Awel1.jpg"
+                          src="../../assets/images/Awel.jpg"
                           alt="Awel Uwihanganye"
-                          className="w-full h-full object-cover"
-                          placeholder="dominantColor"
+                          className="w-full h-full"
+                          imgClassName="object-cover"
+                          placeholder="blurred"
+                          formats={["jpg"]}
+                          quality={90}
+                          layout="fullWidth"
                         />
                       </div>
                       {/* Decorative elements */}

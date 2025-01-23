@@ -54,69 +54,114 @@ const YelpHome = () => {
   return (
     <YelpLayout>
       {/* Hero Section */}
-      <section className="relative min-h-[90vh] flex items-center justify-center">
+      <section className="relative min-h-screen flex items-center">
         {/* Hero Image */}
-        <div 
-          className="absolute inset-0 z-0"
-          style={{
-            backgroundImage: `url(${YelpHero})`,
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
-            backgroundRepeat: 'no-repeat'
-          }}
-        />
-        
-        {/* Overlay */}
         <div className="absolute inset-0 z-0">
-          {/* Left side gradient */}
-          <div className="absolute inset-y-0 left-0 w-1/3 bg-gradient-to-r from-[#0B9A9E]/90 to-transparent" />
-          {/* Right side gradient */}
-          <div className="absolute inset-y-0 right-0 w-1/3 bg-gradient-to-l from-[#0B9A9E]/90 to-transparent" />
-          {/* Subtle center overlay */}
-          <div className="absolute inset-0 bg-black/20" />
-          {/* Pattern overlay */}
-          <div className="absolute inset-0 pattern-bg opacity-20" />
+          <div 
+            className="absolute inset-0"
+            style={{
+              backgroundImage: `url(${YelpHero})`,
+              backgroundSize: 'cover',
+              backgroundPosition: 'center',
+              backgroundRepeat: 'no-repeat',
+            }}
+          />
+          {/* Gradient overlays */}
+          <div className="absolute inset-0 bg-gradient-to-r from-black/95 via-black/80 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/60 to-transparent" />
+          
+          {/* Accent color overlay */}
+          <div className="absolute inset-0 bg-[#0B9A9E] mix-blend-color opacity-15" />
         </div>
-        
-        {/* Content */}
-        <div className="relative z-10 max-w-5xl mx-auto px-4 text-center">
-          <motion.h1 
-            className="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-8 font-playfair"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.3 }}
-          >
-            Young and Emerging Leaders Project
-          </motion.h1>
-          
-          <motion.p 
-            className="text-xl md:text-2xl mb-12 text-white/90 max-w-3xl mx-auto"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.5, duration: 0.8 }}
-          >
-            Empowering the next generation of African leaders through innovation and transformative leadership
-          </motion.p>
-          
-          <motion.div
-            className="flex flex-wrap gap-6 justify-center"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.7, duration: 0.8 }}
-          >
-            <Link 
-              to="/yelp/fellows"
-              className="px-8 py-4 bg-[#0B9A9E] text-white rounded-full font-bold text-lg transition-all duration-300 hover:scale-105 hover:bg-[#0B9A9E]/90"
-            >
-              Meet Our Fellows
-            </Link>
-            <Link 
-              to="/yelp/about"
-              className="px-8 py-4 rounded-full font-bold text-lg border-2 border-white text-white hover:bg-white/10 transition-all duration-300"
-            >
-              Learn More
-            </Link>
-          </motion.div>
+
+        {/* Content Container */}
+        <div className="relative z-10 w-full">
+          <div className="max-w-[1400px] mx-auto px-4 md:px-6 py-20">
+            <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+              {/* Left Column - Text Content */}
+              <div className="text-center lg:text-left">
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6 }}
+                  className="inline-flex items-center px-3 py-1.5 mb-6 border border-[#0B9A9E] rounded-full"
+                >
+                  <span className="block w-2 h-2 rounded-full bg-[#0B9A9E] mr-2" />
+                  <span className="text-sm text-[#0B9A9E] font-medium tracking-wide uppercase">Applications Opening Soon</span>
+                </motion.div>
+
+                <motion.h1
+                  initial={{ opacity: 0, y: 30 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: 0.2 }}
+                  className="text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-8 font-playfair"
+                >
+                  YELP Project
+                </motion.h1>
+
+                <motion.p
+                  initial={{ opacity: 0, y: 30 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: 0.4 }}
+                  className="text-xl md:text-2xl text-white/80 mb-12 max-w-2xl lg:max-w-none"
+                >
+                  Applications for the 2025 cohort of the YELP project are opening soon. Are you a young thought leader interested in shaping the future of Africa through championing ethical and values-based leadership? The YELP project empowers you to become the next innovative and transformative leader Africa needs.
+                </motion.p>
+              </div>
+
+              {/* Right Column - Form */}
+              <motion.div
+                initial={{ opacity: 0, x: 30 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.8, delay: 0.6 }}
+                className="lg:justify-self-end w-full max-w-md mx-auto"
+              >
+                <div className="backdrop-blur-md bg-white/[0.02] border border-white/10 rounded-2xl p-8 shadow-2xl">
+                  <form onSubmit={handleSubmit} className="space-y-6">
+                    <div>
+                      <label htmlFor="name" className="block text-white/90 text-sm font-medium mb-2">Full Name</label>
+                      <input
+                        id="name"
+                        type="text"
+                        name="name"
+                        value={formData.name}
+                        onChange={handleChange}
+                        className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg text-white placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-[#0B9A9E] focus:border-transparent transition duration-200"
+                        required
+                      />
+                    </div>
+                    <div>
+                      <label htmlFor="email" className="block text-white/90 text-sm font-medium mb-2">Email Address</label>
+                      <input
+                        id="email"
+                        type="email"
+                        name="email"
+                        value={formData.email}
+                        onChange={handleChange}
+                        className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg text-white placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-[#0B9A9E] focus:border-transparent transition duration-200"
+                        required
+                      />
+                    </div>
+                    <button
+                      type="submit"
+                      disabled={loading}
+                      className="w-full relative group"
+                    >
+                      <div className="absolute -inset-0.5 bg-gradient-to-r from-[#0B9A9E] to-[#87181A] rounded-lg opacity-70 group-hover:opacity-100 transition duration-200 blur" />
+                      <div className="relative w-full px-6 py-3 bg-[#0B9A9E] rounded-lg text-white font-semibold text-lg transition-all duration-200 group-hover:bg-opacity-90">
+                        {loading ? 'Subscribing...' : 'Subscribe for Updates'}
+                      </div>
+                    </button>
+                    {message && (
+                      <p className={`text-sm ${success ? 'text-green-400' : 'text-red-400'} text-center mt-2`}>
+                        {message}
+                      </p>
+                    )}
+                  </form>
+                </div>
+              </motion.div>
+            </div>
+          </div>
         </div>
       </section>
 

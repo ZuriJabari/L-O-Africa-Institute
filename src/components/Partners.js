@@ -2,7 +2,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import { FiExternalLink } from 'react-icons/fi';
 import kasLogo from '../assets/images/partners/KAS.png';
-import SegalLogo from '../assets/images/partners/SFF.svg';
+import SegalLogo from '../assets/images/sff-logo-alt-box.png';
 import AbmakLogo from '../assets/images/partners/ABMAKS.jpg';
 import RkaLogo from '../assets/images/partners/RKA.png';
 
@@ -20,7 +20,8 @@ const Partners = () => {
       name: "Social Shift Foundation", 
       desc: "Youth Empowerment", 
       alt: "Social Shift Foundation Logo",
-      website: "https://socialshiftfoundation.org"
+      website: "https://socialshiftfoundation.org",
+      className: "max-h-40"
     },
     { 
       logo: AbmakLogo, 
@@ -77,11 +78,11 @@ const Partners = () => {
                   className="block bg-white rounded-xl p-6 shadow-sm hover:shadow-md transition-all duration-300 group relative"
                 >
                   <div className="flex flex-col items-center h-full">
-                    <div className="h-20 flex items-center justify-center mb-4">
+                    <div className={`h-28 flex items-center justify-center mb-4 ${partner.name === "Social Shift Foundation" ? "h-44" : ""}`}>
                       <img 
                         src={partner.logo} 
                         alt={partner.alt}
-                        className="max-h-16 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
+                        className={`${partner.className || 'max-h-24'} w-auto object-contain transition-transform duration-300 group-hover:scale-105`}
                       />
                     </div>
                     <div className="text-center">

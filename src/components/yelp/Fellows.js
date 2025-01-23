@@ -4,9 +4,20 @@ import { StaticImage } from 'gatsby-plugin-image';
 import { Link } from 'gatsby';
 import { fellowsData } from '../../data/fellows-data';
 import YelpLogo from '../../assets/images/YELP-Logo.svg';
+import YelpHero from '../../assets/images/huduma-hero.jpg';
+
+// Helper function to get image path
+const getImagePath = (imageName) => {
+  if (!imageName) return '/images/default-fellow.jpg';
+  return `/images/fellows/${imageName}.jpg`;
+};
 
 const Fellows = () => {
-  const [activeTab, setActiveTab] = useState('2024');
+  const [selectedYear, setSelectedYear] = useState('all');
+
+  const years = Object.keys(fellowsData).sort((a, b) => b - a);
+  const allFellows = years.reduce((acc, year) => [...acc, ...fellowsData[year]], []);
+  const displayedFellows = selectedYear === 'all' ? allFellows : fellowsData[selectedYear];
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -29,54 +40,104 @@ const Fellows = () => {
     }
   };
 
+  // Year section component
+  const YearSection = ({ year, fellows }) => (
+    <div className="mb-20">
+      <h3 className="text-2xl font-bold text-gray-900 mb-8">Class of {year}</h3>
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+        {fellows.map((fellow, index) => (
+          <motion.div
+            key={fellow.name}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: index * 0.05 }}
+            className="bg-white rounded-lg shadow-sm overflow-hidden hover:shadow-md transition-shadow group"
+          >
+            <Link to={`/yelp/fellows/${fellow.slug}`} className="block">
+              <div className="aspect-w-3 aspect-h-4">
+                <img
+                  src={getImagePath(fellow.image)}
+                  alt={fellow.name}
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                  onError={(e) => {
+                    if (e.target.src.endsWith('.jpg')) {
+                      e.target.src = e.target.src.replace('.jpg', '.png');
+                    } else if (e.target.src.endsWith('.png')) {
+                      e.target.src = e.target.src.replace('.png', '.webp');
+                    } else if (e.target.src.endsWith('.webp')) {
+                      e.target.src = '/images/fellows/default-fellow.jpg';
+                    }
+                  }}
+                />
+              </div>
+              <div className="p-4">
+                <h3 className="text-lg font-semibold text-gray-900 mb-1">{fellow.name}</h3>
+                <p className="text-sm text-[#0B9A9E] font-medium mb-1">{fellow.role}</p>
+                <p className="text-sm text-gray-600">{fellow.organization}</p>
+              </div>
+            </Link>
+          </motion.div>
+        ))}
+      </div>
+    </div>
+  );
+
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Section */}
-      <section className="relative h-[70vh] overflow-hidden">
+      <section className="relative min-h-[80vh] flex items-center">
         {/* Hero Image */}
-        <motion.div 
-          initial={{ scale: 1.1 }}
-          animate={{ scale: 1 }}
-          transition={{ duration: 1.5 }}
-          className="absolute inset-0"
-        >
-          <StaticImage 
-            src="../../assets/images/huduma-hero.jpg"
-            alt="YELP Fellows Hero"
-            className="absolute inset-0 w-full h-full"
-            objectPosition="center 30%"
-            placeholder="blurred"
-            layout="fullWidth"
+        <div className="absolute inset-0 z-0">
+          <div 
+            className="absolute inset-0"
+            style={{
+              backgroundImage: `url(${YelpHero})`,
+              backgroundSize: 'cover',
+              backgroundPosition: 'center',
+              backgroundRepeat: 'no-repeat',
+            }}
           />
-          {/* Left side gradient */}
-          <div className="absolute inset-y-0 left-0 w-1/3 bg-gradient-to-r from-[#0B9A9E]/90 to-transparent" />
-          {/* Right side gradient */}
-          <div className="absolute inset-y-0 right-0 w-1/3 bg-gradient-to-l from-[#0B9A9E]/90 to-transparent" />
-          {/* Subtle overall overlay */}
-          <div className="absolute inset-0 bg-black/10" />
-          {/* Pattern overlay */}
-          <div className="absolute inset-0 pattern-bg opacity-20" />
-        </motion.div>
-
-        {/* Content */}
-        <div className="relative h-full flex flex-col items-center justify-center text-white px-4">
-          <motion.h1 
-            className="text-5xl md:text-6xl font-bold mb-6 font-playfair text-center drop-shadow-2xl"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-          >
-            Meet Our Fellows
-          </motion.h1>
+          {/* Gradient overlays */}
+          <div className="absolute inset-0 bg-gradient-to-r from-black/95 via-black/80 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/60 to-transparent" />
           
-          <motion.p 
-            className="text-xl md:text-2xl text-white max-w-3xl text-center drop-shadow-lg"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-          >
-            Discover the exceptional young leaders who are part of our fellowship program, driving innovation and positive change across East Africa
-          </motion.p>
+          {/* Accent color overlay */}
+          <div className="absolute inset-0 bg-[#0B9A9E] mix-blend-color opacity-15" />
+        </div>
+
+        {/* Content Container */}
+        <div className="relative z-10 w-full">
+          <div className="max-w-[1400px] mx-auto px-4 md:px-6 py-20">
+            <div className="max-w-3xl mx-auto text-center">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6 }}
+                className="inline-flex items-center px-3 py-1.5 mb-6 border border-[#0B9A9E] rounded-full"
+              >
+                <span className="block w-2 h-2 rounded-full bg-[#0B9A9E] mr-2" />
+                <span className="text-sm text-[#0B9A9E] font-medium tracking-wide uppercase">Our Community</span>
+              </motion.div>
+
+              <motion.h1 
+                className="text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-8 font-playfair"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.2 }}
+              >
+                Meet Our Fellows
+              </motion.h1>
+              
+              <motion.p 
+                className="text-xl md:text-2xl text-white/80 mb-12"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.4 }}
+              >
+                Discover the exceptional young leaders who are part of our fellowship program, driving innovation and positive change across East Africa
+              </motion.p>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -98,73 +159,40 @@ const Fellows = () => {
             </p>
           </motion.div>
 
-          {/* Cohort Tabs */}
-          <div className="flex flex-wrap gap-4 justify-center mb-16">
-            {Object.keys(fellowsData).reverse().map((year) => (
-              <motion.button
-                key={year}
-                onClick={() => setActiveTab(year)}
-                className={`px-8 py-3 rounded-full text-lg font-medium transition-all duration-300 ${
-                  activeTab === year
-                    ? 'bg-[#0B9A9E] text-white shadow-lg'
-                    : 'bg-white text-gray-600 hover:bg-gray-100'
-                }`}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
+          {/* Filter Section */}
+          <div className="mb-12">
+            <div className="flex items-center space-x-4 justify-center">
+              <span className="text-gray-600 font-medium">Filter by year:</span>
+              <select
+                value={selectedYear}
+                onChange={(e) => setSelectedYear(e.target.value)}
+                className="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#0B9A9E] focus:border-transparent"
               >
-                Class of {year}
-              </motion.button>
-            ))}
+                <option value="all">All Years</option>
+                {years.map(year => (
+                  <option key={year} value={year}>Class of {year}</option>
+                ))}
+              </select>
+            </div>
           </div>
 
           {/* Fellows Grid */}
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={activeTab}
-              variants={containerVariants}
-              initial="hidden"
-              animate="visible"
-              exit="hidden"
-              className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8"
-            >
-              {fellowsData[activeTab].map((fellow) => (
-                <Link
-                  key={fellow.name}
-                  to={`/yelp/fellows/${fellow.slug}`}
-                  className="block"
-                >
-                  <motion.div
-                    variants={itemVariants}
-                    className="group relative bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300"
-                    whileHover={{ y: -5 }}
-                  >
-                    <div className="aspect-w-1 aspect-h-1 relative overflow-hidden">
-                      <img
-                        src={fellow.image}
-                        alt={fellow.name}
-                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                      />
-                      <motion.div 
-                        className="absolute inset-0 bg-gradient-to-t from-[#0B9A9E]/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                        initial={false}
-                      />
-                    </div>
-                    <div className="p-6">
-                      <h3 className="text-xl font-semibold text-gray-900 mb-2 group-hover:text-[#0B9A9E] transition-colors duration-300">
-                        {fellow.name}
-                      </h3>
-                      <p className="text-[#0B9A9E] font-medium opacity-75">
-                        Class of {activeTab}
-                      </p>
-                      <p className="text-gray-600 mt-2 line-clamp-2">
-                        {fellow.role}
-                      </p>
-                    </div>
-                  </motion.div>
-                </Link>
-              ))}
-            </motion.div>
-          </AnimatePresence>
+          <div className="mt-12">
+            {selectedYear === 'all' ? (
+              years.map(year => (
+                <YearSection 
+                  key={year} 
+                  year={year} 
+                  fellows={fellowsData[year]} 
+                />
+              ))
+            ) : (
+              <YearSection 
+                year={selectedYear} 
+                fellows={fellowsData[selectedYear]} 
+              />
+            )}
+          </div>
         </div>
       </section>
     </div>

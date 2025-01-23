@@ -1,19 +1,29 @@
 import React from 'react';
-import { Link } from 'gatsby';
+import { Link, graphql } from 'gatsby';
 import { motion } from 'framer-motion';
 import { FaLinkedin, FaTwitter } from 'react-icons/fa';
+import { GatsbyImage, getImage } from 'gatsby-plugin-image';
 import HudumaLayout from '../components/layout/HudumaLayout';
 
-const HudumaChampion = ({ pageContext }) => {
-  const champion = pageContext;
+export const query = graphql`
+  query($imageFilename: String!) {
+    championImage: file(relativePath: { eq: $imageFilename }, sourceInstanceName: { eq: "images" }) {
+      childImageSharp {
+        gatsbyImageData(
+          width: 512
+          height: 512
+          placeholder: BLURRED
+          formats: [AUTO]
+          quality: 90
+          transformOptions: { fit: COVER }
+        )
+      }
+    }
+  }
+`;
 
-  // Function to get the correct image path with extension
-  const getImagePath = (basePath) => {
-    // Try different extensions in order of preference
-    const extensions = ['.webp', '.jpg', '.png'];
-    const imagePath = basePath.startsWith('/') ? basePath : `/${basePath}`;
-    return `/images/champions/${imagePath.split('/').pop()}${extensions[0]}`;
-  };
+const HudumaChampion = ({ data, pageContext: champion }) => {
+  const image = data.championImage ? getImage(data.championImage) : null;
 
   return (
     <HudumaLayout>
@@ -39,23 +49,18 @@ const HudumaChampion = ({ pageContext }) => {
                 transition={{ duration: 0.6 }}
                 className="w-48 h-48 md:w-64 md:h-64 rounded-full overflow-hidden border-4 border-white shadow-xl"
               >
-                <img
-                  src={getImagePath(champion.image)}
-                  alt={champion.name}
-                  className="w-full h-full object-cover"
-                  onError={(e) => {
-                    // If .webp fails, try .jpg
-                    if (e.target.src.endsWith('.webp')) {
-                      const basePath = e.target.src.split('.webp')[0];
-                      e.target.src = `${basePath}.jpg`;
-                    }
-                    // If .jpg fails, try .png
-                    else if (e.target.src.endsWith('.jpg')) {
-                      const basePath = e.target.src.split('.jpg')[0];
-                      e.target.src = `${basePath}.png`;
-                    }
-                  }}
-                />
+                {image ? (
+                  <GatsbyImage
+                    image={image}
+                    alt={champion.name}
+                    className="w-full h-full"
+                    imgClassName="object-cover"
+                  />
+                ) : (
+                  <div className="w-full h-full bg-gray-200 flex items-center justify-center">
+                    <span className="text-gray-400">No image available</span>
+                  </div>
+                )}
               </motion.div>
               <div className="flex-1 text-center md:text-left">
                 <motion.h1
@@ -73,6 +78,9 @@ const HudumaChampion = ({ pageContext }) => {
                   className="space-y-2"
                 >
                   <p className="text-xl text-white/90">{champion.role}</p>
+                  {champion.organization && (
+                    <p className="text-lg text-white/80">{champion.organization}</p>
+                  )}
                   <p className="text-lg text-white/80">Class of {champion.class}</p>
                 </motion.div>
                 {champion.social && (
