@@ -60,17 +60,7 @@ const MissionVisionPage = () => {
         {/* Bottom Transition */}
         <div className="absolute bottom-0 left-0 w-full">
           <div class="prefooter-gray">
-            <div className="container mx-auto px-4 flex justify-center items-center h-full">
-              <StaticImage
-                src="../../assets/images/Leo-logo.png"
-                alt="LéO Africa Institute"
-                className="h-8"
-                imgClassName="object-contain"
-                placeholder="blurred"
-                formats={["png"]}
-                quality={90}
-              />
-            </div>
+            
           </div>
         </div>
       </section>

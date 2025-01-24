@@ -283,7 +283,8 @@ const TeamPage = () => {
             <div className="mb-12">
               <h2 className="text-4xl md:text-5xl font-bold mb-6">Governing Board of Directors</h2>
               <p className="text-gray-600 text-xl md:text-2xl leading-relaxed max-w-3xl">
-                Our distinguished board members and founders guide LEO Africa Institute's vision and strategic direction.
+              Our governance board is constituted with individuals whose integrity is beyond reproach and with whom we share a commitment to create a better society and future with young people at the center of shaping leadership action. 
+
               </p>
             </div>
             
@@ -307,7 +308,8 @@ const TeamPage = () => {
             <div className="mb-12">
               <h2 className="text-4xl md:text-5xl font-bold mb-6">Our Secretariat Team</h2>
               <p className="text-gray-600 text-xl md:text-2xl leading-relaxed max-w-3xl">
-                Meet our dynamic team leading our programs and operations.
+              Meet our dynamic team committed to shaping leadership that actively contributes to building the Africa we want. 
+
               </p>
             </div>
             
@@ -321,6 +323,7 @@ const TeamPage = () => {
               ))}
             </div>
           </div>
+          <p className="text-gray-600 text-xl md:text-2xl leading-relaxed max-w-3xl mt-12 ml-12">In addition to our staff, the institute continues to rely on the diverse skill sets, innovation and hard work of our associate faculty, volunteers and friends to whom we are grateful for the amazing work they put in. </p>
         </div>
       </section>
     </Layout>

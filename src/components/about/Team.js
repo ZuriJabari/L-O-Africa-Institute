@@ -107,7 +107,7 @@ const TeamMemberCard = ({ name, subtitle, imagePath, isChair }) => {
 const teamData = [
   {
     type: "Board of Directors",
-    description: "The Board of Directors consists of high-level individuals from the public and private sectors who help set strategy, support senior management in pursuit of this strategy, and ensure the LéO Africa Institute has adequate, well-managed resources at its disposal.",
+    description: "Our governance board is constituted with individuals whose integrity is beyond reproach and with whom we share a commitment to create a better society and future with young people at the center of shaping leadership action.",
     members: [
       {
         name: "Magnus Mchunguzi",
@@ -144,7 +144,7 @@ const teamData = [
   },
   {
     type: "The Secretariat",
-    description: "The Secretariat is responsible for the day-to-day running of the Institute, implementation of programs and managing relationships with stakeholders.",
+    description: "Meet our dynamic team committed to shaping leadership that actively contributes to building the Africa we want",
     members: [
       {
         name: "Awel Uwihanganye",
@@ -178,27 +178,42 @@ const Team = () => {
     <div className="py-16 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {teamData.map((section, index) => (
-          <div key={section.type} className={index > 0 ? "mt-24" : ""}>
-            <div className="text-center mb-12">
-              <h2 className="text-3xl font-bold text-neutral-800 mb-4">
-                {section.type}
-              </h2>
-              <p className="text-lg text-neutral-600 max-w-3xl mx-auto">
-                {section.description}
-              </p>
+          <React.Fragment key={section.type}>
+            <div className={index > 0 ? "mt-24" : ""}>
+              <div className="text-center mb-12">
+                <h2 className="text-3xl font-bold text-neutral-800 mb-4">
+                  {section.type}
+                </h2>
+                <p className="text-lg text-neutral-600 max-w-3xl mx-auto">
+                  {section.description}
+                </p>
+              </div>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                {section.members.map((member) => (
+                  <TeamMemberCard
+                    key={member.name}
+                    name={member.name}
+                    subtitle={member.subtitle}
+                    imagePath={member.imagePath}
+                    isChair={member.isChair}
+                  />
+                ))}
+              </div>
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {section.members.map((member) => (
-                <TeamMemberCard
-                  key={member.name}
-                  name={member.name}
-                  subtitle={member.subtitle}
-                  imagePath={member.imagePath}
-                  isChair={member.isChair}
-                />
-              ))}
-            </div>
-          </div>
+            {section.type === "The Secretariat" && (
+              <div className="mt-16 mb-24">
+                <motion.p 
+                  className="text-lg text-neutral-600 italic text-center max-w-3xl mx-auto leading-relaxed"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6 }}
+                >
+                  In addition to our staff, the institute continues to rely on the diverse skill sets, innovation and hard work of our associate faculty, volunteers and friends to whom we are grateful for the amazing work they put in.
+                </motion.p>
+              </div>
+            )}
+          </React.Fragment>
         ))}
       </div>
     </div>

@@ -364,7 +364,7 @@ const EventsAndGatherings = () => {
                       {/* Event Description */}
                       <div className="prose prose-lg">
                         <p className="text-gray-600">
-                          The 2024 edition of the Annual Leaders Gathering will take place on November 14th and 16th at the esteemed Sheraton Hotel. This transformative event will bring together thought leaders, visionaries, and changemakers to explore innovative pathways to impactful leadership and foster global collaboration.
+                          The 2024 edition of the Annual Leaders Gathering took place on November 14th and 16th at the esteemed Sheraton Hotel. This transformative event will bring together thought leaders, visionaries, and changemakers to explore innovative pathways to impactful leadership and foster global collaboration.
                         </p>
                       </div>
 

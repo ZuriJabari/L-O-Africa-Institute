@@ -60,6 +60,7 @@ const TeamPage = () => {
 
       {/* Team Section */}
       <Team />
+
       <Footer />
     </div>
   );
