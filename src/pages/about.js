@@ -111,17 +111,7 @@ const AboutPage = () => {
         {/* Bottom Transition */}
         <div className="absolute bottom-0 left-0 w-full">
           <div class="prefooter-gray">
-            <div className="container mx-auto px-4 flex justify-center items-center h-full py-4">
-              <StaticImage
-                src="../assets/images/leo-logo-whitescale-transparent.png"
-                alt="LéO Africa Institute"
-                className="h-12 w-auto mx-auto"
-                imgClassName="object-contain w-full h-full"
-                placeholder="blurred"
-                formats={["png"]}
-                quality={100}
-              />
-            </div>
+            
           </div>
         </div>
       </section>
@@ -237,7 +227,7 @@ const AboutPage = () => {
                         <div className="relative">
                           <StaticImage
                             src="../assets/images/Magnus.png"
-                            alt="Magnus Mchngunzi"
+                            alt="Magnus Mchnguzi"
                             className="w-14 h-14"
                             imgClassName="object-cover rounded-full"
                             placeholder="blurred"
@@ -250,7 +240,7 @@ const AboutPage = () => {
                           </div>
                         </div>
                         <div>
-                          <div className="font-medium text-gray-900">Magnus Mchngunzi</div>
+                          <div className="font-medium text-gray-900">Magnus Mchnguzi</div>
                           <div className="text-sm text-gray-500">Co-Founder & Chairman</div>
                         </div>
                       </div>

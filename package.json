@@ -5,12 +5,14 @@
   "version": "0.1.0",
   "license": "0BSD",
   "scripts": {
-    "build": "gatsby build",
+    "build": "GATSBY_EXPERIMENTAL_PAGE_BUILD_ON_DATA_CHANGES=true gatsby build --log-pages",
+    "webhook-build": "curl -X POST -d {} YOUR_DEPLOYMENT_WEBHOOK_URL",
     "develop": "GATSBY_DEVELOPMENT_HTTPS=false gatsby develop",
     "start": "GATSBY_DEVELOPMENT_HTTPS=false gatsby develop",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
-    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
+    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1",
+    "webhook": "node webhook.js"
   },
   "dependencies": {
     "@fortawesome/react-fontawesome": "^0.2.2",

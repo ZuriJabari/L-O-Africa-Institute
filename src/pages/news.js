@@ -3,6 +3,7 @@ import Layout from "../components/Layout";
 import { graphql } from "gatsby";
 import { Link } from "gatsby";
 import ALG24_3 from "../assets/images/ALG24-3.jpg";
+import { GatsbyImage, getImage } from "gatsby-plugin-image";
 
 const NewsComponent = ({ data }) => {
   const allNewsArticles = data.allPrismicBlogPosts.nodes;
@@ -19,9 +20,10 @@ const NewsComponent = ({ data }) => {
     return <p className="text-center text-gray-600">No articles available.</p>;
   }
 
-  // Separate the featured article and the rest
-  const featuredArticle = allNewsArticles[0];
-  const restArticles = allNewsArticles.slice(1);
+  // Separate the featured articles and the rest
+  const featuredArticle = allNewsArticles[0]; // First featured article
+  const secondFeaturedArticle = allNewsArticles[1]; // Second featured article
+  const restArticles = allNewsArticles.slice(2); // Remaining articles
 
   return (
     <Layout>
@@ -46,109 +48,111 @@ const NewsComponent = ({ data }) => {
                 across Africa. From groundbreaking initiatives to inspiring success stories, 
                 explore the latest updates from the LéO Africa Institute community.
               </p>
-              <div className="mt-8 flex items-center space-x-2 text-white/80">
-                <span className="w-8 h-px bg-white/40"></span>
-                <span className="text-sm uppercase tracking-wider">Latest Updates & Stories</span>
-              </div>
             </div>
           </div>
         </div>
       </section>
-      <div className="prefooter-gray"></div>
 
-      {/* Insights Section */}
+      {/* Featured Articles */}
       <div className="container mx-auto px-6 lg:px-20 py-10">
-        {/* Featured Article */}
-        <h2 className="text-3xl font-bold text-gray-800 mb-6">Featured Insight</h2>
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 bg-white shadow-lg rounded-lg overflow-hidden transition-transform duration-300 hover:scale-105 mb-12">
-          {/* Image Section */}
-          {featuredArticle.data.featured_image?.url && (
-            <div className="relative h-64 lg:h-auto">
-              <img
-                src={featuredArticle.data.featured_image.url}
-                alt={featuredArticle.data.title}
-                className="w-full h-full object-cover"
-              />
-            </div>
-          )}
-          {/* Content Section */}
-          <div className="p-6 flex flex-col justify-center">
-            <h3 className="text-2xl font-bold text-gray-800 mb-2">
-              <Link to={`/blog/${featuredArticle.uid}`} className="hover:underline">
-                {featuredArticle.data.title}
-              </Link>
-            </h3>
-            <p className="text-sm text-gray-500 mb-4">
-              Published on {featuredArticle.data.publish_date} by{" "}
-              {featuredArticle.data.author || "Unknown"}
-            </p>
-            <p className="text-gray-700 mb-4">{featuredArticle.data.excerpt}</p>
-            <Link
-              to={`/blog/${featuredArticle.uid}`}
-              className="inline-block bg-[#1d8f92] text-white px-6 py-3 rounded-lg font-medium hover:bg-[#f6941e] transition-all duration-300"
-            >
-              Read More →
-            </Link>
-          </div>
-        </div>
-
-        {/* Insights Section */}
-        <h2 className="text-3xl font-bold text-gray-800 mb-6">All Insights</h2>
-        <p className="text-lg text-gray-600 mb-8">
-          Explore all insights from various categories and discover the stories,
-          updates, and achievements that define our progress.
-        </p>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {restArticles.slice(0, visibleArticles).map((article) => (
-            <div
-              key={article.id}
-              className="bg-white shadow-lg rounded-lg overflow-hidden transition-transform duration-300 hover:scale-105"
-            >
-              <Link to={`/blog/${article.uid}`}>
-                {article.data.featured_image?.url && (
-                  <img
-                    src={article.data.featured_image.url}
-                    alt={article.data.title}
-                    className="w-full h-48 object-cover"
-                  />
-                )}
-              </Link>
-              <div className="p-4">
-                <h3 className="text-xl font-bold text-gray-800 mb-2">
+        <h2 className="text-3xl font-bold text-gray-800 mb-6">Featured Insights</h2>
+        <hr className="border-gray-300 mb-6" /> {/* Horizontal ruler */}
+        <div className="flex gap-6">
+          {[featuredArticle, secondFeaturedArticle].map((article) => {
+            const imageData = getImage(article?.featuredImage?.node?.localFile);
+            return (
+              <div key={article.id} className="bg-white rounded-lg overflow-hidden transition-transform duration-150 hover:scale-100 w-1/2"> {/* Removed shadow effect */}
+                <Link to={`/blog/${article.uid}`}> {/* Clickable image */}
+                  {imageData ? (
+                    <GatsbyImage
+                      image={imageData}
+                      alt={article?.featuredImage?.node?.altText || ''}
+                      className="rounded-lg"
+                      onError={(e) => {
+                        console.error('Image failed to load:', e);
+                        e.target.style.display = 'none';
+                      }}
+                    />
+                  ) : null}
+                </Link>
+                <div className="p-4 flex flex-col justify-between">
+                  <h3 className="text-xl font-bold text-gray-800 mb-2">
+                    <Link to={`/blog/${article.uid}`} className="hover:text-[#1e8e92] transition-colors">
+                      {article.data.title}
+                    </Link>
+                  </h3>
+                  <p className="text-sm text-gray-500 mb-1">
+                    Published on {article.data.publish_date} by {article.data.author || "Unknown"}
+                  </p>
+                  <p className="text-md text-gray-700 mb-4">
+                    {article.data.excerpt} {/* Teaser text */}
+                  </p>
                   <Link
                     to={`/blog/${article.uid}`}
-                    className="hover:text-[#1e8e92] transition-colors"
+                    className="mt-4 inline-block text-[#1e8e92] font-semibold hover:underline"
                   >
+                    Read More →
+                  </Link>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+
+      {/* Insights Section */}
+      <div className="container mx-auto px-6 lg:px-20 max-w-[80%]"> {/* Reduced width by 20% */}
+        <h2 className="text-3xl font-bold text-gray-800 mb-6">More Insights</h2> {/* Changed title and moved inside container */}
+        <hr className="border-gray-300 mb-6" /> {/* Horizontal ruler */}
+        {restArticles.slice(0, visibleArticles).map((article) => (
+          <div
+            key={article.id}
+            className="bg-white rounded-lg overflow-hidden transition-transform duration-300 hover:scale-100 flex"
+          >
+            {article.data.featured_image?.url && (
+              <img
+                src={article.data.featured_image.url}
+                alt={article.data.title}
+                className="w-1/3 h-48 object-cover float-left mr-4" // Float image to the left
+              />
+            )}
+            <div className="p-4 flex flex-col justify-between w-2/3"> {/* Adjusted width */}
+              <div>
+                <p className="text-sm text-gray-500 mb-1">
+                  Published on {article.data.publish_date} by {article.data.author || "Unknown"}
+                </p>
+                <h3 className="text-lg font-bold text-gray-800 mb-2">
+                  <Link to={`/blog/${article.uid}`} className="hover:text-[#1e8e92] transition-colors">
                     {article.data.title}
                   </Link>
                 </h3>
-                <p className="text-sm text-gray-500 mb-4">
-                  Published on {article.data.publish_date} by{" "}
-                  {article.data.author || "Unknown"}
+                <p className="text-sm text-gray-700 mb-4">
+                  {article.data.excerpt}
                 </p>
-                <Link
-                  to={`/blog/${article.uid}`}
-                  className="mt-4 inline-block text-[#1e8e92] font-semibold hover:underline"
-                >
-                  Read More →
-                </Link>
               </div>
+              <Link
+                to={`/blog/${article.uid}`}
+                className="mt-4 inline-block text-[#1e8e92] font-semibold hover:underline"
+              >
+                Read More →
+              </Link>
             </div>
-          ))}
-        </div>
-
-        {/* Load More Button */}
-        {visibleArticles < restArticles.length && (
-          <div className="text-center mt-8">
-            <button
-              onClick={loadMoreArticles}
-              className="bg-[#1d8f92] text-white px-6 py-3 rounded-lg font-medium hover:bg-[#f6941e] transition-all duration-300"
-            >
-              Load More
-            </button>
           </div>
-        )}
+        ))}
       </div>
+
+      {/* Load More Button */}
+      {visibleArticles < restArticles.length && (
+        <div className="text-center mt-8 mb-10"> {/* Added margin to prevent overlap */}
+          <hr className="border-gray-300 mb-6" /> {/* Horizontal ruler */}
+          <button
+            onClick={loadMoreArticles}
+            className="bg-[#1d8f92] text-white px-9 py-3 rounded-lg font-medium hover:bg-[#f6941e] transition-all duration-150" // Increased width
+          >
+            Load More
+          </button>
+        </div>
+      )}
     </Layout>
   );
 };

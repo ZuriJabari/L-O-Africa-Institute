@@ -68,9 +68,8 @@ exports.createPages = async ({ graphql, actions }) => {
           childImageSharp {
             gatsbyImageData(
               width: 800
-              height: 1000
-              placeholder: BLURRED
-              formats: [AUTO, WEBP]
+              formats: [AUTO, WEBP],
+              placeholder: BLURRED,
               transformOptions: { fit: COVER }
             )
           }
@@ -322,7 +321,7 @@ exports.createPages = async ({ graphql, actions }) => {
     },
     {
       name: "Nnanda Kizito Sseruwagi",
-      role: "Communications & Media Officer",
+      role: "Media and Communications Officer",
       imageName: "Nanda",
       bio: "Nnanda is the Media and Communications Officer at the LéO Africa Institute. He is a lawyer by training. Nnanda is committed to the structural transformation of the third-world. He writes regularly in Uganda's leading Newspapers. His thoughts have been published in the New Vision, Daily Monitor, The Independent, The Observer, and The Standard (Kenya). He is interested in political economy, development and international relations.",
       slug: "nnanda-kizito",

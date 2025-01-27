@@ -579,7 +579,7 @@ const BlogPage = ({ data }) => {
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: 0.3 }}
               >
-                {blog.author_bio || "Contributing Writer at LEO"}
+                {blog.author_bio || "Contributing Writer at the LéO Africa Institute"}
               </motion.p>
             </div>
           </motion.div>

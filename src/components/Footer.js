@@ -19,10 +19,8 @@ const Footer = () => {
                 className="w-full h-full"
                 width={192}
                 height={80}
-                loading="eager"
-                quality={100}
-                formats={["auto", "webp", "png"]}
-                placeholder="none"
+                layout="fullWidth"
+                placeholder="blurred"
                 objectFit="contain"
                 imgStyle={{ objectFit: 'contain' }}
               />
@@ -82,7 +80,7 @@ const Footer = () => {
               <a href="https://www.youtube.com/@LeoAfricaInstitute" target="_blank" rel="noopener noreferrer" className="text-white/80 hover:text-white">
                 <FaYoutube className="h-5 w-5" />
               </a>
-              <a href="https://www.flickr.com/photos/africaforum/" target="_blank" rel="noopener noreferrer" className="text-white/80 hover:text-white">
+              <a href="https://www.flickr.com/photos/196942735@N04/albums" target="_blank" rel="noopener noreferrer" className="text-white/80 hover:text-white">
                 <FaFlickr className="h-5 w-5" />
               </a>
             </div>

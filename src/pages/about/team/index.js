@@ -194,7 +194,7 @@ const TeamPage = () => {
     },
     {
       name: "Nnanda Kizito Sseruwagi",
-      role: "Communications & Media Officer",
+      role: "Media & Communications Officer",
       image: Nanda,
       // bio: "Manages communications and media relations.",
       slug: "nnanda-kizito",
