@@ -21,7 +21,7 @@ module.exports = {
         background_color: `#ffffff`,
         theme_color: `#f6911e`,
         display: `standalone`,
-        icon: `static/favicon.png`, // Updated path to static directory
+        icon: `src/assets/images/favicon.png`, // Changed to PNG
         icon_options: {
           purpose: `any maskable`,
         },
