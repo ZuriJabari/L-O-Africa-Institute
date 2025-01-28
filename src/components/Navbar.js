@@ -922,53 +922,57 @@ const Navbar = () => {
             </ul>
 
             {/* Upcoming Events Column */}
-<div className="space-y-4">
-  <h2 className="text-xs uppercase font-normal text-gray-600 pb-1 mb-3" style={columnTitleStyle}>
-    Upcoming Events
-  </h2>
+            <div className="space-y-4">
+      <h2 className="text-xs uppercase font-normal text-gray-600 pb-1 mb-3">
+        Upcoming Events
+      </h2>
 
-  {/* LéO Africa Talks Card */}
-  <div className="group relative bg-white rounded-md border-l-4 border-[#00babc] hover:shadow-md transition-all duration-300 hover:-translate-x-0.5">
-    <div className="p-3">
-      <div className="flex items-center justify-between mb-2">
-        <span className="px-2 py-0.5 bg-[#00babc]/10 text-[#00babc] text-xs font-medium rounded-full">
-          February 2024
-        </span>
-        <span className="text-xs text-gray-500">Details soon</span>
-      </div>
-      <h3 className="text-sm font-semibold text-gray-900 group-hover:text-[#00babc] transition-colors duration-300">
-        LéO Africa Talks: Politics & Society
-      </h3>
-      <p className="mt-1 text-xs text-gray-600 line-clamp-2">
-        Join thought leaders for discussions on Africa's political and social transformation.
-      </p>
-    </div>
-  </div>
+      {/* LéO Africa Talks Card */}
+      <a href="/events/leo-talks/" className="block">
+        <div className="group relative bg-white rounded-md border-l-4 border-[#00babc] hover:shadow-md transition-all duration-300 hover:-translate-x-0.5">
+          <div className="p-3">
+            <div className="flex items-center justify-between mb-2">
+              <span className="px-2 py-0.5 bg-[#00babc]/10 text-[#00babc] text-xs font-medium rounded-full">
+                February 2024
+              </span>
+              <span className="text-xs text-gray-500">Details soon</span>
+            </div>
+            <h3 className="text-sm font-semibold text-gray-900 group-hover:text-[#00babc] transition-colors duration-300">
+              LéO Africa Talks: Politics & Society
+            </h3>
+            <p className="mt-1 text-xs text-gray-600 line-clamp-2">
+              Join thought leaders for discussions on Africa's political and social transformation.
+            </p>
+          </div>
+        </div>
+      </a>
 
-  {/* LéO Arambe Symposium Card */}
-  <div className="group relative bg-white rounded-md border-l-4 border-[#f89420] hover:shadow-md transition-all duration-300 hover:-translate-x-0.5">
-    <div className="p-3">
-      <div className="flex items-center justify-between mb-2">
-        <span className="px-2 py-0.5 bg-[#f89420]/10 text-[#f89420] text-xs font-medium rounded-full">
-          June 2025
-        </span>
-        <span className="text-xs text-gray-500">Details will be available soon</span>
-      </div>
-      <h3 className="text-sm font-semibold text-gray-900 group-hover:text-[#00babc] transition-colors duration-300">
-        Harambe Symposium - Kigali
-      </h3>
-      <p className="mt-1 text-xs text-gray-600 line-clamp-2">
-        Pan-African conference fostering collaboration among emerging leaders.
-      </p>
-      <div className="mt-2 flex items-center text-xs text-gray-500">
-        <svg className="w-3 h-3 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-        </svg>
-        <span>Kigali, Rwanda</span>
-      </div>
+      {/* LéO Arambe Symposium Card */}
+      <a href="/events/harambe-symposium/" className="block">
+        <div className="group relative bg-white rounded-md border-l-4 border-[#f89420] hover:shadow-md transition-all duration-300 hover:-translate-x-0.5">
+          <div className="p-3">
+            <div className="flex items-center justify-between mb-2">
+              <span className="px-2 py-0.5 bg-[#f89420]/10 text-[#f89420] text-xs font-medium rounded-full">
+                June 2025
+              </span>
+              <span className="text-xs text-gray-500">Details will be available soon</span>
+            </div>
+            <h3 className="text-sm font-semibold text-gray-900 group-hover:text-[#00babc] transition-colors duration-300">
+              Harambe Symposium - Kigali
+            </h3>
+            <p className="mt-1 text-xs text-gray-600 line-clamp-2">
+              Pan-African conference fostering collaboration among emerging leaders.
+            </p>
+            <div className="mt-2 flex items-center text-xs text-gray-500">
+              <svg className="w-3 h-3 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+              </svg>
+              <span>Kigali, Rwanda</span>
+            </div>
+          </div>
+        </div>
+      </a>
     </div>
-  </div>
-</div>
 
             {/* Column 3 */}
             <div>

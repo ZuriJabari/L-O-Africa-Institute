@@ -28,6 +28,7 @@ const contentStyles = {
   img: "rounded-lg my-12 w-full cursor-zoom-in",
   figure: "my-12",
   figcaption: "mt-2 text-sm text-gray-600 italic",
+  iframe: "w-full aspect-video rounded-lg my-8", // Add this line
 };
 
 // Animation variants
@@ -494,6 +495,11 @@ const BlogPage = ({ data }) => {
                       </figure>`;
                     }
                   )
+                  // Add YouTube iframe wrapper
+                  .replace(
+                    /<iframe(.+?)src="(.*?youtube.*?)"(.+?)<\/iframe>/g,
+                    '<div class="video-container"><iframe src="$2" frameborder="0" allowfullscreen></iframe></div>'
+                  )
               }}
             />
           )}
@@ -742,7 +748,6 @@ const BlogPage = ({ data }) => {
                       className="text-sm text-gray-600"
                       initial={{ opacity: 0 }}
                       animate={{ opacity: 1 }}
-                      transition={{ delay: 0.2 * index }}
                     >
                       {format(parseISO(post.data.publish_date), 'MMMM d, yyyy')}
                     </motion.div>

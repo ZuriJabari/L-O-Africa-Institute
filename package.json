@@ -5,7 +5,7 @@
   "version": "0.1.0",
   "license": "0BSD",
   "scripts": {
-    "build": "GATSBY_EXPERIMENTAL_PAGE_BUILD_ON_DATA_CHANGES=true gatsby build --log-pages",
+    "build": "GATSBY_EXPERIMENTAL_PAGE_BUILD_ON_DATA_CHANGES=true GATSBY_CPU_COUNT=physical_cores gatsby build --no-uglify",
     "webhook-build": "curl -X POST -d {} YOUR_DEPLOYMENT_WEBHOOK_URL",
     "develop": "GATSBY_DEVELOPMENT_HTTPS=false gatsby develop",
     "start": "GATSBY_DEVELOPMENT_HTTPS=false gatsby develop",

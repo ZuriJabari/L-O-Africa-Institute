@@ -57,44 +57,22 @@ const NewsComponent = ({ data }) => {
       <div className="container mx-auto px-6 lg:px-20 py-10">
         <h2 className="text-3xl font-bold text-gray-800 mb-6">Featured Insights</h2>
         <hr className="border-gray-300 mb-6" /> {/* Horizontal ruler */}
-        <div className="flex gap-6">
-          {[featuredArticle, secondFeaturedArticle].map((article) => {
-            const imageData = getImage(article?.featuredImage?.node?.localFile);
+        <div className="grid md:grid-cols-2 gap-6 mb-12">
+          {[featuredArticle, secondFeaturedArticle].map((article, index) => {
+            const image = getImage(article?.data?.featured_image?.gatsbyImageData);
             return (
-              <div key={article.id} className="bg-white rounded-lg overflow-hidden transition-transform duration-150 hover:scale-100 w-1/2"> {/* Removed shadow effect */}
-                <Link to={`/blog/${article.uid}`}> {/* Clickable image */}
-                  {imageData ? (
-                    <GatsbyImage
-                      image={imageData}
-                      alt={article?.featuredImage?.node?.altText || ''}
-                      className="rounded-lg"
-                      onError={(e) => {
-                        console.error('Image failed to load:', e);
-                        e.target.style.display = 'none';
-                      }}
-                    />
-                  ) : null}
-                </Link>
-                <div className="p-4 flex flex-col justify-between">
-                  <h3 className="text-xl font-bold text-gray-800 mb-2">
-                    <Link to={`/blog/${article.uid}`} className="hover:text-[#1e8e92] transition-colors">
-                      {article.data.title}
-                    </Link>
-                  </h3>
-                  <p className="text-sm text-gray-500 mb-1">
-                    Published on {article.data.publish_date} by {article.data.author || "Unknown"}
-                  </p>
-                  <p className="text-md text-gray-700 mb-4">
-                    {article.data.excerpt} {/* Teaser text */}
-                  </p>
-                  <Link
-                    to={`/blog/${article.uid}`}
-                    className="mt-4 inline-block text-[#1e8e92] font-semibold hover:underline"
-                  >
-                    Read More →
-                  </Link>
-                </div>
-              </div>
+              <Link key={article.uid} to={`/blog/${article.uid}`} className="group">
+                {getImage(article?.data?.featured_image?.gatsbyImageData) ? (
+                  <GatsbyImage
+                    image={getImage(article.data.featured_image.gatsbyImageData)}
+                    alt={article.data.featured_image?.alt || ''}
+                    className="w-full h-64 object-cover rounded-lg mb-4"
+                  />
+                ) : (
+                  <div className="w-full h-64 bg-gray-200 rounded-lg mb-4" />
+                )}
+                <h2 className="mt-4 text-2xl font-bold">{article.data.title}</h2>
+              </Link>
             );
           })}
         </div>
@@ -104,41 +82,50 @@ const NewsComponent = ({ data }) => {
       <div className="container mx-auto px-6 lg:px-20 max-w-[80%]"> {/* Reduced width by 20% */}
         <h2 className="text-3xl font-bold text-gray-800 mb-6">More Insights</h2> {/* Changed title and moved inside container */}
         <hr className="border-gray-300 mb-6" /> {/* Horizontal ruler */}
-        {restArticles.slice(0, visibleArticles).map((article) => (
-          <div
-            key={article.id}
-            className="bg-white rounded-lg overflow-hidden transition-transform duration-300 hover:scale-100 flex"
-          >
-            {article.data.featured_image?.url && (
-              <img
-                src={article.data.featured_image.url}
-                alt={article.data.title}
-                className="w-1/3 h-48 object-cover float-left mr-4" // Float image to the left
-              />
-            )}
-            <div className="p-4 flex flex-col justify-between w-2/3"> {/* Adjusted width */}
-              <div>
-                <p className="text-sm text-gray-500 mb-1">
-                  Published on {article.data.publish_date} by {article.data.author || "Unknown"}
-                </p>
-                <h3 className="text-lg font-bold text-gray-800 mb-2">
-                  <Link to={`/blog/${article.uid}`} className="hover:text-[#1e8e92] transition-colors">
-                    {article.data.title}
-                  </Link>
-                </h3>
-                <p className="text-sm text-gray-700 mb-4">
-                  {article.data.excerpt}
-                </p>
-              </div>
-              <Link
-                to={`/blog/${article.uid}`}
-                className="mt-4 inline-block text-[#1e8e92] font-semibold hover:underline"
-              >
-                Read More →
+        {/* More Insights Section */}
+        <div className="space-y-6 mb-12"> {/* Reduced from space-y-12 */}
+          {restArticles.slice(0, visibleArticles).map((article) => (
+            <div key={article.uid}>
+              <Link to={`/blog/${article.uid}`} className="group">
+                <div className="flex flex-col md:flex-row gap-6 py-4"> {/* Reduced from gap-8 py-8 */}
+                  <div className="md:w-1/3">
+                    {getImage(article?.data?.featured_image?.gatsbyImageData) ? (
+                      <GatsbyImage
+                        image={getImage(article.data.featured_image.gatsbyImageData)}
+                        alt={article.data.featured_image?.alt || ''}
+                        className="w-full aspect-[16/9] rounded-lg transition duration-300 group-hover:shadow-lg"
+                      />
+                    ) : (
+                      <div className="w-full aspect-[16/9] bg-gray-200 rounded-lg" />
+                    )}
+                  </div>
+                  <div className="md:w-2/3 space-y-2">
+                    <h3 className="text-2xl font-bold group-hover:text-[#2bbecb] transition-colors">
+                      {article.data.title}
+                    </h3>
+                    <p className="text-gray-600 line-clamp-3">
+                      {article.data.excerpt}
+                    </p>
+                    <div className="flex flex-col gap-2">
+                      <span className="text-[#2bbecb] font-medium inline-flex items-center gap-2 group-hover:text-[#1a8f9d] transition-colors">
+                        Continue Reading
+                        <span className="transform transition-transform group-hover:translate-x-1">→</span>
+                      </span>
+                      <div className="text-sm text-gray-500">
+                        {new Date(article.data.publish_date).toLocaleDateString('en-US', {
+                          day: 'numeric',
+                          month: 'long',
+                          year: 'numeric'
+                        })}
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </Link>
+              <div className="border-b border-gray-200 mt-4 last:border-0"></div>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
 
       {/* Load More Button */}
@@ -157,21 +144,47 @@ const NewsComponent = ({ data }) => {
   );
 };
 
+const ArticleCard = ({ article }) => {
+  const image = getImage(article?.data?.featured_image?.gatsbyImageData);
+  
+  return (
+    <Link to={`/blog/${article.uid}`} className="group block">
+      {image ? (
+        <GatsbyImage
+          image={image}
+          alt={article.data.featured_image?.alt || ''}
+          className="w-full h-48 object-cover rounded-lg mb-4"
+        />
+      ) : (
+        <div className="w-full h-48 bg-gray-200 rounded-lg mb-4" />
+      )}
+      <h3 className="font-bold text-xl mb-2 group-hover:text-[#2bbecb]">
+        {article.data.title}
+      </h3>
+      <p className="text-gray-600 line-clamp-2">{article.data.excerpt}</p>
+    </Link>
+  );
+};
+
 export const query = graphql`
-  query {
-    allPrismicBlogPosts(
-      sort: { fields: data___publish_date, order: DESC }
-    ) {
+  query NewsPageQuery {
+    allPrismicBlogPosts(sort: { data: { publish_date: DESC } }) {
       nodes {
-        id
         uid
         data {
           title
-          publish_date
-          author
           excerpt
+          publish_date
           featured_image {
-            url
+            gatsbyImageData(
+              placeholder: BLURRED
+              width: 800
+              height: 450
+            )
+            alt
+          }
+          categories {
+            category
           }
         }
       }

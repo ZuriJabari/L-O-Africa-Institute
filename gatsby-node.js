@@ -5,7 +5,7 @@ const championsModule = require('./src/data/champions-data');
 const championsData = championsModule.championsData;
 
 // Add webpack configuration to handle punycode deprecation
-exports.onCreateWebpackConfig = ({ actions }) => {
+exports.onCreateWebpackConfig = ({ actions, stage }) => {
   actions.setWebpackConfig({
     resolve: {
       fallback: {
@@ -13,6 +13,13 @@ exports.onCreateWebpackConfig = ({ actions }) => {
       }
     }
   });
+
+  // Add webpack config to disable source maps in production
+  if (stage === 'build-javascript') {
+    actions.setWebpackConfig({
+      devtool: false
+    })
+  }
 };
 
 // Configure file system source for images
