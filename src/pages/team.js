@@ -28,7 +28,7 @@ const teamMembers = [
   },
   {
     name: "Nnanda Kizito Seruwagi",
-    role: "Communications & Media Officer",
+    role: "Media & Communications Officer",
     image: require("../assets/images/Nanda.jpg"),
     bio: "Crafting compelling narratives that showcase Africa's leadership potential and success stories.",
     social: {

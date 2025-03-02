@@ -7,6 +7,7 @@ import SubscriptionForm from '../components/SubscriptionForm';
 import { Link } from 'gatsby';
 import { SectionTitle, BodyLarge, SubsectionTitle, BodyText } from '../components/Typography';
 import { OurPartners } from '../components/about/OurPartners';
+import BgGrey from '../assets/images/bg-grey.svg';
 
 const AboutPage = () => {
   const fadeIn = {
@@ -27,9 +28,9 @@ const AboutPage = () => {
             alt="About LéO Africa Institute"
             className="w-full h-full"
             imgClassName="object-cover"
-            placeholder="dominantColor"
-            quality={100}
-            formats={["auto", "webp", "avif"]}
+            placeholder="blurred"
+            formats={["jpg"]}
+            quality={90}
           />
           <div className="absolute inset-0 bg-gradient-to-r from-black/50 via-black/30 to-black/20"></div>
           <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-black/20 to-transparent"></div>
@@ -109,12 +110,9 @@ const AboutPage = () => {
 
         {/* Bottom Transition */}
         <div className="absolute bottom-0 left-0 w-full">
-          <div className="h-24 w-full" style={{
-            backgroundImage: `url('../assets/images/bg-grey.svg')`,
-            backgroundRepeat: 'no-repeat',
-            backgroundPosition: 'bottom center',
-            backgroundSize: 'cover'
-          }}></div>
+          <div class="prefooter-gray">
+            
+          </div>
         </div>
       </section>
 
@@ -152,8 +150,12 @@ const AboutPage = () => {
                         <StaticImage
                           src="../assets/images/Awel.jpg"
                           alt="Awel Uwihanganye"
-                          className="w-14 h-14 rounded-full object-cover"
-                          placeholder="dominantColor"
+                          className="w-14 h-14"
+                          imgClassName="object-cover rounded-full"
+                          placeholder="blurred"
+                          formats={["jpg"]}
+                          quality={90}
+                          layout="fullWidth"
                         />
                         <div className="absolute -bottom-1 -right-1 w-5 h-5 bg-white rounded-full flex items-center justify-center">
                           <div className="w-3 h-3 rounded-full bg-gradient-to-r from-[#F6911E] to-[#0B9A9E]"></div>
@@ -225,16 +227,20 @@ const AboutPage = () => {
                         <div className="relative">
                           <StaticImage
                             src="../assets/images/Magnus.png"
-                            alt="Magnus Mchngunzi"
-                            className="w-14 h-14 rounded-full object-cover"
-                            placeholder="dominantColor"
+                            alt="Magnus Mchnguzi"
+                            className="w-14 h-14"
+                            imgClassName="object-cover rounded-full"
+                            placeholder="blurred"
+                            formats={["png"]}
+                            quality={90}
+                            layout="fullWidth"
                           />
                           <div className="absolute -bottom-1 -right-1 w-5 h-5 bg-white rounded-full flex items-center justify-center">
                             <div className="w-3 h-3 rounded-full bg-gradient-to-r from-[#F6911E] to-[#0B9A9E]"></div>
                           </div>
                         </div>
                         <div>
-                          <div className="font-medium text-gray-900">Magnus Mchngunzi</div>
+                          <div className="font-medium text-gray-900">Magnus Mchnguzi</div>
                           <div className="text-sm text-gray-500">Co-Founder & Chairman</div>
                         </div>
                       </div>
@@ -460,8 +466,12 @@ const AboutPage = () => {
                   <StaticImage
                     src="../assets/images/Awel.jpg"
                     alt="Awel Uwihanganye"
-                    className="w-14 h-14 rounded-full object-cover"
-                    placeholder="dominantColor"
+                    className="w-14 h-14"
+                    imgClassName="object-cover rounded-full"
+                    placeholder="blurred"
+                    formats={["jpg"]}
+                    quality={90}
+                    layout="fullWidth"
                   />
                   <div className="absolute -bottom-1 -right-1 w-5 h-5 bg-white rounded-full flex items-center justify-center">
                     <div className="w-3 h-3 rounded-full bg-gradient-to-r from-[#F6911E] to-[#0B9A9E]"></div>

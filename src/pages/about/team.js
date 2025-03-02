@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
 import Team from "../../components/about/Team";
-import teamHero from '../../assets/images/team-hero.jpg';
+import { StaticImage } from "gatsby-plugin-image";
 
 const TeamPage = () => {
   return (
@@ -18,15 +18,19 @@ const TeamPage = () => {
         className="relative h-[65vh] flex items-center"
       >
         {/* Background Image */}
-        <div 
-          className="absolute inset-0 z-0"
-          style={{
-            backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(${teamHero})`,
-            backgroundPosition: 'center',
-            backgroundSize: 'cover',
-            backgroundRepeat: 'no-repeat'
-          }}
-        />
+        <div className="absolute inset-0 z-0">
+          <StaticImage
+            src="../../assets/images/team-hero.jpg"
+            alt="Team Hero Background"
+            className="w-full h-full"
+            imgClassName="object-cover"
+            placeholder="blurred"
+            formats={["jpg"]}
+            quality={90}
+            layout="fullWidth"
+          />
+          <div className="absolute inset-0 bg-black/60"></div>
+        </div>
 
         {/* Content */}
         <div className="relative z-10 container mx-auto px-4">
@@ -56,6 +60,7 @@ const TeamPage = () => {
 
       {/* Team Section */}
       <Team />
+
       <Footer />
     </div>
   );

@@ -19,15 +19,17 @@ module.exports = {
         short_name: `LéO Africa`,
         start_url: `/`,
         background_color: `#ffffff`,
-        theme_color: `#0B9A9E`,
+        theme_color: `#f6911e`,
         display: `standalone`,
-        icon: `static/favicon.ico`,
+        icon: `src/assets/images/favicon.png`, // Changed to PNG
         icon_options: {
           purpose: `any maskable`,
         },
-        cache_busting_mode: 'none'
+        cache_busting_mode: 'none',
       },
     },
+    `gatsby-plugin-sharp`,
+    `gatsby-transformer-sharp`,
     {
       resolve: 'gatsby-plugin-offline',
       options: {
@@ -38,7 +40,17 @@ module.exports = {
     },
     // Move the rest of your plugins after manifest and offline plugins
     `gatsby-plugin-image`,
-    `gatsby-plugin-sharp`,
+    {
+      resolve: `gatsby-plugin-sharp`,
+      options: {
+        defaults: {
+          formats: ['auto', 'webp'], // WebP for modern browsers
+          quality: 70, // Reduce quality slightly
+          breakpoints: [640, 768, 1024, 1280], // Responsive breakpoints
+          placeholder: 'tracedSVG',
+        },
+      },
+    },
     `gatsby-transformer-sharp`,
     {
       resolve: 'gatsby-plugin-svgr',
@@ -52,6 +64,13 @@ module.exports = {
       options: {
         name: `images`,
         path: `${__dirname}/src/assets/images`,
+      },
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `champions`,
+        path: `${__dirname}/src/assets/images/champions`,
       },
     },
     {

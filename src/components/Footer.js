@@ -80,7 +80,7 @@ const Footer = () => {
               <a href="https://www.youtube.com/@LeoAfricaInstitute" target="_blank" rel="noopener noreferrer" className="text-white/80 hover:text-white">
                 <FaYoutube className="h-5 w-5" />
               </a>
-              <a href="https://www.flickr.com/photos/196942735@N04/albums" target="_blank" rel="noopener noreferrer" className="text-white/80 hover:text-white">
+              <a href="https://www.flickr.com/photos/africaforum/albums" target="_blank" rel="noopener noreferrer" className="text-white/80 hover:text-white">
                 <FaFlickr className="h-5 w-5" />
               </a>
             </div>

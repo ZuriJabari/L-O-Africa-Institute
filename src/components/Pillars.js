@@ -25,7 +25,7 @@ const pillars = [
     title: "Population, Health & Economy",
     subtitle: "Leveraging Demographics for a Sustainable Future",
     description:
-      "Africa’s demographic landscape is rapidly changing, presenting both opportunities and challenges. The continent’s youthful population can be a powerful driver of economic growth if effectively harnessed.",
+      "Africa's demographic landscape is rapidly changing, presenting both opportunities and challenges. The continent's youthful population can be a powerful driver of economic growth if effectively harnessed.",
     bgColor: colorPalette.primary,
     rationale: [
       { title: "Demographic Dividend", text: "A young and dynamic population can fuel economic development through innovation and entrepreneurship." },
@@ -37,7 +37,7 @@ const pillars = [
     title: "Identity, Politics & Society",
     subtitle: "Reclaiming African Narratives and Fostering Social Cohesion",
     description:
-      "The historical distortion of African identities has had profound impacts on the continent’s social and political fabric.",
+      "The historical distortion of African identities has had profound impacts on the continent's social and political fabric.",
     bgColor: colorPalette.secondary,
     rationale: [
       { title: "Cultural Reclamation", text: "By reclaiming and celebrating African identities, we can foster a sense of pride and unity among diverse communities." },
@@ -52,37 +52,40 @@ const pillars = [
       "Climate change poses significant risks to Africa, manifesting in natural disasters, deforestation, and energy crises.",
     bgColor: colorPalette.tertiary,
     rationale: [
-      { title: "Environmental Sustainability", text: "Addressing climate change is crucial for safeguarding Africa’s natural resources and ensuring sustainable development." },
+      { title: "Environmental Sustainability", text: "Addressing climate change is crucial for safeguarding Africa's natural resources and ensuring sustainable development." },
       { title: "Youth Engagement", text: "Young people are at the forefront of climate action and must be supported in their efforts to drive change." },
       { title: "Global Responsibility", text: "Africa must take a proactive role in the global climate change discourse to ensure its interests are represented." },
     ],
   },
   {
-    title: "Africa’s Digital Future",
+    title: "Africa's Digital Future",
     subtitle: "Harnessing AI, Blockchain, Fintech, and Evidence-Informed Policy for Development",
     description:
-      "Technological advancements are critical in addressing Africa’s unique contextual and infrastructural challenges.",
+      "Technological advancements are critical in addressing Africa's unique contextual and infrastructural challenges.",
     bgColor: colorPalette.quaternary,
     rationale: [
       { title: "AI and Blockchain", text: "Promote transparent governance, reduce corruption, and enhance service delivery through AI-driven monitoring systems and blockchain-based public records." },
       { title: "Fintech", text: "Improve financial inclusion and economic participation through digital financial services and mobile banking." },
       { title: "Evidence-Informed Policy", text: "Use data analytics to inform policy decisions, ensuring they are based on real-time data and trends." },
-      { title: "Innovative Solutions", text: "Develop solutions tailored to Africa’s unique needs, leveraging technology to address issues such as healthcare, education, and infrastructure." },
+      { title: "Innovative Solutions", text: "Develop solutions tailored to Africa's unique needs, leveraging technology to address issues such as healthcare, education, and infrastructure." },
     ],
   },
 ];
 
 const Pillars = () => {
   const [activePillar, setActivePillar] = useState(0);
+  const [isHovering, setIsHovering] = useState(false);
 
-  // Automatically rotate the active pillar every 10 seconds
+  // Automatically rotate the active pillar every 10 seconds, but only if not hovering
   useEffect(() => {
+    if (isHovering) return; // Don't set up interval if hovering
+    
     const interval = setInterval(() => {
       setActivePillar((prev) => (prev + 1) % pillars.length); // Rotate to the next pillar
     }, 10000); // 10 seconds
 
     return () => clearInterval(interval); // Cleanup the interval on unmount
-  }, []);
+  }, [isHovering]); // Re-run effect when hover state changes
 
   return (
     <section
@@ -90,6 +93,8 @@ const Pillars = () => {
       style={{
         backgroundColor: colorPalette.darkBackground,
       }}
+      onMouseEnter={() => setIsHovering(true)}
+      onMouseLeave={() => setIsHovering(false)}
     >
       <div
         className="absolute top-0 left-0 w-full h-[45px] bg-no-repeat bg-cover"

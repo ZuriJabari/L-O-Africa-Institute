@@ -2,7 +2,7 @@ import React from 'react';
 import { FiArrowRight } from 'react-icons/fi';
 import { FaHandshake, FaGraduationCap, FaLightbulb, FaUsers, FaHeart, FaHandHoldingHeart, FaGift, FaSeedling } from 'react-icons/fa';
 import kasLogo from '../assets/images/partners/KAS.png';
-import SegalLogo from '../assets/images/partners/SFF.svg';
+import SegalLogo from '../assets/images/sff-logo-alt-box.png';
 import AbmakLogo from '../assets/images/partners/ABMAKS.jpg';
 import RkaLogo from '../assets/images/partners/RKA.png';
 
@@ -35,18 +35,18 @@ const PartnerWithUs = () => {
             {/* Partners Grid */}
             <div className="grid grid-cols-2 gap-8 relative z-10">
               {[
-                { logo: kasLogo, name: "KAS", desc: "Leadership Development", alt: "KAS Logo" },
-                { logo: SegalLogo, name: "Social Shift Foundation", desc: "Youth Empowerment", alt: "Social Shift Foundation Logo" },
-                { logo: AbmakLogo, name: "ABMAK Associates", desc: "Legal Advisors", alt: "ABMAK Associates Logo" },
-                { logo: RkaLogo, name: "RKA Associates", desc: "Accounting & Advisory", alt: "RKA Associates Logo" }
+                { logo: kasLogo, name: "KAS", alt: "KAS Logo" },
+                { logo: SegalLogo, name: "Segal Family Foundation", alt: "Segal Family Foundation Logo", className: "max-h-32" },
+                { logo: AbmakLogo, name: "ABMAK Associates", alt: "ABMAK Associates Logo" },
+                { logo: RkaLogo, name: "RKA Associates",  alt: "RKA Associates Logo" }
               ].map((partner, index) => (
                 <div key={index} className="group">
                   <div className="bg-white rounded-xl p-4 shadow-sm hover:shadow-md transition-all duration-300 flex flex-col items-center">
-                    <div className="h-20 flex items-center justify-center mb-3">
+                    <div className={`h-28 flex items-center justify-center mb-3 ${partner.name === "Segal Family Foundation" ? "h-36" : ""}`}>
                       <img 
                         src={partner.logo} 
                         alt={partner.alt}
-                        className="max-h-16 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
+                        className={`${partner.className || 'max-h-24'} w-auto object-contain transition-transform duration-300 group-hover:scale-105`}
                       />
                     </div>
                     <div className="text-center">
