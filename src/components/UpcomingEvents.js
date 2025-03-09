@@ -1,18 +1,18 @@
-import React from "react";
-import { FiArrowRight, FiYoutube, FiCamera } from "react-icons/fi";
+import React, { useState, useEffect } from "react";
+import { Link } from "gatsby";
+import { motion, AnimatePresence } from 'framer-motion';
+import { 
+  FiArrowRight, 
+  FiCalendar, 
+  FiMapPin, 
+  FiClock, 
+  FiChevronDown
+} from "react-icons/fi";
 import ALGLOGO from '../assets/images/alg-color.svg';
-import leadershipConvoImage from '../assets/images/leadership-conversation1.jpg';
-import heritageImage from '../assets/images/heritage2024.jpg';
-import hudumaImage from '../assets/images/huduma2024.jpg';
-import yelpLogo from '../assets/images/YELP-Logo.svg';
 import executiveSeminarImage from '../assets/images/executive-seminar.jpg';
 import mufurukiLectureImage from '../assets/images/mufuruki-lecture.jpg';
 import leoTalksImage from '../assets/images/leo-talks.jpg';
 import chapterGatheringsImage from '../assets/images/chapter-gatherings.jpg';
-import { motion, AnimatePresence } from 'framer-motion';
-import { useState } from 'react';
-import { SectionTitle, SubsectionTitle, BodyText } from './Typography';
-import { Link } from 'gatsby';
 
 // Brand colors
 const BRAND_COLORS = {
@@ -22,15 +22,20 @@ const BRAND_COLORS = {
   burgundy: '#9a1a2f'
 };
 
+// Event details
 const upcomingEvent = {
   title: "Annual Leaders Gathering",
-  date: "14th - 16th November 2024, All Day",
+  shortTitle: "ALG 2025",
+  date: "15th - 17th September 2025",
+  time: "All Day Event",
   location: "Sheraton Kampala Hotel, Kampala, Uganda",
   description:
-    "The Annual Leaders Gathering is LéO Africa Institute's premier event, bringing together visionary leaders for discussions, networking, and collaborations aimed at reshaping Africa's future.",
+    "The Annual Leaders Gathering (ALG) is LéO Africa Institute's premier leadership forum that brings together emerging African leaders to engage in meaningful dialogue, share experiences, and forge partnerships for Africa's development.",
   image: ALGLOGO,
+  url: "https://alg.leoafricainstitute.org"
 };
 
+// Other events (unchanged)
 const recurringEvents = [
   {
     title: "Executive Seminars & Symposiums",
@@ -54,162 +59,183 @@ const recurringEvents = [
   },
 ];
 
-const CollapsibleSection = ({ title, children }) => {
-  const [isOpen, setIsOpen] = useState(false);
+// Countdown Timer Component
+const CountdownTimer = ({ targetDate }) => {
+  const calculateTimeLeft = () => {
+    const difference = +new Date(targetDate) - +new Date();
+    let timeLeft = {};
+
+    if (difference > 0) {
+      timeLeft = {
+        days: Math.floor(difference / (1000 * 60 * 60 * 24)),
+        hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
+        minutes: Math.floor((difference / 1000 / 60) % 60),
+        seconds: Math.floor((difference / 1000) % 60),
+      };
+    }
+
+    return timeLeft;
+  };
+
+  const [timeLeft, setTimeLeft] = useState(calculateTimeLeft());
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setTimeLeft(calculateTimeLeft());
+    }, 1000);
+
+    return () => clearTimeout(timer);
+  });
+  
+  if (!Object.keys(timeLeft).length) {
+    return <div className="text-center text-gray-600">Event has started!</div>;
+  }
 
   return (
-    <div className="mb-8">
-      <button
-        onClick={() => setIsOpen(!isOpen)}
-        className="w-full flex items-center justify-between p-4 bg-white rounded-lg shadow-sm hover:bg-gray-50 transition-colors"
-      >
-        <SubsectionTitle>{title}</SubsectionTitle>
-        <motion.div
-          animate={{ rotate: isOpen ? 90 : 0 }}
-          transition={{ duration: 0.2 }}
-        >
-          <FiArrowRight className="w-6 h-6 text-gray-500" />
-        </motion.div>
-      </button>
-      <AnimatePresence>
-        {isOpen && (
-          <motion.div
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ height: "auto", opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.2 }}
-            className="overflow-hidden"
-          >
-            {children}
-          </motion.div>
-        )}
-      </AnimatePresence>
+    <div className="w-full">
+      <div className="flex justify-center items-center gap-2">
+        {Object.entries(timeLeft).map(([interval, value]) => (
+          <div key={interval} className="flex flex-col items-center bg-white rounded-lg px-3 py-2 shadow-sm flex-1">
+            <span className="text-xl md:text-2xl font-bold text-[#00babc]">{value}</span>
+            <span className="text-xs text-gray-500 capitalize">{interval}</span>
+          </div>
+        ))}
+      </div>
     </div>
   );
 };
 
+// Main Component
 const UpcomingEvents = () => {
   const [showOtherEvents, setShowOtherEvents] = useState(false);
 
   return (
-    <section className="py-20 bg-gradient-to-b from-white via-[#00babc]/5 to-white">
-      <div className="max-w-7xl mx-auto px-4 relative">
-        {/* Decorative elements */}
-        <div className="absolute top-0 right-0 w-64 h-64 bg-[#00babc]/10 rounded-full blur-3xl -z-10" />
-        <div className="absolute bottom-0 left-0 w-96 h-96 bg-[#00babc]/5 rounded-full blur-3xl -z-10" />
-
-        {/* Section Title */}
-        <div className="mb-12">
-          <SectionTitle>Our Flagship Event</SectionTitle>
-          <div className="w-24 h-1 bg-[#F6911E]"></div>
-        </div>
-
-        {/* ALG Content */}
-        <div className="mb-16">
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-100"
-          >
-            <div className="md:flex items-center">
-              <div className="md:w-2/5 p-8 bg-gradient-to-br from-[#00babc]/5 to-white flex justify-center items-center">
+    <section className="py-16">
+      {/* ALG Section */}
+      <div className="container mx-auto px-4 md:px-8 mb-16">
+        <div className="bg-gradient-to-br from-gray-50 to-white rounded-xl overflow-hidden shadow-lg p-8 max-w-5xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-7 gap-8 items-center">
+            {/* Large Logo Column - Takes 3/7 of space */}
+            <div className="md:col-span-3 flex justify-center">
+              <div className="w-full max-w-xs">
                 <img
                   src={upcomingEvent.image}
-                  alt={upcomingEvent.title}
-                  className="w-full max-w-[240px]"
+                  alt="Annual Leaders Gathering"
+                  className="w-full h-auto object-contain mx-auto"
                 />
-              </div>
-              <div className="md:w-3/5 p-8">
-                <SubsectionTitle className="mb-4">{upcomingEvent.title}</SubsectionTitle>
-                <div className="space-y-2 mb-6">
-                  <p className="font-inter text-gray-600">{upcomingEvent.date}</p>
-                  <p className="font-inter text-gray-600">{upcomingEvent.location}</p>
+                
+                <div className="mt-6">
+                  <div className="text-center text-sm font-semibold text-gray-500 mb-2">COUNTDOWN TO ALG 2025</div>
+                  <CountdownTimer targetDate="2025-09-15T00:00:00" />
                 </div>
-                <BodyText className="mb-8">{upcomingEvent.description}</BodyText>
-                <button className="inline-flex items-center gap-2 bg-[#00babc] text-white px-6 py-3 rounded-lg hover:bg-[#00babc]/90 transition-colors">
-                  Learn More
-                  <FiArrowRight />
-                </button>
               </div>
+            </div>
+            
+            {/* Content Column - Takes 4/7 of space */}
+            <div className="md:col-span-4">
+              <div className="space-y-6">
+                {/* Event Title */}
+                <div>
+                  <div className="inline-block bg-[#00babc]/10 text-[#00babc] px-3 py-1 rounded-full text-sm font-medium mb-2">
+                    Flagship Event
+                  </div>
+                  <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-1">
+                    Annual Leaders Gathering
+                  </h2>
+                  <h3 className="text-xl text-[#00babc] font-medium">
+                    {upcomingEvent.shortTitle}
+                  </h3>
+                </div>
+                
+                {/* Description */}
+                <p className="text-gray-600">
+                  {upcomingEvent.description}
+                </p>
+                
+                {/* Event Details */}
+                <div className="space-y-3 py-4 border-t border-b border-gray-100">
+                  <div className="flex items-center gap-3">
+                    <FiCalendar className="text-[#00babc] flex-shrink-0" />
+                    <span className="text-gray-700">{upcomingEvent.date}</span>
+                  </div>
+                  
+                  <div className="flex items-center gap-3">
+                    <FiClock className="text-[#00babc] flex-shrink-0" />
+                    <span className="text-gray-700">{upcomingEvent.time}</span>
+                  </div>
+                  
+                  <div className="flex items-center gap-3">
+                    <FiMapPin className="text-[#00babc] flex-shrink-0" />
+                    <span className="text-gray-700">{upcomingEvent.location}</span>
+                  </div>
+                </div>
+                
+                {/* CTA Button */}
+                <div>
+                  <a 
+                    href={upcomingEvent.url} 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    className="bg-[#00babc] text-white px-6 py-3 rounded-lg inline-flex items-center gap-2 hover:bg-[#00babc]/90 transition-colors"
+                  >
+                    Learn More about ALG
+                    <FiArrowRight />
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      {/* Toggle Button for Other Events */}
+      <div className="text-center mb-8">
+        <button
+          onClick={() => setShowOtherEvents(!showOtherEvents)}
+          className="inline-flex items-center gap-2 bg-gray-800 hover:bg-gray-700 text-white px-5 py-2 rounded-lg transition-colors"
+        >
+          <span>{showOtherEvents ? 'Hide Other Events' : 'View Other Events'}</span>
+          <motion.div
+            animate={{ rotate: showOtherEvents ? 180 : 0 }}
+            transition={{ duration: 0.3 }}
+          >
+            <FiChevronDown />
+          </motion.div>
+        </button>
+      </div>
+
+      {/* Other Events Section */}
+      <AnimatePresence>
+        {showOtherEvents && (
+          <motion.div 
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: "auto" }}
+            exit={{ opacity: 0, height: 0 }}
+            transition={{ duration: 0.3 }}
+            className="overflow-hidden container mx-auto px-4 md:px-8"
+          >
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
+              {recurringEvents.map((event, index) => (
+                <Link
+                  key={event.title}
+                  to="/events"
+                  className="block group"
+                >
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: index * 0.1 }}
+                    className="bg-white p-4 rounded-lg shadow-sm hover:shadow-md transition-all duration-300 h-full"
+                  >
+                    <h4 className="text-lg font-bold mb-2 group-hover:text-[#00babc] transition-colors">{event.title}</h4>
+                    <p className="text-gray-600 text-sm">{event.description}</p>
+                  </motion.div>
+                </Link>
+              ))}
             </div>
           </motion.div>
-        </div>
-
-        {/* Toggle Button */}
-        <motion.button
-          onClick={() => setShowOtherEvents(!showOtherEvents)}
-          className={`
-          bg-rose-700 hover:bg-rose-900
-            mx-auto block 
-            px-8 py-4 
-            rounded-full 
-            text-white 
-            font-inter
-            font-semibold 
-            flex items-center 
-            justify-center 
-            gap-2 
-            shadow-[0_4px_20px_-5px_rgba(0,186,188,0.4)]
-            hover:shadow-[0_4px_20px_-5px_rgba(248,148,32,0.4)]
-            transition-all 
-            duration-300 
-            hover:-translate-y-1
-          `}
-          whileHover={{ scale: 1.02 }}
-          whileTap={{ scale: 0.98 }}
-        >
-          <span className="text-white font-medium">
-            {showOtherEvents ? 'Hide Other Events' : 'View Other Events and Activities'}
-          </span>
-          <motion.svg 
-            animate={{ rotate: showOtherEvents ? 180 : 0 }}
-            width="20" 
-            height="20" 
-            viewBox="0 0 20 20" 
-            fill="currentColor"
-            className="text-white"
-          >
-            <path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 01-1.414 0l-4-4a1 1 010-1.414z" />
-          </motion.svg>
-        </motion.button>
-
-        {/* Other Events Section */}
-        <AnimatePresence>
-          {showOtherEvents && (
-            <div className="mb-16">
-              <SectionTitle>Other Events & Activities</SectionTitle>
-              <div className="w-24 h-1 bg-[#F6911E] mb-8"></div>
-              
-              <div className="grid md:grid-cols-2 gap-8">
-                {recurringEvents.map((event, index) => (
-                  <Link
-                    key={event.title}
-                    to="/events"
-                    className="block group"
-                  >
-                    <motion.div
-                      initial={{ opacity: 0, y: 20 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ delay: index * 0.1 }}
-                      className="bg-white p-6 rounded-xl shadow-sm hover:shadow-lg transition-all duration-300 group-hover:-translate-y-1"
-                    >
-                      <div className="aspect-video mb-6 rounded-lg overflow-hidden">
-                        <img
-                          src={event.image}
-                          alt={event.title}
-                          className="w-full h-full object-cover transform transition-transform duration-300 group-hover:scale-105"
-                        />
-                      </div>
-                      <SubsectionTitle className="mb-4 group-hover:text-[#00babc] transition-colors">{event.title}</SubsectionTitle>
-                      <BodyText>{event.description}</BodyText>
-                    </motion.div>
-                  </Link>
-                ))}
-              </div>
-            </div>
-          )}
-        </AnimatePresence>
-      </div>
+        )}
+      </AnimatePresence>
     </section>
   );
 };

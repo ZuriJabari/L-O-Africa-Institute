@@ -1,6 +1,5 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { FiExternalLink } from 'react-icons/fi';
 import kasLogo from '../assets/images/partners/KAS.png';
 import SegalLogo from '../assets/images/sff-logo-alt-box.png';
 import AbmakLogo from '../assets/images/partners/ABMAKS.jpg';
@@ -11,87 +10,73 @@ const Partners = () => {
     { 
       logo: kasLogo, 
       name: "KAS", 
-      desc: "Leadership Development", 
       alt: "KAS Logo",
       website: "https://www.kas.de/en/web/uganda"
     },
     { 
       logo: SegalLogo, 
-      name: "Social Shift Foundation", 
-      desc: "Youth Empowerment", 
-      alt: "Social Shift Foundation Logo",
-      website: "https://socialshiftfoundation.org",
-      className: "max-h-40"
+      name: "Segal Family Foundation", 
+      alt: "Segal Family Foundation Logo",
+      website: "https://www.segalfamilyfoundation.org/",
+      className: "max-h-24"
     },
     { 
       logo: AbmakLogo, 
       name: "ABMAK Associates", 
-      desc: "Legal Advisors", 
       alt: "ABMAK Associates Logo",
-      website: "https://abmak.co.ug"
+      website: "https://abmak.org/"
     },
     { 
       logo: RkaLogo, 
       name: "RKA Associates", 
-      desc: "Accounting & Advisory", 
       alt: "RKA Associates Logo",
-      website: "https://rkaassociates.com"
+      website: "https://rka.ug/"
     }
   ];
 
   return (
-    <section className="py-24 bg-gradient-to-br from-[#e5f7f9] to-white relative overflow-hidden">
-      {/* Decorative Elements */}
-      <div className="absolute top-0 right-0 w-1/3 h-1/3 bg-gradient-to-br from-[#0B9A9E]/10 to-transparent rounded-bl-[100px] -z-0"></div>
-      <div className="absolute bottom-0 left-0 w-1/3 h-1/3 bg-gradient-to-tr from-[#F6911E]/10 to-transparent rounded-tr-[100px] -z-0"></div>
+    <section className="py-12 md:py-16 bg-gradient-to-b from-white to-gray-50">
+      <div className="container mx-auto px-4 md:px-6">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="text-center mb-8 md:mb-10"
+        >
+          <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-3">Our Partners & Supporters</h2>
+          <div className="w-16 h-1 bg-[#0B9A9E] mx-auto mb-4"></div>
+          <p className="text-base text-gray-600 max-w-2xl mx-auto">
+            Together with our partners, we're building a stronger foundation for leadership development 
+            and social innovation in Africa.
+          </p>
+        </motion.div>
 
-      <div className="container mx-auto px-4">
-        <div className="max-w-6xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="text-center mb-16"
-          >
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">Our Partners & Supporters</h2>
-            <div className="w-24 h-1 bg-[#0B9A9E] mx-auto mb-6"></div>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Together with our partners, we're building a stronger foundation for leadership development and social innovation in Africa.
-            </p>
-          </motion.div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+        {/* Single-row Partner Logo Showcase */}
+        <div className="max-w-4xl mx-auto bg-white rounded-lg shadow-sm py-8 px-4 md:px-8">
+          <div className="flex items-center justify-evenly md:justify-between flex-wrap md:flex-nowrap gap-8 md:gap-0">
             {partners.map((partner, index) => (
               <motion.div
                 key={index}
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 10 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-                className="group"
+                transition={{ delay: index * 0.1, duration: 0.4 }}
+                className="flex-shrink-0"
               >
                 <a 
                   href={partner.website} 
                   target="_blank" 
                   rel="noopener noreferrer" 
-                  className="block bg-white rounded-xl p-6 shadow-sm hover:shadow-md transition-all duration-300 group relative"
+                  className="block transition-all duration-300 hover:scale-105"
+                  aria-label={`Visit ${partner.name} website`}
                 >
-                  <div className="flex flex-col items-center h-full">
-                    <div className={`h-28 flex items-center justify-center mb-4 ${partner.name === "Social Shift Foundation" ? "h-44" : ""}`}>
-                      <img 
-                        src={partner.logo} 
-                        alt={partner.alt}
-                        className={`${partner.className || 'max-h-24'} w-auto object-contain transition-transform duration-300 group-hover:scale-105`}
-                      />
-                    </div>
-                    <div className="text-center">
-                      <div className="flex items-center justify-center gap-2">
-                        <h3 className="text-lg font-semibold text-gray-900 mb-2">{partner.name}</h3>
-                        <FiExternalLink className="w-4 h-4 text-gray-400 group-hover:text-[#0B9A9E] transition-colors" />
-                      </div>
-                      <p className="text-sm text-gray-600">{partner.desc}</p>
-                    </div>
+                  <div className="h-16 md:h-20 w-32 md:w-40 flex items-center justify-center">
+                    <img 
+                      src={partner.logo} 
+                      alt={partner.alt}
+                      className={`${partner.className || 'max-h-14 md:max-h-16'} max-w-full object-contain filter grayscale hover:grayscale-0 transition-all duration-300`}
+                    />
                   </div>
                 </a>
               </motion.div>

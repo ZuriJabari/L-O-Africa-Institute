@@ -24,6 +24,11 @@ const Navbar = () => {
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const navRef = useRef(null);
 
+  // Replace isHovering state with isHoveringRef ref
+  // This ensures we always have access to the current value
+  const isHoveringRef = useRef(false);
+  const hoverTimeoutRef = useRef(null);
+
   // Membership form state
   const [membershipForm, setMembershipForm] = useState({
     name: '',
@@ -33,10 +38,6 @@ const Navbar = () => {
   const [membershipSubmitting, setMembershipSubmitting] = useState(false);
   const [membershipSuccess, setMembershipSuccess] = useState(false);
   const [membershipMessage, setMembershipMessage] = useState('');
-
-  // Track hover state
-  const [isHovering, setIsHovering] = useState(false);
-  const hoverTimeoutRef = useRef(null);
 
   // Animation styles
   const dropdownAnimation = {
@@ -175,23 +176,42 @@ const Navbar = () => {
     }
   };
 
+  // Simplified hover management
   const handleMenuEnter = (menu) => {
     if (hoverTimeoutRef.current) {
       clearTimeout(hoverTimeoutRef.current);
+      hoverTimeoutRef.current = null;
     }
-    setIsHovering(true);
+    isHoveringRef.current = true;
     setActiveMenu(menu);
   };
 
   const handleMenuLeave = () => {
-    setIsHovering(false);
-    // Only close if we're not hovering
+    isHoveringRef.current = false;
+    
+    // Clear any existing timeout
+    if (hoverTimeoutRef.current) {
+      clearTimeout(hoverTimeoutRef.current);
+    }
+    
+    // Set a timeout to close the menu after a brief delay
     hoverTimeoutRef.current = setTimeout(() => {
-      if (!isHovering) {
+      if (!isHoveringRef.current) {
         setActiveMenu(null);
       }
     }, 150);
   };
+
+  // Consistent handlers for both button and dropdown
+  const handleDropdownEnter = () => {
+    isHoveringRef.current = true;
+    if (hoverTimeoutRef.current) {
+      clearTimeout(hoverTimeoutRef.current);
+      hoverTimeoutRef.current = null;
+    }
+  };
+
+  const handleDropdownLeave = handleMenuLeave; // Use the same handler for consistency
 
   useEffect(() => {
     return () => {
@@ -200,6 +220,15 @@ const Navbar = () => {
       }
     };
   }, []);
+
+  // Add an effect to reset the menu when the active menu changes
+  useEffect(() => {
+    // When activeMenu changes, make sure all previous timeouts are cleared
+    if (hoverTimeoutRef.current) {
+      clearTimeout(hoverTimeoutRef.current);
+      hoverTimeoutRef.current = null;
+    }
+  }, [activeMenu]);
 
   // Common h2 style for all dropdown menus
   const columnTitleStyle = { 
@@ -264,6 +293,20 @@ const Navbar = () => {
   ];
 
   const [selectedCountry, setSelectedCountry] = useState('');
+
+  useEffect(() => {
+    // Add a global click handler to close dropdown when clicking outside
+    const handleClickOutside = (event) => {
+      if (navRef.current && !navRef.current.contains(event.target) && activeMenu !== null) {
+        setActiveMenu(null);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [activeMenu]);
 
   return (
     <>
@@ -364,8 +407,8 @@ const Navbar = () => {
   <div 
     className="mt-1 bg-white border-gray-200 shadow-sm border-y transform transition-all duration-200 ease-out"
     style={dropdownAnimation.enter}
-    onMouseEnter={() => setIsHovering(true)}
-    onMouseLeave={() => setIsHovering(false)}>
+    onMouseEnter={handleDropdownEnter}
+    onMouseLeave={handleDropdownLeave}>
     <div className="grid max-w-screen-xl px-4 py-5 mx-auto text-sm md:grid-cols-3 md:px-6 gap-6">
       {/* Column 1 - By Type */}
       <ul className="mb-4 space-y-4">
@@ -462,8 +505,8 @@ const Navbar = () => {
         <div 
           className="mt-1 bg-white border-gray-200 shadow-sm border-y transform transition-all duration-200 ease-out"
           style={dropdownAnimation.enter}
-          onMouseEnter={() => setIsHovering(true)}
-          onMouseLeave={() => setIsHovering(false)}>
+          onMouseEnter={handleDropdownEnter}
+          onMouseLeave={handleDropdownLeave}>
           <div className="grid max-w-screen-xl px-4 py-5 mx-auto text-sm md:grid-cols-3 md:px-6 gap-6">
             {/* First Column */}
             <ul className="mb-4 space-y-4">
@@ -579,7 +622,9 @@ const Navbar = () => {
 
        {/* Initiatives Dropdown */}
 {activeMenu === 'Initiatives' && (
-  <div className="mt-1 bg-white border-t border-gray-200 shadow-lg">
+  <div className="mt-1 bg-white border-t border-gray-200 shadow-lg"
+    onMouseEnter={handleDropdownEnter}
+    onMouseLeave={handleDropdownLeave}>
     <div className="max-w-screen-xl px-6 py-10 mx-auto">
       {/* Section Title */}
       <h2 className="text-xs uppercase font-normal text-gray-600 pb-1 mb-5" 
@@ -706,7 +751,9 @@ const Navbar = () => {
 
        {/* Fellows & Champions Dropdown */}
       {activeMenu === 'Fellows & Champions' && (
-        <div className="mt-1 bg-white border-gray-200 shadow-sm border-y">
+        <div className="mt-1 bg-white border-gray-200 shadow-sm border-y"
+          onMouseEnter={handleDropdownEnter}
+          onMouseLeave={handleDropdownLeave}>
           <div className="grid max-w-screen-xl px-4 py-5 mx-auto text-sm md:grid-cols-3 md:px-6 gap-6">
             {/* Column 1 - Our Network */}
     <div>
@@ -902,7 +949,9 @@ const Navbar = () => {
 
       {/* Events & Gatherings Mega Menu */}
       {activeMenu === 'Events & Gatherings' && (
-        <div className="mt-1 bg-white border-gray-200 shadow-sm border-y">
+        <div className="mt-1 bg-white border-gray-200 shadow-sm border-y"
+          onMouseEnter={handleDropdownEnter}
+          onMouseLeave={handleDropdownLeave}>
           <div className="grid max-w-screen-xl px-4 py-5 mx-auto text-sm md:grid-cols-3 md:px-6 gap-6">
             {/* Column 1 */}
             <ul className="mb-4 space-y-4">

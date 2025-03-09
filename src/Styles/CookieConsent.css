@@ -1,7 +1,7 @@
 /* src/components/CookieConsent.css */
 .cookie-consent {
     position: fixed;
-    bottom: 20px; /* Position it slightly above the bottom */
+    bottom: -100px; /* Start off-screen */
     left: 50%;
     transform: translateX(-50%); /* Center it horizontally */
     background-color: #2c3e50; /* Darker background color */
@@ -13,14 +13,19 @@
     transition: bottom 0.5s ease-in-out; /* Smooth transition */
     width: 90%; /* Responsive width */
     max-width: 500px; /* Max width for larger screens */
+    opacity: 0;
   }
   
   .cookie-consent.fade-in {
     bottom: 20px; /* Slide in */
+    opacity: 1;
+    transition: bottom 0.5s ease-in-out, opacity 0.5s ease-in-out;
   }
   
   .cookie-consent.fade-out {
     bottom: -100px; /* Slide out */
+    opacity: 0;
+    transition: bottom 0.5s ease-in-out, opacity 0.5s ease-in-out;
   }
   
   .cookie-consent-content {
@@ -39,6 +44,8 @@
     right: 10px;
     cursor: pointer;
     transition: color 0.3s;
+    padding: 0;
+    line-height: 1;
   }
   
   .close-button:hover {

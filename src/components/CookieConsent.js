@@ -1,24 +1,56 @@
 // src/components/CookieConsent.js
-import React, { useState } from 'react';
-import CookieConcent from '../components/CookieConsent'; // Ensure to import the CSS file
-import CookieStyles from '../Styles/CookieConsent.css'
+import React, { useState, useEffect } from 'react';
+import '../Styles/CookieConsent.css';
 import { FaTimes } from 'react-icons/fa'; // Importing a close icon from react-icons
 
 const CookieConsent = () => {
-  const [isVisible, setIsVisible] = useState(true);
+  // Start with not visible and check localStorage in useEffect
+  const [isVisible, setIsVisible] = useState(false);
+  const [isMounted, setIsMounted] = useState(false);
+  const [isAnimatingOut, setIsAnimatingOut] = useState(false);
   const [preferences, setPreferences] = useState({
     essential: true,
     analytics: false,
     marketing: false,
   });
 
+  // Handle first mount - check localStorage first before showing
+  useEffect(() => {
+    const consent = localStorage.getItem('cookieConsent');
+    if (!consent) {
+      // Only show if consent not given previously
+      setIsVisible(true);
+    }
+    setIsMounted(true);
+  }, []);
+
+  // Add transition effect for unmounting
+  useEffect(() => {
+    if (isAnimatingOut) {
+      const timer = setTimeout(() => {
+        setIsVisible(false);
+      }, 500); // Match the transition time in CSS
+      return () => clearTimeout(timer);
+    }
+  }, [isAnimatingOut]);
+
   const handleAcceptAll = () => {
-    setIsVisible(false);
-    localStorage.setItem('cookieConsent', JSON.stringify(preferences));
+    setPreferences({
+      essential: true,
+      analytics: true,
+      marketing: true
+    });
+    handleDismiss();
   };
 
   const handleSavePreferences = () => {
-    setIsVisible(false);
+    handleDismiss();
+  };
+
+  const handleDismiss = () => {
+    // Start animation out
+    setIsAnimatingOut(true);
+    // Save to localStorage
     localStorage.setItem('cookieConsent', JSON.stringify(preferences));
   };
 
@@ -27,24 +59,13 @@ const CookieConsent = () => {
     setPreferences((prev) => ({ ...prev, [name]: checked }));
   };
 
-  const handleClose = () => {
-    setIsVisible(false);
-  };
-
-  // Check if the user has already accepted or declined cookies
-  React.useEffect(() => {
-    const consent = localStorage.getItem('cookieConsent');
-    if (consent) {
-      setIsVisible(false);
-    }
-  }, []);
-
-  if (!isVisible) return null;
+  // If not mounted yet or not visible, don't render anything
+  if (!isMounted || (!isVisible && !isAnimatingOut)) return null;
 
   return (
-    <div className={`cookie-consent ${isVisible ? 'fade-in' : 'fade-out'}`}>
+    <div className={`cookie-consent ${isAnimatingOut ? 'fade-out' : 'fade-in'}`}>
       <div className="cookie-consent-content">
-        <button className="close-button" onClick={handleClose}>
+        <button className="close-button" onClick={handleDismiss}>
           <FaTimes />
         </button>
         <h2 className="cookie-consent-title">We Value Your Privacy</h2>

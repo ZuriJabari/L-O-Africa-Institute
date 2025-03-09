@@ -1,0 +1,24 @@
+/* Dropdown menu fix - adds padding to bridge the gap between menu items and dropdowns */
+
+/* Add padding around the menu items to increase hover area */
+.menu-container {
+  padding-bottom: 10px;
+  margin-bottom: -10px;
+}
+
+/* Increase the clickable area of menu buttons */
+.menu-container button {
+  padding: 5px 0;
+}
+
+/* Add negative margin to bring dropdowns closer to menu items */
+.mt-1 {
+  margin-top: -5px !important;
+  padding-top: 5px;
+}
+
+/* Make sure dropdowns have a higher z-index */
+nav > div:last-child {
+  position: relative;
+  z-index: 50;
+} 

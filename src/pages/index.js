@@ -7,6 +7,7 @@ import Objectives from "../components/Objectives";
 import MultimediaHome from "../components/Multimedia/MultimediaHome";
 import UpcomingEvents from "../components/UpcomingEvents";
 import PartnerWithUs from "../components/PartnerWithUs";
+import Partners from "../components/Partners";
 import Initiatives from "../components/Initiatives";
 import OurPeople from "../components/OurPeople";
 import SubscriptionForm from "../components/SubscriptionForm";
@@ -80,8 +81,8 @@ const HomePage = ({ data = { allPrismicBlogPosts: { nodes: [] } } }) => {
       /> */}
         {/* <Pillars/> */}
       <div className="prefooter-gray"></div>
-    
-     
+      
+      <Partners />
       <PartnerWithUs />
       {/* <SubscriptionForm /> */}
     </Layout>
