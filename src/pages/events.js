@@ -71,17 +71,17 @@ const EventsAndGatherings = () => {
                     Starting in 2020, the gathering takes place every November and has gained reputation as the signature public convening for the LéO Africa Institute's growing networks.
                   </BodyText>
                   <div className="flex flex-col sm:flex-row gap-4">
-                    <a 
-                      href="https://alg.leoafricainstitute.org" 
+                    <Link
+                      to="https://alg.leoafricainstitute.org"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="group/btn inline-flex items-center gap-2 bg-[#0B9A9E] text-white px-8 py-4 rounded-lg hover:bg-[#0B9A9E]/90 transition-all duration-300 hover:shadow-lg hover:-translate-y-0.5"
                     >
-                      <span>Learn More About #ALG</span>
+                      <span>Visit ALG Website</span>
                       <svg className="w-5 h-5 transform transition-transform group-hover/btn:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
                       </svg>
-                    </a>
+                    </Link>
                   </div>
                 </div>
               </div>
@@ -112,170 +112,491 @@ const EventsAndGatherings = () => {
       {/* 2025 Events Calendar */}
       <section className="py-20 bg-white">
         <div className="container mx-auto px-4">
-          <div className="max-w-5xl mx-auto">
+          <div className="max-w-7xl mx-auto">
             <div className="mb-16">
               <div className="text-[#F6911E] font-semibold text-lg tracking-wide uppercase mb-4">2025 Events Calendar</div>
-              <h2 className="text-4xl font-bold text-gray-900 mb-6">Upcoming Events</h2>
-              <div className="w-24 h-1 bg-[#F6911E] mb-8"></div>
+              <h2 className="text-4xl font-bold text-gray-900 mb-6">Activity Plan 2025</h2>
+              <div className="w-24 h-1 bg-gradient-to-r from-[#0B9A9E] to-[#F6911E] mb-8"></div>
               <p className="text-xl text-gray-600">
                 Join us throughout 2025 for a series of transformative events designed to inspire, connect, and empower leaders across Africa.
               </p>
             </div>
 
             <div className="space-y-8">
-              {/* June 2025 - Kigali Event */}
-              <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-8 hover:border-[#0B9A9E] transition-all">
-                <div className="flex flex-col md:flex-row gap-8">
-                  <div className="w-full md:w-48 flex-shrink-0">
-                    <div className="bg-gradient-to-br from-[#0B9A9E]/10 to-[#F6911E]/10 rounded-lg p-4 text-center">
-                      <div className="text-[#0B9A9E] font-semibold uppercase tracking-wider text-sm mb-1">June</div>
-                      <div className="text-4xl font-bold text-gray-900">2025</div>
-                      <div className="text-gray-600 mt-1">Kigali, Rwanda</div>
+              {/* March */}
+              <div className="group bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-lg transition-all duration-300 hover:border-[#0B9A9E]/30">
+                <div className="bg-gradient-to-r from-[#0B9A9E]/10 to-[#F6911E]/10 px-8 py-6 flex items-center justify-between group-hover:from-[#0B9A9E]/20 group-hover:to-[#F6911E]/20 transition-all duration-300">
+                  <h3 className="text-2xl font-bold text-gray-900">March 2025</h3>
+                  <div className="flex items-center gap-2 text-[#0B9A9E]">
+                    <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                    </svg>
+                    <span className="text-sm font-medium">2 Events</span>
+                  </div>
+                </div>
+                <div className="divide-y divide-gray-100">
+                  <div className="p-8 hover:bg-gray-50/50 transition-colors duration-200">
+                    <div className="flex flex-col md:flex-row gap-6">
+                      <div className="w-full md:w-48 flex-shrink-0">
+                        <div className="flex items-center gap-3">
+                          <div className="w-10 h-10 rounded-lg bg-[#0B9A9E]/10 flex items-center justify-center">
+                            <span className="text-[#0B9A9E] font-bold">17</span>
+                          </div>
+                          <div className="text-[#0B9A9E] font-semibold">March</div>
+                        </div>
+                      </div>
+                      <div className="flex-1">
+                        <h4 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-[#0B9A9E] transition-colors duration-200">
+                          LéO Africa Talks: Conversations Worth Having
+                        </h4>
+                        <p className="text-gray-600 mb-4">Announce the 2025 edition and call for applications. Leaders go through traditional Institute leadership seminars. In addition, they are trained in storytelling, and delivering important messages through speech and conversation.</p>
+                        <div className="flex flex-col gap-4">
+                          <div className="inline-flex items-center gap-2 text-sm text-gray-500">
+                            <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                            </svg>
+                            <span>Latitude Hotel</span>
+                          </div>
+                          <div className="flex items-center gap-4">
+                            <Link
+                              to="/events/leo-talks"
+                              className="inline-flex items-center gap-2 px-4 py-2 bg-[#0B9A9E]/10 text-[#0B9A9E] rounded-lg hover:bg-[#0B9A9E]/20 transition-all group"
+                            >
+                              <span className="font-medium">Learn More</span>
+                              <svg className="w-4 h-4 transform group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                              </svg>
+                            </Link>
+                          </div>
+                        </div>
+                      </div>
                     </div>
                   </div>
-                  <div className="flex-1">
-                    <h3 className="text-2xl font-bold text-gray-900 mb-3">Harambe Symposium</h3>
-                    <p className="text-gray-600 mb-4">
-                      Join us in Kigali for a transformative gathering focused on strengthening collaborative leadership across Africa.
-                    </p>
-                    <div className="flex flex-wrap gap-4">
-                      <Link to="/events/harambe-symposium" className="inline-flex items-center gap-2 px-4 py-2 bg-[#0B9A9E]/10 text-[#0B9A9E] rounded-lg hover:bg-[#0B9A9E]/20 transition-all">
-                        <span className="font-semibold">Learn More</span>
-                        <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                        </svg>
-                      </Link>
-                      <button className="inline-flex items-center gap-2 px-4 py-2 bg-[#F6911E]/10 text-[#F6911E] rounded-lg hover:bg-[#F6911E]/20 transition-all">
-                        <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                        </svg>
-                        <span className="font-semibold">Add to Calendar</span>
-                      </button>
+                  <div className="p-8 hover:bg-gray-50/50 transition-colors duration-200">
+                    <div className="flex flex-col md:flex-row gap-6">
+                      <div className="w-full md:w-48 flex-shrink-0">
+                        <div className="flex items-center gap-3">
+                          <div className="w-10 h-10 rounded-lg bg-[#0B9A9E]/10 flex items-center justify-center">
+                            <span className="text-[#0B9A9E] font-bold">31</span>
+                          </div>
+                          <div className="text-[#0B9A9E] font-semibold">March</div>
+                        </div>
+                      </div>
+                      <div className="flex-1">
+                        <h4 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-[#0B9A9E] transition-colors duration-200">
+                          LéO Africa Talks: Conversations Worth Having
+                        </h4>
+                        <p className="text-gray-600 mb-4">Announce 2025 speaker cohort</p>
+                        <div className="flex flex-col gap-4">
+                          <div className="inline-flex items-center gap-2 text-sm text-gray-500">
+                            <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                            </svg>
+                            <span>Latitude Hotel</span>
+                          </div>
+                          <div className="flex items-center gap-4">
+                            <Link
+                              to="/events/leo-talks"
+                              className="inline-flex items-center gap-2 px-4 py-2 bg-[#0B9A9E]/10 text-[#0B9A9E] rounded-lg hover:bg-[#0B9A9E]/20 transition-all group"
+                            >
+                              <span className="font-medium">Learn More</span>
+                              <svg className="w-4 h-4 transform group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                              </svg>
+                            </Link>
+                          </div>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
 
-              {/* LéO Talks */}
-              <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-8 hover:border-[#0B9A9E] transition-all">
-                <div className="flex flex-col md:flex-row gap-8">
-                  <div className="w-full md:w-48 flex-shrink-0">
-                    <div className="bg-gradient-to-br from-[#0B9A9E]/10 to-[#F6911E]/10 rounded-lg p-4 text-center">
-                      <div className="text-[#0B9A9E] font-semibold uppercase tracking-wider text-sm mb-1">Quarterly</div>
-                      <div className="text-4xl font-bold text-gray-900">2025</div>
-                      <div className="text-gray-600 mt-1">Virtual & In-Person</div>
-                    </div>
+              {/* April */}
+              <div className="group bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-lg transition-all duration-300 hover:border-[#0B9A9E]/30">
+                <div className="bg-gradient-to-r from-[#0B9A9E]/10 to-[#F6911E]/10 px-8 py-6 flex items-center justify-between group-hover:from-[#0B9A9E]/20 group-hover:to-[#F6911E]/20 transition-all duration-300">
+                  <h3 className="text-2xl font-bold text-gray-900">April 2025</h3>
+                  <div className="flex items-center gap-2 text-[#0B9A9E]">
+                    <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                    </svg>
+                    <span className="text-sm font-medium">1 Event</span>
                   </div>
-                  <div className="flex-1">
-                    <h3 className="text-2xl font-bold text-gray-900 mb-3">LéO Talks Series</h3>
-                    <p className="text-gray-600 mb-4">
-                      Join our quarterly conversation series featuring distinguished speakers sharing their vision for Africa's future.
-                    </p>
-                    <div className="flex flex-wrap gap-4">
-                      <Link to="/events/leo-talks" className="inline-flex items-center gap-2 px-4 py-2 bg-[#0B9A9E]/10 text-[#0B9A9E] rounded-lg hover:bg-[#0B9A9E]/20 transition-all">
-                        <span className="font-semibold">View Schedule</span>
-                        <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                        </svg>
-                      </Link>
+                </div>
+                <div className="p-8 hover:bg-gray-50/50 transition-colors duration-200">
+                  <div className="flex flex-col md:flex-row gap-6">
+                    <div className="w-full md:w-48 flex-shrink-0">
+                      <div className="flex items-center gap-3">
+                        <div className="w-10 h-10 rounded-lg bg-[#0B9A9E]/10 flex items-center justify-center">
+                          <span className="text-[#0B9A9E] font-bold">12</span>
+                        </div>
+                        <div className="text-[#0B9A9E] font-semibold">April</div>
+                      </div>
+                    </div>
+                    <div className="flex-1">
+                      <h4 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-[#0B9A9E] transition-colors duration-200">
+                        The Griots Seminar 1
+                      </h4>
+                      <p className="text-gray-600 mb-4">Shaping personal leadership, & introduction to the practice of values-based leadership.</p>
+                      <div className="flex flex-col gap-4">
+                        <div className="inline-flex items-center gap-2 text-sm text-gray-500">
+                          <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                          </svg>
+                          <span>Latitude Hotel</span>
+                        </div>
+                        <div className="flex items-center gap-4">
+                          <Link
+                            to="/events/leo-talks"
+                            className="inline-flex items-center gap-2 px-4 py-2 bg-[#0B9A9E]/10 text-[#0B9A9E] rounded-lg hover:bg-[#0B9A9E]/20 transition-all group"
+                          >
+                            <span className="font-medium">Learn More</span>
+                            <svg className="w-4 h-4 transform group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                            </svg>
+                          </Link>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
 
-              {/* Distinguished Lecture Series */}
-              <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-8 hover:border-[#0B9A9E] transition-all">
-                <div className="flex flex-col md:flex-row gap-8">
-                  <div className="w-full md:w-48 flex-shrink-0">
-                    <div className="bg-gradient-to-br from-[#0B9A9E]/10 to-[#F6911E]/10 rounded-lg p-4 text-center">
-                      <div className="text-[#0B9A9E] font-semibold uppercase tracking-wider text-sm mb-1">Bi-Monthly</div>
-                      <div className="text-4xl font-bold text-gray-900">2025</div>
-                      <div className="text-gray-600 mt-1">Multiple Venues</div>
-                    </div>
+              {/* May */}
+              <div className="group bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-lg transition-all duration-300 hover:border-[#0B9A9E]/30">
+                <div className="bg-gradient-to-r from-[#0B9A9E]/10 to-[#F6911E]/10 px-8 py-6 flex items-center justify-between group-hover:from-[#0B9A9E]/20 group-hover:to-[#F6911E]/20 transition-all duration-300">
+                  <h3 className="text-2xl font-bold text-gray-900">May 2025</h3>
+                  <div className="flex items-center gap-2 text-[#0B9A9E]">
+                    <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                    </svg>
+                    <span className="text-sm font-medium">1 Event</span>
                   </div>
-                  <div className="flex-1">
-                    <h3 className="text-2xl font-bold text-gray-900 mb-3">Distinguished Lecture Series</h3>
-                    <p className="text-gray-600 mb-4">
-                      A prestigious series featuring thought leaders and experts discussing contemporary issues shaping Africa.
-                    </p>
-                    <div className="flex flex-wrap gap-4">
-                      <Link to="/events/lecture-series" className="inline-flex items-center gap-2 px-4 py-2 bg-[#0B9A9E]/10 text-[#0B9A9E] rounded-lg hover:bg-[#0B9A9E]/20 transition-all">
-                        <span className="font-semibold">View Series</span>
-                        <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                        </svg>
-                      </Link>
+                </div>
+                <div className="p-8 hover:bg-gray-50/50 transition-colors duration-200">
+                  <div className="flex flex-col md:flex-row gap-6">
+                    <div className="w-full md:w-48 flex-shrink-0">
+                      <div className="flex items-center gap-3">
+                        <div className="w-10 h-10 rounded-lg bg-[#0B9A9E]/10 flex items-center justify-center">
+                          <span className="text-[#0B9A9E] font-bold">10</span>
+                        </div>
+                        <div className="text-[#0B9A9E] font-semibold">May</div>
+                      </div>
+                    </div>
+                    <div className="flex-1">
+                      <h4 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-[#0B9A9E] transition-colors duration-200">
+                        The Griots Seminar 2
+                      </h4>
+                      <p className="text-gray-600 mb-4">Exploring the power of storytelling in leadership.</p>
+                      <div className="flex flex-col gap-4">
+                        <div className="inline-flex items-center gap-2 text-sm text-gray-500">
+                          <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                          </svg>
+                          <span>Latitude Hotel</span>
+                        </div>
+                        <div className="flex items-center gap-4">
+                          <span className="inline-flex items-center gap-2 px-4 py-2 bg-gray-100 text-gray-600 rounded-lg">
+                            <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                            <span className="font-medium">Details coming soon</span>
+                          </span>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
 
-              {/* Ali Mufuruki Memorial Lecture */}
-              <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-8 hover:border-[#0B9A9E] transition-all">
-                <div className="flex flex-col md:flex-row gap-8">
-                  <div className="w-full md:w-48 flex-shrink-0">
-                    <div className="bg-gradient-to-br from-[#0B9A9E]/10 to-[#F6911E]/10 rounded-lg p-4 text-center">
-                      <div className="text-[#0B9A9E] font-semibold uppercase tracking-wider text-sm mb-1">October</div>
-                      <div className="text-4xl font-bold text-gray-900">2025</div>
-                      <div className="text-gray-600 mt-1">East Africa</div>
-                    </div>
+              {/* June */}
+              <div className="group bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-lg transition-all duration-300 hover:border-[#0B9A9E]/30">
+                <div className="bg-gradient-to-r from-[#0B9A9E]/10 to-[#F6911E]/10 px-8 py-6 flex items-center justify-between group-hover:from-[#0B9A9E]/20 group-hover:to-[#F6911E]/20 transition-all duration-300">
+                  <h3 className="text-2xl font-bold text-gray-900">June 2025</h3>
+                  <div className="flex items-center gap-2 text-[#0B9A9E]">
+                    <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                    </svg>
+                    <span className="text-sm font-medium">1 Event</span>
                   </div>
-                  <div className="flex-1">
-                    <h3 className="text-2xl font-bold text-gray-900 mb-3">Ali Mufuruki Memorial Lecture</h3>
-                    <p className="text-gray-600 mb-4">
-                      Annual memorial lecture honoring the legacy of Ali Mufuruki, inspiring the next generation of African leaders.
-                    </p>
-                    <div className="flex flex-wrap gap-4">
-                      <Link to="/events/lecture-series" className="inline-flex items-center gap-2 px-4 py-2 bg-[#0B9A9E]/10 text-[#0B9A9E] rounded-lg hover:bg-[#0B9A9E]/20 transition-all">
-                        <span className="font-semibold">Learn More</span>
-                        <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                        </svg>
-                      </Link>
+                </div>
+                <div className="p-8 hover:bg-gray-50/50 transition-colors duration-200">
+                  <div className="flex flex-col md:flex-row gap-6">
+                    <div className="w-full md:w-48 flex-shrink-0">
+                      <div className="flex items-center gap-3">
+                        <div className="w-10 h-10 rounded-lg bg-[#0B9A9E]/10 flex items-center justify-center">
+                          <span className="text-[#0B9A9E] font-bold">14</span>
+                        </div>
+                        <div className="text-[#0B9A9E] font-semibold">June</div>
+                      </div>
+                    </div>
+                    <div className="flex-1">
+                      <h4 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-[#0B9A9E] transition-colors duration-200">
+                        The Griots Seminar 3
+                      </h4>
+                      <p className="text-gray-600 mb-4">Understanding the role of values in leadership.</p>
+                      <div className="flex flex-col gap-4">
+                        <div className="inline-flex items-center gap-2 text-sm text-gray-500">
+                          <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                          </svg>
+                          <span>Latitude Hotel</span>
+                        </div>
+                        <div className="flex items-center gap-4">
+                          <span className="inline-flex items-center gap-2 px-4 py-2 bg-gray-100 text-gray-600 rounded-lg">
+                            <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                            <span className="font-medium">Details coming soon</span>
+                          </span>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
 
-              {/* Annual Leaders Gathering 2025 */}
-              <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-8 hover:border-[#0B9A9E] transition-all">
-                <div className="flex flex-col md:flex-row gap-8">
-                  <div className="w-full md:w-48 flex-shrink-0">
-                    <div className="bg-gradient-to-br from-[#0B9A9E]/10 to-[#F6911E]/10 rounded-lg p-4 text-center">
-                      <div className="text-[#0B9A9E] font-semibold uppercase tracking-wider text-sm mb-1">November</div>
-                      <div className="text-4xl font-bold text-gray-900">2025</div>
-                      <div className="text-gray-600 mt-1">East Africa</div>
+              {/* July */}
+              <div className="group bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-lg transition-all duration-300 hover:border-[#0B9A9E]/30">
+                <div className="bg-gradient-to-r from-[#0B9A9E]/10 to-[#F6911E]/10 px-8 py-6 flex items-center justify-between group-hover:from-[#0B9A9E]/20 group-hover:to-[#F6911E]/20 transition-all duration-300">
+                  <h3 className="text-2xl font-bold text-gray-900">July 2025</h3>
+                  <div className="flex items-center gap-2 text-[#0B9A9E]">
+                    <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                    </svg>
+                    <span className="text-sm font-medium">1 Event</span>
+                  </div>
+                </div>
+                <div className="p-8 hover:bg-gray-50/50 transition-colors duration-200">
+                  <div className="flex flex-col md:flex-row gap-6">
+                    <div className="w-full md:w-48 flex-shrink-0">
+                      <div className="flex items-center gap-3">
+                        <div className="w-10 h-10 rounded-lg bg-[#0B9A9E]/10 flex items-center justify-center">
+                          <span className="text-[#0B9A9E] font-bold">12</span>
+                        </div>
+                        <div className="text-[#0B9A9E] font-semibold">July</div>
+                      </div>
+                    </div>
+                    <div className="flex-1">
+                      <h4 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-[#0B9A9E] transition-colors duration-200">
+                        The Griots Seminar 4
+                      </h4>
+                      <p className="text-gray-600 mb-4">Developing leadership through personal narratives.</p>
+                      <div className="flex flex-col gap-4">
+                        <div className="inline-flex items-center gap-2 text-sm text-gray-500">
+                          <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                          </svg>
+                          <span>Latitude Hotel</span>
+                        </div>
+                        <div className="flex items-center gap-4">
+                          <span className="inline-flex items-center gap-2 px-4 py-2 bg-gray-100 text-gray-600 rounded-lg">
+                            <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                            <span className="font-medium">Details coming soon</span>
+                          </span>
+                        </div>
+                      </div>
                     </div>
                   </div>
-                  <div className="flex-1">
-                    <h3 className="text-2xl font-bold text-gray-900 mb-3">Annual Leaders Gathering 2025</h3>
-                    <p className="text-gray-600 mb-4">
-                      Join Africa's most influential gathering of thought leaders, innovators, and change-makers for our flagship event. Connect with visionary leaders and shape the future of leadership on the continent.
-                    </p>
-                    <div className="flex flex-wrap gap-4">
-                      <Link to="/events/alg-2025" className="inline-flex items-center gap-2 px-4 py-2 bg-[#0B9A9E]/10 text-[#0B9A9E] rounded-lg hover:bg-[#0B9A9E]/20 transition-all">
-                        <span className="font-semibold">Learn More</span>
-                        <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                        </svg>
-                      </Link>
-                      <button className="inline-flex items-center gap-2 px-4 py-2 bg-[#F6911E]/10 text-[#F6911E] rounded-lg hover:bg-[#F6911E]/20 transition-all">
-                        <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                        </svg>
-                        <span className="font-semibold">Add to Calendar</span>
-                      </button>
-                      <a 
-                        href="https://alg.leoafricainstitute.org" 
-                        target="_blank" 
-                        rel="noopener noreferrer" 
-                        className="inline-flex items-center gap-2 px-4 py-2 bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200 transition-all"
-                      >
-                        <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-                        </svg>
-                        <span className="font-semibold">Visit ALG Website</span>
-                      </a>
+                </div>
+              </div>
+
+              {/* September */}
+              <div className="group bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-lg transition-all duration-300 hover:border-[#0B9A9E]/30">
+                <div className="bg-gradient-to-r from-[#0B9A9E]/10 to-[#F6911E]/10 px-8 py-6 flex items-center justify-between group-hover:from-[#0B9A9E]/20 group-hover:to-[#F6911E]/20 transition-all duration-300">
+                  <h3 className="text-2xl font-bold text-gray-900">September 2025</h3>
+                  <div className="flex items-center gap-2 text-[#0B9A9E]">
+                    <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                    </svg>
+                    <span className="text-sm font-medium">1 Event</span>
+                  </div>
+                </div>
+                <div className="p-8 hover:bg-gray-50/50 transition-colors duration-200">
+                  <div className="flex flex-col md:flex-row gap-6">
+                    <div className="w-full md:w-48 flex-shrink-0">
+                      <div className="flex items-center gap-3">
+                        <div className="w-10 h-10 rounded-lg bg-[#0B9A9E]/10 flex items-center justify-center">
+                          <span className="text-[#0B9A9E] font-bold">19</span>
+                        </div>
+                        <div className="text-[#0B9A9E] font-semibold">September</div>
+                      </div>
+                    </div>
+                    <div className="flex-1">
+                      <h4 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-[#0B9A9E] transition-colors duration-200">
+                        LéO Africa Talks
+                      </h4>
+                      <p className="text-gray-600 mb-4">The main event of the year, featuring inspiring talks and discussions.</p>
+                      <div className="flex items-center gap-4">
+                        <span className="inline-flex items-center gap-2 px-4 py-2 bg-gray-100 text-gray-600 rounded-lg">
+                          <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                          </svg>
+                          <span className="font-medium">Details coming soon</span>
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* October */}
+              <div className="group bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-lg transition-all duration-300 hover:border-[#0B9A9E]/30">
+                <div className="bg-gradient-to-r from-[#0B9A9E]/10 to-[#F6911E]/10 px-8 py-6 flex items-center justify-between group-hover:from-[#0B9A9E]/20 group-hover:to-[#F6911E]/20 transition-all duration-300">
+                  <h3 className="text-2xl font-bold text-gray-900">October 2025</h3>
+                  <div className="flex items-center gap-2 text-[#0B9A9E]">
+                    <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                    </svg>
+                    <span className="text-sm font-medium">1 Event</span>
+                  </div>
+                </div>
+                <div className="p-8 hover:bg-gray-50/50 transition-colors duration-200">
+                  <div className="flex flex-col md:flex-row gap-6">
+                    <div className="w-full md:w-48 flex-shrink-0">
+                      <div className="flex items-center gap-3">
+                        <div className="w-10 h-10 rounded-lg bg-[#0B9A9E]/10 flex items-center justify-center">
+                          <span className="text-[#0B9A9E] font-bold">11</span>
+                        </div>
+                        <div className="text-[#0B9A9E] font-semibold">October</div>
+                      </div>
+                    </div>
+                    <div className="flex-1">
+                      <h4 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-[#0B9A9E] transition-colors duration-200">
+                        The Griots Seminar 5
+                      </h4>
+                      <p className="text-gray-600 mb-4">Mastering the art of leadership storytelling.</p>
+                      <div className="flex flex-col gap-4">
+                        <div className="inline-flex items-center gap-2 text-sm text-gray-500">
+                          <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                          </svg>
+                          <span>Latitude Hotel</span>
+                        </div>
+                        <div className="flex items-center gap-4">
+                          <span className="inline-flex items-center gap-2 px-4 py-2 bg-gray-100 text-gray-600 rounded-lg">
+                            <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                            <span className="font-medium">Details coming soon</span>
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* November */}
+              <div className="group bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-lg transition-all duration-300 hover:border-[#0B9A9E]/30">
+                <div className="bg-gradient-to-r from-[#0B9A9E]/10 to-[#F6911E]/10 px-8 py-6 flex items-center justify-between group-hover:from-[#0B9A9E]/20 group-hover:to-[#F6911E]/20 transition-all duration-300">
+                  <h3 className="text-2xl font-bold text-gray-900">November 2025</h3>
+                  <div className="flex items-center gap-2 text-[#0B9A9E]">
+                    <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                    </svg>
+                    <span className="text-sm font-medium">1 Event</span>
+                  </div>
+                </div>
+                <div className="p-8 hover:bg-gray-50/50 transition-colors duration-200">
+                  <div className="flex flex-col md:flex-row gap-6">
+                    <div className="w-full md:w-48 flex-shrink-0">
+                      <div className="flex items-center gap-3">
+                        <div className="w-10 h-10 rounded-lg bg-[#0B9A9E]/10 flex items-center justify-center">
+                          <span className="text-[#0B9A9E] font-bold">14</span>
+                        </div>
+                        <div className="text-[#0B9A9E] font-semibold">November</div>
+                      </div>
+                    </div>
+                    <div className="flex-1">
+                      <h4 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-[#0B9A9E] transition-colors duration-200">
+                        Annual Leaders Gathering (ALG)
+                      </h4>
+                      <p className="text-gray-600 mb-4">Our flagship event, bringing together leaders from across Africa.</p>
+                      <div className="flex items-center gap-4">
+                        <span className="inline-flex items-center gap-2 px-4 py-2 bg-gray-100 text-gray-600 rounded-lg">
+                          <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                          </svg>
+                          <span className="font-medium">Details coming soon</span>
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Year-Round Programs */}
+              <div className="group bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-lg transition-all duration-300 hover:border-[#0B9A9E]/30">
+                <div className="bg-gradient-to-r from-[#0B9A9E]/10 to-[#F6911E]/10 px-8 py-6 flex items-center justify-between group-hover:from-[#0B9A9E]/20 group-hover:to-[#F6911E]/20 transition-all duration-300">
+                  <h3 className="text-2xl font-bold text-gray-900">Year-Round Programs</h3>
+                  <div className="flex items-center gap-2 text-[#0B9A9E]">
+                    <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                    </svg>
+                    <span className="text-sm font-medium">2 Programs</span>
+                  </div>
+                </div>
+                <div className="divide-y divide-gray-100">
+                  <div className="p-8 hover:bg-gray-50/50 transition-colors duration-200">
+                    <div className="flex flex-col md:flex-row gap-6">
+                      <div className="w-full md:w-48 flex-shrink-0">
+                        <div className="flex items-center gap-3">
+                          <div className="w-10 h-10 rounded-lg bg-[#0B9A9E]/10 flex items-center justify-center">
+                            <span className="text-[#0B9A9E] font-bold">YRP</span>
+                          </div>
+                          <div className="text-[#0B9A9E] font-semibold">Year-Round</div>
+                        </div>
+                      </div>
+                      <div className="flex-1">
+                        <h4 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-[#0B9A9E] transition-colors duration-200">
+                          NextGen Finance Fellows
+                        </h4>
+                        <p className="text-gray-600 mb-4">A program for young finance professionals to develop leadership skills.</p>
+                        <div className="flex items-center gap-4">
+                          <span className="inline-flex items-center gap-2 px-4 py-2 bg-gray-100 text-gray-600 rounded-lg">
+                            <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                            <span className="font-medium">Details coming soon</span>
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="p-8 hover:bg-gray-50/50 transition-colors duration-200">
+                    <div className="flex flex-col md:flex-row gap-6">
+                      <div className="w-full md:w-48 flex-shrink-0">
+                        <div className="flex items-center gap-3">
+                          <div className="w-10 h-10 rounded-lg bg-[#0B9A9E]/10 flex items-center justify-center">
+                            <span className="text-[#0B9A9E] font-bold">YRP</span>
+                          </div>
+                          <div className="text-[#0B9A9E] font-semibold">Year-Round</div>
+                        </div>
+                      </div>
+                      <div className="flex-1">
+                        <h4 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-[#0B9A9E] transition-colors duration-200">
+                          Huduma Fellowship
+                        </h4>
+                        <p className="text-gray-600 mb-4">A leadership development program focused on public service.</p>
+                        <div className="flex items-center gap-4">
+                          <span className="inline-flex items-center gap-2 px-4 py-2 bg-gray-100 text-gray-600 rounded-lg">
+                            <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                            <span className="font-medium">Details coming soon</span>
+                          </span>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -382,13 +703,15 @@ const EventsAndGatherings = () => {
                           <span className="font-semibold">View Photo Gallery</span>
                         </a>
                         <Link
-                          to="/events/alg-2024"
+                          to="https://alg.leoafricainstitute.org"
+                          target="_blank"
+                          rel="noopener noreferrer"
                           className="inline-flex items-center gap-2 px-6 py-3 bg-[#F6911E]/10 text-[#F6911E] rounded-lg hover:bg-[#F6911E]/20 transition-all duration-300"
                         >
                           <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
                           </svg>
-                          <span className="font-semibold">Read Full Report</span>
+                          <span className="font-semibold">Visit ALG Website</span>
                         </Link>
                       </div>
                     </div>

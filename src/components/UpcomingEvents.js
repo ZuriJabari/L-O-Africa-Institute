@@ -30,7 +30,7 @@ const upcomingEvent = {
   time: "All Day Event",
   location: "Sheraton Kampala Hotel, Kampala, Uganda",
   description:
-    "The Annual Leaders Gathering (ALG) is LéO Africa Institute's premier leadership forum that brings together emerging African leaders to engage in meaningful dialogue, share experiences, and forge partnerships for Africa's development.",
+    "The Annual Leaders Gathering is the LéO Africa Institute's signature convening platform. It brings together its growing networks of leaders for significant conversations, networking, and deliberation on actions necessary to address the day's challenges.",
   image: ALGLOGO,
   url: "https://alg.leoafricainstitute.org"
 };

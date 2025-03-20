@@ -649,7 +649,7 @@ const Navbar = () => {
               Annual Leaders Gathering
             </h3>
             <p className="text-gray-600 mb-4 leading-relaxed">
-              Our flagship leadership conference bringing together emerging leaders from across Africa for dialogue, learning, and networking.
+              The Annual Leaders Gathering is the LéO Africa Institute's signature convening platform. It brings together its growing networks of leaders for significant conversations, networking, and deliberation on actions necessary to address the day's challenges.
             </p>
             <a 
               href="https://alg.leoafricainstitute.org/" 
@@ -788,41 +788,6 @@ const Navbar = () => {
             <div>
               <h4 className="font-semibold text-gray-900 group-hover:text-[#2bbecb] transition-colors duration-300 mb-2">Young Emerging Leaders Program</h4>
               <p className="text-gray-500 text-sm mb-2">Training outstanding thought leaders in values and social responsibility.</p>
-              <span className="text-[#2bbecb] group-hover:text-[#f6911e] text-sm transition-colors duration-300 inline-flex items-center">
-                Learn more <span className="ml-1 group-hover:translate-x-1 transition-transform duration-300">→</span>
-              </span>
-            </div>
-          </div>
-        </a>
-
-        {/* Subtle divider */}
-        <div className="border-b border-gray-100"></div>
-
-        {/* Africa Champions */}
-        <a href="#" className="block group hover:bg-gray-50 p-3 rounded-lg transition-all duration-300">
-          <div className="flex items-center space-x-3">
-            <div className="w-12 h-12 bg-gray-200 rounded-full flex items-center justify-center">
-              <span className="text-gray-400 text-lg">AC</span>
-            </div>
-            <div>
-              <h4 className="font-semibold text-gray-900 group-hover:text-[#2bbecb] transition-colors duration-300 mb-2">Africa Champions</h4>
-              <p className="text-gray-500 text-sm mb-2">Distinguished leaders driving positive change across Africa through innovation and ethical leadership.</p>
-              <span className="text-[#2bbecb] group-hover:text-[#f6911e] text-sm transition-colors duration-300 inline-flex items-center">
-                Learn more <span className="ml-1 group-hover:translate-x-1 transition-transform duration-300">→</span>
-              </span>
-            </div>
-          </div>
-        </a>
-
-        {/* Associate Fellows */}
-        <a href="#" className="block group hover:bg-gray-50 p-3 rounded-lg transition-all duration-300">
-          <div className="flex items-center space-x-3">
-            <div className="w-12 h-12 bg-gray-200 rounded-full flex items-center justify-center">
-              <span className="text-gray-400 text-lg">AF</span>
-            </div>
-            <div>
-              <h4 className="font-semibold text-gray-900 group-hover:text-[#2bbecb] transition-colors duration-300 mb-2">Associate Fellows</h4>
-              <p className="text-gray-500 text-sm mb-2">Emerging talents and professionals contributing to Africa's development through mentorship and collaboration.</p>
               <span className="text-[#2bbecb] group-hover:text-[#f6911e] text-sm transition-colors duration-300 inline-flex items-center">
                 Learn more <span className="ml-1 group-hover:translate-x-1 transition-transform duration-300">→</span>
               </span>
@@ -1050,7 +1015,7 @@ const Navbar = () => {
                     
                     {/* ALG Description */}
                     <p className="text-[14px] text-[#666] leading-relaxed mb-3">
-                      The Annual Leaders Gathering (ALG) is a premier leadership forum that brings together emerging African leaders to engage in meaningful dialogue, share experiences, and forge partnerships for Africa's development.
+                      The Annual Leaders Gathering is the LéO Africa Institute's signature convening platform. It brings together its growing networks of leaders for significant conversations, networking, and deliberation on actions necessary to address the day's challenges.
                     </p>
                     
                     {/* Learn More Link */}

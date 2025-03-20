@@ -37,7 +37,7 @@ const Initiatives = () => {
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-3">Annual Leaders Gathering</h3>
               <p className="text-gray-600 mb-6 flex-grow">
-                A convergence of leaders driving transformative change across Africa through workshops, discussions, and networking.
+                The Annual Leaders Gathering is the LéO Africa Institute's signature convening platform. It brings together its growing networks of leaders for significant conversations, networking, and deliberation on actions necessary to address the day's challenges.
               </p>
               <a 
                 href="https://alg.leoafricainstitute.org" 

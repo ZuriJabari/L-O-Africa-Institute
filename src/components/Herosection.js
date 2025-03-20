@@ -32,7 +32,7 @@ const slides = [
   {
     image: heroImage4,
     title: "Annual Leaders Gathering",
-    description: "Africa's premier leadership convergence, bringing together visionary leaders, influential policymakers, and dynamic change-makers to shape the continent's future through thought-provoking dialogue and actionable solutions.",
+    description: "The Annual Leaders Gathering is the LéO Africa Institute's signature convening platform. It brings together its growing networks of leaders for significant conversations, networking, and deliberation on actions necessary to address the day's challenges.",
     ctaText: "Explore ALG",
     ctaLink: "/alg"
   },
@@ -91,7 +91,7 @@ const HeroSection = () => {
               Annual Leaders Gathering (ALG)
             </h1>
             <p className="text-xl text-gray-200 mb-8 leading-relaxed">
-              Africa's premier leadership convergence, bringing together visionary leaders, influential policymakers, and dynamic change-makers to shape the continent's future through thought-provoking dialogue and actionable solutions.
+              The Annual Leaders Gathering is the LéO Africa Institute's signature convening platform. It brings together its growing networks of leaders for significant conversations, networking, and deliberation on actions necessary to address the day's challenges.
             </p>
             <a
               href="https://alg.leoafricainstitute.org"
