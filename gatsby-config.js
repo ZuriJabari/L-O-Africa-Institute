@@ -21,7 +21,7 @@ module.exports = {
         background_color: `#ffffff`,
         theme_color: `#f6911e`,
         display: `standalone`,
-        icon: `src/assets/images/favicon.png`, // Changed to PNG
+        icon: `src/assets/images/profile.png`, // Changed to profile.png
         icon_options: {
           purpose: `any maskable`,
         },

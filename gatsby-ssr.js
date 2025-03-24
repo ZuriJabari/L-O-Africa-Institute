@@ -16,21 +16,21 @@ export const onRenderBody = ({ setHeadComponents }) => {
     <link
       key="favicon"
       rel="icon"
-      href="/favicon.ico"
-      type="image/x-icon"
+      href="/profile.png"
+      type="image/png"
     />,
     <link
       key="favicon-32"
       rel="icon"
-      href="/favicon.ico"
-      type="image/x-icon"
+      href="/profile.png"
+      type="image/png"
       sizes="32x32"
     />,
     <link
       key="favicon-16"
       rel="icon"
-      href="/favicon.ico"
-      type="image/x-icon"
+      href="/profile.png"
+      type="image/png"
       sizes="16x16"
     />,
   ]);
