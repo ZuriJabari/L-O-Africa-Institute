@@ -23,6 +23,10 @@ $secret = '73d3c4665b5c8f47c7cdd09d2890970893b6ae2df65a8257232f79fb8195e743'; //
 error_log("=== Webhook Request at " . date('Y-m-d H:i:s') . " ===");
 error_log("Headers: " . print_r(getallheaders(), true));
 
+// Log raw request data
+$raw_post = file_get_contents('php://input');
+error_log("Raw POST data: " . $raw_post);
+
 // Add detailed header logging
 $headers = getallheaders();
 error_log("Detailed headers received:");
@@ -36,6 +40,7 @@ $requestData = [
     'URI' => $_SERVER['REQUEST_URI'],
     'Headers' => getallheaders(),
     'POST Data' => $_POST,
+    'Raw POST' => $raw_post
 ];
 file_put_contents($logFile, print_r($requestData, true) . "\n", FILE_APPEND);
 
@@ -47,20 +52,31 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     exit;
 }
 
-// Check for header in both $_SERVER and getallheaders()
+// Check for header in multiple formats (Prismic can send headers in different ways)
 $headers = getallheaders();
 $webhookHeader = isset($_SERVER['HTTP_X_PRISMIC_WEBHOOK']) 
     ? $_SERVER['HTTP_X_PRISMIC_WEBHOOK'] 
-    : (isset($headers['X-Prismic-Webhook']) ? $headers['X-Prismic-Webhook'] : null);
+    : (isset($headers['X-Prismic-Webhook']) 
+        ? $headers['X-Prismic-Webhook'] 
+        : (isset($headers['x-prismic-webhook']) 
+            ? $headers['x-prismic-webhook'] 
+            : null));
+
+// Log webhook authentication attempt
+error_log("Webhook header value: " . ($webhookHeader ?? 'null'));
+error_log("Expected secret: " . $secret);
 
 if ($webhookHeader !== null) {
     if ($webhookHeader === $secret) {
+        error_log("Secret verification successful");
         require_once('build.php');
         $buildResult = runBuild();
         if ($buildResult) {
+            error_log("Build completed successfully");
             echo "Build triggered successfully";
         } else {
             http_response_code(500);
+            error_log("Build process failed");
             echo "Build process failed";
         }
     } else {

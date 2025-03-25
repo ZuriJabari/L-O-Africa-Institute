@@ -5,17 +5,8 @@ function runBuild() {
         // Log start of build process
         error_log("Starting build process at " . date('Y-m-d H:i:s'));
 
-        // Clean up command with npx
-        $cleanCommand = "npx gatsby clean";
-        exec($cleanCommand . " 2>&1", $cleanOutput, $cleanResult);
-        
-        if ($cleanResult !== 0) {
-            error_log("Clean failed: " . implode("\n", $cleanOutput));
-            return false;
-        }
-
-        // Build command with npx and verbose flag
-        $buildCommand = "npx gatsby build --verbose";
+        // Set build flags for incremental builds
+        $buildCommand = "GATSBY_EXPERIMENTAL_PAGE_BUILD_ON_DATA_CHANGES=true npx gatsby build --log-pages";
         exec($buildCommand . " 2>&1", $buildOutput, $buildResult);
 
         // Log the output
