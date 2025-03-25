@@ -14,6 +14,10 @@ gatsby build
 if [ $? -eq 0 ]; then
     echo "Gatsby build completed successfully"
     
+    # Copy webhook and build PHP files to public directory
+    echo "Copying webhook and build files..."
+    cp webhook.php build.php public/
+    
     # Create zip of the public directory (Gatsby's output)
     echo "Creating zip archive..."
     zip -r leo-website.zip public/* 2>/dev/null
