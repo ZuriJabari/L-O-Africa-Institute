@@ -7,7 +7,8 @@ import photo2020 from '../assets/images/alg-2020.jpg';
 import heroPast from '../assets/images/past-alg-hero.jpg'; // Replace with actual paths
 
 const Editions = () => {
-  const eventDate = new Date('2024-11-14T00:00:00'); // Event date (Nov 14, 2024)
+  // Use UTC date to avoid timezone issues
+  const eventDate = new Date(Date.UTC(2024, 10, 14)); // November is 10 (0-based)
 
   const [timeRemaining, setTimeRemaining] = useState({
     days: 0,
@@ -18,17 +19,23 @@ const Editions = () => {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      const now = new Date();
-      const timeDifference = eventDate - now;
+      try {
+        const now = new Date();
+        const timeDifference = eventDate.getTime() - now.getTime();
 
-      if (timeDifference > 0) {
-        const days = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
-        const hours = Math.floor((timeDifference / (1000 * 60 * 60)) % 24);
-        const minutes = Math.floor((timeDifference / 1000 / 60) % 60);
-        const seconds = Math.floor((timeDifference / 1000) % 60);
+        if (timeDifference > 0) {
+          const days = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
+          const hours = Math.floor((timeDifference / (1000 * 60 * 60)) % 24);
+          const minutes = Math.floor((timeDifference / 1000 / 60) % 60);
+          const seconds = Math.floor((timeDifference / 1000) % 60);
 
-        setTimeRemaining({ days, hours, minutes, seconds });
-      } else {
+          setTimeRemaining({ days, hours, minutes, seconds });
+        } else {
+          clearInterval(interval);
+          setTimeRemaining({ days: 0, hours: 0, minutes: 0, seconds: 0 });
+        }
+      } catch (error) {
+        console.error('Error calculating time difference:', error);
         clearInterval(interval);
       }
     }, 1000);
@@ -40,8 +47,7 @@ const Editions = () => {
     {
       year: '2023',
       title: '2023 Annual Leaders Gathering',
-      description:
-        'The 2023 gathering brought together innovative leaders to deliberate on key issues facing Africa’s future. This event emphasized collaboration and cross-sector leadership.',
+      description: 'The 2023 gathering brought together innovative leaders to deliberate on key issues facing Africa\'s future. This event emphasized collaboration and cross-sector leadership.',
       date: 'November 14-16, 2023',
       image: photo2023,
       link: '/#',
@@ -49,8 +55,7 @@ const Editions = () => {
     {
       year: '2022',
       title: '2022 Annual Leaders Gathering',
-      description:
-        'In 2022, we focused on the theme of driving inclusive growth through leadership. It was an inspiring event attended by African change-makers across industries.',
+      description: 'In 2022, we focused on the theme of driving inclusive growth through leadership. It was an inspiring event attended by African change-makers across industries.',
       date: 'November 12-14, 2022',
       image: photo2022,
       link: '/#',
@@ -58,8 +63,7 @@ const Editions = () => {
     {
       year: '2021',
       title: '2021 Annual Leaders Gathering',
-      description:
-        'The 2021 gathering centered on leadership resilience in post-pandemic Africa, with a focus on recovery and fostering innovation in African economies.',
+      description: 'The 2021 gathering centered on leadership resilience in post-pandemic Africa, with a focus on recovery and fostering innovation in African economies.',
       date: 'November 10-12, 2021',
       image: photo2021,
       link: '/#',
@@ -67,8 +71,7 @@ const Editions = () => {
     {
       year: '2020',
       title: '2020 Annual Leaders Gathering',
-      description:
-        'In 2020, amidst the pandemic, the ALG went virtual, but continued to engage African leaders in meaningful conversations about crisis management and recovery.',
+      description: 'In 2020, amidst the pandemic, the ALG went virtual, but continued to engage African leaders in meaningful conversations about crisis management and recovery.',
       date: 'November 8-10, 2020',
       image: photo2020,
       link: '/#',

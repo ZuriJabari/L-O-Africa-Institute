@@ -62,19 +62,27 @@ const recurringEvents = [
 // Countdown Timer Component
 const CountdownTimer = ({ targetDate }) => {
   const calculateTimeLeft = () => {
-    const difference = +new Date(targetDate) - +new Date();
-    let timeLeft = {};
+    try {
+      // Parse the target date as UTC to avoid timezone issues
+      const target = new Date(Date.UTC(2025, 8, 15)); // September is 8 (0-based)
+      const now = new Date();
+      const difference = target.getTime() - now.getTime();
+      let timeLeft = {};
 
-    if (difference > 0) {
-      timeLeft = {
-        days: Math.floor(difference / (1000 * 60 * 60 * 24)),
-        hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
-        minutes: Math.floor((difference / 1000 / 60) % 60),
-        seconds: Math.floor((difference / 1000) % 60),
-      };
+      if (difference > 0) {
+        timeLeft = {
+          days: Math.floor(difference / (1000 * 60 * 60 * 24)),
+          hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
+          minutes: Math.floor((difference / 1000 / 60) % 60),
+          seconds: Math.floor((difference / 1000) % 60),
+        };
+      }
+
+      return timeLeft;
+    } catch (error) {
+      console.error('Error calculating time difference:', error);
+      return {};
     }
-
-    return timeLeft;
   };
 
   const [timeLeft, setTimeLeft] = useState(calculateTimeLeft());

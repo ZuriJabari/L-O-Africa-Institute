@@ -76,72 +76,71 @@ const MultimediaHome = ({ data = { allPrismicBlogPosts: { nodes: [] } } }) => {
               transition={{ duration: 0.6, delay: 0.2 }}
               className="lg:col-span-7"
             >
-              <div className="relative bg-white rounded-2xl overflow-hidden shadow-xl h-full">
-                {/* Image with Overlay */}
-                <div className="relative h-96 overflow-hidden">
-                  {featuredItem.data?.featured_image?.url ? (
-                    <>
-                      <img
-                        src={featuredItem.data.featured_image.url}
-                        alt={featuredItem.data?.title || 'Featured post'}
-                        className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 hover:scale-105"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent opacity-60"></div>
-                    </>
-                  ) : (
-                    <div className="relative h-full bg-gray-200 flex items-center justify-center">
-                      <span className="text-gray-400">No image available</span>
-                    </div>
-                  )}
-                  
-                  {/* Badges positioned over the image */}
-                  <div className="absolute top-4 left-4 flex flex-wrap items-center gap-3">
-                    <span className="font-sans text-sm font-medium bg-[#f6941e] text-white px-4 py-1.5 rounded-full tracking-wide flex items-center">
-                      <FiTrendingUp className="mr-1" />
-                      Featured
-                    </span>
-                    {featuredItem.data?.categories?.length > 0 && (
-                      <span className="font-sans text-sm font-medium bg-[#1d8f92] text-white px-4 py-1.5 rounded-full tracking-wide">
-                        {featuredItem.data.categories[0].category}
-                      </span>
+              <Link to={`/blog/${featuredItem.uid}`} className="block">
+                <div className="relative bg-white rounded-2xl overflow-hidden shadow-xl h-full group hover:shadow-2xl transition-all duration-300">
+                  {/* Image with Overlay */}
+                  <div className="relative h-96 overflow-hidden">
+                    {featuredItem.data?.featured_image?.url ? (
+                      <>
+                        <img
+                          src={featuredItem.data.featured_image.url}
+                          alt={featuredItem.data?.title || 'Featured post'}
+                          className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent opacity-60"></div>
+                      </>
+                    ) : (
+                      <div className="relative h-full bg-gray-200 flex items-center justify-center">
+                        <span className="text-gray-400">No image available</span>
+                      </div>
                     )}
-                  </div>
-                </div>
-                
-                {/* Content */}
-                <div className="p-8">
-                  <h3 className="font-serif text-3xl font-bold leading-tight text-gray-800 mb-4 tracking-tight hover:text-[#1d8f92] transition-colors duration-300">
-                    <Link to={`/blog/${featuredItem.uid}`}>
-                      {featuredItem.data?.title || 'Untitled Post'}
-                    </Link>
-                  </h3>
-                  
-                  <p className="text-gray-600 text-lg leading-relaxed mb-6">
-                    {featuredItem.data?.excerpt || 'Explore our featured insight on leadership and growth in the African context.'}
-                  </p>
-                  
-                  <div className="flex items-center justify-between">
-                    <div className="flex items-center text-gray-500 text-sm">
-                      <div className="flex items-center mr-6">
-                        <FiUser className="w-4 h-4 mr-2" />
-                        <span>{featuredItem.data?.author || 'LéO Institute'}</span>
-                      </div>
-                      <div className="flex items-center">
-                        <FiClock className="w-4 h-4 mr-2" />
-                        <span>{featuredItem.data?.publish_date || 'Recent'}</span>
-                      </div>
-                    </div>
                     
-                    <Link 
-                      to={`/blog/${featuredItem.uid}`}
-                      className="inline-flex items-center font-medium text-[#1d8f92] hover:text-[#f6941e] transition-colors duration-300"
-                    >
-                      Read More
-                      <FiChevronRight className="ml-1 group-hover:ml-2 transition-all" />
-                    </Link>
+                    {/* Badges positioned over the image */}
+                    <div className="absolute top-4 left-4 flex flex-wrap items-center gap-3">
+                      <span className="font-sans text-sm font-medium bg-[#f6941e] text-white px-4 py-1.5 rounded-full tracking-wide flex items-center">
+                        <FiTrendingUp className="mr-1" />
+                        Featured
+                      </span>
+                      {featuredItem.data?.categories?.length > 0 && (
+                        <span className="font-sans text-sm font-medium bg-[#1d8f92] text-white px-4 py-1.5 rounded-full tracking-wide">
+                          {featuredItem.data.categories[0].category}
+                        </span>
+                      )}
+                    </div>
+                  </div>
+                  
+                  {/* Content */}
+                  <div className="p-8">
+                    <h3 className="font-serif text-3xl font-bold leading-tight text-gray-800 mb-4 tracking-tight group-hover:text-[#1d8f92] transition-colors duration-300">
+                      {featuredItem.data?.title || 'Untitled Post'}
+                    </h3>
+                    
+                    <p className="text-gray-600 text-lg leading-relaxed mb-6">
+                      {featuredItem.data?.excerpt || 'Explore our featured insight on leadership and growth in the African context.'}
+                    </p>
+                    
+                    <div className="flex items-center justify-between">
+                      <div className="flex items-center text-gray-500 text-sm">
+                        <div className="flex items-center mr-6">
+                          <FiUser className="w-4 h-4 mr-2" />
+                          <span>{featuredItem.data?.author || 'LéO Institute'}</span>
+                        </div>
+                        <div className="flex items-center">
+                          <FiClock className="w-4 h-4 mr-2" />
+                          <span>{featuredItem.data?.publish_date || 'Recent'}</span>
+                        </div>
+                      </div>
+                      
+                      <span 
+                        className="inline-flex items-center font-medium text-[#1d8f92] group-hover:text-[#f6941e] transition-colors duration-300"
+                      >
+                        Read More
+                        <FiChevronRight className="ml-1 group-hover:translate-x-1 transition-transform duration-300" />
+                      </span>
+                    </div>
                   </div>
                 </div>
-              </div>
+              </Link>
             </motion.div>
           )}
 
@@ -157,55 +156,56 @@ const MultimediaHome = ({ data = { allPrismicBlogPosts: { nodes: [] } } }) => {
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.3 + index * 0.1 }}
-                className="group bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 flex flex-col md:flex-row gap-6"
               >
-                {/* Thumbnail */}
-                <div className="relative w-full md:w-1/3 aspect-video md:aspect-square rounded-lg overflow-hidden flex-shrink-0">
-                  {item.data?.featured_image?.url ? (
-                    <img
-                      src={item.data.featured_image.url}
-                      alt={item.data?.title || 'Blog post'}
-                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                    />
-                  ) : (
-                    <div className="w-full h-full bg-gray-200 flex items-center justify-center rounded-lg">
-                      <span className="text-gray-400">No image</span>
-                    </div>
-                  )}
+                <Link 
+                  to={`/blog/${item.uid}`}
+                  className="group bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 flex flex-col md:flex-row gap-6 block"
+                >
+                  {/* Thumbnail */}
+                  <div className="relative w-full md:w-1/3 aspect-video md:aspect-square rounded-lg overflow-hidden flex-shrink-0">
+                    {item.data?.featured_image?.url ? (
+                      <img
+                        src={item.data.featured_image.url}
+                        alt={item.data?.title || 'Blog post'}
+                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                      />
+                    ) : (
+                      <div className="w-full h-full bg-gray-200 flex items-center justify-center rounded-lg">
+                        <span className="text-gray-400">No image</span>
+                      </div>
+                    )}
+                    
+                    {item.data?.categories?.length > 0 && (
+                      <span className="absolute top-2 left-2 font-sans text-xs font-medium bg-[#1d8f92] text-white px-2 py-0.5 rounded-full">
+                        {item.data.categories[0].category}
+                      </span>
+                    )}
+                  </div>
                   
-                  {item.data?.categories?.length > 0 && (
-                    <span className="absolute top-2 left-2 font-sans text-xs font-medium bg-[#1d8f92] text-white px-2 py-0.5 rounded-full">
-                      {item.data.categories[0].category}
-                    </span>
-                  )}
-                </div>
-                
-                {/* Content */}
-                <div className="flex-1 flex flex-col justify-between">
-                  <div>
-                    <h4 className="font-serif text-xl font-bold text-gray-800 mb-2 leading-tight group-hover:text-[#1d8f92] transition-colors duration-300 line-clamp-2">
-                      <Link to={`/blog/${item.uid}`}>
+                  {/* Content */}
+                  <div className="flex-1 flex flex-col justify-between">
+                    <div>
+                      <h4 className="font-serif text-xl font-bold text-gray-800 mb-2 leading-tight group-hover:text-[#1d8f92] transition-colors duration-300 line-clamp-2">
                         {item.data?.title || 'Untitled Post'}
-                      </Link>
-                    </h4>
+                      </h4>
+                      
+                      <p className="text-gray-600 text-sm leading-relaxed mb-3 line-clamp-2">
+                        {item.data?.excerpt || 'Discover more insights from the LéO Africa Institute.'}
+                      </p>
+                    </div>
                     
-                    <p className="text-gray-600 text-sm leading-relaxed mb-3 line-clamp-2">
-                      {item.data?.excerpt || 'Discover more insights from the LéO Africa Institute.'}
-                    </p>
+                    <div className="flex items-center justify-between mt-2">
+                      <span className="text-gray-500 text-xs">{item.data?.publish_date || 'Recent'}</span>
+                      
+                      <span 
+                        className="inline-flex items-center text-sm font-medium text-[#1d8f92] group-hover:text-[#f6941e] transition-colors duration-300"
+                      >
+                        Read More
+                        <FiChevronRight className="ml-1 group-hover:translate-x-1 transition-transform duration-300" />
+                      </span>
+                    </div>
                   </div>
-                  
-                  <div className="flex items-center justify-between mt-2">
-                    <span className="text-gray-500 text-xs">{item.data?.publish_date || 'Recent'}</span>
-                    
-                    <Link 
-                      to={`/blog/${item.uid}`}
-                      className="text-sm font-medium text-[#1d8f92] hover:text-[#f6941e] transition-colors duration-300 flex items-center"
-                    >
-                      Read more
-                      <FiArrowRight className="ml-1 group-hover:translate-x-1 transition-transform duration-300" />
-                    </Link>
-                  </div>
-                </div>
+                </Link>
               </motion.article>
             ))}
             

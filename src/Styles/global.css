@@ -191,3 +191,51 @@ a.flex.items-center.space-x-2.px-2.py-1.bg-\[\#f6941e\].text-white.font-medium.r
   border: 0;
   border-radius: 0.5rem;
 }
+
+/* Beautiful Quote Styling for h6 */
+.article-content h6 {
+  font-family: "Georgia", serif;
+  font-size: 1.4rem;
+  font-style: italic;
+  line-height: 1.7;
+  color: #1B152A;
+  max-width: 800px;
+  margin: 3.5rem auto;
+  padding: 2.5rem 3.5rem;
+  position: relative;
+  text-align: center;
+  background: linear-gradient(to right, rgba(29, 143, 146, 0.03), rgba(246, 145, 30, 0.03));
+  border-radius: 3px;
+  box-shadow: 
+    0 2px 4px rgba(0, 0, 0, 0.02),
+    0 1px 2px rgba(0, 0, 0, 0.03);
+}
+
+.article-content h6::before {
+  content: '"';
+  font-family: "Georgia", serif;
+  font-size: 5rem;
+  position: absolute;
+  left: 1rem;
+  top: -1rem;
+  color: #1d8f92;
+  opacity: 0.15;
+  line-height: 1;
+}
+
+.article-content h6::after {
+  content: '"';
+  font-family: "Georgia", serif;
+  font-size: 5rem;
+  position: absolute;
+  right: 1rem;
+  bottom: -2.5rem;
+  color: #f6911e;
+  opacity: 0.15;
+  line-height: 1;
+}
+
+/* Add a subtle border */
+.article-content h6 {
+  border: 1px solid rgba(29, 143, 146, 0.1);
+}

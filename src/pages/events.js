@@ -137,7 +137,7 @@ const EventsAndGatherings = () => {
                 <div className="divide-y divide-gray-100">
                   <div className="p-8 hover:bg-gray-50/50 transition-colors duration-200">
                     <div className="flex flex-col md:flex-row gap-6">
-                      <div className="w-full md:w-48 flex-shrink-0">
+                  <div className="w-full md:w-48 flex-shrink-0">
                         <div className="flex items-center gap-3">
                           <div className="w-10 h-10 rounded-lg bg-[#0B9A9E]/10 flex items-center justify-center">
                             <span className="text-[#0B9A9E] font-bold">17</span>
@@ -181,16 +181,16 @@ const EventsAndGatherings = () => {
                             <span className="text-[#0B9A9E] font-bold">31</span>
                           </div>
                           <div className="text-[#0B9A9E] font-semibold">March</div>
-                        </div>
-                      </div>
-                      <div className="flex-1">
+                    </div>
+                  </div>
+                  <div className="flex-1">
                         <h4 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-[#0B9A9E] transition-colors duration-200">
                           LéO Africa Talks: Conversations Worth Having
                         </h4>
                         <p className="text-gray-600 mb-4">Announce 2025 speaker cohort</p>
                         <div className="flex flex-col gap-4">
                           <div className="inline-flex items-center gap-2 text-sm text-gray-500">
-                            <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                             </svg>
@@ -203,9 +203,9 @@ const EventsAndGatherings = () => {
                             >
                               <span className="font-medium">Learn More</span>
                               <svg className="w-4 h-4 transform group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                              </svg>
-                            </Link>
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                        </svg>
+                      </Link>
                           </div>
                         </div>
                       </div>
@@ -227,22 +227,22 @@ const EventsAndGatherings = () => {
                 </div>
                 <div className="p-8 hover:bg-gray-50/50 transition-colors duration-200">
                   <div className="flex flex-col md:flex-row gap-6">
-                    <div className="w-full md:w-48 flex-shrink-0">
+                  <div className="w-full md:w-48 flex-shrink-0">
                       <div className="flex items-center gap-3">
                         <div className="w-10 h-10 rounded-lg bg-[#0B9A9E]/10 flex items-center justify-center">
                           <span className="text-[#0B9A9E] font-bold">12</span>
                         </div>
                         <div className="text-[#0B9A9E] font-semibold">April</div>
                       </div>
-                    </div>
-                    <div className="flex-1">
+                  </div>
+                  <div className="flex-1">
                       <h4 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-[#0B9A9E] transition-colors duration-200">
                         The Griots Seminar 1
                       </h4>
                       <p className="text-gray-600 mb-4">Shaping personal leadership, & introduction to the practice of values-based leadership.</p>
                       <div className="flex flex-col gap-4">
                         <div className="inline-flex items-center gap-2 text-sm text-gray-500">
-                          <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                           </svg>
@@ -255,9 +255,9 @@ const EventsAndGatherings = () => {
                           >
                             <span className="font-medium">Learn More</span>
                             <svg className="w-4 h-4 transform group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                            </svg>
-                          </Link>
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                        </svg>
+                      </Link>
                         </div>
                       </div>
                     </div>
@@ -278,7 +278,7 @@ const EventsAndGatherings = () => {
                 </div>
                 <div className="p-8 hover:bg-gray-50/50 transition-colors duration-200">
                   <div className="flex flex-col md:flex-row gap-6">
-                    <div className="w-full md:w-48 flex-shrink-0">
+                  <div className="w-full md:w-48 flex-shrink-0">
                       <div className="flex items-center gap-3">
                         <div className="w-10 h-10 rounded-lg bg-[#0B9A9E]/10 flex items-center justify-center">
                           <span className="text-[#0B9A9E] font-bold">10</span>
@@ -332,9 +332,9 @@ const EventsAndGatherings = () => {
                           <span className="text-[#0B9A9E] font-bold">14</span>
                         </div>
                         <div className="text-[#0B9A9E] font-semibold">June</div>
-                      </div>
                     </div>
-                    <div className="flex-1">
+                  </div>
+                  <div className="flex-1">
                       <h4 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-[#0B9A9E] transition-colors duration-200">
                         The Griots Seminar 3
                       </h4>
@@ -349,9 +349,9 @@ const EventsAndGatherings = () => {
                         </div>
                         <div className="flex items-center gap-4">
                           <span className="inline-flex items-center gap-2 px-4 py-2 bg-gray-100 text-gray-600 rounded-lg">
-                            <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                            </svg>
+                        </svg>
                             <span className="font-medium">Details coming soon</span>
                           </span>
                         </div>
@@ -374,7 +374,7 @@ const EventsAndGatherings = () => {
                 </div>
                 <div className="p-8 hover:bg-gray-50/50 transition-colors duration-200">
                   <div className="flex flex-col md:flex-row gap-6">
-                    <div className="w-full md:w-48 flex-shrink-0">
+                  <div className="w-full md:w-48 flex-shrink-0">
                       <div className="flex items-center gap-3">
                         <div className="w-10 h-10 rounded-lg bg-[#0B9A9E]/10 flex items-center justify-center">
                           <span className="text-[#0B9A9E] font-bold">12</span>
@@ -428,18 +428,18 @@ const EventsAndGatherings = () => {
                           <span className="text-[#0B9A9E] font-bold">19</span>
                         </div>
                         <div className="text-[#0B9A9E] font-semibold">September</div>
-                      </div>
                     </div>
-                    <div className="flex-1">
+                  </div>
+                  <div className="flex-1">
                       <h4 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-[#0B9A9E] transition-colors duration-200">
                         LéO Africa Talks
                       </h4>
                       <p className="text-gray-600 mb-4">The main event of the year, featuring inspiring talks and discussions.</p>
                       <div className="flex items-center gap-4">
                         <span className="inline-flex items-center gap-2 px-4 py-2 bg-gray-100 text-gray-600 rounded-lg">
-                          <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                          </svg>
+                        </svg>
                           <span className="font-medium">Details coming soon</span>
                         </span>
                       </div>
@@ -461,7 +461,7 @@ const EventsAndGatherings = () => {
                 </div>
                 <div className="p-8 hover:bg-gray-50/50 transition-colors duration-200">
                   <div className="flex flex-col md:flex-row gap-6">
-                    <div className="w-full md:w-48 flex-shrink-0">
+                  <div className="w-full md:w-48 flex-shrink-0">
                       <div className="flex items-center gap-3">
                         <div className="w-10 h-10 rounded-lg bg-[#0B9A9E]/10 flex items-center justify-center">
                           <span className="text-[#0B9A9E] font-bold">11</span>
@@ -515,18 +515,18 @@ const EventsAndGatherings = () => {
                           <span className="text-[#0B9A9E] font-bold">14</span>
                         </div>
                         <div className="text-[#0B9A9E] font-semibold">November</div>
-                      </div>
                     </div>
-                    <div className="flex-1">
+                  </div>
+                  <div className="flex-1">
                       <h4 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-[#0B9A9E] transition-colors duration-200">
                         Annual Leaders Gathering (ALG)
                       </h4>
                       <p className="text-gray-600 mb-4">Our flagship event, bringing together leaders from across Africa.</p>
                       <div className="flex items-center gap-4">
                         <span className="inline-flex items-center gap-2 px-4 py-2 bg-gray-100 text-gray-600 rounded-lg">
-                          <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                          </svg>
+                        </svg>
                           <span className="font-medium">Details coming soon</span>
                         </span>
                       </div>
@@ -541,8 +541,8 @@ const EventsAndGatherings = () => {
                   <h3 className="text-2xl font-bold text-gray-900">Year-Round Programs</h3>
                   <div className="flex items-center gap-2 text-[#0B9A9E]">
                     <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                    </svg>
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                        </svg>
                     <span className="text-sm font-medium">2 Programs</span>
                   </div>
                 </div>
@@ -590,9 +590,9 @@ const EventsAndGatherings = () => {
                         <p className="text-gray-600 mb-4">A leadership development program focused on public service.</p>
                         <div className="flex items-center gap-4">
                           <span className="inline-flex items-center gap-2 px-4 py-2 bg-gray-100 text-gray-600 rounded-lg">
-                            <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                            </svg>
+                        </svg>
                             <span className="font-medium">Details coming soon</span>
                           </span>
                         </div>
