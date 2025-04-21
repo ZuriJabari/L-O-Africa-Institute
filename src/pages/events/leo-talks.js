@@ -109,7 +109,7 @@ const LeoTalks = () => {
                         <BodyText className="text-gray-600">
                           As one of 20 selected emerging leaders, you'll develop powerful storytelling skills,
                           connect with mentors across sectors, and share your vision through the prestigious
-                          LEÓ Africa Talks platform.
+                          LéO Africa Talks platform.
                         </BodyText>
                       </div>
                       
@@ -137,7 +137,7 @@ const LeoTalks = () => {
                         </p>
                       </div>
                       <div className="bg-white px-5 py-3 rounded-lg shadow-sm border border-gray-100">
-                        <p className="text-[#F6911E] font-semibold">Deadline: 15th April 2025</p>
+                        <p className="text-[#F6911E] font-semibold">Applications now closed.</p>
                       </div>
                     </div>
                     
@@ -197,7 +197,7 @@ const LeoTalks = () => {
           >
             <div className="mb-12 text-center">
               <SubsectionTitle className="text-[#0B9A9E] mb-4">
-                About LEÓ Africa Talks
+                About LéO Africa Talks
               </SubsectionTitle>
               <SectionTitle className="text-3xl font-bold mb-6">
                 Conversations Worth Having
@@ -217,14 +217,14 @@ const LeoTalks = () => {
                     <span className="text-[#0B9A9E] text-3xl">🎙️</span>
                   </div>
                   <BodyText className="text-gray-600 mb-8">
-                    LEÓ Africa Talks is designed for selected speakers within the LEÓ Africa Institute
+                    LéO Africa Talks is designed for selected speakers within the LéO Africa Institute
                     network, to share ideas and visions of their lives, and for Africa, and how they will
                     achieve it through their work and careers.
                   </BodyText>
                   
                   <BodyText className="text-gray-600">
                     Built around the West African culture of storytelling and storing of history, we refer
-                    to the speakers at the LEÓ Africa Talks conference as "Griots", who can inspire and
+                    to the speakers at the LéO Africa Talks conference as "Griots", who can inspire and
                     catalyze renewed attention on the importance of using narratives to build a
                     connection with identity, and how to build successful lives and thriving
                     communities.
@@ -279,7 +279,7 @@ const LeoTalks = () => {
                   </div>
                   <div>
                     <h4 className="text-lg font-semibold text-gray-900">Event</h4>
-                    <p className="text-gray-600">LEÓ Africa Talks Conference</p>
+                    <p className="text-gray-600">LéO Africa Talks Conference</p>
                   </div>
                 </div>
                 

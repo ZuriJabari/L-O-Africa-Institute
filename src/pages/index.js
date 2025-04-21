@@ -88,7 +88,7 @@ const AnnouncementBanner = ({ onDismiss }) => {
             Upcoming Event
           </span>
           <h2 className="text-2xl sm:text-3xl font-bold text-white mb-3">
-            LEÓ Africa <br/>Talks
+            LéO Africa <br/>Talks
           </h2>
           <div className="h-1 w-16 bg-[#F89420] mb-4"></div>
           <p className="text-white/80 text-sm md:text-base">
@@ -115,7 +115,7 @@ const AnnouncementBanner = ({ onDismiss }) => {
             <span className="text-sm md:text-base">Venue: To Be Confirmed</span>
           </div>
           <div className="flex items-center mt-3 bg-white/20 rounded-md px-3 py-2">
-            <span className="text-sm md:text-base font-bold text-white">🗓️ Application Deadline: 15th April 2025</span>
+            <span className="text-sm md:text-base font-bold text-white">🗓️ Applications now closed.</span>
           </div>
         </div>
       </div>
@@ -160,7 +160,7 @@ const AnnouncementBanner = ({ onDismiss }) => {
             </h3>
             
             <p className="text-gray-600 mb-6 max-w-2xl">
-              LEÓ Africa Talks is designed for selected speakers within the LEÓ Africa Institute
+              LéO Africa Talks is designed for selected speakers within the LéO Africa Institute
               network, to share ideas and visions of their lives, and for Africa, and how they will
               achieve it through their work and careers.
             </p>
