@@ -142,10 +142,11 @@ const SubscriptionForm = () => {
                 <form onSubmit={handleSubmit} className="space-y-10">
                   {/* Name Input */}
                   <div className="space-y-4">
-                    <label className="text-white/90 text-sm font-medium pl-1">Full Name</label>
+                    <label htmlFor="name" className="text-white/90 text-sm font-medium pl-1">Full Name</label>
                     <div className="relative">
                       <FiUser className="absolute left-3 top-1/2 -translate-y-1/2 text-[#0B9A9E] w-5 h-5" />
                       <input
+                        id="name"
                         type="text"
                         name="name"
                         value={formData.name}
@@ -159,10 +160,11 @@ const SubscriptionForm = () => {
 
                   {/* Email Input */}
                   <div className="space-y-4">
-                    <label className="text-white/90 text-sm font-medium pl-1">Email Address</label>
+                    <label htmlFor="email" className="text-white/90 text-sm font-medium pl-1">Email Address</label>
                     <div className="relative">
                       <FiMail className="absolute left-3 top-1/2 -translate-y-1/2 text-[#0B9A9E] w-5 h-5" />
                       <input
+                        id="email"
                         type="email"
                         name="email"
                         value={formData.email}
@@ -176,10 +178,11 @@ const SubscriptionForm = () => {
 
                   {/* Country Input */}
                   <div className="space-y-4">
-                    <label className="text-white/90 text-sm font-medium pl-1">Country</label>
+                    <label htmlFor="country" className="text-white/90 text-sm font-medium pl-1">Country</label>
                     <div className="relative">
                       <FiMapPin className="absolute left-3 top-1/2 -translate-y-1/2 text-[#0B9A9E] w-5 h-5" />
                       <select
+                        id="country"
                         name="country"
                         value={formData.country}
                         onChange={handleChange}

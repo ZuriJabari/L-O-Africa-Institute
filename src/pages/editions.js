@@ -7,9 +7,6 @@ import photo2020 from '../assets/images/alg-2020.jpg';
 import heroPast from '../assets/images/past-alg-hero.jpg'; // Replace with actual paths
 
 const Editions = () => {
-  // Use UTC date to avoid timezone issues
-  const eventDate = new Date(Date.UTC(2024, 10, 14)); // November is 10 (0-based)
-
   const [timeRemaining, setTimeRemaining] = useState({
     days: 0,
     hours: 0,
@@ -18,30 +15,17 @@ const Editions = () => {
   });
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      try {
-        const now = new Date();
-        const timeDifference = eventDate.getTime() - now.getTime();
+    const eventDate = new Date('2024-06-15T00:00:00');
+    const now = new Date();
+    const timeLeft = eventDate - now;
 
-        if (timeDifference > 0) {
-          const days = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
-          const hours = Math.floor((timeDifference / (1000 * 60 * 60)) % 24);
-          const minutes = Math.floor((timeDifference / 1000 / 60) % 60);
-          const seconds = Math.floor((timeDifference / 1000) % 60);
+    const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
 
-          setTimeRemaining({ days, hours, minutes, seconds });
-        } else {
-          clearInterval(interval);
-          setTimeRemaining({ days: 0, hours: 0, minutes: 0, seconds: 0 });
-        }
-      } catch (error) {
-        console.error('Error calculating time difference:', error);
-        clearInterval(interval);
-      }
-    }, 1000);
-
-    return () => clearInterval(interval);
-  }, [eventDate]);
+    setTimeRemaining({ days, hours, minutes, seconds });
+  }, []);
 
   const editionsData = [
     {

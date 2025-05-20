@@ -1,6 +1,7 @@
-import React, { useState } from "react";
-import { motion } from "framer-motion";
-import { FaUsers, FaAward, FaUserTie, FaTwitter, FaLinkedinIn, FaFacebookF, FaInstagram, FaLinkedin } from "react-icons/fa";
+import React, { useState } from 'react';
+import { motion } from 'framer-motion';
+import { FaTwitter, FaUsers, FaAward, FaUserTie } from 'react-icons/fa';
+import { StaticImage } from 'gatsby-plugin-image';
 
 // Helper function to get image path
 const getImagePath = (imageName, type = 'team') => {
@@ -324,11 +325,6 @@ const TeamSection = () => {
                           <FaTwitter size={18} />
                         </a>
                       )}
-                      {member.socials.linkedin && (
-                        <a href={member.socials.linkedin} className="text-gray-400 hover:text-blue-700 transition-colors">
-                          <FaLinkedinIn size={18} />
-                        </a>
-                      )}
                     </div>
                   )}
                 </div>
@@ -544,11 +540,6 @@ const OurPeople = () => {
                     {person.socials?.twitter && (
                       <a href={person.socials.twitter} className="text-gray-600 hover:text-gray-800">
                         <FaTwitter size={20} />
-                      </a>
-                    )}
-                    {person.socials?.linkedin && (
-                      <a href={person.socials.linkedin} className="text-gray-600 hover:text-gray-800">
-                        <FaLinkedinIn size={20} />
                       </a>
                     )}
                   </div>

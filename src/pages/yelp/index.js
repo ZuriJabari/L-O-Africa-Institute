@@ -80,16 +80,6 @@ const YelpHome = () => {
             <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
               {/* Left Column - Text Content */}
               <div className="text-center lg:text-left">
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6 }}
-                  className="inline-flex items-center px-3 py-1.5 mb-6 border border-[#0B9A9E] rounded-full"
-                >
-                  <span className="block w-2 h-2 rounded-full bg-[#0B9A9E] mr-2" />
-                  <span className="text-sm text-[#0B9A9E] font-medium tracking-wide uppercase">Applications Opening Soon</span>
-                </motion.div>
-
                 <motion.h1
                   initial={{ opacity: 0, y: 30 }}
                   animate={{ opacity: 1, y: 0 }}
@@ -105,7 +95,16 @@ const YelpHome = () => {
                   transition={{ duration: 0.6, delay: 0.4 }}
                   className="text-xl md:text-2xl text-white/80 mb-12 max-w-2xl lg:max-w-none"
                 >
-                  Applications for the 2025 cohort of the YELP project are opening soon. Are you a young thought leader interested in shaping the future of Africa through championing ethical and values-based leadership? The YELP project empowers you to become the next innovative and transformative leader Africa needs.
+                  Hi there. We have no current calls for applications, but you can be the first to know when news breaks for the next cohort. Stay tuned!
+                </motion.p>
+
+                <motion.p
+                  initial={{ opacity: 0, y: 30 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: 0.6 }}
+                  className="text-xl md:text-2xl text-white/80 mb-12 max-w-2xl lg:max-w-none"
+                >
+                  Share your contact details to stay informed, and follow our social media channels or reach out to us at <a href="mailto:communications@leoafricainstitute.org" className="text-[#0B9A9E] hover:text-[#0B9A9E]/80 transition-colors">communications@leoafricainstitute.org</a>
                 </motion.p>
               </div>
 

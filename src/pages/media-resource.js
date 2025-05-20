@@ -190,7 +190,7 @@ const MediaResource = () => {
                 </div>
                 <h3 className="text-xl font-semibold mb-2">Event Reports</h3>
                 <p className="text-gray-600 mb-4">Comprehensive reports from our events and gatherings</p>
-                <a href="#" className="text-[#0B9A9E] font-semibold hover:underline">Download Reports</a>
+                <button className="text-[#0B9A9E] font-semibold hover:underline">Download Reports</button>
               </div>
               
               <div className="bg-gray-50 p-6 rounded-lg">
@@ -201,7 +201,7 @@ const MediaResource = () => {
                 </div>
                 <h3 className="text-xl font-semibold mb-2">Presentations</h3>
                 <p className="text-gray-600 mb-4">Speaker presentations and session materials</p>
-                <a href="#" className="text-[#F6911E] font-semibold hover:underline">Access Presentations</a>
+                <button className="text-[#F6911E] font-semibold hover:underline">Access Presentations</button>
               </div>
               
               <div className="bg-gray-50 p-6 rounded-lg">
@@ -212,7 +212,7 @@ const MediaResource = () => {
                 </div>
                 <h3 className="text-xl font-semibold mb-2">Media Kit</h3>
                 <p className="text-gray-600 mb-4">Logos, brand guidelines, and press materials</p>
-                <a href="#" className="text-[#0B9A9E] font-semibold hover:underline">Download Media Kit</a>
+                <button className="text-[#0B9A9E] font-semibold hover:underline">Download Media Kit</button>
               </div>
             </div>
           </div>
@@ -221,14 +221,26 @@ const MediaResource = () => {
 
       {/* Photo Modal for Enlarged View */}
       {selectedPhoto !== null && (
-        <div className="fixed inset-0 bg-black bg-opacity-80 z-50 flex justify-center items-center">
-          <button className="absolute top-8 right-8 text-white text-4xl" onClick={closePhoto}>
+        <div className="fixed inset-0 bg-black bg-opacity-80 z-50 flex justify-center items-center" role="dialog" aria-label="Photo viewer">
+          <button 
+            className="absolute top-8 right-8 text-white text-4xl" 
+            onClick={closePhoto}
+            aria-label="Close photo viewer"
+          >
             <FaTimes />
           </button>
-          <button className="absolute left-8 text-white text-4xl" onClick={prevPhoto}>
+          <button 
+            className="absolute left-8 text-white text-4xl" 
+            onClick={prevPhoto}
+            aria-label="Previous photo"
+          >
             <FaChevronLeft />
           </button>
-          <button className="absolute right-8 text-white text-4xl" onClick={nextPhoto}>
+          <button 
+            className="absolute right-8 text-white text-4xl" 
+            onClick={nextPhoto}
+            aria-label="Next photo"
+          >
             <FaChevronRight />
           </button>
           <img

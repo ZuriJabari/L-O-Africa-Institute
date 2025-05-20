@@ -62,7 +62,7 @@ const HudumaHome = () => {
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.2, duration: 0.8 }}
               >
-                Applications for the 2025 cohort of the Huduma Fellowship are opening soon.
+                Hi there. We have no current calls for applications, but you can be the first to know when news breaks for the next cohort. Stay tuned!
               </motion.p>
 
               <motion.p 
@@ -71,7 +71,7 @@ const HudumaHome = () => {
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.3, duration: 0.8 }}
               >
-                Are you a young professional working in Uganda's public service or civic sectors? Are you committed to improving public service delivery and championing impactful leadership?
+                Share your contact details to stay informed, and follow our social media channels or reach out to us at <a href="mailto:communications@leoafricainstitute.org" className="text-[#2A6A76] hover:text-[#2A6A76]/80 transition-colors">communications@leoafricainstitute.org</a>
               </motion.p>
             </div>
 

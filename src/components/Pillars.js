@@ -1,16 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 
-const darkenColor = (color, amount) => {
-  const num = parseInt(color.replace("#", ""), 16);
-  const r = (num >> 16) - amount;
-  const g = ((num >> 8) & 0x00ff) - amount;
-  const b = (num & 0x0000ff) - amount;
-  return `#${(0x1000000 + (Math.max(0, r) << 16) + (Math.max(0, g) << 8) + Math.max(0, b))
-    .toString(16)
-    .slice(1)}`;
-};
-
 const colorPalette = {
   primary: "#F89131",
   secondary: "#01BDCC",
@@ -88,11 +78,8 @@ const Pillars = () => {
   }, [isHovering]); // Re-run effect when hover state changes
 
   return (
-    <section
-      className="py-20 relative"
-      style={{
-        backgroundColor: colorPalette.darkBackground,
-      }}
+    <div 
+      className="relative py-24 bg-gradient-to-br from-gray-50 via-white to-gray-50 overflow-hidden"
       onMouseEnter={() => setIsHovering(true)}
       onMouseLeave={() => setIsHovering(false)}
     >
@@ -191,7 +178,17 @@ const Pillars = () => {
           </div>
         </div>
       </div>
-    </section>
+
+      <div 
+        className="absolute inset-0"
+        role="presentation"
+        aria-hidden="true"
+      >
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_#0B9A9E08_1px,_transparent_1px)] bg-[length:24px_24px]"></div>
+        <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-[#0B9A9E]/5 rounded-full blur-[120px] -translate-y-1/2"></div>
+        <div className="absolute bottom-0 left-0 w-[800px] h-[800px] bg-[#F6911E]/5 rounded-full blur-[120px] translate-y-1/2"></div>
+      </div>
+    </div>
   );
 };
 

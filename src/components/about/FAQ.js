@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { FaChevronDown } from 'react-icons/fa';
 
 export const FAQ = () => {
   const [activeIndex, setActiveIndex] = useState(null);
@@ -38,7 +39,7 @@ export const FAQ = () => {
     },
     {
       question: "How can individuals or organizations support the LéO Africa Institute's mission?",
-      answer: "Individuals and organizations can support the institute’s mission by participating in our programs, offering resources, and collaborating on initiatives that align with the institute’s goals. Additionally, financial contributions and partnerships play a crucial role in sustaining and expanding the impact of the LéO Africa Institute’s leadership development programs."
+      answer: "Individuals and organizations can support the institute's mission by participating in our programs, offering resources, and collaborating on initiatives that align with the institute's goals. Additionally, financial contributions and partnerships play a crucial role in sustaining and expanding the impact of the LéO Africa Institute's leadership development programs."
     }
   ];
 
@@ -54,15 +55,15 @@ export const FAQ = () => {
           {faqs.map((faq, index) => (
             <div key={index} className="bg-white rounded-lg shadow-lg overflow-hidden">
               <button
-                className="w-full px-8 py-4 text-left focus:outline-none"
+                className="flex items-center justify-between w-full text-left"
                 onClick={() => toggleFAQ(index)}
+                aria-expanded={activeIndex === index}
+                aria-label={`Toggle ${faq.question}`}
               >
-                <div className="flex justify-between items-center">
-                  <h3 className="text-lg font-semibold text-gray-900">{faq.question}</h3>
-                  <span className="text-[#2bbecb] text-xl">
-                    {activeIndex === index ? '−' : '+'}
-                  </span>
-                </div>
+                <span className="text-lg font-medium">{faq.question}</span>
+                <span className={`transform transition-transform duration-200 ${activeIndex === index ? 'rotate-180' : ''}`}>
+                  <FaChevronDown />
+                </span>
               </button>
               <div className={`px-8 py-6 bg-gray-50 transition-all duration-200 ${activeIndex === index ? 'block' : 'hidden'}`}>
                 <p className="text-gray-600">{faq.answer}</p>

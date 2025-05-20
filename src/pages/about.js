@@ -2,7 +2,7 @@ import React from 'react';
 import Layout from '../components/Layout';
 import { StaticImage } from 'gatsby-plugin-image';
 import { motion } from 'framer-motion';
-import { FaHandshake, FaLightbulb, FaUsers, FaGlobe, FaStar, FaHeart, FaRocket, FaQuoteLeft, FaTwitter, FaFacebookF, FaLinkedinIn, FaInstagram, FaGraduationCap, FaBookReader, FaEnvelope } from 'react-icons/fa';
+import { FaLightbulb, FaUsers, FaGlobe, FaQuoteLeft, FaBookReader, FaGraduationCap } from 'react-icons/fa';
 import SubscriptionForm from '../components/SubscriptionForm';
 import { Link } from 'gatsby';
 import { SectionTitle, BodyLarge, SubsectionTitle, BodyText } from '../components/Typography';
