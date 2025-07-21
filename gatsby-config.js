@@ -31,12 +31,7 @@ module.exports = {
     `gatsby-plugin-sharp`,
     `gatsby-transformer-sharp`,
     {
-      resolve: 'gatsby-plugin-offline',
-      options: {
-        workboxConfig: {
-          globPatterns: ['**/*']
-        }
-      }
+      resolve: 'gatsby-plugin-remove-serviceworker',
     },
     // Move the rest of your plugins after manifest and offline plugins
     `gatsby-plugin-image`,

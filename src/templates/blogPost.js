@@ -3,6 +3,7 @@ import { graphql, Link } from "gatsby";
 import { RichText } from "prismic-reactjs";
 import { linkResolver } from "../utils/linkResolver";
 import Layout from "../components/Layout";
+import SEO from "../components/SEO";
 import { motion, useScroll, useSpring, AnimatePresence } from "framer-motion";
 import {
   FacebookShareButton,
@@ -219,6 +220,12 @@ const BlogPage = ({ data }) => {
 
   return (
     <Layout>
+      <SEO
+        title={blog.title}
+        description={blog.excerpt}
+        image={blog.featured_image.url}
+        article={true}
+      />
       {/* Image Lightbox */}
       <AnimatePresence>
         {lightboxImage && (

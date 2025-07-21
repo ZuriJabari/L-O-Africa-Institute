@@ -87,7 +87,7 @@ const MultimediaHome = ({ data = { allPrismicBlogPosts: { nodes: [] } } }) => {
                           alt={featuredItem.data?.title || 'Featured post'}
                           className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                         />
-                        <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent opacity-60"></div>
+                        <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent opacity-60" style={{ pointerEvents: 'none' }}></div>
                       </>
                     ) : (
                       <div className="relative h-full bg-gray-200 flex items-center justify-center">
