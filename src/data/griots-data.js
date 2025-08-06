@@ -182,6 +182,38 @@ export const griotsData = [
     "bio": "https://drive.google.com/open?id=1Dd5vmcu_-sUgl3jD9ePRm282f7kx3ts9",
     "headshot": "catherine-nankabirwa.jpg",
     "bgColor": "bg-gray-500"
+  },
+  {
+    "id": 24,
+    "name": "Fiona Mbabazi",
+    "email": "",
+    "bio": "",
+    "headshot": "fiona-mbabazi.png",
+    "bgColor": ""
+  },
+  {
+    "id": 25,
+    "name": "Christine Isimbi",
+    "email": "",
+    "bio": "",
+    "headshot": "Christine-Isimbi.jpg",
+    "bgColor": ""
+  },
+  {
+    "id": 26,
+    "name": "Dr. Kamatamu Amanda Mbonye",
+    "email": "",
+    "bio": "",
+    "headshot": "Kamatamu-Amanda-Mbonye.jpg",
+    "bgColor": ""
+  },
+  {
+    "id": 27,
+    "name": "Muhanguzi Derrick (Wonder J.R)",
+    "email": "",
+    "bio": "",
+    "headshot": "Muhanguzi-Derrick.jpeg",
+    "bgColor": ""
   }
 ];
 
@@ -257,11 +289,11 @@ export const griotsBios = {
   },
   "18": {
     name: "Kawooya Dickson",
-    bio: "Dickson Bakkabulindi Kawooya is the Acting General Counsel, Legal & Company Secretary, Ecobank Uganda. He is a seasoned legal and governance professional with over eight years of experience supporting boards, executive teams, and financial institutions across East Africa. Dickson leads legal strategy, corporate governance, and regulatory compliance in his position at Ecobank Uganda. His expertise spans board advisory, credit structuring, cross-border financing, and legal risk management. He has held key roles in both banking and private legal practice, advising on complex transactions and institutional reforms. He also serves as a Trustee of the Ecobank Staff Retirement Benefits Scheme and as a Non-Executive Director of the Little Winnie Foundation."
+    bio: "Dickson Bakkabulindi Kawooya is the Acting General Counsel, Legal & Company Secretary, Ecobank Uganda. He is a seasoned legal and governance professional with over eight years of experience supporting boards, executive teams, and financial institutions across East Africa.\n\nDickson leads legal strategy, corporate governance, and regulatory compliance in his position at Ecobank Uganda. His expertise spans board advisory, credit structuring, cross-border financing, and legal risk management.\n\nHe has held key roles in both banking and private legal practice, advising on complex transactions and institutional reforms. He also serves as a Trustee of the Ecobank Staff Retirement Benefits Scheme and as a Non-Executive Director of the Little Winnie Foundation."
   },
   "19": {
     name: "Gabriel Msabila Karsan",
-    bio: "Gabriel Msabila Karsan is a visionary Tanzanian digital policy strategist and civic-tech innovator dedicated to bridging digital divides through inclusive governance, youth empowerment, and ethical technology. As Secretariat Coordinator for the African Parliamentary Network on Internet Governance (APNIG) and Founder of the Emerging Youth Initiative (EYI), he engages policymakers and youth to shape equitable digital futures across Africa. Recognized as a 2024 World Internet Conference Global Young Leader, he champions collaboration, human-centered innovation, and multistakeholder diplomacy, amplifying African voices globally through forums like the IGF, RightsCon, and WSIS, ensuring technology serves humanity and fosters shared prosperity."
+    bio: "Gabriel Msabila Karsan is a visionary Tanzanian digital policy strategist and civic-tech innovator dedicated to bridging digital divides through inclusive governance, youth empowerment, and ethical technology.\n\nAs Secretariat Coordinator for the African Parliamentary Network on Internet Governance (APNIG) and Founder of the Emerging Youth Initiative (EYI), he engages policymakers and youth to shape equitable digital futures across Africa.\n\nRecognized as a 2024 World Internet Conference Global Young Leader, he champions collaboration, human-centered innovation, and multistakeholder diplomacy, amplifying African voices globally through forums like the IGF, RightsCon, and WSIS, ensuring technology serves humanity and fosters shared prosperity."
   },
   "20": {
     name: "Patience Naamanya",
@@ -269,14 +301,30 @@ export const griotsBios = {
   },
   "21": {
     name: "Ignatious Kirunga",
-    bio: "Ignatious serves as the Senior Manager, Commercial at American Tower, where he leads strategic initiatives that drive commercial performance, optimize revenue streams, financial modelling, and foster sustainable business growth. Previously, he built a strong foundation in financial markets, corporate and investment banking at Uganda's largest financial institution. His specialization includes foreign exchange, derivatives, money markets, investment advisory, and client/portfolio management. He is deeply committed to identifying high-impact investment opportunities that support sustainable development and innovation."
+    bio: "Ignatious serves as the Senior Manager, Commercial at American Tower, where he leads strategic initiatives that drive commercial performance, optimize revenue streams, financial modelling, and foster sustainable business growth.\n\nPreviously, he built a strong foundation in financial markets, corporate and investment banking at Uganda's largest financial institution. His specialization includes foreign exchange, derivatives, money markets, investment advisory, and client/portfolio management.\n\nHe is deeply committed to identifying high-impact investment opportunities that support sustainable development and innovation."
   },
   "22": {
     name: "Elizabeth Mwambulukutu",
-    bio: "Mwambulukutu is a development practitioner, communication strategist, and an award-winning photographer. She has worked with international NGOs to build and protect their reputations, forge valuable connections, and translate bold visions into tangible plans in thematic areas covering business environment reforms, agricultural sector coordination, public health, climate change, and WASH. She is committed to fostering her community's engagement in and ownership of Africa's transformation agenda, aspiring to create more opportunities for Africans both now and in the future."
+    bio: "Mwambulukutu is a development practitioner, communication strategist, and an award-winning photographer. She has worked with international NGOs to build and protect their reputations, forge valuable connections, and translate bold visions into tangible plans in thematic areas covering business environment reforms, agricultural sector coordination, public health, climate change, and WASH.\n\nShe is committed to fostering her community's engagement in and ownership of Africa's transformation agenda, aspiring to create more opportunities for Africans both now and in the future."
   },
   "23": {
     name: "Catherine Nankabirwa",
     bio: "Catherine is a Client Success and Project Management professional. Catherine applies systems thinking, behavioral design, and storytelling to support stakeholder engagement, compliance, and user adoption across sustainability projects and tech-driven programs.\n\nHer work has reached over 300 stakeholders through training, implementation, and cross-sector collaboration.\n\nBeyond her formal roles, Catherine leads and supports youth-centered initiatives, such as Journey to the Boardroom, Beauty Beyond Borders, and MindBody Play – projects that foster leadership, wellness, and community among students and young professionals."
+  },
+  "24": {
+    name: "Fiona Mbabazi",
+    bio: "Fiona Mbabazi is an accomplished communications specialist and journalist with over 15 years of experience in media and strategic communication. She is passionate about business news, youth affairs, human rights, climate change, and politics.\n\nCurrently serving as Communication Manager at RwandAir, Fiona brings her journalistic rigor and storytelling expertise to the aviation and corporate communications space. She was also named a YELP Fellow in 2017, recognizing her leadership and voice in the field.\n\nBeyond her professional role, Fiona is a sought-after corporate MC and moderator, known for her presence and poise at high-level events. In her free time, she enjoys reading and traveling, always eager to explore new perspectives and cultures."
+  },
+  "25": {
+    name: "Christine Isimbi",
+    bio: "Christine is a purpose-driven professional working at the intersection of economic development and systems transformation. In her role as Associate, Economic Transformation at TBI Rwanda, she supports government efforts to design and implement people-centered strategies that accelerate inclusive growth.\n\nChristine is passionate about building systems that work—whether in public policy, innovation, or community spaces. Her experience spans fintech, strategic advisory, and grassroots initiatives, all tied together by a commitment to real-world impact. She approaches challenges with curiosity, clarity, and a systems-thinking mindset—always looking beyond symptoms to understand root causes.\n\nShe is motivated by a simple but powerful idea: small, intentional actions, sustained over time, can lead to lasting and meaningful change."
+  },
+  "26": {
+    name: "Dr. Kamatamu Amanda Mbonye",
+    bio: "Amanda is a UK-trained cardiologist specializing in advanced cardiac imaging and cardiovascular disease prevention. She is currently undertaking advanced cardiology training at Barts Heart Centre in London.\n\nDr. Mbonye is also the founder and CEO of Revive Wellness Uganda, a holistic health and wellness centre in Kampala that integrates medical expertise with lifestyle-based interventions to tackle non-communicable diseases such as heart disease. Her clinical and leadership work bridges the gap between cutting-edge medicine and community-driven health solutions across East Africa.\n\nShe also serves as President of the British Ugandan Doctors Association (BUDA), where she advocates for diaspora engagement in strengthening health systems back home. Passionate about prevention, education, and sustainability, her work is redefining what it means to be a clinician-entrepreneur in global health."
+  },
+  "27": {
+    name: "Muhanguzi Derrick (Wonder J.R)",
+    bio: "Muhanguzi is a multidisciplinary artist, actor, mental wellness advocate, podcaster, and public speaker.\n\nHe is the visionary founder of Arts4Hearts, a platform dedicated to inspiring purpose-driven creativity and restoring the transformative power of the arts in culture and community.\n\nWith over 12 years of experience in the creative industry, Derrick has used his voice, talent, and platform to uplift fellow creatives and champion mental well-being through storytelling, performance, and advocacy. His mission is rooted in the belief that creativity is God's original design for humanity — a divine language through which people discover identity, healing, and hope."
   }
 };

@@ -30,6 +30,10 @@ const images = {
   "ignatious-kirunga.jpg": require("../assets/images/griots/ignatious-kirunga.jpg"),
   "elizabeth-mwambulukutu.jpg": require("../assets/images/griots/elizabeth-mwambulukutu.jpg"),
   "catherine-nankabirwa.jpg": require("../assets/images/griots/catherine-nankabirwa.jpg"),
+  "fiona-mbabazi.png": require("../assets/images/griots/fiona-mbabazi.png"),
+  "Christine-Isimbi.jpg": require("../assets/images/griots/Christine-Isimbi.jpg"),
+  "Kamatamu-Amanda-Mbonye.jpg": require("../assets/images/griots/Kamatamu-Amanda-Mbonye.jpg"),
+  "Muhanguzi-Derrick.jpeg": require("../assets/images/griots/Muhanguzi-Derrick.jpeg"),
 };
 
 const GriotsCohort2025 = () => {
@@ -261,10 +265,36 @@ const GriotsCohort2025 = () => {
                         <div className="w-1 h-8 bg-gradient-to-b from-teal-500 to-teal-600 rounded-full"></div>
                         Biography
                       </h4>
-                      <div className="prose prose-lg max-w-none">
-                        <p className="text-gray-700 leading-relaxed text-lg">
-                          {griotsBios[selectedGriot.id]?.bio || "Bio information coming soon..."}
-                        </p>
+                      <div className="max-w-none">
+                        {griotsBios[selectedGriot.id]?.bio ? (
+                          griotsBios[selectedGriot.id].bio.split('\n\n').map((paragraph, index) => (
+                            <p 
+                              key={index} 
+                              className="font-sans text-gray-700 text-body leading-relaxed mb-6 text-justify tracking-tight"
+                              style={{ 
+                                textAlign: 'justify', 
+                                textJustify: 'inter-word',
+                                fontFamily: 'Inter, system-ui, sans-serif',
+                                fontSize: '1.125rem',
+                                lineHeight: '1.6',
+                                letterSpacing: '-0.01em'
+                              }}
+                            >
+                              {paragraph.trim()}
+                            </p>
+                          ))
+                        ) : (
+                          <p className="font-sans text-gray-700 text-body leading-relaxed text-justify tracking-tight"
+                             style={{ 
+                               fontFamily: 'Inter, system-ui, sans-serif',
+                               fontSize: '1.125rem',
+                               lineHeight: '1.6',
+                               letterSpacing: '-0.01em'
+                             }}
+                          >
+                            Bio information coming soon...
+                          </p>
+                        )}
                       </div>
                     </div>
                   </div>
