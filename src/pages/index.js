@@ -14,6 +14,7 @@ import SubscriptionForm from "../components/SubscriptionForm";
 import Pillars from "../components/Pillars";
 import FoundersBlog from "../components/FoundersBlog";
 import TeamMemberCard from '../components/TeamMemberCard';
+import GriotsHomepageBlock from '../components/GriotsHomepageBlock';
 import { Link } from "gatsby";
 
 
@@ -76,6 +77,9 @@ const HomePage = ({ data = { allPrismicBlogPosts: { nodes: [] } } }) => {
       <div className="prefooter-gray"></div>
       
       <MultimediaHome data={data} />
+      
+      {/* Griots Cohort 2025 Feature Block */}
+      <GriotsHomepageBlock />
       <UpcomingEvents />
       {/* <OurPeople 
         boardTitle="The Governing Board of Directors"
