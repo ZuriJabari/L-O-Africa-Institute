@@ -2,6 +2,8 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'gatsby';
 import { FiArrowRight, FiUsers, FiStar, FiPlay } from 'react-icons/fi';
 import heroArt from '../assets/images/hero-art.png';
+// African print texture - update this path when you add your texture image
+// import africanPrintTexture from '../assets/images/african-print-texture.png';
 
 const GriotsHomepageBlock = () => {
   const [isVisible, setIsVisible] = useState(false);

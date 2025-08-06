@@ -20,8 +20,10 @@ import { submitFormToFirebase, FORM_TYPES } from '../utils/forms';
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeMenu, setActiveMenu] = useState(null);
+  const [activeMobileMenu, setActiveMobileMenu] = useState(null);
   const [searchQuery, setSearchQuery] = useState("");
   const [isSearchOpen, setIsSearchOpen] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
   const navRef = useRef(null);
 
   // Replace isHovering state with isHoveringRef ref
@@ -118,6 +120,49 @@ const Navbar = () => {
       transform: translateY(-2px);
       box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
     }
+
+    /* Mobile-specific dropdown styles */
+    @media (max-width: 1023px) {
+      .dropdown-container {
+        position: static !important;
+        max-height: 70vh;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+        border-radius: 0 0 8px 8px;
+        margin-top: 0;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+      }
+      
+      .dropdown-container .grid {
+        display: block !important;
+        gap: 1rem;
+      }
+      
+      .dropdown-container .grid > div {
+        margin-bottom: 1.5rem;
+        padding-bottom: 1.5rem;
+        border-bottom: 1px solid #e5e7eb;
+      }
+      
+      .dropdown-container .grid > div:last-child {
+        border-bottom: none;
+        margin-bottom: 0;
+        padding-bottom: 0;
+      }
+      
+      /* Touch-friendly links on mobile */
+      .dropdown-container a {
+        padding: 12px 0;
+        display: block;
+        font-size: 16px;
+        line-height: 1.5;
+      }
+      
+      /* Prevent zoom on input focus on mobile */
+      .dropdown-container input {
+        font-size: 16px;
+      }
+    }
   `;
 
   const handleSearchToggle = () => {
@@ -176,8 +221,31 @@ const Navbar = () => {
     }
   };
 
-  // Simplified hover management
+  // Mobile detection
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 1024); // lg breakpoint
+    };
+    
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
+  // Mobile menu click handler
+  const handleMobileMenuClick = (menu) => {
+    if (activeMobileMenu === menu) {
+      setActiveMobileMenu(null); // Close if already open
+    } else {
+      setActiveMobileMenu(menu); // Open the clicked menu
+    }
+  };
+
+  // Simplified hover management for desktop
   const handleMenuEnter = (menu) => {
+    if (isMobile) return; // Skip hover on mobile
+    
     if (hoverTimeoutRef.current) {
       clearTimeout(hoverTimeoutRef.current);
       hoverTimeoutRef.current = null;
@@ -187,6 +255,8 @@ const Navbar = () => {
   };
 
   const handleMenuLeave = () => {
+    if (isMobile) return; // Skip hover on mobile
+    
     isHoveringRef.current = false;
     
     // Clear any existing timeout
@@ -242,16 +312,34 @@ const Navbar = () => {
   };
 
   useEffect(() => {
-    const handleScroll = () => {
-      if (activeMenu) {
-        setActiveMenu(null);
+    const handleScroll = (event) => {
+      // Only close dropdown if scrolling the main page, not dropdown content
+      // Check if the scroll event is coming from the dropdown container
+      const dropdownContainer = document.querySelector('.dropdown-container');
+      const isScrollingDropdown = dropdownContainer && dropdownContainer.contains(event.target);
+      
+      // On mobile, be more lenient with dropdown scrolling
+      const isMobile = window.innerWidth < 1024; // lg breakpoint
+      
+      if (activeMenu && !isScrollingDropdown) {
+        // On mobile, add a small delay to prevent accidental closure
+        if (isMobile) {
+          setTimeout(() => {
+            if (activeMenu && !isHoveringRef.current) {
+              setActiveMenu(null);
+            }
+          }, 100);
+        } else {
+          setActiveMenu(null);
+        }
       }
     };
 
-    window.addEventListener('scroll', handleScroll);
+    // Use capture phase to get scroll events from all elements
+    window.addEventListener('scroll', handleScroll, true);
 
     return () => {
-      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('scroll', handleScroll, true);
     };
   }, [activeMenu]);
 
@@ -389,9 +477,20 @@ const Navbar = () => {
                       className="relative menu-container"
                       onMouseEnter={() => handleMenuEnter(menu)}
                       onMouseLeave={handleMenuLeave}>
-                    <button className="flex items-center justify-between w-full py-3 px-4 text-xl font-bold text-gray-900 md:w-auto hover:text-[#0B9A9E] md:p-0 transition duration-300">
+                    <button 
+                      className="flex items-center justify-between w-full py-3 px-4 text-xl font-bold text-gray-900 md:w-auto hover:text-[#0B9A9E] md:p-0 transition duration-300"
+                      onClick={() => isMobile ? handleMobileMenuClick(menu) : null}
+                    >
                       {menu}
-                      <svg className="w-3 h-3 ms-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                      <svg 
+                        className={`w-3 h-3 ms-3 transition-transform duration-200 ${
+                          isMobile && activeMobileMenu === menu ? 'rotate-180' : ''
+                        }`} 
+                        aria-hidden="true" 
+                        xmlns="http://www.w3.org/2000/svg" 
+                        fill="none" 
+                        viewBox="0 0 10 6"
+                      >
                         <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="m1 1 4 4 4-4"/>
                       </svg>
                     </button>
@@ -403,9 +502,9 @@ const Navbar = () => {
         </div>
 
         {/* News & Media Dropdown */}
-{activeMenu === 'News & Media' && (
+{((isMobile && activeMobileMenu === 'News & Media') || (!isMobile && activeMenu === 'News & Media')) && (
   <div 
-    className="mt-1 bg-white border-gray-200 shadow-sm border-y transform transition-all duration-200 ease-out"
+    className="dropdown-container mt-1 bg-white border-gray-200 shadow-sm border-y transform transition-all duration-200 ease-out"
     style={dropdownAnimation.enter}
     onMouseEnter={handleDropdownEnter}
     onMouseLeave={handleDropdownLeave}>
@@ -501,9 +600,9 @@ const Navbar = () => {
 )}
 
        {/* About Us Mega Menu */}
-      {activeMenu === 'About Us' && (
+      {((isMobile && activeMobileMenu === 'About Us') || (!isMobile && activeMenu === 'About Us')) && (
         <div 
-          className="mt-1 bg-white border-gray-200 shadow-sm border-y transform transition-all duration-200 ease-out"
+          className="dropdown-container mt-1 bg-white border-gray-200 shadow-sm border-y transform transition-all duration-200 ease-out"
           style={dropdownAnimation.enter}
           onMouseEnter={handleDropdownEnter}
           onMouseLeave={handleDropdownLeave}>
@@ -621,8 +720,8 @@ const Navbar = () => {
       )}
 
        {/* Initiatives Dropdown */}
-{activeMenu === 'Initiatives' && (
-  <div className="mt-1 bg-white border-t border-gray-200 shadow-lg"
+{((isMobile && activeMobileMenu === 'Initiatives') || (!isMobile && activeMenu === 'Initiatives')) && (
+  <div className="dropdown-container mt-1 bg-white border-t border-gray-200 shadow-lg"
     onMouseEnter={handleDropdownEnter}
     onMouseLeave={handleDropdownLeave}>
     <div className="max-w-screen-xl px-6 py-10 mx-auto">
@@ -750,8 +849,8 @@ const Navbar = () => {
 )}
 
        {/* Fellows & Champions Dropdown */}
-      {activeMenu === 'Fellows & Champions' && (
-        <div className="mt-1 bg-white border-gray-200 shadow-sm border-y"
+      {((isMobile && activeMobileMenu === 'Fellows & Champions') || (!isMobile && activeMenu === 'Fellows & Champions')) && (
+        <div className="dropdown-container mt-1 bg-white border-gray-200 shadow-sm border-y"
           onMouseEnter={handleDropdownEnter}
           onMouseLeave={handleDropdownLeave}>
           <div className="grid max-w-screen-xl px-4 py-5 mx-auto text-sm md:grid-cols-3 md:px-6 gap-6">
@@ -913,8 +1012,8 @@ const Navbar = () => {
       )}
 
       {/* Events & Gatherings Mega Menu */}
-      {activeMenu === 'Events & Gatherings' && (
-        <div className="mt-1 bg-white border-gray-200 shadow-sm border-y"
+      {((isMobile && activeMobileMenu === 'Events & Gatherings') || (!isMobile && activeMenu === 'Events & Gatherings')) && (
+        <div className="dropdown-container mt-1 bg-white border-gray-200 shadow-sm border-y"
           onMouseEnter={handleDropdownEnter}
           onMouseLeave={handleDropdownLeave}>
           <div className="grid max-w-screen-xl px-4 py-5 mx-auto text-sm md:grid-cols-3 md:px-6 gap-6">
