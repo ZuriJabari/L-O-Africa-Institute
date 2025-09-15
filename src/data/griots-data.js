@@ -218,7 +218,7 @@ const griotsData = [
 ];
 
 // Bio content extracted from Google Drive documents
-export const griotsBios = {
+const griotsBios = {
   "1": {
     name: "Dr Yacoub Hachine",
     bio: "Yacoub is a medical scientist, health psychologist, and digital health expert. He co-founded Vigilant Living, a social enterprise that promotes health and wellbeing through digital health coaching in Uganda and other parts of Africa to fight Non-Communicable Diseases and promote wellbeing. He is a USA, UK, Europe, and internationally certified health and wellbeing coach. Yacoub has henceforth established the African Health Coaching Association to promote professional, evidence-based health and wellbeing coaching in Africa."
