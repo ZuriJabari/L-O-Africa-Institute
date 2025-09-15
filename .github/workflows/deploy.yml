@@ -35,7 +35,32 @@ jobs:
       env:
         NODE_ENV: production
         
-    - name: 📂 Deploy to cPanel via FTP
+    - name: 📂 Deploy to cPanel via FTP (with retry)
+      uses: SamKirkland/FTP-Deploy-Action@v4.3.6
+      with:
+        server: ${{ secrets.FTP_SERVER }}
+        username: ${{ secrets.FTP_USERNAME }}
+        password: ${{ secrets.FTP_PASSWORD }}
+        local-dir: ./public/
+        server-dir: ./public_html/
+        port: 21
+        protocol: ftps
+        exclude: |
+          **/.git*
+          **/.git*/**
+          **/node_modules/**
+          **/.DS_Store
+          **/Thumbs.db
+        dangerous-clean-slate: false
+        dry-run: false
+        log-level: verbose
+        timeout: 600000
+        security: loose
+      continue-on-error: true
+      id: ftp_deploy
+      
+    - name: 🔄 Retry FTP deployment if failed
+      if: steps.ftp_deploy.outcome == 'failure'
       uses: SamKirkland/FTP-Deploy-Action@v4.3.6
       with:
         server: ${{ secrets.FTP_SERVER }}
@@ -53,5 +78,6 @@ jobs:
           **/Thumbs.db
         dangerous-clean-slate: false
         dry-run: false
-        log-level: verbose
-        timeout: 60000
+        log-level: minimal
+        timeout: 900000
+        security: strict
