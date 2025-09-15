@@ -1,5 +1,5 @@
 // src/data/pillarsData.js
-export const pillarsData = [
+const pillarsData = [
   {
     title: "Empowerment",
     subtitle: "Empowering the Next Generation",
@@ -26,3 +26,9 @@ export const pillarsData = [
     description: "Promoting entrepreneurship and innovation for sustainable economic progress across the continent."
   }
 ];
+
+// ES6 export for frontend components
+export { pillarsData };
+
+// CommonJS export for gatsby-node.js
+module.exports = { pillarsData };

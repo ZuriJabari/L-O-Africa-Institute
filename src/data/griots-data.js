@@ -1,4 +1,4 @@
-export const griotsData = [
+const griotsData = [
   {
     "id": 1,
     "name": "Dr Yacoub Hachine ",
@@ -329,4 +329,8 @@ export const griotsBios = {
   }
 };
 
-export { griotsBios };
+// ES6 exports for frontend components
+export { griotsData, griotsBios };
+
+// CommonJS exports for gatsby-node.js
+module.exports = { griotsData, griotsBios };

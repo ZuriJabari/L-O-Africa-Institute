@@ -1,5 +1,5 @@
 // Fellows data with simplified image paths
-export const fellowsData = {
+const fellowsData = {
   '2024': [
     {
       name: "Aristide Kambale",
@@ -1385,4 +1385,10 @@ export const fellowsData = {
       }
     }
   ]
-}; 
+};
+
+// ES6 export for frontend components
+export { fellowsData };
+
+// CommonJS export for gatsby-node.js
+module.exports = { fellowsData }; 
