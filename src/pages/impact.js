@@ -18,7 +18,7 @@ const Impact = () => {
           textAlign: 'center'
         }}>
           <StaticImage
-            src="../images/impact-hero.jpg"
+            src="../assets/images/impact-hero.jpg"
             alt="Impact Hero"
             placeholder="blurred"
             layout="fullWidth"

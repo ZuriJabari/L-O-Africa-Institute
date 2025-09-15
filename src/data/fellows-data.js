@@ -1,5 +1,5 @@
 // Fellows data with simplified image paths
-const fellowsData = {
+export const fellowsData = {
   '2024': [
     {
       name: "Aristide Kambale",
@@ -1385,6 +1385,4 @@ const fellowsData = {
       }
     }
   ]
-};
-
-module.exports = { fellowsData }; 
+}; 

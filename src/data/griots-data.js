@@ -1,4 +1,4 @@
-const griotsData = [
+export const griotsData = [
   {
     "id": 1,
     "name": "Dr Yacoub Hachine ",
@@ -329,4 +329,4 @@ export const griotsBios = {
   }
 };
 
-module.exports = { griotsData };
+export { griotsBios };

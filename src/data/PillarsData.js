@@ -1,5 +1,5 @@
 // src/data/pillarsData.js
-const pillarsData = [
+export const pillarsData = [
   {
     title: "Empowerment",
     subtitle: "Empowering the Next Generation",
@@ -26,5 +26,3 @@ const pillarsData = [
     description: "Promoting entrepreneurship and innovation for sustainable economic progress across the continent."
   }
 ];
-
-module.exports = { pillarsData };
