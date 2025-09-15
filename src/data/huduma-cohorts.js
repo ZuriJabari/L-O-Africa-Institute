@@ -64,7 +64,7 @@ import EdgarMwine from '../assets/images/champions/Edgar-Mwine.jpg';
 import ClareNakazibwe from '../assets/images/champions/Clare-Nakazibwe.jpg';
 import ZephaniaKato from '../assets/images/champions/Zephania-Kato.jpg';
 
-export const cohortData = {
+const cohortData = {
   '2024': [
     {
       name: "Alesi Majorine",
@@ -445,4 +445,6 @@ export const cohortData = {
       image: ZephaniaKato
     }
   ]
-}; 
+};
+
+module.exports = { cohortData }; 

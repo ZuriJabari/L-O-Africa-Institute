@@ -1,4 +1,4 @@
-export const griotsData = [
+const griotsData = [
   {
     "id": 1,
     "name": "Dr Yacoub Hachine ",
@@ -328,3 +328,5 @@ export const griotsBios = {
     bio: "Muhanguzi is a multidisciplinary artist, actor, mental wellness advocate, podcaster, and public speaker.\n\nHe is the visionary founder of Arts4Hearts, a platform dedicated to inspiring purpose-driven creativity and restoring the transformative power of the arts in culture and community.\n\nWith over 12 years of experience in the creative industry, Derrick has used his voice, talent, and platform to uplift fellow creatives and champion mental well-being through storytelling, performance, and advocacy. His mission is rooted in the belief that creativity is God's original design for humanity — a divine language through which people discover identity, healing, and hope."
   }
 };
+
+module.exports = { griotsData };
