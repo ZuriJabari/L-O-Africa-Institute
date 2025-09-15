@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import Layout from "../components/Layout";
 import { Helmet } from "react-helmet";
-const { griotsData, griotsBios } = require("../data/griots-data");
 import heroArt from "../assets/images/hero-art.png";
 import "../styles/griots-animations.css";
+const { griotsData, griotsBios } = require("../data/griots-data");
 
 // Static mapping of headshot filenames to imported images
 const images = {

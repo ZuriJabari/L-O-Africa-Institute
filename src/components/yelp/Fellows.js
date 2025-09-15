@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { StaticImage } from 'gatsby-plugin-image';
 import { Link } from 'gatsby';
-const { fellowsData } = require('../../data/fellows-data');
 import YelpLogo from '../../assets/images/YELP-Logo.svg';
 import YelpHero from '../../assets/images/huduma-hero.jpg';
+const { fellowsData } = require('../../data/fellows-data');
 
 // Helper function to get image path
 const getImagePath = (imageName) => {
