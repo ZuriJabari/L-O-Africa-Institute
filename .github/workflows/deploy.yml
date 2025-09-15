@@ -43,6 +43,8 @@ jobs:
         password: ${{ secrets.FTP_PASSWORD }}
         local-dir: ./public/
         server-dir: ./public_html/
+        port: 21
+        protocol: ftp
         exclude: |
           **/.git*
           **/.git*/**
@@ -51,4 +53,5 @@ jobs:
           **/Thumbs.db
         dangerous-clean-slate: false
         dry-run: false
-        log-level: standard
+        log-level: verbose
+        timeout: 60000
