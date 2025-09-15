@@ -1,16 +1,8 @@
-name: 🚀 Deploy LéO Africa Institute to cPanel
+name: 🚀 Deploy LéO Africa Institute to cPanel (Legacy)
 
 on:
-  # Trigger on push to main branch
-  push:
-    branches: [ main ]
-  
-  # Allow manual trigger
+  # Manual trigger only (disabled automatic triggers)
   workflow_dispatch:
-  
-  # Webhook trigger from external sources (like Prismic)
-  repository_dispatch:
-    types: [prismic-update]
 
 jobs:
   deploy:
