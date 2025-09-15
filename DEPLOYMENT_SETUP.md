@@ -100,6 +100,11 @@ Consider migrating to platforms with built-in webhook support:
   1. **SFTP** (most secure, requires SSH access)
   2. **FTP Active Mode** (bypasses passive mode issues)
   3. **LFTP** (command-line tool with advanced options)
+- **Expected FTP Failures**: cPanel hosting restricts FTP connections to specific IP ranges. GitHub Actions may fail with errors like:
+  ```
+  Upload error: 500 I won't open a connection to 10.1.0.238 (only to 135.237.130.183)
+  ```
+  This is normal and expected - GitHub Pages deployment will still succeed.
 - If all methods fail, a deployment package is created as an artifact
 
 **Manual Deployment Fallback**
