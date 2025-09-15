@@ -447,8 +447,5 @@ const cohortData = {
   ]
 };
 
-// ES6 export for frontend components
-export { cohortData };
-
-// CommonJS export for gatsby-node.js
+// CommonJS export for gatsby-node.js and frontend compatibility
 module.exports = { cohortData };

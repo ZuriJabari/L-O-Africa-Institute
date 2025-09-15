@@ -329,8 +329,5 @@ export const griotsBios = {
   }
 };
 
-// ES6 exports for frontend components
-export { griotsData, griotsBios };
-
-// CommonJS exports for gatsby-node.js
+// CommonJS exports for gatsby-node.js and frontend compatibility
 module.exports = { griotsData, griotsBios };

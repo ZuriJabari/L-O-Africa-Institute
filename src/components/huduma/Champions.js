@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import HeroImage from '../../assets/images/huduma-hero.jpg';
-import { championsData } from '../../data/champions-data';
+const { championsData } = require('../../data/champions-data');
 
 const Champions = () => {
   const [activeTab, setActiveTab] = useState('2024');

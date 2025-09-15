@@ -27,8 +27,5 @@ const pillarsData = [
   }
 ];
 
-// ES6 export for frontend components
-export { pillarsData };
-
-// CommonJS export for gatsby-node.js
+// CommonJS export for gatsby-node.js and frontend compatibility
 module.exports = { pillarsData };

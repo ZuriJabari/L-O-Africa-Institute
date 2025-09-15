@@ -1387,8 +1387,5 @@ const fellowsData = {
   ]
 };
 
-// ES6 export for frontend components
-export { fellowsData };
-
-// CommonJS export for gatsby-node.js
+// CommonJS export for gatsby-node.js and frontend compatibility
 module.exports = { fellowsData }; 

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Layout from "../components/Layout";
 import { Helmet } from "react-helmet";
-import { griotsData, griotsBios } from "../data/griots-data";
+const { griotsData, griotsBios } = require("../data/griots-data");
 import heroArt from "../assets/images/hero-art.png";
 import "../styles/griots-animations.css";
 
