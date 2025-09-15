@@ -80,6 +80,7 @@ const HomePage = ({ data = { allPrismicBlogPosts: { nodes: [] } } }) => {
       
       {/* Griots Cohort 2025 Feature Block */}
       <GriotsHomepageBlock />
+      
       <UpcomingEvents />
       {/* <OurPeople 
         boardTitle="The Governing Board of Directors"

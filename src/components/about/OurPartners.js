@@ -2,7 +2,7 @@ import React from 'react';
 import KASLOGO from '../../assets/images/partners/KAS.png';
 import ABMAKSLOGO from '../../assets/images/partners/ABMAKS.jpg';
 import SSFLOGO from '../../assets/images/partners/SFF.svg';
-import RKALOGO from '../../assets/images/partners/RKA.png';
+import RKALOGO from '../../assets/images/partners/rka.png';
 import { FiArrowRight } from 'react-icons/fi';
 
 export const OurPartners = () => {

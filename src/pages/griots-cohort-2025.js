@@ -91,7 +91,6 @@ const GriotsCohort2025 = () => {
         <title>Meet the Griots - Class of 2025 | LÉO Africa Institute</title>
         <meta name="description" content="Meet Africa's next generation of storytellers and leaders - the Griots Cohort 2025. Discover the inspiring individuals shaping Africa's future through thought leadership and action." />
       </Helmet>
-
       {/* Hero Section */}
       <section
         className="relative w-full min-h-[420px] flex items-center justify-center"
@@ -115,7 +114,6 @@ const GriotsCohort2025 = () => {
           </div>
         </div>
       </section>
-
       {/* Introduction Section */}
       <section className="py-16 bg-gray-50">
         <div className="container mx-auto px-6 lg:px-20">
@@ -317,6 +315,7 @@ const GriotsCohort2025 = () => {
           </div>
         </div>
       )}
+      <div className="prefooter-griot"></div>
 
       {/* Call to Action Section */}
       <section className="py-16 bg-gradient-to-r from-teal-600 to-teal-700">

@@ -3,7 +3,7 @@ import Navbar from './Navbar';
 import Footer from './Footer';
 import { FiArrowDown, FiArrowUp } from 'react-icons/fi';
 import CookieConsent from '../components/CookieConsent';
-import '../Styles/CookieConsent.css'; 
+import '../styles/CookieConsent.css'; 
 
 const Layout = ({ children }) => {
   const [isBottom, setIsBottom] = useState(false);

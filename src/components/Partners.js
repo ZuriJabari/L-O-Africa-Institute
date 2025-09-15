@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import kasLogo from '../assets/images/partners/KAS.png';
 import SegalLogo from '../assets/images/sff-logo-alt-box.png';
 import AbmakLogo from '../assets/images/partners/ABMAKS.jpg';
-import RkaLogo from '../assets/images/partners/RKA.png';
+import RkaLogo from '../assets/images/partners/rka.png';
 
 const Partners = () => {
   const partners = [

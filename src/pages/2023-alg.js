@@ -1,6 +1,6 @@
 import React from 'react';
 import Layout from '../components/Layout';
-import '../Styles/global.css';
+import '../styles/global.css';
 
 export default function ALG2023() {
   return (

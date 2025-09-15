@@ -1,5 +1,5 @@
 import React from 'react'
-import '../Styles/global.css'; // Import global CSS here
+import '../styles/global.css'; // Import global CSS here
 
 import Layout from '../components/Layout'
 

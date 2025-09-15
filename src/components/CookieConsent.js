@@ -1,6 +1,6 @@
 // src/components/CookieConsent.js
 import React, { useState, useEffect } from 'react';
-import '../Styles/CookieConsent.css';
+import '../styles/CookieConsent.css';
 import { FaTimes } from 'react-icons/fa'; // Importing a close icon from react-icons
 
 const CookieConsent = () => {

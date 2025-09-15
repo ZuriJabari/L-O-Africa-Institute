@@ -2,7 +2,7 @@ import React from "react";
 import Layout from "../components/Layout";
 import algLogo from "../assets/images/alg-color.svg"; // Replace with actual logo image
 import yelpLogo from "../assets/images/YELP-Logo.svg";
-import reviewLogo from "../assets/images/LAR-Logo.png";
+import reviewLogo from "../assets/images/LAR-logo.png";
 import hudumaLogo from "../assets/images/huduma-logo.svg";
 
 const Initiatives = () => {
