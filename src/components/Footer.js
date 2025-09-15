@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'gatsby';
 import { FaTwitter, FaFacebookF, FaInstagram, FaLinkedinIn, FaEnvelope, FaYoutube, FaFlickr } from 'react-icons/fa';
 import NewsletterSubscription from './NewsletterSubscription';
 import { StaticImage } from "gatsby-plugin-image";
@@ -47,9 +48,9 @@ const Footer = () => {
             <h3 className="font-playfair text-lg font-semibold mb-4 text-white">Engage with Us</h3>
             <ul className="space-y-2">
               <li><a href="#" className="font-inter text-sm hover:text-white/80 transition-colors">Sign In</a></li>
-              <li><a href="/partner-with-us" className="font-inter text-sm hover:text-white/80 transition-colors">Partner with Us</a></li>
-              <li><a href="/donate" className="font-inter text-sm hover:text-white/80 transition-colors">Donate to the Institute</a></li>
-              <li><a href="/contact" className="font-inter text-sm hover:text-white/80 transition-colors">Contact Us</a></li>
+              <li><Link to="/partner-with-us" className="font-inter text-sm hover:text-white/80 transition-colors">Partner with Us</Link></li>
+              <li><Link to="/donate" className="font-inter text-sm hover:text-white/80 transition-colors">Donate to the Institute</Link></li>
+              <li><Link to="/contact" className="font-inter text-sm hover:text-white/80 transition-colors">Contact Us</Link></li>
             </ul>
           </div>
 

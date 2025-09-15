@@ -1,14 +1,13 @@
 import React, { useState, useEffect,useRef } from 'react';
 import { FiSearch, FiArrowRight, FiMenu, FiX } from 'react-icons/fi';
 import { FaFacebookF, FaTwitter, FaLinkedinIn, FaInstagram, FaStar } from 'react-icons/fa';
-import { navigate } from 'gatsby';
+import { navigate, Link } from 'gatsby';
 import LOGO from '../assets/images/Leo-logo-primary.png';
 import ALGLogo from '../assets/images/logo-color.svg';
 import HudumaLogo from '../assets/images/huduma-logo.svg';
 import ReviewLogo from '../assets/images/leo-africa-review-logo.png';
 import YelpLogo from '../assets/images/YELP-Logo.svg';
 import { useStaticQuery, graphql } from "gatsby";
-import { Link } from 'gatsby';
 import ALGICON from '../assets/images/alg-icon.png';
 import LucyPhoto from '../assets/images/Lucy.png';
 import CarlPhoto from '../assets/images/carl.jpg';
@@ -421,12 +420,12 @@ const Navbar = () => {
             <button onClick={handleSearchToggle} className="nav-link">
               <FiSearch className="w-6 h-6" />
             </button>
-            <a href="/partner-with-us/" className="nav-link">
+            <Link to="/partner-with-us/" className="nav-link">
               Partner with Us
-            </a>
-            <a href="/contact" className="nav-link">
+            </Link>
+            <Link to="/contact" className="nav-link">
               Contact Us
-            </a>
+            </Link>
           </div>
         </div>
 
@@ -623,9 +622,9 @@ const Navbar = () => {
             <h2 className="text-xs uppercase font-normal text-gray-600 pb-1 mb-5" style={columnTitleStyle}>
             Connect
               </h2>
-              <li><a href="/contact" className="text-[#3b3b3b] hover:underline hover:text-[#2bbecb] text-[15px] leading-relaxed">Contact Us</a></li>
-              <li><a href="/donate/" className="text-[#3b3b3b] hover:underline hover:text-[#2bbecb] text-[15px] leading-relaxed">Donate to the Institute</a></li>
-              <li><a href="/partner-with-us/" className="text-[#3b3b3b] hover:underline hover:text-[#2bbecb] text-[15px] leading-relaxed">Partner with Us</a></li>
+              <li><Link to="/contact" className="text-[#3b3b3b] hover:underline hover:text-[#2bbecb] text-[15px] leading-relaxed">Contact Us</Link></li>
+              <li><Link to="/donate/" className="text-[#3b3b3b] hover:underline hover:text-[#2bbecb] text-[15px] leading-relaxed">Donate to the Institute</Link></li>
+              <li><Link to="/partner-with-us/" className="text-[#3b3b3b] hover:underline hover:text-[#2bbecb] text-[15px] leading-relaxed">Partner with Us</Link></li>
               
               {/* Social Media Icons */}
               <div className="flex space-x-4 mt-4">

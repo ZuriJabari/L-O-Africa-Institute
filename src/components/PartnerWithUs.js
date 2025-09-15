@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { FiArrowRight } from 'react-icons/fi';
+import { Link } from 'gatsby';
 
 const PartnerWithUs = () => {
   return (
@@ -49,20 +50,20 @@ const PartnerWithUs = () => {
                 transition={{ duration: 0.5, delay: 0.2 }}
                 className="flex flex-col sm:flex-row gap-4 justify-center"
               >
-                <a 
-                  href="/partner-with-us/" 
+                <Link 
+                  to="/partner-with-us/" 
                   className="inline-flex items-center justify-center px-8 py-4 bg-white text-[#0B9A9E] rounded-lg font-bold hover:bg-gray-100 transition-colors shadow-lg hover:shadow-xl"
                 >
                   Become a Partner
-                </a>
+                </Link>
                 
-                <a 
-                  href="/donate/" 
+                <Link 
+                  to="/donate/" 
                   className="inline-flex items-center justify-center px-8 py-4 bg-[#F6911E] text-white rounded-lg font-bold hover:bg-[#F6911E]/90 transition-colors shadow-lg hover:shadow-xl"
                 >
                   Make a Donation 
                   <FiArrowRight className="ml-2 transition-transform group-hover:translate-x-1" />
-                </a>
+                </Link>
               </motion.div>
             </div>
           </div>
