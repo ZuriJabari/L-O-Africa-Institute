@@ -35,49 +35,60 @@ jobs:
       env:
         NODE_ENV: production
         
-    - name: 📂 Deploy to cPanel via FTP (with retry)
-      uses: SamKirkland/FTP-Deploy-Action@v4.3.6
-      with:
-        server: ${{ secrets.FTP_SERVER }}
-        username: ${{ secrets.FTP_USERNAME }}
-        password: ${{ secrets.FTP_PASSWORD }}
-        local-dir: ./public/
-        server-dir: ./public_html/
-        port: 21
-        protocol: ftps
-        exclude: |
-          **/.git*
-          **/.git*/**
-          **/node_modules/**
-          **/.DS_Store
-          **/Thumbs.db
-        dangerous-clean-slate: false
-        dry-run: false
-        log-level: verbose
-        timeout: 600000
-        security: loose
+    - name: 📦 Create deployment package
+      run: |
+        cd public
+        zip -r ../leo-africa-site.zip . -x "*.git*" "*node_modules*" "*.DS_Store" "*Thumbs.db"
+        ls -la ../leo-africa-site.zip
+        
+    - name: 📂 Deploy via SFTP (Method 1)
+      uses: wlixcc/SFTP-Deploy-Action@v1.2.4
       continue-on-error: true
-      id: ftp_deploy
-      
-    - name: 🔄 Retry FTP deployment if failed
-      if: steps.ftp_deploy.outcome == 'failure'
-      uses: SamKirkland/FTP-Deploy-Action@v4.3.6
+      id: sftp_deploy
       with:
         server: ${{ secrets.FTP_SERVER }}
         username: ${{ secrets.FTP_USERNAME }}
         password: ${{ secrets.FTP_PASSWORD }}
-        local-dir: ./public/
-        server-dir: ./public_html/
-        port: 21
-        protocol: ftp
-        exclude: |
-          **/.git*
-          **/.git*/**
-          **/node_modules/**
-          **/.DS_Store
-          **/Thumbs.db
-        dangerous-clean-slate: false
-        dry-run: false
-        log-level: minimal
-        timeout: 900000
-        security: strict
+        local_path: './public/*'
+        remote_path: '/public_html/'
+        sftpArgs: '-o ConnectTimeout=30 -o ServerAliveInterval=10'
+        
+    - name: 📂 Deploy via FTP Active Mode (Method 2)
+      if: steps.sftp_deploy.outcome == 'failure'
+      uses: sebastianpopp/ftp-action@releases/v2
+      continue-on-error: true
+      id: ftp_active_deploy
+      with:
+        host: ${{ secrets.FTP_SERVER }}
+        user: ${{ secrets.FTP_USERNAME }}
+        password: ${{ secrets.FTP_PASSWORD }}
+        localDir: 'public'
+        remoteDir: 'public_html'
+        
+    - name: 📂 Deploy via LFTP (Method 3)
+      if: steps.sftp_deploy.outcome == 'failure' && steps.ftp_active_deploy.outcome == 'failure'
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y lftp
+        lftp -c "set ftp:passive-mode off; set net:timeout 30; set net:max-retries 3; open -u ${{ secrets.FTP_USERNAME }},${{ secrets.FTP_PASSWORD }} ${{ secrets.FTP_SERVER }}; mirror -R --delete --verbose ./public ./public_html; quit"
+      continue-on-error: true
+      id: lftp_deploy
+      
+    - name: ❌ All deployment methods failed
+      if: steps.sftp_deploy.outcome == 'failure' && steps.ftp_active_deploy.outcome == 'failure' && steps.lftp_deploy.outcome == 'failure'
+      run: |
+        echo "🚨 All deployment methods failed. Manual deployment required."
+        echo "📦 Deployment package created: leo-africa-site.zip"
+        echo "📋 Manual steps:"
+        echo "1. Download the leo-africa-site.zip artifact from this workflow"
+        echo "2. Extract it to your local machine"
+        echo "3. Upload contents to your cPanel File Manager at public_html/"
+        exit 1
+        
+    - name: 📤 Upload deployment package as artifact
+      if: always()
+      uses: actions/upload-artifact@v4
+      with:
+        name: leo-africa-deployment-package
+        path: leo-africa-site.zip
+        retention-days: 7

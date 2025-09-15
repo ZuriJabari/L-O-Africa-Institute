@@ -21,6 +21,8 @@ Go to your GitHub repository → Settings → Secrets and variables → Actions,
 | `FTP_USERNAME` | Your cPanel FTP username | `username@yourdomain.com` |
 | `FTP_PASSWORD` | Your cPanel FTP password | `your-ftp-password` |
 
+> **Note**: The deployment system now uses multiple methods (SFTP, FTP Active Mode, LFTP) to handle connection issues with different hosting providers.
+
 ### Step 2: Get Your GitHub Personal Access Token
 
 1. Go to GitHub → Settings → Developer settings → Personal access tokens → Tokens (classic)
@@ -86,19 +88,26 @@ Consider migrating to platforms with built-in webhook support:
 
 ## 🚨 Troubleshooting
 
-### Common Issues:
+### Common Issues
 
-1. **Workflow not triggering**: Check GitHub token permissions
-2. **FTP deployment fails**: Verify cPanel FTP credentials
-3. **Build errors**: Check GitHub Actions logs
-4. **Prismic webhook fails**: Verify webhook URL and headers
-
-### Debug Steps:
-
+**Build Fails**
 1. Check GitHub Actions → Your repository → Actions tab
 2. Look for workflow runs after Prismic updates
 3. Review build logs for any errors
-4. Test FTP credentials manually
+
+**FTP/SFTP Connection Issues**
+- The deployment system tries multiple methods automatically:
+  1. **SFTP** (most secure, requires SSH access)
+  2. **FTP Active Mode** (bypasses passive mode issues)
+  3. **LFTP** (command-line tool with advanced options)
+- If all methods fail, a deployment package is created as an artifact
+
+**Manual Deployment Fallback**
+If automated deployment fails:
+1. Go to GitHub Actions → Your workflow run
+2. Download the `leo-africa-deployment-package` artifact
+3. Extract `leo-africa-site.zip` 
+4. Upload contents to cPanel File Manager → `public_html/`
 
 ## 📊 Monitoring
 
