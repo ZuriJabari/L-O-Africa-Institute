@@ -5,7 +5,7 @@ module.exports = {
     PRESERVE_FILE_DOWNLOAD_CACHE: true,
     PARALLEL_SOURCING: true
   },
-  pathPrefix: `/`,
+  pathPrefix: `/L-O-Africa-Institute`,
   siteMetadata: {
     title: `LéO Africa Institute`,
     description: `The LéO Africa Institute is a pan-African organization that nurtures and empowers young leaders to positively transform society.`,
