@@ -10,7 +10,7 @@ on:
   
   # Webhook trigger from external sources (like Prismic)
   repository_dispatch:
-    types: [prismic-update]
+    types: [prismic-content-update]
 
 # Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
 permissions:
