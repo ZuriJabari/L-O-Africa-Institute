@@ -1,0 +1,54 @@
+name: 🚀 Deploy LéO Africa Institute to cPanel
+
+on:
+  # Trigger on push to main branch
+  push:
+    branches: [ main ]
+  
+  # Allow manual trigger
+  workflow_dispatch:
+  
+  # Webhook trigger from external sources (like Prismic)
+  repository_dispatch:
+    types: [prismic-update]
+
+jobs:
+  deploy:
+    name: 🎉 Deploy to cPanel
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: 🚚 Get latest code
+      uses: actions/checkout@v4
+      
+    - name: 🟢 Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18'
+        cache: 'npm'
+        
+    - name: 📦 Install dependencies
+      run: npm ci
+      
+    - name: 🏗️ Build Gatsby site
+      run: npm run build
+      env:
+        NODE_ENV: production
+        
+    - name: 📂 Deploy to cPanel via FTP
+      uses: SamKirkland/FTP-Deploy-Action@v4.3.6
+      with:
+        server: ${{ secrets.FTP_SERVER }}
+        username: ${{ secrets.FTP_USERNAME }}
+        password: ${{ secrets.FTP_PASSWORD }}
+        local-dir: ./public/
+        server-dir: ./public_html/
+        exclude: |
+          **/.git*
+          **/.git*/**
+          **/node_modules/**
+          **/.DS_Store
+          **/Thumbs.db
+        dangerous-clean-slate: false
+        dry-run: false
+        log-level: standard

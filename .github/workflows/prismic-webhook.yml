@@ -1,0 +1,31 @@
+name: 🔄 Prismic Content Update Handler
+
+on:
+  # This workflow will be triggered by Prismic webhooks
+  repository_dispatch:
+    types: [prismic-content-update]
+
+jobs:
+  trigger-deploy:
+    name: 📡 Handle Prismic Update
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: 📝 Log webhook payload
+      run: |
+        echo "Prismic webhook received!"
+        echo "Event type: ${{ github.event.action }}"
+        echo "Repository: ${{ github.event.client_payload.repository }}"
+        echo "Timestamp: $(date)"
+        
+    - name: 🚀 Trigger deployment workflow
+      uses: actions/github-script@v7
+      with:
+        github-token: ${{ secrets.GITHUB_TOKEN }}
+        script: |
+          github.rest.actions.createWorkflowDispatch({
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+            workflow_id: 'deploy.yml',
+            ref: 'main'
+          })
