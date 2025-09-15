@@ -124,8 +124,8 @@ jobs:
         sudo apt-get update
         sudo apt-get install -y rsync sshpass
         
-        # Extract files
-        unzip -q leo-africa-site.zip -d ./site-files/
+        # Extract files (overwrite without prompting)
+        unzip -o -q leo-africa-site.zip -d ./site-files/
         
         # Try rsync over SSH (if SSH is available)
         if sshpass -p "${{ secrets.FTP_PASSWORD }}" \
@@ -147,8 +147,8 @@ jobs:
       run: |
         echo "🔄 Attempting deployment via Python FTP..."
         
-        # Extract files
-        unzip -q leo-africa-site.zip -d ./site-files/
+        # Extract files (overwrite without prompting)
+        unzip -o -q leo-africa-site.zip -d ./site-files/
         
         # Create Python FTP upload script
         cat > ftp_upload.py << 'EOF'
