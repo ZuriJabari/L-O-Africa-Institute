@@ -1,7 +1,7 @@
 // gatsby-browser.js
 import React from 'react';
 import './src/styles/global.css';
-import './src/Styles/dropdown-fix.js'; // Import our dropdown menu fix script
+import './src/styles/dropdown-fix.js'; // Import our dropdown menu fix script
 import { MDXProvider } from "@mdx-js/react";
 import Navbar from './src/components/Navbar';
 import Footer from './src/components/Footer';
