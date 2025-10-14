@@ -1,6 +1,7 @@
 import React from 'react'
 import { motion } from 'framer-motion'
-import { FaLinkedin, FaXTwitter } from 'react-icons/fa'
+import { FaLinkedin } from 'react-icons/fa'
+import { FaXTwitter } from 'react-icons/fa6'
 
 const TeamMemberCard = ({ name, role, image, bio, linkedin, twitter, delay = 0 }) => {
   return (

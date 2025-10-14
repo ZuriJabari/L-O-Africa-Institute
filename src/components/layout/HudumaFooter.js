@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'gatsby';
-import { FaXTwitter, FaFacebookF, FaLinkedinIn, FaInstagram } from 'react-icons/fa';
+import { FaFacebookF, FaLinkedinIn, FaInstagram } from 'react-icons/fa';
 import { FaXTwitter } from 'react-icons/fa6';
 import HudumaLogo from '../../assets/images/huduma-logo.svg';
 import BgPattern from '../../assets/images/hudumabg.png';
