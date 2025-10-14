@@ -552,6 +552,18 @@ const Navbar = () => {
         {isSearchOpen && (
           <div className="bg-white border-b border-gray-200 shadow-sm">
             <div className="max-w-screen-xl mx-auto py-4 px-6">
+              <div className="flex items-center justify-between mb-2">
+                <span className="text-xs text-gray-500 font-medium">Search</span>
+                <button
+                  type="button"
+                  onClick={handleSearchToggle}
+                  className="text-xs text-gray-400 hover:text-gray-600 transition-colors font-medium flex items-center space-x-1"
+                >
+                  <span>Press</span>
+                  <kbd className="px-2 py-0.5 bg-gray-100 border border-gray-300 rounded text-xs font-mono">ESC</kbd>
+                  <span>to close</span>
+                </button>
+              </div>
               <form onSubmit={handleSearchSubmit} className="relative">
                 <div className="relative flex items-center">
                   <FiSearch className="absolute left-4 w-5 h-5 text-gray-400 pointer-events-none" />
@@ -570,13 +582,6 @@ const Navbar = () => {
                     Search
                   </button>
                 </div>
-                <button
-                  type="button"
-                  onClick={handleSearchToggle}
-                  className="absolute -top-1 right-0 text-gray-400 hover:text-gray-600 transition-colors text-sm font-medium"
-                >
-                  Press ESC to close
-                </button>
               </form>
             </div>
           </div>
