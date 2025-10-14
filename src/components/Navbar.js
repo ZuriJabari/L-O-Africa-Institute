@@ -333,6 +333,20 @@ const Navbar = () => {
     };
   }, [isMenuOpen]);
 
+  // Close search with ESC key
+  useEffect(() => {
+    const handleEscKey = (event) => {
+      if (event.key === 'Escape' && isSearchOpen) {
+        setIsSearchOpen(false);
+      }
+    };
+
+    document.addEventListener('keydown', handleEscKey);
+    return () => {
+      document.removeEventListener('keydown', handleEscKey);
+    };
+  }, [isSearchOpen]);
+
   // Mobile menu click handler
   const handleMobileMenuClick = (menu) => {
     if (activeMobileMenu === menu) {
@@ -536,19 +550,35 @@ const Navbar = () => {
 
         {/* Search Bar */}
         {isSearchOpen && (
-          <div className="bg-gray-100 py-3 px-6">
-            <form onSubmit={handleSearchSubmit} className="flex items-center">
-              <input
-                type="text"
-                value={searchQuery}
-                onChange={handleSearchChange}
-                placeholder="Search..."
-                className="flex-1 bg-white border border-gray-300 rounded-md px-5 py-3 text-base focus:outline-none focus:ring-2 focus:ring-[#0B9A9E]"
-              />
-              <button type="submit" className="ml-3 bg-[#0B9A9E] hover:bg-[#0B9A9E]/90 text-white px-6 py-3 rounded-md transition duration-300 text-base">
-                Search
-              </button>
-            </form>
+          <div className="bg-white border-b border-gray-200 shadow-sm">
+            <div className="max-w-screen-xl mx-auto py-4 px-6">
+              <form onSubmit={handleSearchSubmit} className="relative">
+                <div className="relative flex items-center">
+                  <FiSearch className="absolute left-4 w-5 h-5 text-gray-400 pointer-events-none" />
+                  <input
+                    type="text"
+                    value={searchQuery}
+                    onChange={handleSearchChange}
+                    placeholder="Search for articles, events, programs..."
+                    className="w-full bg-gray-50 border border-gray-200 rounded-full pl-12 pr-32 py-3.5 text-base text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[#0B9A9E] focus:border-transparent focus:bg-white transition-all duration-300"
+                    autoFocus
+                  />
+                  <button 
+                    type="submit" 
+                    className="absolute right-2 bg-[#0B9A9E] hover:bg-[#0B9A9E]/90 text-white px-6 py-2.5 rounded-full transition-all duration-300 text-sm font-medium hover:shadow-md hover:scale-105"
+                  >
+                    Search
+                  </button>
+                </div>
+                <button
+                  type="button"
+                  onClick={handleSearchToggle}
+                  className="absolute -top-1 right-0 text-gray-400 hover:text-gray-600 transition-colors text-sm font-medium"
+                >
+                  Press ESC to close
+                </button>
+              </form>
+            </div>
           </div>
         )}
 
