@@ -1229,12 +1229,12 @@ const Navbar = () => {
             {/* Menu Panel */}
             <div 
               ref={menuRef}
-              className="hamburger-menu fixed top-0 right-0 bottom-0 w-full sm:w-[480px] bg-gradient-to-br from-white via-gray-50 to-white shadow-2xl z-50 overflow-y-auto"
+              className="hamburger-menu fixed top-0 right-0 bottom-0 w-full sm:w-[480px] bg-white shadow-2xl z-50 overflow-y-auto"
             >
               {/* Menu Header */}
               <div className="sticky top-0 bg-white/95 backdrop-blur-md border-b border-gray-200 px-8 py-6 z-10">
                 <div className="flex items-center justify-between">
-                  <h2 className="text-2xl font-bold tracking-[0.15em] text-gray-900 bg-gradient-to-r from-gray-900 to-[#0B9A9E] bg-clip-text text-transparent">
+                  <h2 className="text-2xl font-bold tracking-[0.15em] text-gray-900">
                     MENU
                   </h2>
                   <button
@@ -1311,7 +1311,7 @@ const Navbar = () => {
                               key={item.label}
                               href={item.href}
                               className={`flex items-center justify-between px-4 py-3 text-gray-700 hover:text-[#0B9A9E] hover:bg-white rounded-lg transition-all duration-200 group ${
-                                item.featured ? 'bg-gradient-to-r from-[#f6911e]/10 to-transparent border-l-2 border-[#f6911e]' : ''
+                                item.featured ? 'bg-[#f6911e]/10 border-l-2 border-[#f6911e]' : ''
                               }`}
                               onClick={() => setIsMenuOpen(false)}
                             >
@@ -1354,7 +1354,7 @@ const Navbar = () => {
                   </Link>
                   <Link
                     to="/donate/"
-                    className="flex items-center justify-between px-4 py-3 bg-gradient-to-r from-[#0B9A9E] to-[#0B9A9E]/90 text-white rounded-lg transition-all duration-200 hover:shadow-lg hover:scale-[1.02] group"
+                    className="flex items-center justify-between px-4 py-3 bg-[#0B9A9E] text-white rounded-lg transition-all duration-200 hover:shadow-lg hover:scale-[1.02] group"
                     onClick={() => setIsMenuOpen(false)}
                   >
                     <span className="text-sm font-semibold">Donate to the Institute</span>
