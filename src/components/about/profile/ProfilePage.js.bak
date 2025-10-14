@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { FaXTwitter, FaLinkedin } from "react-icons/fa";
+import { FaTwitter, FaLinkedin } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { FiChevronRight } from "react-icons/fi";
 import Navbar from "../../../components/Navbar";

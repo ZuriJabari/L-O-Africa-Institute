@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link } from 'gatsby';
-import { FaXTwitter, FaFacebookF, FaLinkedinIn, FaInstagram } from 'react-icons/fa';
-import { FaXTwitter } from 'react-icons/fa6';
+import { FaTwitter, FaFacebookF, FaLinkedinIn, FaInstagram } from 'react-icons/fa';
 import YelpLogo from '../../assets/images/YELP-Logo.svg';
 
 const YelpFooter = () => {
@@ -36,7 +35,7 @@ const YelpFooter = () => {
             <h3 className="text-lg font-semibold mb-4">Connect With Us</h3>
             <div className="flex space-x-4">
               <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="text-white/90 hover:text-white transition-colors">
-                <FaXTwitter size={20} />
+                <FaTwitter size={20} />
               </a>
               <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="text-white/90 hover:text-white transition-colors">
                 <FaFacebookF size={20} />

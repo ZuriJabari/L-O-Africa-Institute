@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { FaTwitter, FaUsers, FaAward, FaUserTie } from 'react-icons/fa';
+import { FaUsers, FaAward, FaUserTie } from 'react-icons/fa';
+import { FaXTwitter } from 'react-icons/fa6';
 import { StaticImage } from 'gatsby-plugin-image';
 
 // Helper function to get image path
@@ -322,7 +323,7 @@ const TeamSection = () => {
                     <div className="flex justify-center md:justify-start space-x-4">
                       {member.socials.twitter && (
                         <a href={member.socials.twitter} className="text-gray-400 hover:text-blue-500 transition-colors">
-                          <FaTwitter size={18} />
+                          <FaXTwitter size={18} />
                         </a>
                       )}
                     </div>
@@ -539,7 +540,7 @@ const OurPeople = () => {
                   <div className="flex justify-center space-x-3 mt-4">
                     {person.socials?.twitter && (
                       <a href={person.socials.twitter} className="text-gray-600 hover:text-gray-800">
-                        <FaTwitter size={20} />
+                        <FaXTwitter size={20} />
                       </a>
                     )}
                   </div>

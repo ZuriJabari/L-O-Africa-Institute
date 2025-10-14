@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'gatsby';
-import { FaTwitter, FaFacebookF, FaInstagram, FaLinkedinIn, FaEnvelope, FaYoutube, FaFlickr } from 'react-icons/fa';
+import { FaFacebookF, FaInstagram, FaLinkedinIn, FaEnvelope, FaYoutube, FaFlickr } from 'react-icons/fa';
+import { FaXTwitter } from 'react-icons/fa6';
 import NewsletterSubscription from './NewsletterSubscription';
 import { StaticImage } from "gatsby-plugin-image";
 
@@ -67,7 +68,7 @@ const Footer = () => {
           <div className="flex flex-col md:flex-row justify-between items-center">
             <div className="flex space-x-6 mb-4 md:mb-0">
               <a href="https://twitter.com/LeoAfricaInst" target="_blank" rel="noopener noreferrer" className="text-white/80 hover:text-white">
-                <FaTwitter className="h-5 w-5" />
+                <FaXTwitter className="h-5 w-5" />
               </a>
               <a href="https://www.facebook.com/LeoAfricaInstitute" target="_blank" rel="noopener noreferrer" className="text-white/80 hover:text-white">
                 <FaFacebookF className="h-5 w-5" />

@@ -1,6 +1,6 @@
 import React from 'react'
 import { motion } from 'framer-motion'
-import { FaLinkedin, FaXTwitter } from 'react-icons/fa'
+import { FaLinkedin, FaTwitter } from 'react-icons/fa'
 
 const TeamMemberCard = ({ name, role, image, bio, linkedin, twitter, delay = 0 }) => {
   return (
@@ -38,7 +38,7 @@ const TeamMemberCard = ({ name, role, image, bio, linkedin, twitter, delay = 0 }
                 rel="noopener noreferrer"
                 className="text-white hover:text-[#F6911E] transition-colors"
               >
-                <FaXTwitter size={24} />
+                <FaTwitter size={24} />
               </a>
             )}
           </div>
