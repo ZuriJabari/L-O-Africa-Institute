@@ -498,36 +498,38 @@ const Navbar = () => {
   return (
     <>
       <style>{dropdownStyles}</style>
-      <nav className={`fixed top-0 left-0 right-0 z-50 bg-white border-gray-200 transition-all duration-300 ${
+      <nav className={`fixed top-0 left-0 right-0 z-50 bg-white transition-all duration-300 ${
         scrolled ? 'shadow-lg' : 'shadow-md'
       }`} ref={navRef}>
         {/* Top Bar */}
-        <div className="max-w-screen-xl mx-auto flex justify-between items-center py-4 px-6"
-             onMouseLeave={handleMenuLeave}>
-          <div className="hidden lg:flex space-x-5">
-            <a href="https://www.facebook.com/LeOAfricaInstitute/" className="social-icon text-gray-600 hover:text-[#0B9A9E] transition-colors">
-              <FaFacebookF />
-            </a>
-            <a href="https://x.com/LeoAfricaInst" className="social-icon text-gray-600 hover:text-[#0B9A9E] transition-colors">
-              <FaTwitter />
-            </a>
-            <a href="https://www.linkedin.com/company/18203194/admin/page-posts/published/" className="social-icon text-gray-600 hover:text-[#0B9A9E] transition-colors">
-              <FaLinkedinIn />
-            </a>
-            <a href="https://www.instagram.com/leoafricainst/" className="social-icon text-gray-600 hover:text-[#0B9A9E] transition-colors">
-              <FaInstagram />
-            </a>
-          </div>
-          <div className="flex items-center space-x-6 lg:space-x-8">
-            <button onClick={handleSearchToggle} className="nav-link text-gray-700 hover:text-[#0B9A9E] transition-colors">
-              <FiSearch className="w-5 h-5 lg:w-6 lg:h-6" />
-            </button>
-            <Link to="/partner-with-us/" className="hidden lg:block nav-link text-gray-700 hover:text-[#0B9A9E] transition-colors text-sm font-medium">
-              Partner with Us
-            </Link>
-            <Link to="/contact" className="hidden lg:block nav-link text-gray-700 hover:text-[#0B9A9E] transition-colors text-sm font-medium">
-              Contact Us
-            </Link>
+        <div className="bg-[#0B9A9E] border-b border-[#0B9A9E]/20">
+          <div className="max-w-screen-xl mx-auto flex justify-between items-center py-3 px-6"
+               onMouseLeave={handleMenuLeave}>
+            <div className="hidden lg:flex space-x-6">
+              <a href="https://www.facebook.com/LeOAfricaInstitute/" className="social-icon text-white/90 hover:text-white hover:scale-110 transition-all duration-300">
+                <FaFacebookF className="w-4 h-4" />
+              </a>
+              <a href="https://x.com/LeoAfricaInst" className="social-icon text-white/90 hover:text-white hover:scale-110 transition-all duration-300">
+                <FaTwitter className="w-4 h-4" />
+              </a>
+              <a href="https://www.linkedin.com/company/18203194/admin/page-posts/published/" className="social-icon text-white/90 hover:text-white hover:scale-110 transition-all duration-300">
+                <FaLinkedinIn className="w-4 h-4" />
+              </a>
+              <a href="https://www.instagram.com/leoafricainst/" className="social-icon text-white/90 hover:text-white hover:scale-110 transition-all duration-300">
+                <FaInstagram className="w-4 h-4" />
+              </a>
+            </div>
+            <div className="flex items-center space-x-6 lg:space-x-8">
+              <button onClick={handleSearchToggle} className="nav-link text-white/90 hover:text-white transition-all duration-300 hover:scale-105">
+                <FiSearch className="w-5 h-5" />
+              </button>
+              <Link to="/partner-with-us/" className="hidden lg:block nav-link text-white/90 hover:text-white transition-all duration-300 text-sm font-medium tracking-wide">
+                Partner with Us
+              </Link>
+              <Link to="/contact" className="hidden lg:block nav-link text-white/90 hover:text-white transition-all duration-300 text-sm font-medium tracking-wide">
+                Contact Us
+              </Link>
+            </div>
           </div>
         </div>
 
@@ -548,9 +550,6 @@ const Navbar = () => {
             </form>
           </div>
         )}
-
-        {/* Full-Width Horizontal Line */}
-        <div className="w-full h-px bg-gray-300"></div>
 
         {/* Main Navigation */}
         <div className="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl px-6 py-4">
