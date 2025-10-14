@@ -1,13 +1,20 @@
 # 🚀 Automated Deployment Setup for LéO Africa Institute
 
-This guide will help you set up automatic deployment from Prismic content updates to your cPanel hosting.
+This guide will help you set up automatic deployment from Prismic content updates to GitHub Pages and cPanel hosting.
 
 ## 📋 Overview
 
 When you update content in Prismic, it will automatically:
 1. Trigger a webhook to GitHub
 2. Build your Gatsby site via GitHub Actions
-3. Deploy the built site to your cPanel hosting via FTP
+3. Deploy the built site to **GitHub Pages** (primary hosting)
+4. Optionally sync to cPanel hosting via FTP (backup/legacy)
+
+## 🌐 Custom Domain Configuration
+
+Your site is configured to use the custom domain `leoafricainstitute.org` via GitHub Pages.
+
+**📖 See [DNS_CONFIGURATION_GUIDE.md](./DNS_CONFIGURATION_GUIDE.md) for detailed instructions on configuring your DNS A records at whois.com.**
 
 ## 🛠️ Setup Instructions
 
@@ -37,7 +44,7 @@ Go to your GitHub repository → Settings → Secrets and variables → Actions,
 2. Click "Create a webhook"
 3. Fill in the details:
    - **Name**: `GitHub Actions Deploy`
-   - **URL**: `https://api.github.com/repos/YOUR_USERNAME/L-O-Africa-Institute/dispatches`
+   - **URL**: `https://api.github.com/repos/ZuriJabari/L-O-Africa-Institute/dispatches`
    - **Custom Headers**:
      - `Authorization`: `Bearer YOUR_GITHUB_TOKEN`
      - `Accept`: `application/vnd.github.v3+json`
@@ -127,6 +134,13 @@ If automated deployment fails:
 ✅ **Reliable**: GitHub Actions infrastructure  
 ✅ **Trackable**: Full deployment history  
 ✅ **Secure**: Encrypted secrets management  
+✅ **Custom Domain**: Professional domain with free HTTPS  
+✅ **Global CDN**: Fast loading times worldwide via GitHub's CDN  
+
+## 📚 Related Documentation
+
+- **[DNS_CONFIGURATION_GUIDE.md](./DNS_CONFIGURATION_GUIDE.md)** - Configure your custom domain DNS at whois.com
+- **GitHub Pages Settings** - https://github.com/ZuriJabari/L-O-Africa-Institute/settings/pages
 
 ## 📞 Support
 
@@ -134,7 +148,8 @@ If you encounter issues:
 1. Check the GitHub Actions logs
 2. Verify all secrets are correctly set
 3. Test the Prismic webhook manually
-4. Ensure cPanel FTP access is working
+4. For DNS issues, see the DNS Configuration Guide
+5. Ensure cPanel FTP access is working (if using cPanel sync)
 
 ---
 
