@@ -11,7 +11,7 @@ import {
   LinkedinShareButton,
   WhatsappShareButton,
   FacebookIcon,
-  TwitterIcon,
+  XIcon,
   LinkedinIcon,
   WhatsappIcon,
 } from "react-share";
@@ -270,7 +270,7 @@ const BlogPage = ({ data }) => {
           <span className="text-sm font-medium text-gray-500">Share</span>
         </div>
         {[
-          { Button: TwitterShareButton, Icon: TwitterIcon, label: 'Twitter', color: '#1DA1F2' },
+          { Button: TwitterShareButton, Icon: XIcon, label: 'X (Twitter)', color: '#000000' },
           { Button: FacebookShareButton, Icon: FacebookIcon, label: 'Facebook', color: '#4267B2' },
           { Button: LinkedinShareButton, Icon: LinkedinIcon, label: 'LinkedIn', color: '#0077b5' },
           { Button: WhatsappShareButton, Icon: WhatsappIcon, label: 'WhatsApp', color: '#25D366' }
@@ -624,7 +624,7 @@ const BlogPage = ({ data }) => {
               variants={staggerChildren}
             >
               {[
-                { Button: TwitterShareButton, Icon: TwitterIcon },
+                { Button: TwitterShareButton, Icon: XIcon },
                 { Button: FacebookShareButton, Icon: FacebookIcon },
                 { Button: LinkedinShareButton, Icon: LinkedinIcon },
                 { Button: WhatsappShareButton, Icon: WhatsappIcon }
