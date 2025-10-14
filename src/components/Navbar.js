@@ -743,7 +743,7 @@ const Navbar = () => {
               {/* Social Media Icons */}
               <div className="flex space-x-4 mt-4">
                 <a href="https://www.facebook.com/LeOAfricaInstitute/" className="hover:text-[#2bbecb] text-[#3b3b3b] text-lg"><FaFacebookF /></a>
-                <a href="https://x.com/LeoAfricaInst" className="hover:text-[#2bbecb] text-[#3b3b3b] text-lg"><FaTwitter /></a>
+                <a href="https://x.com/LeoAfricaInst" className="hover:text-[#2bbecb] text-[#3b3b3b] text-lg"><FaXTwitter /></a>
                 <a href="https://www.linkedin.com/company/18203194/admin/page-posts/published/" className="hover:text-[#2bbecb] text-[#3b3b3b] text-lg"><FaLinkedinIn /></a>
                 <a href="https://www.instagram.com/leoafricainst/" className="hover:text-[#2bbecb] text-[#3b3b3b] text-lg"><FaInstagram /></a>
               </div>
