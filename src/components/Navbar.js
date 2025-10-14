@@ -1,5 +1,5 @@
-import React, { useState, useEffect,useRef } from 'react';
-import { FiSearch, FiArrowRight, FiMenu, FiX } from 'react-icons/fi';
+import React, { useState, useEffect, useRef } from 'react';
+import { FiSearch, FiArrowRight, FiMenu, FiX, FiChevronRight, FiChevronDown } from 'react-icons/fi';
 import { FaFacebookF, FaTwitter, FaLinkedinIn, FaInstagram, FaStar } from 'react-icons/fa';
 import { navigate, Link } from 'gatsby';
 import LOGO from '../assets/images/Leo-logo-primary.png';
@@ -23,7 +23,9 @@ const Navbar = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const navRef = useRef(null);
+  const menuRef = useRef(null);
 
   // Replace isHovering state with isHoveringRef ref
   // This ensures we always have access to the current value
@@ -60,6 +62,73 @@ const Navbar = () => {
         transform: translateY(0) scale(1);
         backdrop-filter: blur(8px);
       }
+    }
+
+    @keyframes slideInRight {
+      from {
+        transform: translateX(100%);
+        opacity: 0;
+      }
+      to {
+        transform: translateX(0);
+        opacity: 1;
+      }
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+
+    @keyframes slideInFromTop {
+      from {
+        transform: translateY(-20px);
+        opacity: 0;
+      }
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    .hamburger-menu {
+      animation: slideInRight 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .menu-overlay {
+      animation: fadeIn 0.3s ease-out;
+    }
+
+    .menu-item {
+      animation: slideInFromTop 0.4s cubic-bezier(0.16, 1, 0.3, 1) backwards;
+    }
+
+    .menu-item:nth-child(1) { animation-delay: 0.05s; }
+    .menu-item:nth-child(2) { animation-delay: 0.1s; }
+    .menu-item:nth-child(3) { animation-delay: 0.15s; }
+    .menu-item:nth-child(4) { animation-delay: 0.2s; }
+    .menu-item:nth-child(5) { animation-delay: 0.25s; }
+    .menu-item:nth-child(6) { animation-delay: 0.3s; }
+
+    .hamburger-line {
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .hamburger-open .line-1 {
+      transform: rotate(45deg) translateY(8px);
+    }
+
+    .hamburger-open .line-2 {
+      opacity: 0;
+      transform: translateX(20px);
+    }
+
+    .hamburger-open .line-3 {
+      transform: rotate(-45deg) translateY(-8px);
     }
 
     .menu-container button {
@@ -220,17 +289,48 @@ const Navbar = () => {
     }
   };
 
-  // Mobile detection
+  // Mobile detection and scroll detection
   useEffect(() => {
     const checkMobile = () => {
       setIsMobile(window.innerWidth < 1024); // lg breakpoint
     };
     
-    checkMobile();
-    window.addEventListener('resize', checkMobile);
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 20);
+    };
     
-    return () => window.removeEventListener('resize', checkMobile);
+    checkMobile();
+    handleScroll();
+    window.addEventListener('resize', checkMobile);
+    window.addEventListener('scroll', handleScroll);
+    
+    return () => {
+      window.removeEventListener('resize', checkMobile);
+      window.removeEventListener('scroll', handleScroll);
+    };
   }, []);
+
+  // Close menu when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (isMenuOpen && menuRef.current && !menuRef.current.contains(event.target)) {
+        setIsMenuOpen(false);
+        setActiveMobileMenu(null);
+      }
+    };
+
+    if (isMenuOpen) {
+      document.addEventListener('mousedown', handleClickOutside);
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+      document.body.style.overflow = 'unset';
+    };
+  }, [isMenuOpen]);
 
   // Mobile menu click handler
   const handleMobileMenuClick = (menu) => {
@@ -398,32 +498,34 @@ const Navbar = () => {
   return (
     <>
       <style>{dropdownStyles}</style>
-      <nav className="bg-white border-gray-200 shadow-md" ref={navRef}>
+      <nav className={`fixed top-0 left-0 right-0 z-50 bg-white border-gray-200 transition-all duration-300 ${
+        scrolled ? 'shadow-lg' : 'shadow-md'
+      }`} ref={navRef}>
         {/* Top Bar */}
         <div className="max-w-screen-xl mx-auto flex justify-between items-center py-4 px-6"
              onMouseLeave={handleMenuLeave}>
-          <div className="hidden md:flex space-x-5">
-            <a href="https://www.facebook.com/LeOAfricaInstitute/" className="social-icon">
+          <div className="hidden lg:flex space-x-5">
+            <a href="https://www.facebook.com/LeOAfricaInstitute/" className="social-icon text-gray-600 hover:text-[#0B9A9E] transition-colors">
               <FaFacebookF />
             </a>
-            <a href="https://x.com/LeoAfricaInst" className="social-icon">
+            <a href="https://x.com/LeoAfricaInst" className="social-icon text-gray-600 hover:text-[#0B9A9E] transition-colors">
               <FaTwitter />
             </a>
-            <a href="https://www.linkedin.com/company/18203194/admin/page-posts/published/" className="social-icon">
+            <a href="https://www.linkedin.com/company/18203194/admin/page-posts/published/" className="social-icon text-gray-600 hover:text-[#0B9A9E] transition-colors">
               <FaLinkedinIn />
             </a>
-            <a href="https://www.instagram.com/leoafricainst/" className="social-icon">
+            <a href="https://www.instagram.com/leoafricainst/" className="social-icon text-gray-600 hover:text-[#0B9A9E] transition-colors">
               <FaInstagram />
             </a>
           </div>
-          <div className="flex items-center space-x-8">
-            <button onClick={handleSearchToggle} className="nav-link">
-              <FiSearch className="w-6 h-6" />
+          <div className="flex items-center space-x-6 lg:space-x-8">
+            <button onClick={handleSearchToggle} className="nav-link text-gray-700 hover:text-[#0B9A9E] transition-colors">
+              <FiSearch className="w-5 h-5 lg:w-6 lg:h-6" />
             </button>
-            <Link to="/partner-with-us/" className="nav-link">
+            <Link to="/partner-with-us/" className="hidden lg:block nav-link text-gray-700 hover:text-[#0B9A9E] transition-colors text-sm font-medium">
               Partner with Us
             </Link>
-            <Link to="/contact" className="nav-link">
+            <Link to="/contact" className="hidden lg:block nav-link text-gray-700 hover:text-[#0B9A9E] transition-colors text-sm font-medium">
               Contact Us
             </Link>
           </div>
@@ -451,57 +553,36 @@ const Navbar = () => {
         <div className="w-full h-px bg-gray-300"></div>
 
         {/* Main Navigation */}
-        <div className="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl p-6">
-          <a href="/" className="flex items-center space-x-3">
+        <div className="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl px-6 py-4">
+          <a href="/" className="flex items-center space-x-3 z-50">
             <img 
               src={LOGO} 
-              className="h-16" 
-              alt="Leo Africa Institute Logo" 
+              className={`transition-all duration-300 ${
+                scrolled ? 'h-12' : 'h-14 lg:h-16'
+              }`} 
+              alt="LéO Africa Institute Logo" 
             />
           </a>
 
+          {/* Luxurious Hamburger Button */}
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="inline-flex items-center p-3 w-12 h-12 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 transition duration-300"
+            className={`relative z-50 p-2 rounded-lg transition-all duration-300 hover:bg-gray-100 focus:outline-none ${
+              isMenuOpen ? 'hamburger-open' : ''
+            }`}
+            aria-label="Toggle menu"
           >
-            <span className="sr-only">Open main menu</span>
-            {isMenuOpen ? <FiX className="w-6 h-6" /> : <FiMenu className="w-6 h-6" />}
+            <div className="w-7 h-6 flex flex-col justify-between">
+              <span className="hamburger-line line-1 w-full h-0.5 bg-gray-800 rounded-full"></span>
+              <span className="hamburger-line line-2 w-full h-0.5 bg-gray-800 rounded-full"></span>
+              <span className="hamburger-line line-3 w-full h-0.5 bg-gray-800 rounded-full"></span>
+            </div>
           </button>
-
-          <div className={`${isMenuOpen ? 'block' : 'hidden'} w-full md:flex md:w-auto md:order-1`}>
-            <ul className="flex flex-col mt-4 font-medium md:flex-row md:mt-0 md:space-x-10">
-              {['About Us', 'Events & Gatherings', 'Fellows & Champions', 'News & Media', 'Initiatives'].map(
-                (menu) => (
-                  <li key={menu} 
-                      className="relative menu-container"
-                      onMouseEnter={() => handleMenuEnter(menu)}
-                      onMouseLeave={handleMenuLeave}>
-                    <button 
-                      className="flex items-center justify-between w-full py-3 px-4 text-xl font-bold text-gray-900 md:w-auto hover:text-[#0B9A9E] md:p-0 transition duration-300"
-                      onClick={() => isMobile ? handleMobileMenuClick(menu) : null}
-                    >
-                      {menu}
-                      <svg 
-                        className={`w-3 h-3 ms-3 transition-transform duration-200 ${
-                          isMobile && activeMobileMenu === menu ? 'rotate-180' : ''
-                        }`} 
-                        aria-hidden="true" 
-                        xmlns="http://www.w3.org/2000/svg" 
-                        fill="none" 
-                        viewBox="0 0 10 6"
-                      >
-                        <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="m1 1 4 4 4-4"/>
-                      </svg>
-                    </button>
-                  </li>
-                )
-              )}
-            </ul>
-          </div>
         </div>
 
+        {/* Desktop Dropdowns - Hidden on mobile, only shown on large screens */}
         {/* News & Media Dropdown */}
-{((isMobile && activeMobileMenu === 'News & Media') || (!isMobile && activeMenu === 'News & Media')) && (
+{!isMenuOpen && ((isMobile && activeMobileMenu === 'News & Media') || (!isMobile && activeMenu === 'News & Media')) && (
   <div 
     className="dropdown-container mt-1 bg-white border-gray-200 shadow-sm border-y transform transition-all duration-200 ease-out"
     style={dropdownAnimation.enter}
@@ -599,7 +680,7 @@ const Navbar = () => {
 )}
 
        {/* About Us Mega Menu */}
-      {((isMobile && activeMobileMenu === 'About Us') || (!isMobile && activeMenu === 'About Us')) && (
+      {!isMenuOpen && ((isMobile && activeMobileMenu === 'About Us') || (!isMobile && activeMenu === 'About Us')) && (
         <div 
           className="dropdown-container mt-1 bg-white border-gray-200 shadow-sm border-y transform transition-all duration-200 ease-out"
           style={dropdownAnimation.enter}
@@ -719,7 +800,7 @@ const Navbar = () => {
       )}
 
        {/* Initiatives Dropdown */}
-{((isMobile && activeMobileMenu === 'Initiatives') || (!isMobile && activeMenu === 'Initiatives')) && (
+{!isMenuOpen && ((isMobile && activeMobileMenu === 'Initiatives') || (!isMobile && activeMenu === 'Initiatives')) && (
   <div className="dropdown-container mt-1 bg-white border-t border-gray-200 shadow-lg"
     onMouseEnter={handleDropdownEnter}
     onMouseLeave={handleDropdownLeave}>
@@ -848,7 +929,7 @@ const Navbar = () => {
 )}
 
        {/* Fellows & Champions Dropdown */}
-      {((isMobile && activeMobileMenu === 'Fellows & Champions') || (!isMobile && activeMenu === 'Fellows & Champions')) && (
+      {!isMenuOpen && ((isMobile && activeMobileMenu === 'Fellows & Champions') || (!isMobile && activeMenu === 'Fellows & Champions')) && (
         <div className="dropdown-container mt-1 bg-white border-gray-200 shadow-sm border-y"
           onMouseEnter={handleDropdownEnter}
           onMouseLeave={handleDropdownLeave}>
@@ -1011,7 +1092,7 @@ const Navbar = () => {
       )}
 
       {/* Events & Gatherings Mega Menu */}
-      {((isMobile && activeMobileMenu === 'Events & Gatherings') || (!isMobile && activeMenu === 'Events & Gatherings')) && (
+      {!isMenuOpen && ((isMobile && activeMobileMenu === 'Events & Gatherings') || (!isMobile && activeMenu === 'Events & Gatherings')) && (
         <div className="dropdown-container mt-1 bg-white border-gray-200 shadow-sm border-y"
           onMouseEnter={handleDropdownEnter}
           onMouseLeave={handleDropdownLeave}>
@@ -1133,9 +1214,197 @@ const Navbar = () => {
           </div>
         </div>
       )}
+        {/* Luxurious Full-Screen Hamburger Menu */}
+        {isMenuOpen && (
+          <>
+            {/* Overlay */}
+            <div 
+              className="menu-overlay fixed inset-0 bg-black/40 backdrop-blur-sm z-40"
+              onClick={() => setIsMenuOpen(false)}
+            />
+            
+            {/* Menu Panel */}
+            <div 
+              ref={menuRef}
+              className="hamburger-menu fixed top-0 right-0 bottom-0 w-full sm:w-[480px] bg-gradient-to-br from-white via-gray-50 to-white shadow-2xl z-50 overflow-y-auto"
+            >
+              {/* Menu Header */}
+              <div className="sticky top-0 bg-white/95 backdrop-blur-md border-b border-gray-200 px-8 py-6 z-10">
+                <div className="flex items-center justify-between">
+                  <h2 className="text-2xl font-bold text-gray-900">Menu</h2>
+                  <button
+                    onClick={() => setIsMenuOpen(false)}
+                    className="p-2 rounded-lg hover:bg-gray-100 transition-colors"
+                    aria-label="Close menu"
+                  >
+                    <FiX className="w-6 h-6 text-gray-700" />
+                  </button>
+                </div>
+              </div>
+
+              {/* Menu Content */}
+              <div className="px-8 py-8">
+                {/* Main Menu Items */}
+                <nav className="space-y-2 mb-8">
+                  {[
+                    { name: 'About Us', items: [
+                      { label: 'About LéO Africa Institute', href: '/about' },
+                      { label: 'Mission, Vision & Core Values', href: '/about/mission-vision' },
+                      { label: 'The Leadership Team', href: '/about/team' },
+                      { label: 'Our Pillars of Action', href: '/about/pillars-of-action' },
+                      { label: 'Frequently Asked Questions', href: '/about/faqs' }
+                    ]},
+                    { name: 'Events & Gatherings', items: [
+                      { label: 'Annual Leaders Gathering', href: 'https://alg.leoafricainstitute.org', featured: true },
+                      { label: 'Harambe Symposium', href: '/events/harambe-symposium/' },
+                      { label: 'LéO Africa Talks', href: '/events/leo-talks' },
+                      { label: 'Distinguished Lectures Series', href: '/events/lecture-series/' },
+                      { label: 'Browse All Events', href: '/events' }
+                    ]},
+                    { name: 'Fellows & Champions', items: [
+                      { label: 'Huduma Fellowship', href: '/huduma', logo: HudumaLogo },
+                      { label: 'Young Emerging Leaders Program', href: '/yelp', logo: YelpLogo },
+                      { label: 'Meet Our Champions', href: '/about/champions' }
+                    ]},
+                    { name: 'News & Media', items: [
+                      { label: 'Our Latest Articles', href: '/news/' },
+                      { label: 'Research Reports', href: '/publications' },
+                      { label: 'Visit our Blog', href: '/blog' },
+                      { label: 'View All Insights', href: '/news' }
+                    ]},
+                    { name: 'Initiatives', items: [
+                      { label: 'Annual Leaders Gathering', href: 'https://alg.leoafricainstitute.org/', logo: ALGLogo },
+                      { label: 'YELP', href: '/yelp', logo: YelpLogo },
+                      { label: 'Huduma Fellowship', href: '/huduma', logo: HudumaLogo },
+                      { label: 'LéO Africa Review', href: 'https://leoafricareview.com/', logo: ReviewLogo }
+                    ]}
+                  ].map((menu, index) => (
+                    <div key={menu.name} className="menu-item">
+                      <button
+                        onClick={() => setActiveMobileMenu(activeMobileMenu === menu.name ? null : menu.name)}
+                        className="w-full flex items-center justify-between px-4 py-4 text-left text-gray-900 hover:bg-white rounded-xl transition-all duration-300 group"
+                      >
+                        <span className="text-lg font-semibold group-hover:text-[#0B9A9E] transition-colors">
+                          {menu.name}
+                        </span>
+                        <FiChevronDown 
+                          className={`w-5 h-5 text-gray-500 transition-transform duration-300 ${
+                            activeMobileMenu === menu.name ? 'rotate-180 text-[#0B9A9E]' : ''
+                          }`}
+                        />
+                      </button>
+                      
+                      {/* Submenu */}
+                      <div 
+                        className={`overflow-hidden transition-all duration-300 ${
+                          activeMobileMenu === menu.name ? 'max-h-[800px] opacity-100' : 'max-h-0 opacity-0'
+                        }`}
+                      >
+                        <div className="pl-4 pr-4 pb-2 pt-2 space-y-1">
+                          {menu.items.map((item) => (
+                            <a
+                              key={item.label}
+                              href={item.href}
+                              className={`flex items-center justify-between px-4 py-3 text-gray-700 hover:text-[#0B9A9E] hover:bg-white rounded-lg transition-all duration-200 group ${
+                                item.featured ? 'bg-gradient-to-r from-[#f6911e]/10 to-transparent border-l-2 border-[#f6911e]' : ''
+                              }`}
+                              onClick={() => setIsMenuOpen(false)}
+                            >
+                              <div className="flex items-center space-x-3">
+                                {item.logo && (
+                                  <img src={item.logo} alt="" className="w-8 h-8 object-contain" />
+                                )}
+                                <span className="text-sm font-medium">{item.label}</span>
+                              </div>
+                              <FiChevronRight className="w-4 h-4 opacity-0 group-hover:opacity-100 transform group-hover:translate-x-1 transition-all" />
+                            </a>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </nav>
+
+                {/* Divider */}
+                <div className="border-t border-gray-200 my-6"></div>
+
+                {/* Quick Links */}
+                <div className="space-y-3 mb-8">
+                  <h3 className="text-xs uppercase tracking-wider text-gray-500 font-semibold px-4 mb-4">Quick Links</h3>
+                  <Link
+                    to="/partner-with-us/"
+                    className="flex items-center justify-between px-4 py-3 text-gray-700 hover:text-[#0B9A9E] hover:bg-white rounded-lg transition-all duration-200 group"
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    <span className="text-sm font-medium">Partner with Us</span>
+                    <FiChevronRight className="w-4 h-4 opacity-0 group-hover:opacity-100 transform group-hover:translate-x-1 transition-all" />
+                  </Link>
+                  <Link
+                    to="/contact"
+                    className="flex items-center justify-between px-4 py-3 text-gray-700 hover:text-[#0B9A9E] hover:bg-white rounded-lg transition-all duration-200 group"
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    <span className="text-sm font-medium">Contact Us</span>
+                    <FiChevronRight className="w-4 h-4 opacity-0 group-hover:opacity-100 transform group-hover:translate-x-1 transition-all" />
+                  </Link>
+                  <Link
+                    to="/donate/"
+                    className="flex items-center justify-between px-4 py-3 bg-gradient-to-r from-[#0B9A9E] to-[#0B9A9E]/90 text-white rounded-lg transition-all duration-200 hover:shadow-lg hover:scale-[1.02] group"
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    <span className="text-sm font-semibold">Donate to the Institute</span>
+                    <FiChevronRight className="w-4 h-4 transform group-hover:translate-x-1 transition-transform" />
+                  </Link>
+                </div>
+
+                {/* Social Media */}
+                <div className="bg-white rounded-xl p-6 shadow-sm">
+                  <h3 className="text-xs uppercase tracking-wider text-gray-500 font-semibold mb-4">Connect With Us</h3>
+                  <div className="flex space-x-4">
+                    <a
+                      href="https://www.facebook.com/LeOAfricaInstitute/"
+                      className="w-12 h-12 flex items-center justify-center rounded-full bg-gray-100 text-gray-700 hover:bg-[#0B9A9E] hover:text-white transition-all duration-300 hover:scale-110"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <FaFacebookF className="w-5 h-5" />
+                    </a>
+                    <a
+                      href="https://x.com/LeoAfricaInst"
+                      className="w-12 h-12 flex items-center justify-center rounded-full bg-gray-100 text-gray-700 hover:bg-[#0B9A9E] hover:text-white transition-all duration-300 hover:scale-110"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <FaTwitter className="w-5 h-5" />
+                    </a>
+                    <a
+                      href="https://www.linkedin.com/company/18203194/admin/page-posts/published/"
+                      className="w-12 h-12 flex items-center justify-center rounded-full bg-gray-100 text-gray-700 hover:bg-[#0B9A9E] hover:text-white transition-all duration-300 hover:scale-110"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <FaLinkedinIn className="w-5 h-5" />
+                    </a>
+                    <a
+                      href="https://www.instagram.com/leoafricainst/"
+                      className="w-12 h-12 flex items-center justify-center rounded-full bg-gray-100 text-gray-700 hover:bg-[#0B9A9E] hover:text-white transition-all duration-300 hover:scale-110"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <FaInstagram className="w-5 h-5" />
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </>
+        )}
      
       
       </nav>
+      
+      {/* Spacer to prevent content from going under fixed navbar */}
+      <div className="h-[120px] lg:h-[140px]"></div>
     </>
   );
 };
