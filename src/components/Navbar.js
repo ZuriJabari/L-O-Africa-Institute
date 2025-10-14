@@ -1234,13 +1234,15 @@ const Navbar = () => {
               {/* Menu Header */}
               <div className="sticky top-0 bg-white/95 backdrop-blur-md border-b border-gray-200 px-8 py-6 z-10">
                 <div className="flex items-center justify-between">
-                  <h2 className="text-2xl font-bold text-gray-900">Menu</h2>
+                  <h2 className="text-2xl font-bold tracking-[0.15em] text-gray-900 bg-gradient-to-r from-gray-900 to-[#0B9A9E] bg-clip-text text-transparent">
+                    MENU
+                  </h2>
                   <button
                     onClick={() => setIsMenuOpen(false)}
-                    className="p-2 rounded-lg hover:bg-gray-100 transition-colors"
+                    className="p-2 rounded-lg hover:bg-gray-100 transition-all duration-300 hover:rotate-90 group"
                     aria-label="Close menu"
                   >
-                    <FiX className="w-6 h-6 text-gray-700" />
+                    <FiX className="w-6 h-6 text-gray-700 group-hover:text-[#0B9A9E] transition-colors" />
                   </button>
                 </div>
               </div>
