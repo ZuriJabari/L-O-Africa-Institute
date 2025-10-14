@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { FiSearch, FiArrowRight, FiMenu, FiX, FiChevronRight, FiChevronDown } from 'react-icons/fi';
-import { FaFacebookF, FaTwitter, FaLinkedinIn, FaInstagram, FaStar } from 'react-icons/fa';
+import { FaFacebookF, FaLinkedinIn, FaInstagram, FaStar } from 'react-icons/fa';
+import { FaXTwitter } from 'react-icons/fa6';
 import { navigate, Link } from 'gatsby';
 import LOGO from '../assets/images/Leo-logo-primary.png';
 import ALGLogo from '../assets/images/logo-color.svg';
@@ -506,27 +507,27 @@ const Navbar = () => {
           <div className="max-w-screen-xl mx-auto flex justify-between items-center py-3 px-6"
                onMouseLeave={handleMenuLeave}>
             <div className="hidden lg:flex space-x-6">
-              <a href="https://www.facebook.com/LeOAfricaInstitute/" className="social-icon text-white/90 hover:text-white hover:scale-110 transition-all duration-300">
+              <a href="https://www.facebook.com/LeOAfricaInstitute/" className="social-icon text-white hover:text-white/70 hover:scale-110 transition-all duration-300">
                 <FaFacebookF className="w-4 h-4" />
               </a>
-              <a href="https://x.com/LeoAfricaInst" className="social-icon text-white/90 hover:text-white hover:scale-110 transition-all duration-300">
-                <FaTwitter className="w-4 h-4" />
+              <a href="https://x.com/LeoAfricaInst" className="social-icon text-white hover:text-white/70 hover:scale-110 transition-all duration-300">
+                <FaXTwitter className="w-4 h-4" />
               </a>
-              <a href="https://www.linkedin.com/company/18203194/admin/page-posts/published/" className="social-icon text-white/90 hover:text-white hover:scale-110 transition-all duration-300">
+              <a href="https://www.linkedin.com/company/18203194/admin/page-posts/published/" className="social-icon text-white hover:text-white/70 hover:scale-110 transition-all duration-300">
                 <FaLinkedinIn className="w-4 h-4" />
               </a>
-              <a href="https://www.instagram.com/leoafricainst/" className="social-icon text-white/90 hover:text-white hover:scale-110 transition-all duration-300">
+              <a href="https://www.instagram.com/leoafricainst/" className="social-icon text-white hover:text-white/70 hover:scale-110 transition-all duration-300">
                 <FaInstagram className="w-4 h-4" />
               </a>
             </div>
             <div className="flex items-center space-x-6 lg:space-x-8">
-              <button onClick={handleSearchToggle} className="nav-link text-white/90 hover:text-white transition-all duration-300 hover:scale-105">
+              <button onClick={handleSearchToggle} className="nav-link text-white hover:text-white/70 transition-all duration-300 hover:scale-105">
                 <FiSearch className="w-5 h-5" />
               </button>
-              <Link to="/partner-with-us/" className="hidden lg:block nav-link text-white/90 hover:text-white transition-all duration-300 text-sm font-medium tracking-wide">
+              <Link to="/partner-with-us/" className="hidden lg:block nav-link text-white hover:text-white/70 transition-all duration-300 text-sm font-medium tracking-wide">
                 Partner with Us
               </Link>
-              <Link to="/contact" className="hidden lg:block nav-link text-white/90 hover:text-white transition-all duration-300 text-sm font-medium tracking-wide">
+              <Link to="/contact" className="hidden lg:block nav-link text-white hover:text-white/70 transition-all duration-300 text-sm font-medium tracking-wide">
                 Contact Us
               </Link>
             </div>
@@ -1379,7 +1380,7 @@ const Navbar = () => {
                       target="_blank"
                       rel="noopener noreferrer"
                     >
-                      <FaTwitter className="w-5 h-5" />
+                      <FaXTwitter className="w-5 h-5" />
                     </a>
                     <a
                       href="https://www.linkedin.com/company/18203194/admin/page-posts/published/"
