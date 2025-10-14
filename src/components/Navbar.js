@@ -567,11 +567,14 @@ const Navbar = () => {
           {/* Luxurious Hamburger Button */}
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className={`relative z-50 p-2 rounded-lg transition-all duration-300 hover:bg-gray-100 focus:outline-none ${
+            className={`relative z-50 flex items-center space-x-3 px-4 py-2 rounded-lg transition-all duration-300 hover:bg-gray-100 focus:outline-none group ${
               isMenuOpen ? 'hamburger-open' : ''
             }`}
             aria-label="Toggle menu"
           >
+            <span className="text-xs font-bold tracking-[0.2em] text-gray-800 group-hover:text-[#0B9A9E] transition-colors duration-300">
+              MENU
+            </span>
             <div className="w-7 h-6 flex flex-col justify-between">
               <span className="hamburger-line line-1 w-full h-0.5 bg-gray-800 rounded-full"></span>
               <span className="hamburger-line line-2 w-full h-0.5 bg-gray-800 rounded-full"></span>
