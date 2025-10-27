@@ -1,7 +1,10 @@
-name: 🚀 Deploy LéO Africa Institute to cPanel (Legacy)
+name: 🚀 Deploy LéO Africa Institute to cPanel
 
 on:
-  # Manual trigger only (disabled automatic triggers)
+  push:
+    branches:
+      - main
+  # Manual trigger also available
   workflow_dispatch:
 
 jobs:
