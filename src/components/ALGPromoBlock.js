@@ -52,10 +52,10 @@ const ALGPromoBlock = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.3, duration: 0.8, ease: [0.43, 0.13, 0.23, 0.96] }}
-              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-light text-white mb-4 sm:mb-6 tracking-tight leading-[1.1]"
+              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-medium text-white mb-4 sm:mb-6 tracking-tight leading-[1.1]"
             >
               Annual Leaders{' '}
-              <span className="block mt-2 text-white font-medium">
+              <span className="block mt-2 text-white">
                 Gathering 2025
               </span>
             </motion.h2>
