@@ -28,7 +28,7 @@ const ALGPromoBlock = () => {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.9, ease: [0.43, 0.13, 0.23, 0.96] }}
-            className="order-2 lg:order-1"
+            className="order-1 lg:order-1"
           >
             {/* ALG Logo */}
             <motion.div
@@ -146,7 +146,7 @@ const ALGPromoBlock = () => {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.9, delay: 0.2, ease: [0.43, 0.13, 0.23, 0.96] }}
-            className="order-1 lg:order-2"
+            className="order-2 lg:order-2"
           >
             <div className="bg-white/10 backdrop-blur-md rounded-2xl p-6 sm:p-8 md:p-10 border border-white/20">
               <h3 className="text-xl sm:text-2xl md:text-3xl font-light text-white mb-4 sm:mb-6">
