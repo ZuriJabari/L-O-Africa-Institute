@@ -24,7 +24,7 @@ const nameToSlug = (name) => {
     .replace(/(^-|-$)+/g, "");
 };
 
-const TeamMemberCard = ({ name, subtitle, imagePath, isChair }) => {
+const TeamMemberCard = ({ name, subtitle, imagePath, isChair, profileLink }) => {
   const data = useStaticQuery(graphql`
     query {
       allFile(filter: { sourceInstanceName: { eq: "images" } }) {
@@ -63,7 +63,11 @@ const TeamMemberCard = ({ name, subtitle, imagePath, isChair }) => {
 
   const handleClick = async (e) => {
     e.preventDefault();
-    await navigate(`/about/team/${memberSlug}`);
+    if (profileLink) {
+      await navigate(profileLink);
+    } else {
+      await navigate(`/about/team/${memberSlug}`);
+    }
   };
 
   return (
@@ -155,19 +159,19 @@ const teamData = [
         name: "Zubeda Abdallah",
         subtitle: "Finance Manager ",
         imagePath: "team/default-profile.png",
-        profileLink: `/about/team/${nameToSlug("Brian Turyabagye")}`
+        // No profile page yet; avoid broken link
       },
       {
-        name: "Nanda Kato",
-        subtitle: "Communication & Outreach Officer",
+        name: "Nnanda Kizito Sseruwagi",
+        subtitle: "Nnanda is the Media and Communications Officer at the LéO Africa Institute.",
         imagePath: "Nanda.jpg",
-        profileLink: `/about/team/${nameToSlug("Nanda Kato")}`
+        profileLink: `/about/team/${nameToSlug("Nnanda Kizito Sseruwagi")}`
       },
       {
-        name: "Nelson Asimwe",
+        name: "Nelson Asiimwe Mushabe",
         subtitle: "Fellowships Coordinator & Programs Manager",
         imagePath: "Asiimwe-Nelson-Mushabe.png",
-        profileLink: `/about/team/${nameToSlug("Nanda Kato")}`
+        profileLink: "/about/team/nelson-asiimwe"
       }
     ]
   }
@@ -196,6 +200,7 @@ const Team = () => {
                     subtitle={member.subtitle}
                     imagePath={member.imagePath}
                     isChair={member.isChair}
+                    profileLink={member.profileLink}
                   />
                 ))}
               </div>

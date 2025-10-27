@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { FiMail, FiCheck, FiAlertCircle } from 'react-icons/fi';
+import { FiMail, FiCheck, FiAlertCircle, FiArrowRight } from 'react-icons/fi';
 import { FORM_TYPES } from '../utils/forms';
 import FormHandler from './forms/FormHandler';
 
@@ -17,57 +17,57 @@ const NewsletterSubscriptionContent = ({ onSubmit, isSubmitting, errors, success
 
   return (
     <div className="w-full">
-      <form onSubmit={handleSubmit} className="mt-4 sm:flex sm:max-w-md">
-        <div className="relative flex-1">
-          <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-            {successMessage ? (
-              <FiCheck className="text-green-500 w-5 h-5" />
-            ) : errors.submit ? (
-              <FiAlertCircle className="text-red-500 w-5 h-5" />
-            ) : (
-              <FiMail className="text-gray-400 w-5 h-5" />
-            )}
-          </div>
+      <form onSubmit={handleSubmit} className="relative">
+        <div className="relative">
           <input
             type="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            className={`block w-full rounded-md py-2 pl-10 pr-3 text-sm text-gray-900
+            className={`w-full px-5 py-4 pr-32 text-sm font-light text-white placeholder-white/60 bg-white/10 border rounded-full backdrop-blur-sm transition-all duration-500 focus:outline-none focus:bg-white/15
               ${successMessage 
-                ? 'border-green-500 focus:border-green-500 focus:ring-green-500' 
+                ? 'border-green-400 focus:border-green-400' 
                 : errors.email || errors.submit
-                ? 'border-red-500 focus:border-red-500 focus:ring-red-500'
-                : 'border-gray-300 focus:border-[#1d8f92] focus:ring-[#1d8f92]'
-              } placeholder-gray-400`}
-            placeholder="Enter your email"
+                ? 'border-red-400 focus:border-red-400'
+                : 'border-white/20 focus:border-white/40'
+              }`}
+            placeholder="Your email address"
             disabled={isSubmitting}
           />
-        </div>
-        <div className="mt-3 sm:mt-0 sm:ml-3">
           <button
             type="submit"
             disabled={isSubmitting}
-            className={`block w-full rounded-md py-2 px-4 text-sm font-medium text-white 
+            className={`absolute right-2 top-1/2 -translate-y-1/2 flex items-center gap-2 px-6 py-2.5 text-sm font-medium rounded-full transition-all duration-500 group
               ${isSubmitting 
-                ? 'bg-gray-400 cursor-not-allowed'
+                ? 'bg-white/20 text-white/60 cursor-not-allowed'
                 : successMessage
-                ? 'bg-green-500 hover:bg-green-600'
+                ? 'bg-green-500 text-white hover:bg-green-600'
                 : errors.submit
-                ? 'bg-red-500 hover:bg-red-600'
-                : 'bg-[#1d8f92] hover:bg-[#167275]'
-              } focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#1d8f92]
-              transition-colors duration-200`}
+                ? 'bg-red-500 text-white hover:bg-red-600'
+                : 'bg-[#F6911E] text-white hover:bg-white hover:text-[#F6911E]'
+              }`}
           >
-            {isSubmitting ? 'Subscribing...' : 'Subscribe'}
+            {isSubmitting ? (
+              'Sending...'
+            ) : successMessage ? (
+              <>
+                <FiCheck className="w-4 h-4" />
+                <span>Subscribed</span>
+              </>
+            ) : (
+              <>
+                <span>Subscribe</span>
+                <FiArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-500" />
+              </>
+            )}
           </button>
         </div>
       </form>
       {(successMessage || errors.submit) && (
         <p 
-          className={`mt-2 text-sm ${
+          className={`mt-3 text-sm font-light ${
             successMessage 
-              ? 'text-green-600' 
-              : 'text-red-600'
+              ? 'text-green-300' 
+              : 'text-red-300'
           }`}
         >
           {successMessage || errors.submit}

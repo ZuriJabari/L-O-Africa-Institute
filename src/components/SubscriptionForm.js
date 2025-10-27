@@ -23,7 +23,7 @@ const features = [
   "Early access to programs"
 ];
 
-const SubscriptionForm = () => {
+const SubscriptionForm = ({ variant }) => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -73,6 +73,108 @@ const SubscriptionForm = () => {
     }
   };
 
+  // Bare variant: only the form body, styled for light surfaces and wide layout
+  if (variant === 'bare') {
+    return (
+      <div className="w-full">
+        {success ? (
+          <div className="text-center py-10 space-y-4">
+            <div className="w-14 h-14 bg-[#F6911E] rounded-full mx-auto flex items-center justify-center">
+              <FiCheck className="w-7 h-7 text-white" />
+            </div>
+            <h3 className="text-2xl font-medium text-gray-900">{message}</h3>
+          </div>
+        ) : (
+          <form onSubmit={handleSubmit} className="space-y-8">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+              {/* Full Name */}
+              <div className="space-y-2">
+                <label htmlFor="name" className="text-gray-800 text-sm font-medium pl-1">Full Name</label>
+                <div className="relative">
+                  <FiUser className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-500 w-5 h-5" />
+                  <input
+                    id="name"
+                    type="text"
+                    name="name"
+                    value={formData.name}
+                    onChange={handleChange}
+                    placeholder="Your full name"
+                    className="w-full bg-white text-gray-900 pl-12 pr-5 py-4 rounded-2xl border border-gray-200 focus:border-gray-900 focus:ring-0 transition-all duration-200 placeholder:text-gray-400 text-base"
+                    required
+                  />
+                </div>
+              </div>
+
+              {/* Email */}
+              <div className="space-y-2">
+                <label htmlFor="email" className="text-gray-800 text-sm font-medium pl-1">Email Address</label>
+                <div className="relative">
+                  <FiMail className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-500 w-5 h-5" />
+                  <input
+                    id="email"
+                    type="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    placeholder="Your email address"
+                    className="w-full bg-white text-gray-900 pl-12 pr-5 py-4 rounded-2xl border border-gray-200 focus:border-gray-900 focus:ring-0 transition-all duration-200 placeholder:text-gray-400 text-base"
+                    required
+                  />
+                </div>
+              </div>
+
+              {/* Country - spans full width on lg */}
+              <div className="space-y-2 lg:col-span-2">
+                <label htmlFor="country" className="text-gray-800 text-sm font-medium pl-1">Country</label>
+                <div className="relative">
+                  <FiMapPin className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-500 w-5 h-5" />
+                  <select
+                    id="country"
+                    name="country"
+                    value={formData.country}
+                    onChange={handleChange}
+                    style={{ WebkitAppearance: 'none', MozAppearance: 'none' }}
+                    className="w-full bg-white text-gray-900 pl-12 pr-10 py-4 rounded-2xl border border-gray-200 focus:border-gray-900 focus:ring-0 transition-all duration-200 cursor-pointer text-base [&:not([value])]:text-gray-400"
+                    required
+                  >
+                    <option value="" disabled>Select your country</option>
+                    {africanCountries.map(country => (
+                      <option key={country} value={country}>{country}</option>
+                    ))}
+                  </select>
+                  <FiChevronDown className="absolute right-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400 pointer-events-none" />
+                </div>
+              </div>
+            </div>
+
+            {message && (
+              <p className="text-sm text-gray-700 text-center pt-1">{message}</p>
+            )}
+
+            <button
+              type="submit"
+              disabled={loading}
+              className="w-full lg:w-auto mt-2 bg-[#0B9A9E] hover:bg-[#0B9A9E]/90 text-white py-4 px-10 rounded-2xl font-medium text-base transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed inline-flex items-center justify-center gap-2"
+            >
+              {loading ? (
+                <>
+                  <div className="w-5 h-5 border-t-2 border-r-2 border-white rounded-full animate-spin"></div>
+                  <span>Processing...</span>
+                </>
+              ) : (
+                <>
+                  <span>Subscribe</span>
+                  <FiArrowRight className="w-5 h-5" />
+                </>
+              )}
+            </button>
+          </form>
+        )}
+      </div>
+    );
+  }
+
+  // Default variant: existing full-bleed gradient section
   return (
     <section className="relative w-full bg-gradient-to-br from-[#0B9A9E] via-[#0B9A9E]/90 to-[#0B9A9E]/80 py-24 overflow-hidden">
       {/* Background Pattern */}
@@ -142,9 +244,9 @@ const SubscriptionForm = () => {
                 <form onSubmit={handleSubmit} className="space-y-10">
                   {/* Name Input */}
                   <div className="space-y-4">
-                    <label htmlFor="name" className="text-white/90 text-sm font-medium pl-1">Full Name</label>
+                    <label htmlFor="name" className="text-white/90 text-base font-medium pl-1">Full Name</label>
                     <div className="relative">
-                      <FiUser className="absolute left-3 top-1/2 -translate-y-1/2 text-[#0B9A9E] w-5 h-5" />
+                      <FiUser className="absolute left-4 top-1/2 -translate-y-1/2 text-[#0B9A9E] w-6 h-6" />
                       <input
                         id="name"
                         type="text"
@@ -152,7 +254,7 @@ const SubscriptionForm = () => {
                         value={formData.name}
                         onChange={handleChange}
                         placeholder="Your full name"
-                        className="w-full bg-white/5 hover:bg-white/10 text-white pl-12 pr-4 py-3 rounded-xl border-b-2 border-white/20 focus:border-[#F6911E] transition-all duration-300 placeholder:text-white/40 focus:outline-none text-lg"
+                        className="w-full bg-white/5 hover:bg-white/10 text-white pl-14 pr-5 py-4 md:py-5 rounded-2xl border-b-2 border-white/20 focus:border-[#F6911E] transition-all duration-300 placeholder:text-white/40 focus:outline-none text-xl"
                         required
                       />
                     </div>
@@ -160,9 +262,9 @@ const SubscriptionForm = () => {
 
                   {/* Email Input */}
                   <div className="space-y-4">
-                    <label htmlFor="email" className="text-white/90 text-sm font-medium pl-1">Email Address</label>
+                    <label htmlFor="email" className="text-white/90 text-base font-medium pl-1">Email Address</label>
                     <div className="relative">
-                      <FiMail className="absolute left-3 top-1/2 -translate-y-1/2 text-[#0B9A9E] w-5 h-5" />
+                      <FiMail className="absolute left-4 top-1/2 -translate-y-1/2 text-[#0B9A9E] w-6 h-6" />
                       <input
                         id="email"
                         type="email"
@@ -170,7 +272,7 @@ const SubscriptionForm = () => {
                         value={formData.email}
                         onChange={handleChange}
                         placeholder="Your email address"
-                        className="w-full bg-white/5 hover:bg-white/10 text-white pl-12 pr-4 py-3 rounded-xl border-b-2 border-white/20 focus:border-[#F6911E] transition-all duration-300 placeholder:text-white/40 focus:outline-none text-lg"
+                        className="w-full bg-white/5 hover:bg-white/10 text-white pl-14 pr-5 py-4 md:py-5 rounded-2xl border-b-2 border-white/20 focus:border-[#F6911E] transition-all duration-300 placeholder:text-white/40 focus:outline-none text-xl"
                         required
                       />
                     </div>
@@ -178,16 +280,16 @@ const SubscriptionForm = () => {
 
                   {/* Country Input */}
                   <div className="space-y-4">
-                    <label htmlFor="country" className="text-white/90 text-sm font-medium pl-1">Country</label>
+                    <label htmlFor="country" className="text-white/90 text-base font-medium pl-1">Country</label>
                     <div className="relative">
-                      <FiMapPin className="absolute left-3 top-1/2 -translate-y-1/2 text-[#0B9A9E] w-5 h-5" />
+                      <FiMapPin className="absolute left-4 top-1/2 -translate-y-1/2 text-[#0B9A9E] w-6 h-6" />
                       <select
                         id="country"
                         name="country"
                         value={formData.country}
                         onChange={handleChange}
                         style={{ WebkitAppearance: 'none', MozAppearance: 'none' }}
-                        className="w-full bg-white/5 hover:bg-white/10 text-white pl-12 pr-10 py-3 rounded-xl border-b-2 border-white/20 focus:border-[#F6911E] transition-all duration-300 cursor-pointer focus:outline-none text-lg [&:not([value])]:text-white/40"
+                        className="w-full bg-white/5 hover:bg-white/10 text-white pl-14 pr-12 py-4 md:py-5 rounded-2xl border-b-2 border-white/20 focus:border-[#F6911E] transition-all duration-300 cursor-pointer focus:outline-none text-xl [&:not([value])]:text-white/40"
                         required
                       >
                         <option value="" disabled>Select your country</option>
@@ -195,7 +297,7 @@ const SubscriptionForm = () => {
                           <option key={country} value={country} className="text-gray-800 bg-[#0B9A9E]">{country}</option>
                         ))}
                       </select>
-                      <FiChevronDown className="absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5 text-white/40 pointer-events-none" />
+                      <FiChevronDown className="absolute right-4 top-1/2 -translate-y-1/2 w-6 h-6 text-white/40 pointer-events-none" />
                     </div>
                   </div>
 
@@ -206,7 +308,7 @@ const SubscriptionForm = () => {
                   <button
                     type="submit"
                     disabled={loading}
-                    className="w-full mt-4 bg-gradient-to-r from-[#F6911E] to-[#F6911E]/90 text-white py-5 px-8 rounded-xl font-medium text-lg transition-all duration-300 transform hover:translate-y-[-2px] hover:shadow-lg disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center space-x-2 relative overflow-hidden group"
+                    className="w-full mt-4 bg-gradient-to-r from-[#F6911E] to-[#F6911E]/90 text-white py-6 px-10 rounded-2xl font-medium text-xl transition-all duration-300 transform hover:translate-y-[-2px] hover:shadow-lg disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center space-x-2 relative overflow-hidden group"
                   >
                     <div className="absolute inset-0 bg-white/20 transform translate-y-full group-hover:translate-y-0 transition-transform duration-300"></div>
                     {loading ? (

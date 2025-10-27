@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'gatsby';
 import { motion } from 'framer-motion';
 import { FaLinkedin, FaTwitter } from 'react-icons/fa';
+import { StaticImage } from 'gatsby-plugin-image';
 import Layout from '../../../components/Layout';
 
 // Import team photos
@@ -194,7 +195,7 @@ const TeamPage = () => {
     },
     {
       name: "Nnanda Kizito Sseruwagi",
-      role: "Media & Communications Officer",
+      role: "Nnanda is the Media and Communications Officer at the LéO Africa Institute",
       image: Nanda,
       // bio: "Manages communications and media relations.",
       slug: "nnanda-kizito",
@@ -208,73 +209,83 @@ const TeamPage = () => {
   return (
     <Layout>
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-r from-[#0B9A9E] to-[#F6911E] py-24">
-        <div className="absolute inset-0 opacity-10">
-          <div className="absolute inset-0 bg-pattern"></div>
-        </div>
-        
-        <div className="container mx-auto px-4 relative">
-          <div className="max-w-4xl">
-            <motion.div {...fadeIn} className="mb-8">
-              <h1 className="text-6xl md:text-7xl font-bold text-white mb-6">
-                Meet the Team
-              </h1>
-              <div className="w-24 h-1.5 bg-white opacity-80"></div>
-            </motion.div>
-            
-            <motion.p {...fadeIn} className="text-2xl md:text-3xl text-white opacity-90 max-w-3xl font-light leading-relaxed">
-              Meet the dedicated individuals driving positive change through leadership development in Africa.
-            </motion.p>
-          </div>
-        </div>
-      </section>
+      <section className="relative min-h-[60vh] flex items-center overflow-hidden bg-white">
+        {/* Clean Background */}
+        <div className="absolute inset-0 bg-white"></div>
 
-      {/* Quote Section */}
-      <section className="py-20 bg-gray-50">
-        <div className="container mx-auto px-4">
-          <div className="max-w-5xl mx-auto text-center">
+        {/* Content Layer */}
+        <div className="container mx-auto px-8 lg:px-16 relative z-10">
+          <div className="max-w-4xl">
+            {/* Eyebrow */}
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="flex items-center gap-4 mb-10"
+            >
+              <div className="w-16 h-px bg-gray-300"></div>
+              <span className="text-xs uppercase tracking-[0.3em] text-gray-600 font-medium">
+                Meet Our Team
+              </span>
+            </motion.div>
+
+            {/* Main Title */}
+            <motion.h1
+              initial={{ opacity: 0, y: 40 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.9, delay: 0.3, ease: [0.43, 0.13, 0.23, 0.96] }}
+              className="text-6xl md:text-7xl lg:text-8xl font-light text-gray-900 leading-[1.05] tracking-tight mb-8"
+            >
+              Meet the Visionaries{' '}
+              <span className="block mt-2">
+                Shaping Africa's Future
+              </span>
+            </motion.h1>
+
+            {/* Description */}
+            <motion.p 
+              className="text-xl md:text-2xl leading-relaxed text-gray-600 mb-14 max-w-3xl font-light"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.5 }}
+            >
+              A dedicated team of leaders, innovators, and changemakers committed to empowering Africa's next generation.
+            </motion.p>
+
+            {/* Stats Bar */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="relative"
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.6 }}
+              className="flex flex-wrap gap-8"
             >
-              <svg 
-                className="w-12 h-12 text-[#0B9A9E] mb-6 mx-auto opacity-40" 
-                fill="currentColor" 
-                viewBox="0 0 32 32"
-                aria-hidden="true"
-              >
-                <path d="M9.352 4C4.456 7.456 1 13.12 1 19.36c0 5.088 3.072 8.064 6.624 8.064 3.36 0 5.856-2.688 5.856-5.856 0-3.168-2.208-5.472-5.088-5.472-.576 0-1.344.096-1.536.192.48-3.264 3.552-7.104 6.624-9.024L9.352 4zm16.512 0c-4.8 3.456-8.256 9.12-8.256 15.36 0 5.088 3.072 8.064 6.624 8.064 3.264 0 5.856-2.688 5.856-5.856 0-3.168-2.304-5.472-5.184-5.472-.576 0-1.248.096-1.44.192.48-3.264 3.456-7.104 6.528-9.024L25.864 4z" />
-              </svg>
-              <blockquote className="relative z-10">
-                <p className="text-2xl md:text-3xl font-medium text-gray-900 mb-8 leading-relaxed max-w-4xl mx-auto">
-                  "In a fast-changing world, with increased human and environmental challenges, transformational and ethical leadership becomes a critical tool to build better societies, and indeed a better world."
-                </p>
-                <div className="flex items-center gap-6 justify-center">
-                  <div className="relative">
-                    <img
-                      src={William}
-                      alt="William Babigumira"
-                      className="w-14 h-14 rounded-full object-cover"
-                    />
-                    <div className="absolute -bottom-1 -right-1 w-5 h-5 bg-white rounded-full flex items-center justify-center">
-                      <div className="w-3 h-3 rounded-full bg-gradient-to-r from-[#F6911E] to-[#0B9A9E]"></div>
-                    </div>
-                  </div>
-                  <div>
-                    <div className="font-medium text-gray-900">William Babigumira</div>
-                    <div className="text-sm text-[#0B9A9E]">Senior Faculty & Member of the Board of Directors</div>
-                  </div>
+              <div className="flex items-center gap-3">
+                <div className="w-12 h-px bg-gray-900"></div>
+                <div>
+                  <div className="text-2xl font-light text-gray-900">15+</div>
+                  <div className="text-xs uppercase tracking-wider text-gray-600">Team Members</div>
                 </div>
-              </blockquote>
-              <div className="absolute inset-0 -z-10">
-                <div className="h-full w-full opacity-5 bg-gradient-to-r from-[#0B9A9E] to-[#F6911E]"></div>
+              </div>
+              <div className="flex items-center gap-3">
+                <div className="w-12 h-px bg-gray-900"></div>
+                <div>
+                  <div className="text-2xl font-light text-gray-900">10+</div>
+                  <div className="text-xs uppercase tracking-wider text-gray-600">Years Experience</div>
+                </div>
+              </div>
+              <div className="flex items-center gap-3">
+                <div className="w-12 h-px bg-gray-900"></div>
+                <div>
+                  <div className="text-2xl font-light text-gray-900">5</div>
+                  <div className="text-xs uppercase tracking-wider text-gray-600">Countries</div>
+                </div>
               </div>
             </motion.div>
           </div>
         </div>
       </section>
+
+      
 
       {/* Board Members Section */}
       <section className="py-16 bg-white">

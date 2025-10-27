@@ -6,7 +6,6 @@ import HeroSection from "../components/Herosection";
 import Objectives from "../components/Objectives";
 import MultimediaHome from "../components/Multimedia/MultimediaHome";
 import UpcomingEvents from "../components/UpcomingEvents";
-import PartnerWithUs from "../components/PartnerWithUs";
 import Partners from "../components/Partners";
 import Initiatives from "../components/Initiatives";
 import OurPeople from "../components/OurPeople";
@@ -15,6 +14,8 @@ import Pillars from "../components/Pillars";
 import FoundersBlog from "../components/FoundersBlog";
 import TeamMemberCard from '../components/TeamMemberCard';
 import GriotsHomepageBlock from '../components/GriotsHomepageBlock';
+import PartnershipBlock from '../components/PartnershipBlock';
+import ALGPromoBlock from '../components/ALGPromoBlock';
 import { Link } from "gatsby";
 
 
@@ -76,12 +77,10 @@ const HomePage = ({ data = { allPrismicBlogPosts: { nodes: [] } } }) => {
       
       <div className="prefooter-gray"></div>
       
-      <MultimediaHome data={data} />
+      <PartnershipBlock />
       
-      {/* Griots Cohort 2025 Feature Block */}
-      <GriotsHomepageBlock />
+      <ALGPromoBlock />
       
-      <UpcomingEvents />
       {/* <OurPeople 
         boardTitle="The Governing Board of Directors"
         boardDescription="Our governance board is constituted with individuals whose integrity is beyond reproach and with whom we share a commitment to create a better society and future with young people at the center of shaping leadership action."
@@ -91,10 +90,8 @@ const HomePage = ({ data = { allPrismicBlogPosts: { nodes: [] } } }) => {
         team={team}
       /> */}
         {/* <Pillars/> */}
-      <div className="prefooter-gray"></div>
       
       <Partners />
-      <PartnerWithUs />
       {/* <SubscriptionForm /> */}
     </Layout>
   );

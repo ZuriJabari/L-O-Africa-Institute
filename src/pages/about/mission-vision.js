@@ -38,9 +38,14 @@ const MissionVisionPage = () => {
   return (
     <Layout>
       {/* Hero Section */}
-      <section className="relative min-h-[85vh] flex items-center overflow-hidden">
-        {/* Background Image Layer */}
-        <div className="absolute inset-0">
+      <section className="relative h-screen min-h-[700px] flex items-center overflow-hidden -mt-[140px] pt-[140px]">
+        {/* Background Image Layer with Ken Burns Effect */}
+        <motion.div 
+          className="absolute inset-0"
+          initial={{ scale: 1.1 }}
+          animate={{ scale: 1 }}
+          transition={{ duration: 1.5, ease: [0.43, 0.13, 0.23, 0.96] }}
+        >
           <StaticImage
             src="../../assets/images/ALG24.jpg"
             alt="Our Mission & Vision"
@@ -50,223 +55,141 @@ const MissionVisionPage = () => {
             formats={["jpg"]}
             quality={90}
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/60 to-transparent"></div>
-          <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-transparent"></div>
-          
-          {/* Pattern Overlay */}
-          <div className="absolute inset-0 pattern-bg opacity-30"></div>
-        </div>
-
-        {/* Animated Floating Elements */}
-        <div className="absolute top-1/4 right-1/4 w-64 h-64 rounded-full bg-[#F6911E]/10 blur-3xl animate-float"></div>
-        <div className="absolute bottom-1/4 left-1/4 w-80 h-80 rounded-full bg-[#0B9A9E]/10 blur-3xl animate-float" style={{ animationDelay: '2s' }}></div>
+          {/* Sophisticated Gradient Overlays */}
+          <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/40 to-transparent"></div>
+          <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent"></div>
+          {/* Subtle Texture Overlay */}
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_#ffffff05_1px,_transparent_1px)] bg-[length:40px_40px] opacity-30"></div>
+        </motion.div>
 
         {/* Content Layer */}
-        <div className="container mx-auto px-4 relative z-10">
-          <div className="max-w-3xl">
+        <div className="container mx-auto px-8 lg:px-16 relative z-10">
+          <div className="max-w-4xl">
+            {/* Eyebrow */}
             <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-              className="mb-8"
+              initial={{ opacity: 0, x: -30 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="flex items-center gap-4 mb-10"
             >
-              <div className="flex items-center gap-4 mb-6">
-                <div className="w-12 h-[2px] bg-[#F6911E]"></div>
-                <span className="inline-block bg-[#F6911E]/10 border border-[#F6911E]/20 text-[#F6911E] px-6 py-2 text-sm font-semibold rounded-full">
-                  Our Purpose
-                </span>
+              <div className="w-16 h-px bg-[#F6911E]"></div>
+              <span className="text-xs uppercase tracking-[0.3em] text-white/80 font-medium">
+                Our Purpose
+              </span>
+            </motion.div>
+
+            {/* Main Title */}
+            <motion.h1
+              initial={{ opacity: 0, y: 40 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.9, delay: 0.3, ease: [0.43, 0.13, 0.23, 0.96] }}
+              className="text-6xl md:text-7xl lg:text-8xl font-light text-white leading-[1.05] tracking-tight mb-8"
+            >
+              Mission & Vision
+            </motion.h1>
+
+            {/* Description */}
+            <motion.p 
+              className="text-xl md:text-2xl leading-relaxed text-white/90 mb-14 max-w-3xl font-light"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.5 }}
+            >
+              Inspiring, empowering, and connecting generations of ethical, values-based leaders in Africa and beyond.
+            </motion.p>
+
+            {/* Scroll Indicator */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.8, delay: 0.7 }}
+              className="flex items-center gap-4 text-white/60 text-sm font-light"
+            >
+              <div className="flex flex-col items-center gap-2">
+                <span className="text-xs uppercase tracking-[0.2em]">Scroll to explore</span>
+                <motion.div
+                  animate={{ y: [0, 8, 0] }}
+                  transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+                  className="w-px h-12 bg-gradient-to-b from-white/40 to-transparent"
+                />
               </div>
-              <h1 className="font-playfair text-5xl md:text-7xl font-bold text-white leading-tight mb-8">
-                Transforming <span className="text-[#0B9A9E]">Africa</span> <br />
-                Through <span className="text-[#F6911E]">Leadership</span>
-              </h1>
-              <p className="text-xl text-white/90 max-w-2xl mb-10">
-                We are inspiring, empowering, and connecting generations of ethical, values-based leaders in Africa and beyond to drive transformative change.
-              </p>
-              
-              <motion.div 
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.6, duration: 0.8 }}
-              >
-                <a href="#mission" className="inline-flex items-center gap-2 bg-[#0B9A9E] hover:bg-[#0B9A9E]/90 text-white py-3 px-6 rounded-full transition-all duration-300 group">
-                  <span>Discover Our Vision</span>
-                  <FaChevronRight className="group-hover:translate-x-1 transition-transform duration-300" />
-                </a>
-              </motion.div>
             </motion.div>
           </div>
         </div>
 
-        {/* Bottom Transition */}
-        <div className="absolute bottom-0 left-0 w-full">
-          <div className="prefooter-gray">
-          </div>
-        </div>
       </section>
 
       {/* Mission & Vision Section */}
-      <section id="mission" className="py-16 bg-white relative overflow-hidden">
-        {/* Pattern background with more vibrant colors */}
-        <div className="absolute inset-0 pattern-bg opacity-40"></div>
+      <section id="mission" className="relative py-32 md:py-40 bg-white overflow-hidden">
         
-        {/* Colorful gradient orbs */}
-        <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-gradient-to-r from-[#F6911E]/20 to-[#0B9A9E]/15 rounded-full -translate-y-1/3 translate-x-1/4 blur-[100px]"></div>
-        <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-gradient-to-r from-[#0B9A9E]/15 to-[#F6911E]/20 rounded-full translate-y-1/3 -translate-x-1/4 blur-[100px]"></div>
-        
-        <div className="container mx-auto px-4 relative z-10">
-          <div className="max-w-7xl mx-auto">
-            <motion.div 
-              className="text-center mb-16"
-              {...fadeIn}
+        <div className="container mx-auto px-8 lg:px-16 relative z-10">
+          <div className="max-w-6xl mx-auto">
+            {/* Section Header */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, ease: [0.43, 0.13, 0.23, 0.96] }}
+              className="text-center mb-20"
             >
-              <div className="inline-flex items-center gap-3 px-5 py-2 bg-gradient-to-r from-[#F6911E]/20 to-[#0B9A9E]/20 rounded-full mb-4">
-                <div className="w-2 h-2 rounded-full bg-[#F6911E]"></div>
-                <span className="text-sm font-semibold tracking-wider uppercase bg-gradient-to-r from-[#F6911E] to-[#0B9A9E] bg-clip-text text-transparent">Our Foundation</span>
-                <div className="w-2 h-2 rounded-full bg-[#0B9A9E]"></div>
+              {/* Eyebrow */}
+              <div className="flex items-center justify-center gap-4 mb-8">
+                <div className="w-16 h-px bg-gray-300" />
+                <span className="text-xs uppercase tracking-[0.3em] text-gray-600 font-medium">
+                  Our Foundation
+                </span>
+                <div className="w-16 h-px bg-gray-300" />
               </div>
-              <h2 className="font-playfair text-5xl font-bold mt-4 mb-6 bg-gradient-to-r from-[#0B9A9E] to-[#F6911E] bg-clip-text text-transparent">Mission & Vision</h2>
-              <div className="h-1 w-32 bg-gradient-to-r from-[#0B9A9E] to-[#F6911E] mx-auto mb-8 rounded-full"></div>
-              <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-                The foundation of our work and our commitment to Africa's future
-              </p>
             </motion.div>
             
-            <div className="grid lg:grid-cols-2 gap-12">
+            <div className="grid lg:grid-cols-2 gap-16">
               {/* Mission */}
               <motion.div
-                {...slideIn}
-                className="relative group h-full"
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8, delay: 0.2, ease: [0.43, 0.13, 0.23, 0.96] }}
+                className="relative"
               >
-                <div className="bg-gradient-to-br from-[#F6911E]/5 to-white shadow-lg hover:shadow-xl transition-all duration-500 p-8 lg:p-10 rounded-3xl relative overflow-hidden border border-[#F6911E]/20 h-full flex flex-col">
-                  {/* Decorative elements */}
-                  <div className="absolute top-0 right-0 w-60 h-60 bg-gradient-to-br from-[#F6911E]/10 to-transparent rounded-bl-[100px] -z-1"></div>
-                  <div className="absolute -top-10 -right-10 w-40 h-40 bg-[#F6911E]/5 rounded-full blur-xl"></div>
-                  <div className="absolute -left-3 top-0 bottom-0 w-[6px]">
-                    <div className="h-full w-full bg-gradient-to-b from-[#F6911E] via-[#F6911E]/70 to-[#F6911E]/30 rounded-full"></div>
-                  </div>
+                <div className="bg-white rounded-3xl border border-gray-200 p-10 md:p-12 relative shadow-sm">
+                  {/* Accent Bar */}
+                  <div className="absolute left-0 top-12 bottom-12 w-1 bg-gray-900 rounded-r" />
                   
-                  {/* Header with icon */}
-                  <div className="flex items-center gap-4 mb-8">
-                    <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-[#F6911E] to-[#F6911E]/70 flex items-center justify-center text-white shadow-lg transform group-hover:scale-105 transition-transform duration-500">
-                      <FaRocket className="text-3xl" />
-                    </div>
-                    <div>
-                      <span className="text-[#F6911E] text-lg font-bold tracking-wider uppercase">Our Mission</span>
-                      <div className="h-1 w-12 bg-[#F6911E]/30 mt-1"></div>
-                    </div>
-                  </div>
-                  
-                  {/* Main content */}
-                  <div className="flex-grow">
-                    <p className="text-2xl text-gray-700 leading-relaxed mb-8">
-                      We are building an effective network of over <span className="font-semibold text-[#F6911E]">10,000 individuals</span> leading transformative change in critical areas of challenge and who amplify Africa's influence globally by 2035.
+                  <div className="pl-8">
+                    <h3 className="text-xs uppercase tracking-[0.3em] text-gray-600 font-medium mb-6">
+                      Our Mission
+                    </h3>
+                    <p className="text-2xl md:text-3xl text-gray-800 leading-relaxed font-light">
+                      We are building an effective network of over <span className="font-medium text-gray-900">10,000 individuals</span> leading transformative change in critical areas of challenge and who amplify Africa's influence globally by 2035.
                     </p>
-                  </div>
-                  
-                  {/* Footer */}
-                  <div className="mt-auto pt-6 border-t border-[#F6911E]/20">
-                    <div className="flex items-center gap-4 text-gray-600">
-                      <div className="w-10 h-10 rounded-full bg-[#F6911E]/10 flex items-center justify-center text-[#F6911E] group-hover:bg-[#F6911E]/20 transition-all duration-300">
-                        <FaStar className="text-lg" />
-                      </div>
-                      <span className="text-base">Transforming Africa through leadership</span>
-                    </div>
                   </div>
                 </div>
               </motion.div>
 
               {/* Vision */}
               <motion.div
-                {...slideInRight}
-                className="relative group h-full"
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8, delay: 0.4, ease: [0.43, 0.13, 0.23, 0.96] }}
+                className="relative"
               >
-                <div className="bg-gradient-to-br from-[#0B9A9E]/5 to-white shadow-lg hover:shadow-xl transition-all duration-500 p-8 lg:p-10 rounded-3xl relative overflow-hidden border border-[#0B9A9E]/20 h-full flex flex-col">
-                  {/* Decorative elements */}
-                  <div className="absolute top-0 right-0 w-60 h-60 bg-gradient-to-br from-[#0B9A9E]/10 to-transparent rounded-bl-[100px] -z-1"></div>
-                  <div className="absolute -top-10 -right-10 w-40 h-40 bg-[#0B9A9E]/5 rounded-full blur-xl"></div>
-                  <div className="absolute -left-3 top-0 bottom-0 w-[6px]">
-                    <div className="h-full w-full bg-gradient-to-b from-[#0B9A9E] via-[#0B9A9E]/70 to-[#0B9A9E]/30 rounded-full"></div>
-                  </div>
+                <div className="bg-white rounded-3xl border border-gray-200 p-10 md:p-12 relative shadow-sm">
+                  {/* Accent Bar */}
+                  <div className="absolute left-0 top-12 bottom-12 w-1 bg-gray-900 rounded-r" />
                   
-                  {/* Header with icon */}
-                  <div className="flex items-center gap-4 mb-8">
-                    <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-[#0B9A9E] to-[#0B9A9E]/70 flex items-center justify-center text-white shadow-lg transform group-hover:scale-105 transition-transform duration-500">
-                      <FaShieldAlt className="text-3xl" />
-                    </div>
-                    <div>
-                      <span className="text-[#0B9A9E] text-lg font-bold tracking-wider uppercase">Our Vision</span>
-                      <div className="h-1 w-12 bg-[#0B9A9E]/30 mt-1"></div>
-                    </div>
-                  </div>
-                  
-                  {/* Main content */}
-                  <div className="flex-grow">
-                    <p className="text-2xl text-gray-700 leading-relaxed mb-8">
-                      We are <span className="font-semibold text-[#0B9A9E]">inspiring, empowering, connecting</span> and enabling generations of ethical and values based leaders in Africa and beyond.
+                  <div className="pl-8">
+                    <h3 className="text-xs uppercase tracking-[0.3em] text-gray-600 font-medium mb-6">
+                      Our Vision
+                    </h3>
+                    <p className="text-2xl md:text-3xl text-gray-800 leading-relaxed font-light">
+                      We are <span className="font-medium text-gray-900">inspiring, empowering, connecting</span> and enabling generations of ethical and values based leaders in Africa and beyond.
                     </p>
-                  </div>
-                  
-                  {/* Footer */}
-                  <div className="mt-auto pt-6 border-t border-[#0B9A9E]/20">
-                    <div className="flex items-center gap-4 text-gray-600">
-                      <div className="w-10 h-10 rounded-full bg-[#0B9A9E]/10 flex items-center justify-center text-[#0B9A9E] group-hover:bg-[#0B9A9E]/20 transition-all duration-300">
-                        <FaStar className="text-lg" />
-                      </div>
-                      <span className="text-base">Building a legacy of ethical leadership</span>
-                    </div>
                   </div>
                 </div>
               </motion.div>
             </div>
             
-            {/* Enhanced visual impact elements */}
-            <div className="mt-20 grid grid-cols-3 gap-8 max-w-3xl mx-auto">
-              <motion.div 
-                initial={{ opacity: 0, y: 20 }} 
-                whileInView={{ opacity: 1, y: 0 }} 
-                viewport={{ once: true }}
-                transition={{ duration: 0.6 }}
-                className="text-center"
-              >
-                <div className="w-20 h-20 bg-gradient-to-br from-[#F6911E]/20 to-[#0B9A9E]/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <div className="w-14 h-14 rounded-full bg-white flex items-center justify-center">
-                    <FaGlobe className="text-2xl text-[#F6911E]" />
-                  </div>
-                </div>
-                <p className="text-sm text-gray-600 font-medium">Global Impact</p>
-              </motion.div>
-              
-              <motion.div 
-                initial={{ opacity: 0, y: 20 }} 
-                whileInView={{ opacity: 1, y: 0 }} 
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: 0.2 }}
-                className="text-center"
-              >
-                <div className="w-20 h-20 bg-gradient-to-br from-[#0B9A9E]/20 to-[#F6911E]/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <div className="w-14 h-14 rounded-full bg-white flex items-center justify-center">
-                    <FaHandshake className="text-2xl text-[#0B9A9E]" />
-                  </div>
-                </div>
-                <p className="text-sm text-gray-600 font-medium">Collaborative Leadership</p>
-              </motion.div>
-              
-              <motion.div 
-                initial={{ opacity: 0, y: 20 }} 
-                whileInView={{ opacity: 1, y: 0 }} 
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: 0.4 }}
-                className="text-center"
-              >
-                <div className="w-20 h-20 bg-gradient-to-br from-[#F6911E]/10 to-[#0B9A9E]/20 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <div className="w-14 h-14 rounded-full bg-white flex items-center justify-center">
-                    <FaLightbulb className="text-2xl text-[#F6911E]" />
-                  </div>
-                </div>
-                <p className="text-sm text-gray-600 font-medium">Innovative Solutions</p>
-              </motion.div>
-            </div>
           </div>
         </div>
       </section>

@@ -25,6 +25,8 @@ const Navbar = () => {
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [forceDark, setForceDark] = useState(false);
+  const [isHome, setIsHome] = useState(false);
   const navRef = useRef(null);
   const menuRef = useRef(null);
 
@@ -304,6 +306,15 @@ const Navbar = () => {
     handleScroll();
     window.addEventListener('resize', checkMobile);
     window.addEventListener('scroll', handleScroll);
+    // Force dark navbar controls on light hero pages
+    try {
+      const path = window.location.pathname || '';
+      const lightHeroRoutes = ['/about/team', '/team', '/blog'];
+      setForceDark(lightHeroRoutes.some(route => path.startsWith(route)));
+      setIsHome(path === '/' || path === '');
+    } catch (_) {
+      // noop for SSR
+    }
     
     return () => {
       window.removeEventListener('resize', checkMobile);
@@ -513,8 +524,8 @@ const Navbar = () => {
   return (
     <>
       <style>{dropdownStyles}</style>
-      <nav className={`fixed top-0 left-0 right-0 z-50 bg-white transition-all duration-300 ${
-        scrolled ? 'shadow-lg' : 'shadow-md'
+      <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        scrolled ? 'bg-white shadow-lg' : ''
       }`} ref={navRef}>
         {/* Top Bar */}
         <div className="bg-[#0B9A9E] border-b border-[#0B9A9E]/20">
@@ -589,7 +600,9 @@ const Navbar = () => {
 
         {/* Main Navigation */}
         <div className="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl px-6 py-4">
-          <a href="/" className="flex items-center space-x-3 z-50">
+          <a href="/" className={`flex items-center space-x-3 z-50 transition-all duration-300 ${
+            (!scrolled) ? 'bg-white/90 backdrop-blur-sm px-5 py-3 rounded-xl' : ''
+          }`}>
             <img 
               src={LOGO} 
               className={`transition-all duration-300 ${
@@ -607,13 +620,21 @@ const Navbar = () => {
             }`}
             aria-label="Toggle menu"
           >
-            <span className="text-xs font-bold tracking-[0.2em] text-gray-800 group-hover:text-[#0B9A9E] transition-colors duration-300">
+            <span className={`text-xs font-bold tracking-[0.2em] transition-colors duration-300 ${
+              (scrolled || forceDark) ? 'text-gray-800 group-hover:text-[#0B9A9E]' : 'text-white group-hover:text-white/70'
+            }`}>
               MENU
             </span>
             <div className="w-7 h-6 flex flex-col justify-between">
-              <span className="hamburger-line line-1 w-full h-0.5 bg-gray-800 rounded-full"></span>
-              <span className="hamburger-line line-2 w-full h-0.5 bg-gray-800 rounded-full"></span>
-              <span className="hamburger-line line-3 w-full h-0.5 bg-gray-800 rounded-full"></span>
+              <span className={`hamburger-line line-1 w-full h-0.5 rounded-full ${
+                (scrolled || forceDark) ? 'bg-gray-800' : 'bg-white'
+              }`}></span>
+              <span className={`hamburger-line line-2 w-full h-0.5 rounded-full ${
+                (scrolled || forceDark) ? 'bg-gray-800' : 'bg-white'
+              }`}></span>
+              <span className={`hamburger-line line-3 w-full h-0.5 rounded-full ${
+                (scrolled || forceDark) ? 'bg-gray-800' : 'bg-white'
+              }`}></span>
             </div>
           </button>
         </div>
@@ -1257,106 +1278,101 @@ const Navbar = () => {
           <>
             {/* Overlay */}
             <div 
-              className="menu-overlay fixed inset-0 bg-black/40 backdrop-blur-sm z-40"
+              className="menu-overlay fixed inset-0 bg-black/60 backdrop-blur-md z-40 transition-all duration-500"
               onClick={() => setIsMenuOpen(false)}
             />
             
             {/* Menu Panel */}
             <div 
               ref={menuRef}
-              className="hamburger-menu fixed top-0 right-0 bottom-0 w-full sm:w-[480px] bg-white shadow-2xl z-50 overflow-y-auto"
+              className="hamburger-menu fixed top-0 right-0 bottom-0 w-full sm:w-[480px] bg-white z-50 overflow-y-auto border-l border-gray-200"
+              style={{ boxShadow: '-20px 0 60px rgba(0, 0, 0, 0.15)' }}
             >
               {/* Menu Header */}
-              <div className="sticky top-0 bg-white/95 backdrop-blur-md border-b border-gray-200 px-8 py-6 z-10">
+              <div className="sticky top-0 bg-white border-b border-gray-100 px-4 sm:px-8 py-5 sm:py-8 z-10">
                 <div className="flex items-center justify-between">
-                  <h2 className="text-2xl font-bold tracking-[0.15em] text-gray-900">
-                    MENU
-                  </h2>
+                  <div>
+                    <h2 className="text-sm uppercase tracking-[0.3em] text-gray-900 font-medium">
+                      Navigation
+                    </h2>
+                  </div>
                   <button
                     onClick={() => setIsMenuOpen(false)}
-                    className="p-2 rounded-lg hover:bg-gray-100 transition-all duration-300 hover:rotate-90 group"
+                    className="w-12 h-12 flex items-center justify-center rounded-full border border-gray-200 hover:border-gray-900 hover:bg-gray-900 hover:text-white transition-all duration-500 group"
                     aria-label="Close menu"
                   >
-                    <FiX className="w-6 h-6 text-gray-700 group-hover:text-[#0B9A9E] transition-colors" />
+                    <FiX className="w-5 h-5 transition-transform duration-500 group-hover:rotate-90" />
                   </button>
                 </div>
               </div>
 
               {/* Menu Content */}
-              <div className="px-8 py-8">
+              <div className="px-4 sm:px-8 py-6 sm:py-10">
                 {/* Main Menu Items */}
-                <nav className="space-y-2 mb-8">
+                <nav className="space-y-1 mb-12">
                   {[
                     { name: 'About Us', items: [
                       { label: 'About LéO Africa Institute', href: '/about' },
                       { label: 'Mission, Vision & Core Values', href: '/about/mission-vision' },
-                      { label: 'The Leadership Team', href: '/about/team' },
-                      { label: 'Our Pillars of Action', href: '/about/pillars-of-action' },
-                      { label: 'Frequently Asked Questions', href: '/about/faqs' }
+                      { label: 'The Leadership Team', href: '/about/team' }
                     ]},
-                    { name: 'Events & Gatherings', items: [
+                    { name: 'Events, Conversations & Ideas Spaces', items: [
                       { label: 'Annual Leaders Gathering', href: 'https://alg.leoafricainstitute.org', featured: true },
-                      { label: 'Harambe Symposium', href: '/events/harambe-symposium/' },
-                      { label: 'LéO Africa Talks', href: '/events/leo-talks' },
-                      { label: 'Distinguished Lectures Series', href: '/events/lecture-series/' },
-                      { label: 'Browse All Events', href: '/events' }
+                      { label: 'The Griot Conference', href: '/events/leo-talks' },
+                      { label: 'Past Events', href: '/events' }
                     ]},
-                    { name: 'Fellows & Champions', items: [
+                    { name: 'Investing in Leadership Development', items: [
                       { label: 'Huduma Fellowship', href: '/huduma', logo: HudumaLogo },
                       { label: 'Young Emerging Leaders Program', href: '/yelp', logo: YelpLogo },
-                      { label: 'Meet Our Champions', href: '/about/champions' }
+                      { label: 'The Griot Fellowship', href: '/griots' }
                     ]},
-                    { name: 'News & Media', items: [
+                    { name: 'Media Storytelling and Production', items: [
                       { label: 'Our Latest Articles', href: '/news/' },
-                      { label: 'Research Reports', href: '/publications' },
-                      { label: 'Visit our Blog', href: '/blog' },
-                      { label: 'View All Insights', href: '/news' }
-                    ]},
-                    { name: 'Initiatives', items: [
-                      { label: 'Annual Leaders Gathering', href: 'https://alg.leoafricainstitute.org/', logo: ALGLogo },
-                      { label: 'YELP', href: '/yelp', logo: YelpLogo },
-                      { label: 'Huduma Fellowship', href: '/huduma', logo: HudumaLogo },
-                      { label: 'LéO Africa Review', href: 'https://leoafricareview.com/', logo: ReviewLogo }
+                      { label: 'Resources and Downloadables', href: '/publications' },
+                      { label: 'LéO Africa Podcast (Coming Soon)', href: '#' },
+                      { label: 'The Griot Stories (Coming Soon)', href: '#' },
+                      { label: 'LéO Africa Review', href: 'https://leoafricareview.com' }
                     ]}
                   ].map((menu, index) => (
-                    <div key={menu.name} className="menu-item">
+                    <div key={menu.name} className="menu-item border-b border-gray-100 last:border-0">
                       <button
                         onClick={() => setActiveMobileMenu(activeMobileMenu === menu.name ? null : menu.name)}
-                        className="w-full flex items-center justify-between px-4 py-4 text-left text-gray-900 hover:bg-white rounded-xl transition-all duration-300 group"
+                        className="w-full flex items-center justify-between py-4 sm:py-6 text-left text-gray-900 transition-all duration-500 group"
                       >
-                        <span className="text-lg font-semibold group-hover:text-[#0B9A9E] transition-colors">
+                        <span className="text-lg sm:text-xl font-light tracking-tight group-hover:text-[#0B9A9E] transition-all duration-500 group-hover:translate-x-2">
                           {menu.name}
                         </span>
                         <FiChevronDown 
-                          className={`w-5 h-5 text-gray-500 transition-transform duration-300 ${
-                            activeMobileMenu === menu.name ? 'rotate-180 text-[#0B9A9E]' : ''
+                          className={`w-5 h-5 text-gray-400 transition-all duration-500 ${
+                            activeMobileMenu === menu.name ? 'rotate-180 text-[#0B9A9E]' : 'group-hover:text-[#0B9A9E]'
                           }`}
                         />
                       </button>
                       
                       {/* Submenu */}
                       <div 
-                        className={`overflow-hidden transition-all duration-300 ${
-                          activeMobileMenu === menu.name ? 'max-h-[800px] opacity-100' : 'max-h-0 opacity-0'
+                        className={`overflow-hidden transition-all duration-700 ease-out ${
+                          activeMobileMenu === menu.name ? 'max-h-[800px] opacity-100 mb-6' : 'max-h-0 opacity-0'
                         }`}
                       >
-                        <div className="pl-4 pr-4 pb-2 pt-2 space-y-1">
+                        <div className="pl-4 sm:pl-6 pr-2 sm:pr-4 pb-3 sm:pb-4 pt-2 space-y-1">
                           {menu.items.map((item) => (
                             <a
                               key={item.label}
                               href={item.href}
-                              className={`flex items-center justify-between px-4 py-3 text-gray-700 hover:text-[#0B9A9E] hover:bg-white rounded-lg transition-all duration-200 group ${
-                                item.featured ? 'bg-[#f6911e]/10 border-l-2 border-[#f6911e]' : ''
+                              className={`flex items-center justify-between py-3 sm:py-4 px-2 sm:px-3 text-gray-700 hover:text-gray-900 hover:bg-gray-50 rounded-lg transition-all duration-500 group relative ${
+                                item.featured ? 'text-[#f6911e] font-semibold bg-[#f6911e]/5' : ''
                               }`}
                               onClick={() => setIsMenuOpen(false)}
                             >
-                              <div className="flex items-center space-x-3">
+                              <div className="absolute left-0 w-1 h-0 bg-[#0B9A9E] rounded-r transition-all duration-500 group-hover:h-full"></div>
+                              <div className="flex items-center space-x-4">
                                 {item.logo && (
-                                  <img src={item.logo} alt="" className="w-8 h-8 object-contain" />
+                                  <img src={item.logo} alt="" className="w-10 h-10 object-contain" />
                                 )}
-                                <span className="text-sm font-medium">{item.label}</span>
+                                <span className="text-sm sm:text-base font-medium">{item.label}</span>
                               </div>
-                              <FiChevronRight className="w-4 h-4 opacity-0 group-hover:opacity-100 transform group-hover:translate-x-1 transition-all" />
+                              <FiChevronRight className="w-5 h-5 opacity-0 group-hover:opacity-100 transform group-hover:translate-x-1 transition-all duration-500" />
                             </a>
                           ))}
                         </div>

@@ -77,7 +77,7 @@ const TeamMember = ({ pageContext: { data } }) => {
                   {data.name}
                 </h1>
                 <p className="text-2xl lg:text-3xl text-white/90 font-light mb-12">
-                  {data.subtitle}
+                  {data.role || data.subtitle}
                 </p>
 
                 {data.quote && (

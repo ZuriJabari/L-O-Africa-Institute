@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Layout from "../components/Layout";
+import InnerHero from "../components/InnerHero";
 import { graphql } from "gatsby";
 import { Link } from "gatsby";
 import ALG24_3 from "../assets/images/ALG24-3.jpg";
@@ -27,31 +28,13 @@ const NewsComponent = ({ data }) => {
 
   return (
     <Layout>
-      {/* Hero Section */}
-      <section
-        className="relative h-[70vh] bg-cover bg-center bg-fixed"
-        style={{ backgroundImage: `url(${ALG24_3})` }}
-      >
-        <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/70"></div>
-        <div className="relative z-10 flex flex-col justify-center h-full">
-          <div className="container mx-auto px-6 lg:px-20">
-            <div className="max-w-4xl">
-              <span className="inline-block px-4 py-1 mb-6 text-sm font-semibold tracking-wider text-[#f6911e] bg-white/10 backdrop-blur-sm rounded-full">
-                NEWS & MEDIA
-              </span>
-              <h1 className="text-5xl sm:text-7xl font-extrabold text-white mb-6 leading-tight">
-                Stories of Impact <br />
-                <span className="text-[#f6911e]">& Transformation</span>
-              </h1>
-              <p className="text-xl sm:text-2xl text-white/90 leading-relaxed font-light">
-                Discover how our network of leaders and fellows are driving positive change 
-                across Africa. From groundbreaking initiatives to inspiring success stories, 
-                explore the latest updates from the LéO Africa Institute community.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
+      <InnerHero
+        imageSrc={ALG24_3}
+        imageAlt="News & Media"
+        eyebrow="News & Media"
+        title={<>Stories of Impact{' '}<span className="block mt-2">& Transformation</span></>}
+        description="Discover how our network of leaders and fellows are driving positive change across Africa."
+      />
 
       {/* Featured Articles */}
       <div className="container mx-auto px-6 lg:px-20 py-10">

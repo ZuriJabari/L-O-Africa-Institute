@@ -88,6 +88,21 @@ module.exports = {
     },
     `gatsby-plugin-react-helmet`,
     {
+      resolve: 'gatsby-plugin-google-fonts',
+      options: {
+        fonts: [
+          'Inter:300,400,500,600,700',
+          'Playfair Display:400,500,600,700'
+        ],
+        display: 'swap',
+        preconnect: true,
+        attributes: {
+          rel: 'stylesheet preload prefetch',
+          as: 'style',
+        },
+      },
+    },
+    {
       resolve: 'gatsby-plugin-sitemap',
       options: {
         excludes: ['/dev-404-page', '/404', '/404.html'],

@@ -1,5 +1,6 @@
 import React from "react";
 import Layout from "../components/Layout";
+import InnerHero from "../components/InnerHero";
 import algLogo from "../assets/images/alg-color.svg"; // Replace with actual logo image
 import yelpLogo from "../assets/images/YELP-Logo.svg";
 import reviewLogo from "../assets/images/LAR-logo.png";
@@ -43,21 +44,13 @@ const Initiatives = () => {
 
   return (
     <Layout>
-      {/* Hero Section */}
-      <section
-        className="relative h-[56vh] bg-gradient-to-r from-[#1d8f92] to-[#f6941e] overflow-hidden"
-      >
-        <div className="absolute inset-0 bg-black bg-opacity-50"></div>
-        <div className="relative z-10 flex flex-col justify-center items-center h-full text-center text-white px-6">
-          <h1 className="text-4xl sm:text-6xl font-extrabold mb-4">
-            Our Initiatives
-          </h1>
-          <p className="text-lg sm:text-xl max-w-2xl">
-            Discover the programs and projects that drive impactful change
-            across Africa, led by the LéO Africa Institute.
-          </p>
-        </div>
-      </section>
+      <InnerHero
+        imageSrc="/images/initiatives-hero.jpg"
+        imageAlt="Our Initiatives"
+        eyebrow="Our Initiatives"
+        title={<>Programs Driving{' '}<span className="block mt-2">Transformative Change</span></>}
+        description="Discover the programs and projects that drive impactful change across Africa."
+      />
 
       {/* Initiatives Section */}
       <section className="container mx-auto px-6 lg:px-20 py-16">

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { graphql, Link } from "gatsby";
 import Layout from "../components/Layout";
+import InnerHero from "../components/InnerHero";
 import { FiFilter } from "react-icons/fi"; // Importing FiFilter
 import {
   HiOutlineDownload,
@@ -43,21 +44,29 @@ const Publications = ({ data }) => {
 
   return (
     <Layout>
-      {/* Hero Section */}
-      <section className="bg-gray-900 text-white py-12">
+      <InnerHero
+        imageSrc="/images/publications-hero.jpg"
+        imageAlt="Publications"
+        eyebrow="Publications"
+        title={<>Research & Insights{' '}<span className="block mt-2">from Africa</span></>}
+        description="Explore our collection of research, reports, and thought leadership on African development."
+      />
+
+      {/* Publications Content */}
+      <section className="py-12">
         <div className="container mx-auto px-6 lg:px-20">
           {/* Top Bar */}
           <div className="flex justify-between items-center mb-6">
-            <h1 className="text-4xl font-bold">Publications</h1>
+            <h2 className="text-3xl font-bold text-gray-800">Latest Publications</h2>
             {featuredPublication?.data.pdf_file?.url && (
               <a
                 href={featuredPublication.data.pdf_file.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center bg-[#f6941e] text-white px-4 py-2 rounded hover:bg-white hover:text-[#f6941e] transition"
+                className="flex items-center bg-[#f6941e] text-white px-4 py-2 rounded hover:bg-white hover:text-[#f6941e] transition border border-[#f6941e]"
               >
                 <HiOutlineDownload className="mr-2" />
-                Download PDF
+                Download Featured
               </a>
             )}
           </div>

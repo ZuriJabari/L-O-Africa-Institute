@@ -1,47 +1,32 @@
 import React, { useState, useEffect } from 'react';
-import { FiArrowLeft, FiArrowRight } from 'react-icons/fi';
-import heroImage1 from '../assets/images/hero.jpg';
-import heroImage2 from '../assets/images/ALG24-3.jpg';
-import heroImage3 from '../assets/images/hero3.jpg';
-import heroImage4 from '../assets/images/ALG24.jpg';
-import heroImage5 from '../assets/images/graduation.jpg';
+import { FiArrowLeft, FiArrowRight, FiChevronRight } from 'react-icons/fi';
+import { motion, AnimatePresence } from 'framer-motion';
+import heroImage1 from '../assets/images/hero-leadership.jpg';
+import heroImage2 from '../assets/images/hero-media.jpg';
+import heroImage3 from '../assets/images/hero-events.jpg';
 import { Link } from 'gatsby';
 
 const slides = [
   {
     image: heroImage1,
-    title: "Shaping Africa's Future Leaders",
-    description: "Since 2012, LéO Africa Institute has been at the forefront of nurturing ethical, visionary leaders who are transforming Africa's socio-economic landscape. Join us in building a legacy of impactful leadership.",
-    ctaText: "Our Story",
+    title: "Investing in Transformational Leadership",
+    description: "One equipped leader can transform an entire organization, uplift a community, and inspire thousands. We are building a network of leaders as catalysts for change, creating a ripple effect that touches lives, strengthens institutions, and builds a more prosperous Africa.",
+    ctaText: "This is how!",
     ctaLink: "/about"
   },
   {
     image: heroImage2,
-    title: "Voices of Change",
-    description: "Discover compelling stories of innovation, resilience, and transformation from across Africa. Our media hub showcases thought-provoking insights from leaders shaping the continent's narrative.",
-    ctaText: "Latest Stories",
+    title: "Media, Storytelling & Production",
+    description: "Documenting Change, & strategically amplifying the voices and achievements of transformational leaders, one powerful story at a time",
+    ctaText: "Find out More!",
     ctaLink: "/news"
   },
   {
     image: heroImage3,
-    title: "Huduma Fellowship: Public Service Excellence",
-    description: "Equipping Africa's next generation of public servants with the tools, networks, and mindset to drive institutional transformation and deliver citizen-centric solutions.",
-    ctaText: "Join the Movement",
-    ctaLink: "/huduma"
-  },
-  {
-    image: heroImage4,
-    title: "Annual Leaders Gathering",
-    description: "The Annual Leaders Gathering is the LéO Africa Institute's signature convening platform. It brings together its growing networks of leaders for significant conversations, networking, and deliberation on actions necessary to address the day's challenges.",
-    ctaText: "Explore ALG",
-    ctaLink: "/alg"
-  },
-  {
-    image: heroImage5,
-    title: "YELP: Catalyzing Youth Leadership",
-    description: "The Young and Emerging Leaders Project is more than a fellowship—it's a transformative journey empowering Africa's brightest minds to lead with purpose, innovation, and ethical conviction.",
-    ctaText: "Begin Your Journey",
-    ctaLink: "/yelp"
+    title: "Events, Conversations & Ideas Spaces",
+    description: "Curated convenings, thought-leadership forums, and intimate dialogue sessions where leaders, innovators, and change-makers come together to exchange ideas, challenge assumptions, and forge partnerships that drive real change.",
+    ctaText: "Join us in Conversation!",
+    ctaLink: "/events"
   }
 ];
 
@@ -65,86 +50,113 @@ const HeroSection = () => {
   };
 
   return (
-    <section 
-      className={`relative h-screen bg-cover bg-center flex items-center overflow-hidden transition-opacity duration-500 opacity-100`}
-      style={{ backgroundImage: `url(${slides[currentIndex].image})` }}
-    >
-      {/* Main Content Positioned 20% Down */}
-      <div className="relative z-10 flex flex-col items-start text-white max-w-3xl space-y-6 mt-[20vh] ml-[8%]">
-        
-        {/* H3 Tag */}
-        <h3 className="font-inter text-xs font-semibold text-[#fff] tracking-wider uppercase cursor-default no-margin">
-          {slides[currentIndex].h3}
-        </h3>
-
-        {/* Title */}
-        {currentIndex !== 3 && (
-          <h1 className="font-playfair text-4xl md:text-6xl font-bold leading-tight tracking-wide text-left max-w-2xl">
-            {slides[currentIndex].title}
-          </h1>
-        )}
-
-        {/* Description */}
-        {currentIndex === 3 ? (
-          <div className="max-w-3xl">
-            <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">
-              Annual Leaders Gathering (ALG)
-            </h1>
-            <p className="text-xl text-gray-200 mb-8 leading-relaxed">
-              The Annual Leaders Gathering is the LéO Africa Institute's signature convening platform. It brings together its growing networks of leaders for significant conversations, networking, and deliberation on actions necessary to address the day's challenges.
-            </p>
-            <a
-              href="https://alg.leoafricainstitute.org"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center px-6 py-3 text-lg font-medium text-white bg-[#f6911e] hover:bg-[#2bbecb] rounded-lg transition-colors duration-300"
-            >
-              Explore ALG
-              <FiArrowRight className="ml-2 group-hover:translate-x-1 transition-transform duration-300" />
-            </a>
-          </div>
-        ) : (
-          <p className="font-inter text-lg md:text-xl leading-relaxed opacity-90 tracking-wide text-left max-w-2xl">
-            {slides[currentIndex].description}
-          </p>
-        )}
-
-        {/* Event Date and Location (Optional) */}
-        {slides[currentIndex].date && (
-          <p className="font-inter text-sm font-semibold bg-[#1d8f92] py-2 px-6 rounded-md tracking-wider uppercase shadow-md">
-            {slides[currentIndex].date}
-          </p>
-        )}
-
-        {/* Call-to-Action Button */}
-        {currentIndex !== 3 && (
-          <a 
-            href={slides[currentIndex].ctaLink} 
-            className="font-inter bg-[#f6941e] text-white hover:bg-white hover:text-[#f6941e] py-3 px-10 rounded-full transition-transform duration-300 hover:scale-110 shadow-lg font-semibold uppercase tracking-wider"
+    <section className="relative min-h-screen sm:h-screen flex items-center overflow-hidden -mt-[100px] sm:-mt-[140px] pt-[100px] sm:pt-[140px]">
+      {/* Background Images with Smooth Transitions */}
+      <AnimatePresence mode="wait">
+        <motion.div
+          key={currentIndex}
+          initial={{ opacity: 0, scale: 1.1 }}
+          animate={{ opacity: 1, scale: 1 }}
+          exit={{ opacity: 0, scale: 0.95 }}
+          transition={{ duration: 1.2, ease: [0.43, 0.13, 0.23, 0.96] }}
+          className="absolute inset-0"
+          style={{ 
+            backgroundImage: `url(${slides[currentIndex].image})`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center'
+          }}
+        />
+      </AnimatePresence>
+      
+      {/* Sophisticated Gradient Overlay */}
+      <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/50 to-transparent" />
+      <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
+      {/* Main Content */}
+      <div className="container mx-auto px-4 sm:px-8 lg:px-16 relative z-10">
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={currentIndex}
+            initial={{ opacity: 0, y: 40 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -40 }}
+            transition={{ duration: 0.8, ease: [0.43, 0.13, 0.23, 0.96] }}
+            className="max-w-4xl text-white space-y-6 sm:space-y-8"
           >
-            {slides[currentIndex].ctaText}
-          </a>
-        )}
+            {/* Eyebrow Text */}
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.2, duration: 0.6 }}
+              className="flex items-center gap-2 sm:gap-3"
+            >
+              <div className="w-8 sm:w-12 h-px bg-[#F6911E]" />
+              <span className="text-xs uppercase tracking-[0.3em] text-white/80 font-medium">
+                LéO Africa Institute
+              </span>
+            </motion.div>
+
+            {/* Title */}
+            <motion.h1
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.3, duration: 0.8 }}
+              className="font-light text-3xl sm:text-5xl md:text-7xl lg:text-8xl leading-[1.1] tracking-tight max-w-4xl"
+            >
+              {slides[currentIndex].title}
+            </motion.h1>
+
+            {/* Description */}
+            <motion.p
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.5, duration: 0.8 }}
+              className="text-base sm:text-xl md:text-2xl leading-relaxed text-white/90 font-light max-w-3xl"
+            >
+              {slides[currentIndex].description}
+            </motion.p>
+
+            {/* Call-to-Action Button */}
+            <motion.a
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.7, duration: 0.6 }}
+              href={slides[currentIndex].ctaLink}
+              className="inline-flex items-center gap-2 sm:gap-3 px-6 sm:px-8 py-3 sm:py-4 text-sm sm:text-base font-medium text-white bg-[#F6911E] hover:bg-white hover:text-[#F6911E] rounded-full transition-all duration-500 group shadow-2xl"
+            >
+              {slides[currentIndex].ctaText}
+              <FiChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-500" />
+            </motion.a>
+          </motion.div>
+        </AnimatePresence>
       </div>
 
-      {/* Dark Overlay for Contrast - Moved after content for better gradient control */}
-      <div className="absolute inset-0 bg-gradient-to-r from-black via-black/60 to-transparent opacity-70"></div>
+      {/* Elegant Navigation Controls */}
+      <div className="absolute bottom-6 sm:bottom-12 left-4 sm:left-8 lg:left-16 right-4 sm:right-8 lg:right-16 z-20 flex items-center justify-between">
+        {/* Navigation Arrows */}
+        <div className="flex items-center gap-2 sm:gap-4">
+          <button
+            onClick={prevSlide}
+            className="w-10 h-10 sm:w-14 sm:h-14 flex items-center justify-center rounded-full border border-white/30 bg-white/10 backdrop-blur-sm hover:bg-white hover:text-gray-900 text-white transition-all duration-500 group"
+            aria-label="Previous Slide"
+          >
+            <FiArrowLeft className="w-4 h-4 sm:w-5 sm:h-5 group-hover:-translate-x-1 transition-transform duration-500" />
+          </button>
+          <button
+            onClick={nextSlide}
+            className="w-10 h-10 sm:w-14 sm:h-14 flex items-center justify-center rounded-full border border-white/30 bg-white/10 backdrop-blur-sm hover:bg-white hover:text-gray-900 text-white transition-all duration-500 group"
+            aria-label="Next Slide"
+          >
+            <FiArrowRight className="w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 transition-transform duration-500" />
+          </button>
+        </div>
 
-      {/* Navigation Arrows */}
-      <button 
-        className="absolute inset-y-0 left-0 flex items-center justify-center p-4 cursor-pointer text-white" 
-        onClick={prevSlide}
-        aria-label="Previous Slide"
-      >
-        <FiArrowLeft size={24} />
-      </button>
-      <button 
-        className="absolute inset-y-0 right-0 flex items-center justify-center p-4 cursor-pointer text-white" 
-        onClick={nextSlide}
-        aria-label="Next Slide"
-      >
-        <FiArrowRight size={24} />
-      </button>
+        {/* Slide Counter */}
+        <div className="hidden md:flex items-center gap-2 text-white/80 text-sm font-light tracking-wider">
+          <span className="text-white font-medium">{String(currentIndex + 1).padStart(2, '0')}</span>
+          <span>/</span>
+          <span>{String(slides.length).padStart(2, '0')}</span>
+        </div>
+      </div>
     </section>
   );
 };

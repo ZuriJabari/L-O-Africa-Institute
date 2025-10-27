@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'gatsby'
 import Layout from '../components/Layout'
+import InnerHero from '../components/InnerHero'
 import { HeroTitle, SectionTitle, SubsectionTitle, BodyText, BodyLarge } from '../components/Typography'
 import leoLogo from '../assets/images/Leo-logo.png'
 import algLogo from '../assets/images/alg-color.svg'
@@ -12,44 +13,13 @@ import drGichuru from '../assets/images/speakers/Julie.png'
 const EventsAndGatherings = () => {
   return (
     <Layout>
-      {/* Hero Section */}
-      <section className="py-24 bg-gradient-to-br from-[#0B9A9E] to-[#0B9A9E]/80 text-white">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl">
-            <div className="text-sm font-semibold text-white/80 uppercase tracking-wider mb-4">
-              LéO Africa Institute Events
-            </div>
-            <HeroTitle className="mb-6">The Dialogue Platform, Conversation & Ideas Space</HeroTitle>
-            <div className="space-y-4">
-              <BodyLarge className="text-white/90">
-                Join Africa's most influential gathering of thought leaders, innovators, and change-makers. 
-                Our events bring together diverse voices to shape the future of leadership on the continent.
-              </BodyLarge>
-              <div className="flex flex-wrap gap-8 items-center text-white/80">
-                <div className="flex items-center gap-2">
-                  <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z" />
-                  </svg>
-                  <span>1000+ Leaders Connected</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                  </svg>
-                  <span>15+ Countries Represented</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                  </svg>
-                  <span>10+ Years of Impact</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-[#0B9A9E] via-[#F6911E] to-[#0B9A9E] opacity-20"></div>
-      </section>
+      <InnerHero
+        imageSrc="/images/events-hero.jpg"
+        imageAlt="Events & Gatherings"
+        eyebrow="Events & Gatherings"
+        title={<>The Dialogue Platform</>}
+        description="Join Africa's most influential gathering of thought leaders, innovators, and change-makers shaping the future of leadership."
+      />
 
       {/* ALG Flagship Event Section */}
       <section className="py-20 bg-white relative overflow-hidden">

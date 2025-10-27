@@ -27,8 +27,8 @@ const teamMembers = [
     }
   },
   {
-    name: "Nnanda Kizito Seruwagi",
-    role: "Media & Communications Officer",
+    name: "Nnanda Kizito Sseruwagi",
+    role: "Media and Communications Officer at the LéO Africa Institute",
     image: require("../assets/images/Nanda.jpg"),
     bio: "Crafting compelling narratives that showcase Africa's leadership potential and success stories.",
     social: {
@@ -82,27 +82,44 @@ const fadeIn = {
 const TeamPage = () => {
   return (
     <Layout>
-      {/* Hero Section */}
-      <section className="relative h-[50vh] min-h-[400px] flex items-center justify-center">
-        <div className="absolute inset-0">
-          <img
-            src={require("../assets/images/team-hero.jpg")}
-            alt="Our Team"
-            className="w-full h-full object-cover"
-          />
-          <div className="absolute inset-0 bg-gradient-to-r from-black/70 to-black/50"></div>
-        </div>
-        <div className="container mx-auto px-4 relative z-10 text-white text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-          >
-            <h1 className="text-5xl font-bold mb-6">Meet Our Team</h1>
-            <p className="text-xl max-w-2xl mx-auto">
-              A dynamic team of passionate individuals committed to shaping Africa's future through ethical leadership.
-            </p>
-          </motion.div>
+      {/* Hero Section (clean, no image) */}
+      <section className="relative min-h-[60vh] flex items-center bg-white">
+        <div className="container mx-auto px-8 lg:px-16">
+          <div className="max-w-4xl">
+            {/* Eyebrow */}
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="flex items-center gap-4 mb-8"
+            >
+              <div className="w-16 h-px bg-gray-300"></div>
+              <span className="text-xs uppercase tracking-[0.3em] text-gray-600 font-medium">
+                Meet Our Team
+              </span>
+            </motion.div>
+
+            {/* Title */}
+            <motion.h1
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.9, delay: 0.3 }}
+              className="text-5xl md:text-6xl lg:text-7xl font-light text-gray-900 tracking-tight mb-6"
+            >
+              Meet the Visionaries
+              <span className="block mt-2">Shaping Africa's Future</span>
+            </motion.h1>
+
+            {/* Description */}
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.5 }}
+              className="text-lg md:text-xl text-gray-600 max-w-2xl mb-0"
+            >
+              A dedicated team of leaders, innovators, and changemakers committed to empowering Africa's next generation.
+            </motion.p>
+          </div>
         </div>
       </section>
 
