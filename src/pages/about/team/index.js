@@ -195,9 +195,9 @@ const TeamPage = () => {
     },
     {
       name: "Nnanda Kizito Sseruwagi",
-      role: "Nnanda is the Media and Communications Officer at the LéO Africa Institute",
+      role: "Media and Communications Officer",
       image: Nanda,
-      // bio: "Manages communications and media relations.",
+      bio: "", // Empty bio - no additional description needed
       slug: "nnanda-kizito",
       social: {
         linkedin: "https://www.linkedin.com/in/nnanda-kizito",
