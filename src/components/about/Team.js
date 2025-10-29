@@ -163,7 +163,7 @@ const teamData = [
       },
       {
         name: "Nnanda Kizito Sseruwagi",
-        subtitle: "Nnanda is the Media and Communications Officer at the LéO Africa Institute.",
+        subtitle: "Media and Communications Officer",
         imagePath: "Nanda.jpg",
         profileLink: `/about/team/${nameToSlug("Nnanda Kizito Sseruwagi")}`
       },
