@@ -328,9 +328,9 @@ exports.createPages = async ({ graphql, actions }) => {
     },
     {
       name: "Nnanda Kizito Sseruwagi",
-      role: "Nnanda is the Media and Communications Officer at the LéO Africa Institute.",
+      role: "Media and Communications Officer",
       imageName: "Nanda",
-      bio: "Nnanda is the Media and Communications Officer at the LéO Africa Institute. He is a lawyer by training. Nnanda is committed to the structural transformation of the third-world. He writes regularly in Uganda's leading Newspapers. His thoughts have been published in the New Vision, Daily Monitor, The Independent, The Observer, and The Standard (Kenya). He is interested in political economy, development and international relations.",
+      bio: "",
       slug: "nnanda-kizito",
       focusAreas: {
         strategic: ["Communications Strategy", "Media Relations", "Content Development", "Brand Management"],
