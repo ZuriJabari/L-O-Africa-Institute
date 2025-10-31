@@ -14,11 +14,12 @@ const EventsAndGatherings = () => {
   return (
     <Layout>
       <InnerHero
-        imageSrc="/images/events-hero.jpg"
+        imageSrc="../assets/images/about-alg.jpg"
         imageAlt="Events & Gatherings"
         eyebrow="Events & Gatherings"
         title={<>The Dialogue Platform</>}
         description="Join Africa's most influential gathering of thought leaders, innovators, and change-makers shaping the future of leadership."
+        useStaticImage={true}
       />
 
       {/* ALG Flagship Event Section */}
