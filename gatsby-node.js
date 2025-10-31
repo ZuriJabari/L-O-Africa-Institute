@@ -76,7 +76,7 @@ exports.createPages = async ({ graphql, actions }) => {
             gatsbyImageData(
               width: 800
               formats: [AUTO, WEBP],
-              placeholder: BLURRED,
+              placeholder: BLURRE
               transformOptions: { fit: COVER }
             )
           }

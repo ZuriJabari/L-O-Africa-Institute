@@ -104,7 +104,7 @@ const TeamPage = () => {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.9, delay: 0.3 }}
-              className="text-5xl md:text-6xl lg:text-7xl font-light text-gray-900 tracking-tight mb-6"
+              className="text-4xl md:text-5xl lg:text-6xl font-light text-gray-900 tracking-tight mb-6"
             >
               Meet the Visionaries
               <span className="block mt-2">Shaping Africa's Future</span>

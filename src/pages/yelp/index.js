@@ -84,7 +84,7 @@ const YelpHome = () => {
                   initial={{ opacity: 0, y: 30 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6, delay: 0.2 }}
-                  className="text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-8 font-playfair"
+                  className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-8 font-playfair"
                 >
                   YELP Project
                 </motion.h1>
