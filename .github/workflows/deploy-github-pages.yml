@@ -98,7 +98,24 @@ jobs:
     - name: 📥 Download build artifacts
       uses: actions/download-artifact@v4
       with:
-        name: leo-africa-deployment-package
+        pattern: leo-africa-deployment-package
+        merge-multiple: true
+        path: .
+
+    - name: 🔎 Verify artifact presence
+      run: |
+        ls -la
+        if [ ! -f "leo-africa-site.zip" ]; then
+          echo "Artifact zip not found. Will fallback to rebuild."
+        fi
+
+    - name: "🧰 Fallback - Rebuild zip if artifact missing"
+      if: ${{ !hashFiles('leo-africa-site.zip') }}
+      run: |
+        echo "Rebuilding public and zip as fallback..."
+        npm ci
+        npm run build
+        zip -r leo-africa-site.zip public -x "*.git*" "*node_modules*" "*.DS_Store" "*Thumbs.db"
         
     - name: 📂 Deploy via cURL/wget (Method 1)
       continue-on-error: true
