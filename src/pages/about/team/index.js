@@ -209,7 +209,7 @@ const TeamPage = () => {
       name: "Emmanuel Siryoyi Awori",
       role: "Partnerships & Development Lead",
       image: Awori,
-      bio: "Emmanuel is an experienced professional with a strong background in strategic partnerships across the financial services, manufacturing, and agribusiness sectors. His work has focused on building impactful collaborations that drive growth, innovation, and sustainability.",
+      bio: "",
       slug: "emmanuel-siryoyi-awori",
       social: {}
     }
