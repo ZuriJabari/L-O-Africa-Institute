@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "gatsby";
 import Layout from "../components/Layout";
 import InnerHero from "../components/InnerHero";
 import algLogo from "../assets/images/alg-color.svg"; // Replace with actual logo image
@@ -22,7 +23,7 @@ const Initiatives = () => {
       description:
         "Empowering young leaders with skills, mentorship, and opportunities to create lasting impact in their communities.",
       logo: yelpLogo,
-      link: "https://yelp.leoafricainstitute.org/",
+      link: "/yelp",
     },
     {
       id: 3,
@@ -38,7 +39,7 @@ const Initiatives = () => {
       description:
         "A fellowship program fostering ethical leadership and integrity among public sector professionals and change-makers.",
       logo: hudumaLogo,
-      link: "https://huduma.leoafricainstitute.org/",
+      link: "/huduma",
     },
   ];
 
@@ -79,14 +80,23 @@ const Initiatives = () => {
                 <p className="text-gray-600 text-center mb-4">
                   {initiative.description}
                 </p>
-                <a
-                  href={initiative.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-block text-[#1e8e92] font-semibold hover:underline"
-                >
-                  Visit Website →
-                </a>
+                {initiative.link.startsWith('/') ? (
+                  <Link
+                    to={initiative.link}
+                    className="inline-block text-[#1e8e92] font-semibold hover:underline"
+                  >
+                    Visit Website →
+                  </Link>
+                ) : (
+                  <a
+                    href={initiative.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-block text-[#1e8e92] font-semibold hover:underline"
+                  >
+                    Visit Website →
+                  </a>
+                )}
               </div>
             </div>
           ))}

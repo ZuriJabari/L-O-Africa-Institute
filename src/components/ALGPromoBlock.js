@@ -4,7 +4,7 @@ import { StaticImage } from 'gatsby-plugin-image';
 
 const ALGPromoBlock = () => {
   return (
-    <section className="relative py-16 sm:py-20 md:py-32 lg:py-40 overflow-hidden">
+    <section className="relative py-10 sm:py-14 md:py-20 lg:py-24 overflow-hidden">
       {/* Background Artwork */}
       <div className="absolute inset-0">
         <StaticImage
@@ -41,7 +41,7 @@ const ALGPromoBlock = () => {
               <StaticImage
                 src="../assets/images/alg-color.svg"
                 alt="Annual Leaders Gathering"
-                className="w-48 md:w-64"
+                className="w-40 md:w-56"
                 placeholder="none"
               />
             </motion.div>
@@ -52,7 +52,7 @@ const ALGPromoBlock = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.3, duration: 0.8, ease: [0.43, 0.13, 0.23, 0.96] }}
-              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-medium text-white mb-4 sm:mb-6 tracking-tight leading-[1.1]"
+              className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-medium text-white mb-3 sm:mb-5 tracking-tight leading-[1.15]"
             >
               Annual Leaders{' '}
               <span className="block mt-2 text-white">
@@ -66,13 +66,13 @@ const ALGPromoBlock = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.4, duration: 0.7 }}
-              className="space-y-4 sm:space-y-5 mb-8 sm:mb-10"
+              className="space-y-3 sm:space-y-4 mb-6 sm:mb-8"
             >
-              <p className="text-base sm:text-lg md:text-xl text-white/90 leading-relaxed font-light">
+              <p className="text-base sm:text-base md:text-lg text-white/90 leading-relaxed font-light">
                 The Annual Leaders Gathering is the LéO Africa Institute's <span className="text-[#F6911E] font-medium">signature convening platform</span>. It brings together its growing networks of leaders for significant conversations, networking, and deliberation on actions necessary to address the day's challenges.
               </p>
               
-              <p className="text-sm sm:text-base md:text-lg text-white/80 leading-relaxed font-light">
+              <p className="text-sm sm:text-sm md:text-base text-white/80 leading-relaxed font-light">
                 Fellows of the Institute, emerging leaders in the public and private sector, as well as the Institute's extended network across Africa, convene to reflect on the challenges facing society today and explore how different networks of innovators, entrepreneurs, and decision-makers can come together to address them.
               </p>
             </motion.div>
@@ -89,7 +89,7 @@ const ALGPromoBlock = () => {
                 href="https://alg.leoafricainstitute.org/reserve-seat"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group inline-flex items-center gap-3 sm:gap-4 px-8 sm:px-10 py-4 sm:py-5 text-sm sm:text-base font-medium text-slate-900 bg-white rounded-full transition-all duration-300 hover:bg-[#F6911E] hover:text-white hover:scale-105 hover:shadow-2xl"
+                className="group inline-flex items-center gap-3 sm:gap-3 px-7 sm:px-8 py-3.5 sm:py-4 text-sm sm:text-sm font-medium text-slate-900 bg-white rounded-full transition-all duration-300 hover:bg-[#F6911E] hover:text-white hover:scale-105 hover:shadow-2xl"
               >
                 <span>Reserve Your Seat</span>
                 <svg 
@@ -123,7 +123,7 @@ const ALGPromoBlock = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.6, duration: 0.6 }}
-              className="mt-8 sm:mt-12 grid grid-cols-3 gap-4 sm:gap-6"
+              className="mt-6 sm:mt-10 grid grid-cols-3 gap-3 sm:gap-5"
             >
               <div className="text-center">
                 <div className="text-xl sm:text-2xl md:text-3xl font-light text-white mb-1">300+</div>
@@ -148,7 +148,7 @@ const ALGPromoBlock = () => {
             transition={{ duration: 0.9, delay: 0.2, ease: [0.43, 0.13, 0.23, 0.96] }}
             className="order-2 lg:order-2"
           >
-            <div className="bg-white/10 backdrop-blur-md rounded-2xl p-6 sm:p-8 md:p-10 border border-white/20">
+            <div className="bg-white/10 backdrop-blur-md rounded-2xl p-5 sm:p-6 md:p-8 border border-white/20">
               <h3 className="text-xl sm:text-2xl md:text-3xl font-light text-white mb-4 sm:mb-6">
                 Why Attend?
               </h3>
