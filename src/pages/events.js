@@ -67,7 +67,7 @@ const EventsAndGatherings = () => {
                   </div>
                   <div className="absolute -bottom-6 left-1/2 -translate-x-1/2 bg-white px-8 py-3 rounded-full shadow-xl transform transition-all duration-300 group-hover:-translate-y-2 hover:shadow-2xl">
                     <span className="text-[#0B9A9E] font-semibold bg-gradient-to-r from-[#0B9A9E] to-[#F6911E] bg-clip-text text-transparent">
-                      November 2025
+                      December 13, 2025
                     </span>
                   </div>
                 </div>
@@ -124,36 +124,7 @@ const EventsAndGatherings = () => {
                 </div>
               </div>
 
-              {/* June */}
-              <div className="group bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-lg transition-all duration-300 hover:border-[#0B9A9E]/30">
-                <div className="bg-gradient-to-r from-[#0B9A9E]/10 to-[#F6911E]/10 px-8 py-6 flex items-center justify-between group-hover:from-[#0B9A9E]/20 group-hover:to-[#F6911E]/20 transition-all duration-300">
-                  <h3 className="text-2xl font-bold text-gray-900">June 2025</h3>
-                  <div className="flex items-center gap-2 text-[#0B9A9E]">
-                    <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                    </svg>
-                    <span className="text-sm font-medium">1 Event</span>
-                  </div>
-                </div>
-                <div className="p-8 hover:bg-gray-50/50 transition-colors duration-200">
-                  <div className="flex flex-col md:flex-row gap-6">
-                    <div className="w-full md:w-48 flex-shrink-0">
-                      <div className="flex items-center gap-3">
-                        <div className="w-10 h-10 rounded-lg bg-[#0B9A9E]/10 flex items-center justify-center">
-                          <span className="text-[#0B9A9E] font-bold">07</span>
-                        </div>
-                        <div className="text-[#0B9A9E] font-semibold">June</div>
-                      </div>
-                    </div>
-                    <div className="flex-1">
-                      <h4 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-[#0B9A9E] transition-colors duration-200">
-                        The Heritage Seminar "Journeys Back Home"
-                      </h4>
-                      <p className="text-gray-600 mb-4">Leadership Seminar designed for Reflections on Our Heritages of Birth (7th – 9th June)</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
+              {/* June - removed (no event in 2025) */}
 
               {/* July */}
               <div className="group bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-lg transition-all duration-300 hover:border-[#0B9A9E]/30">
@@ -186,70 +157,32 @@ const EventsAndGatherings = () => {
                 </div>
               </div>
 
-              {/* September */}
+              {/* December */}
               <div className="group bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-lg transition-all duration-300 hover:border-[#0B9A9E]/30">
                 <div className="bg-gradient-to-r from-[#0B9A9E]/10 to-[#F6911E]/10 px-8 py-6 flex items-center justify-between group-hover:from-[#0B9A9E]/20 group-hover:to-[#F6911E]/20 transition-all duration-300">
-                  <h3 className="text-2xl font-bold text-gray-900">September 2025</h3>
+                  <h3 className="text-2xl font-bold text-gray-900">December 2025</h3>
                   <div className="flex items-center gap-2 text-[#0B9A9E]">
                     <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
                     </svg>
-                    <span className="text-sm font-medium">3 Events</span>
+                    <span className="text-sm font-medium">1 Event</span>
                   </div>
                 </div>
-                <div className="divide-y divide-gray-100">
-                  <div className="p-8 hover:bg-gray-50/50 transition-colors duration-200">
-                    <div className="flex flex-col md:flex-row gap-6">
-                      <div className="w-full md:w-48 flex-shrink-0">
-                        <div className="flex items-center gap-3">
-                          <div className="w-10 h-10 rounded-lg bg-[#0B9A9E]/10 flex items-center justify-center">
-                            <span className="text-[#0B9A9E] font-bold">18</span>
-                          </div>
-                          <div className="text-[#0B9A9E] font-semibold">September</div>
+                <div className="p-8 hover:bg-gray-50/50 transition-colors duration-200">
+                  <div className="flex flex-col md:flex-row gap-6">
+                    <div className="w-full md:w-48 flex-shrink-0">
+                      <div className="flex items-center gap-3">
+                        <div className="w-10 h-10 rounded-lg bg-[#0B9A9E]/10 flex items-center justify-center">
+                          <span className="text-[#0B9A9E] font-bold">13</span>
                         </div>
-                      </div>
-                      <div className="flex-1">
-                        <h4 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-[#0B9A9E] transition-colors duration-200">
-                          Annual Leaders Gathering DAY 1
-                        </h4>
-                        <p className="text-gray-600 mb-4">The Opening sessions and intergenerational dialogue conversations</p>
+                        <div className="text-[#0B9A9E] font-semibold">December</div>
                       </div>
                     </div>
-                  </div>
-                  <div className="p-8 hover:bg-gray-50/50 transition-colors duration-200">
-                    <div className="flex flex-col md:flex-row gap-6">
-                      <div className="w-full md:w-48 flex-shrink-0">
-                        <div className="flex items-center gap-3">
-                          <div className="w-10 h-10 rounded-lg bg-[#0B9A9E]/10 flex items-center justify-center">
-                            <span className="text-[#0B9A9E] font-bold">19</span>
-                          </div>
-                          <div className="text-[#0B9A9E] font-semibold">September</div>
-                        </div>
-                      </div>
-                      <div className="flex-1">
-                        <h4 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-[#0B9A9E] transition-colors duration-200">
-                          LéO Africa Talks Conference
-                        </h4>
-                        <p className="text-gray-600 mb-4">At the end of their learning journey, the "Griots" present ideas & insights from their leadership journeys at the LéO Africa Talks conference in a storytelling format</p>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="p-8 hover:bg-gray-50/50 transition-colors duration-200">
-                    <div className="flex flex-col md:flex-row gap-6">
-                      <div className="w-full md:w-48 flex-shrink-0">
-                        <div className="flex items-center gap-3">
-                          <div className="w-10 h-10 rounded-lg bg-[#0B9A9E]/10 flex items-center justify-center">
-                            <span className="text-[#0B9A9E] font-bold">20</span>
-                          </div>
-                          <div className="text-[#0B9A9E] font-semibold">September</div>
-                        </div>
-                      </div>
-                      <div className="flex-1">
-                        <h4 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-[#0B9A9E] transition-colors duration-200">
-                          Annual Leaders Gathering DAY 2
-                        </h4>
-                        <p className="text-gray-600 mb-4">The main ALG sessions, with keynote speakers, panel discussions, and performances</p>
-                      </div>
+                    <div className="flex-1">
+                      <h4 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-[#0B9A9E] transition-colors duration-200">
+                        Annual Leaders Gathering 2025
+                      </h4>
+                      <p className="text-gray-600 mb-4">A single-day experience of keynotes, conversations, and networking — December 13th, 2025.</p>
                     </div>
                   </div>
                 </div>
@@ -286,56 +219,7 @@ const EventsAndGatherings = () => {
                 </div>
               </div>
 
-              {/* November */}
-              <div className="group bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-lg transition-all duration-300 hover:border-[#0B9A9E]/30">
-                <div className="bg-gradient-to-r from-[#0B9A9E]/10 to-[#F6911E]/10 px-8 py-6 flex items-center justify-between group-hover:from-[#0B9A9E]/20 group-hover:to-[#F6911E]/20 transition-all duration-300">
-                  <h3 className="text-2xl font-bold text-gray-900">November 2025</h3>
-                  <div className="flex items-center gap-2 text-[#0B9A9E]">
-                    <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                    </svg>
-                    <span className="text-sm font-medium">2 Events</span>
-                  </div>
-                </div>
-                <div className="divide-y divide-gray-100">
-                  <div className="p-8 hover:bg-gray-50/50 transition-colors duration-200">
-                    <div className="flex flex-col md:flex-row gap-6">
-                      <div className="w-full md:w-48 flex-shrink-0">
-                        <div className="flex items-center gap-3">
-                          <div className="w-10 h-10 rounded-lg bg-[#0B9A9E]/10 flex items-center justify-center">
-                            <span className="text-[#0B9A9E] font-bold">14</span>
-                          </div>
-                          <div className="text-[#0B9A9E] font-semibold">November</div>
-                        </div>
-                      </div>
-                      <div className="flex-1">
-                        <h4 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-[#0B9A9E] transition-colors duration-200">
-                          The Harambe Symposium
-                        </h4>
-                        <p className="text-gray-600 mb-4">The symposium is premised on the "urgency" of strengthening a collaborative leadership culture for leaders in Africa, or those who aspire to lead, within organizations, institutions, governments, and communities. Hosted in Kigali Rwanda</p>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="p-8 hover:bg-gray-50/50 transition-colors duration-200">
-                    <div className="flex flex-col md:flex-row gap-6">
-                      <div className="w-full md:w-48 flex-shrink-0">
-                        <div className="flex items-center gap-3">
-                          <div className="w-10 h-10 rounded-lg bg-[#0B9A9E]/10 flex items-center justify-center">
-                            <span className="text-[#0B9A9E] font-bold">14</span>
-                          </div>
-                          <div className="text-[#0B9A9E] font-semibold">November</div>
-                        </div>
-                      </div>
-                      <div className="flex-1">
-                        <h4 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-[#0B9A9E] transition-colors duration-200">
-                          Ali Mufuruki Annual Lecture
-                        </h4>
-                        <p className="text-gray-600 mb-4">Celebrating the legacy and work of the late Ali Mufuruki. The lecture is designed to inspire the young and emerging generation of leaders in Africa with ideas of transformative leadership and to provide insight into the often-complex topics of leadership and the development of society.</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+              {/* November - removed (no events in 2025) */}
             </div>
           </div>
         </div>

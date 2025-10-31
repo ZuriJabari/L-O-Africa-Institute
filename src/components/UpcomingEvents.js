@@ -26,7 +26,7 @@ const BRAND_COLORS = {
 const upcomingEvent = {
   title: "Annual Leaders Gathering",
   shortTitle: "ALG 2025",
-  date: "November 22nd 2025",
+  date: "December 13th 2025",
   time: "All Day Event",
   location: "Sheraton Kampala Hotel, Kampala, Uganda",
   description:
@@ -64,7 +64,7 @@ const CountdownTimer = ({ targetDate }) => {
   const calculateTimeLeft = () => {
     try {
       // Parse the target date as UTC to avoid timezone issues
-      const target = new Date(Date.UTC(2025, 10, 22)); // November is 10 (0-based)
+      const target = new Date(Date.UTC(2025, 11, 13)); // December is 11 (0-based)
       const now = new Date();
       const difference = target.getTime() - now.getTime();
       let timeLeft = {};
@@ -134,7 +134,7 @@ const UpcomingEvents = () => {
                 
                 <div className="mt-6">
                   <div className="text-center text-sm font-semibold text-gray-500 mb-2">COUNTDOWN TO ALG 2025</div>
-                  <CountdownTimer targetDate="2025-11-22T00:00:00" />
+                  <CountdownTimer targetDate="2025-12-13T00:00:00" />
                 </div>
               </div>
             </div>
