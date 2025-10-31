@@ -16,6 +16,7 @@ import Fiona from '../../../assets/images/team/fiona.png';
 import RosieLorie from '../../../assets/images/team/Rosie-Lorie.png';
 import Nelson from '../../../assets/images/team/Nelson.png';
 import Nanda from '../../../assets/images/team/Nanda.jpg';
+import Awori from '../../../assets/images/team/Awori.jpg';
 
 const TeamPage = () => {
   const fadeIn = {
@@ -203,6 +204,14 @@ const TeamPage = () => {
         linkedin: "https://www.linkedin.com/in/nnanda-kizito",
         twitter: "https://twitter.com/NnandaKizito"
       }
+    },
+    {
+      name: "Emmanuel Siryoyi Awori",
+      role: "Partnerships & Development Lead",
+      image: Awori,
+      bio: "Emmanuel is an experienced professional with a strong background in strategic partnerships across the financial services, manufacturing, and agribusiness sectors. His work has focused on building impactful collaborations that drive growth, innovation, and sustainability.",
+      slug: "emmanuel-siryoyi-awori",
+      social: {}
     }
   ];
 

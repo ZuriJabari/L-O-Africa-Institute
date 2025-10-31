@@ -340,6 +340,13 @@ exports.createPages = async ({ graphql, actions }) => {
         linkedin: "https://www.linkedin.com/in/nnanda-kizito",
         twitter: "https://twitter.com/NnandaKizito"
       }
+    },
+    {
+      name: "Emmanuel Siryoyi Awori",
+      role: "Partnerships & Development Lead",
+      imageName: "Awori",
+      bio: "Emmanuel is an experienced professional with a strong background in strategic partnerships across the financial services, manufacturing, and agribusiness sectors. His work has focused on building impactful collaborations that drive growth, innovation, and sustainability. A passionate advocate for leadership development, Emmanuel’s journey began through years of active student leadership and continues today in his role as Partnerships & Development Lead at the LéO Africa Institute, where he supports initiatives that nurture emerging African leaders. He remains deeply committed to fostering purpose-driven partnerships that create long-term value for institutions and society.",
+      slug: "emmanuel-siryoyi-awori"
     }
   ];
 

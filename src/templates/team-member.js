@@ -15,6 +15,7 @@ import Fiona from '../assets/images/team/fiona.png';
 import RosieLorie from '../assets/images/team/Rosie-Lorie.png';
 import Nelson from '../assets/images/team/Nelson.png';
 import Nanda from '../assets/images/team/Nanda.jpg';
+import Awori from '../assets/images/team/Awori.jpg';
 
 // Image mapping
 const images = {
@@ -27,7 +28,8 @@ const images = {
   fiona: Fiona,
   'Rosie-Lorie': RosieLorie,
   Nelson,
-  Nanda
+  Nanda,
+  Awori
 };
 
 const TeamMember = ({ pageContext: { data } }) => {
