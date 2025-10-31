@@ -1,20 +1,8 @@
-name: 🚀 Deploy to GitHub Pages + cPanel Sync
+name: "🚀 Deploy to GitHub Pages + cPanel Sync (Disabled Auto)"
 
 on:
-  # Trigger on push to main branch
-  push:
-    branches: [ main ]
-  
-  # Allow manual trigger
+  # Manual trigger only (auto triggers disabled)
   workflow_dispatch:
-  
-  # Webhook trigger from external sources (like Prismic)
-  repository_dispatch:
-    types: [prismic-content-update]
-  
-  # Alternative: Schedule to check for content changes every 10 minutes
-  schedule:
-    - cron: '*/10 * * * *'
 
 # Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
 permissions:
@@ -43,7 +31,7 @@ jobs:
         cache: 'npm'
         
     - name: 📦 Install dependencies
-      run: npm ci
+      run: npm install
       
     - name: 🏗️ Build Gatsby site
       run: npm run build
@@ -113,7 +101,7 @@ jobs:
       if: ${{ !hashFiles('leo-africa-site.zip') }}
       run: |
         echo "Rebuilding public and zip as fallback..."
-        npm ci
+        npm install
         npm run build
         zip -r leo-africa-site.zip public -x "*.git*" "*node_modules*" "*.DS_Store" "*Thumbs.db"
         

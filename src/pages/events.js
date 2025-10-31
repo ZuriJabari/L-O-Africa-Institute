@@ -2,6 +2,7 @@ import React from 'react'
 import { Link } from 'gatsby'
 import Layout from '../components/Layout'
 import InnerHero from '../components/InnerHero'
+import aboutALG from '../assets/images/about-alg.jpg'
 import { HeroTitle, SectionTitle, SubsectionTitle, BodyText, BodyLarge } from '../components/Typography'
 import leoLogo from '../assets/images/Leo-logo.png'
 import algLogo from '../assets/images/alg-color.svg'
@@ -14,12 +15,12 @@ const EventsAndGatherings = () => {
   return (
     <Layout>
       <InnerHero
-        imageSrc="../assets/images/about-alg.jpg"
+        imageSrc={aboutALG}
         imageAlt="Events & Gatherings"
         eyebrow="Events & Gatherings"
         title={<>The Dialogue Platform</>}
         description="Join Africa's most influential gathering of thought leaders, innovators, and change-makers shaping the future of leadership."
-        useStaticImage={true}
+        useStaticImage={false}
       />
 
       {/* ALG Flagship Event Section */}
