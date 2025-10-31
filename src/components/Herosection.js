@@ -131,7 +131,7 @@ const HeroSection = () => {
       </div>
 
       {/* Elegant Navigation Controls */}
-      <div className="absolute bottom-6 sm:bottom-12 left-4 sm:left-8 lg:left-16 right-4 sm:right-8 lg:right-16 z-20 flex items-center justify-between">
+      <div className="absolute bottom-6 sm:bottom-8 right-4 sm:right-8 lg:right-16 z-20 flex items-center gap-4 justify-end">
         {/* Navigation Arrows */}
         <div className="flex items-center gap-2 sm:gap-4">
           <button
