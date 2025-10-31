@@ -66,7 +66,7 @@ const InnerHero = ({
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.9, delay: 0.3, ease: [0.43, 0.13, 0.23, 0.96] }}
-            className="text-3xl sm:text-5xl md:text-7xl lg:text-8xl font-light text-white leading-[1.05] tracking-tight mb-6 sm:mb-8"
+            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-light text-white leading-[1.08] tracking-tight mb-6 sm:mb-8"
           >
             {title}
           </motion.h1>

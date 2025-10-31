@@ -49,7 +49,7 @@ const LeoTalks = () => {
               initial={{ opacity: 0, y: 40 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1.0, delay: 0.3 }}
-              className="text-6xl md:text-7xl lg:text-8xl font-light text-white leading-[1.05] tracking-tight mb-6"
+              className="text-4xl md:text-5xl lg:text-6xl font-light text-white leading-[1.08] tracking-tight mb-6"
             >
               The LéO Africa Talks
             </motion.h1>
