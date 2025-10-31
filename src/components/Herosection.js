@@ -100,7 +100,7 @@ const HeroSection = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3, duration: 0.8 }}
-              className="font-light text-3xl sm:text-5xl md:text-7xl lg:text-8xl leading-[1.1] tracking-tight max-w-4xl"
+              className="font-light text-3xl sm:text-4xl md:text-5xl lg:text-6xl leading-[1.1] tracking-tight max-w-4xl"
             >
               {slides[currentIndex].title}
             </motion.h1>
@@ -110,7 +110,7 @@ const HeroSection = () => {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.5, duration: 0.8 }}
-              className="text-base sm:text-xl md:text-2xl leading-relaxed text-white/90 font-light max-w-3xl"
+              className="text-base sm:text-lg md:text-xl leading-relaxed text-white/90 font-light max-w-3xl"
             >
               {slides[currentIndex].description}
             </motion.p>
