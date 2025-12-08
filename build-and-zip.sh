@@ -20,7 +20,10 @@ if [ $? -eq 0 ]; then
     
     # Create zip of the public directory (Gatsby's output)
     echo "Creating zip archive..."
-    zip -r leo-website.zip public/* 2>/dev/null
+    rm -f leo-website.zip
+    cd public
+    zip -r ../leo-website.zip * 2>/dev/null
+    cd ..
     
     if [ $? -eq 0 ]; then
         echo "Zip file created successfully"

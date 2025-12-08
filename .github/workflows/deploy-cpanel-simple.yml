@@ -1,0 +1,69 @@
+name: "🚀 Deploy to cPanel (Simple)"
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  build-and-deploy:
+    name: Build and Deploy
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: "Checkout"
+        uses: actions/checkout@v4
+
+      - name: "Use Node.js 18"
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'npm'
+
+      - name: "Install dependencies"
+        run: npm install
+
+      - name: "Build site"
+        env:
+          NODE_ENV: production
+        run: npm run build
+
+      # Primary: SFTP deploy
+      - name: "Deploy via SFTP"
+        id: sftp
+        uses: wlixcc/SFTP-Deploy-Action@v1.2.4
+        continue-on-error: true
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          local_path: './public/*'
+          remote_path: '/public_html/'
+          sftpArgs: '-o ConnectTimeout=30 -o ServerAliveInterval=10'
+
+      # Fallback: FTP (active mode)
+      - name: "Deploy via FTP (active)"
+        if: steps.sftp.outcome == 'failure'
+        id: ftp
+        continue-on-error: true
+        uses: sebastianpopp/ftp-action@releases/v2
+        with:
+          host: ${{ secrets.FTP_SERVER }}
+          user: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          localDir: 'public'
+          remoteDir: 'public_html'
+
+      # Final fallback: lftp mirror
+      - name: "Deploy via lftp"
+        if: steps.sftp.outcome == 'failure' && steps.ftp.outcome == 'failure'
+        continue-on-error: true
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y lftp
+          lftp -c "set ftp:passive-mode off; set net:timeout 30; set net:max-retries 3; open -u ${{ secrets.FTP_USERNAME }},${{ secrets.FTP_PASSWORD }} ${{ secrets.FTP_SERVER }}; mirror -R --delete --verbose ./public ./public_html; quit"
+
+      - name: "Summary"
+        if: always()
+        run: |
+          echo "Deployment completed (some steps may have been skipped or failed)."
