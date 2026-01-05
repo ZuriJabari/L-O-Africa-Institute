@@ -114,7 +114,7 @@ export const query = graphql`
   }
 `;
 
-const BlogPage = ({ data }) => {
+const BlogPage = ({ data, location }) => {
   const blog = data.prismicBlogPosts.data;
   const relatedPosts = data.allPrismicBlogPosts.nodes;
   
@@ -223,8 +223,9 @@ const BlogPage = ({ data }) => {
       <SEO
         title={blog.title}
         description={blog.excerpt}
-        image={blog.featured_image.url}
+        image={blog.featured_image?.url}
         article={true}
+        pathname={location.pathname}
       />
       {/* Image Lightbox */}
       <AnimatePresence>

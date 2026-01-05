@@ -36,7 +36,7 @@ const TeamMemberCard = ({ name, subtitle, imagePath, isChair, profileLink }) => 
                 width: 512
                 height: 512
                 placeholder: BLURRED
-                formats: [JPG, PNG]
+                formats: [AUTO, WEBP]
                 quality: 90
                 transformOptions: {
                   fit: COVER

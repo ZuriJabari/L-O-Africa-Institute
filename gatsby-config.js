@@ -1,4 +1,5 @@
 module.exports = {
+  trailingSlash: "always",
   flags: {
     DEV_SSR: false,
     FAST_DEV: true,
